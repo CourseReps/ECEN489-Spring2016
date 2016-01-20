@@ -2,7 +2,7 @@ Tutorials
 =========
 
 * [Git](https://github.com/CourseReps/ECEN489-Spring2016/wiki/git)
-* [GitHub](https://github.com/CourseReps/ECEN489-Spring2016/wiki/github)
+* [GitHub](https://github.com/CourseReps/ECEN489-Spring2016/wiki/github) - Keaton Brown
 * [Java](https://github.com/CourseReps/ECEN489-Spring2016/wiki/java)
 * [IntelliJ IDEA](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij)
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc)
