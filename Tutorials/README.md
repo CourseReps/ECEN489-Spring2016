@@ -8,7 +8,7 @@ Tutorials
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc)
 * [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json)
 * [Java Threads](https://github.com/CourseReps/ECEN489-Spring2016/wiki/threads)
-* [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android)
+* [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android) - Keaton Brown
 * [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio)
 * [SQLite](https://github.com/CourseReps/ECEN489-Spring2016/wiki/sqlite)
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables)
