@@ -5,7 +5,8 @@ Enrolled Students and Faculty Members
 Undergraduate Students
 ----------------------
 
-* _FirstName LastName_, _NetID_, _GitHubID_
+* Thomas Branyon, aggiebass2015, aggiebass2015, [tbranyon](https://tbranyon.github.io/)
+* Keaton Brown, keabro, keabro, [Keabro](https://Keabro.github.io/)
 
 
 Graduate Students
