@@ -1,7 +1,7 @@
 Tutorials
 =========
 
-* [Git](https://github.com/CourseReps/ECEN489-Spring2016/wiki/git)
+* [Git](https://github.com/CourseReps/ECEN489-Spring2016/wiki/git) - Thomas Branyon, 22 January
 * [GitHub](https://github.com/CourseReps/ECEN489-Spring2016/wiki/github) - Keaton Brown
 * [Java](https://github.com/CourseReps/ECEN489-Spring2016/wiki/java)
 * [IntelliJ IDEA](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij)
