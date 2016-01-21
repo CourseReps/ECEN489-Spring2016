@@ -29,10 +29,10 @@ A short list of frequently used commands appears below.
 
 ### Action Items
 
+* __Apply for Products Pack__:
+[JetBrains Products for Learning](https://www.jetbrains.com/shop/eform/students)
 * __Read__:
 About [IntelliJ IDEA](https://www.jetbrains.com/idea/).
-* __Apply__:
-[JetBrains Products for Learning](https://www.jetbrains.com/shop/eform/students)
 * __Download and Install__:
 IntelliJ IDEA.
 * __Watch and Complete__:
