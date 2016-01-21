@@ -13,9 +13,10 @@ These tasks consist in installing and mastering pertinent software packages.
 * [Java](https://www.java.com/)
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
 
-Task 3: Data Management
+[Task 3](./3task.md): Data Management
 -----------------------
 * [SQLite](http://www.sqlite.org)
+* JDBC
 
 Task 4: Android Development and Studio
 --------------------------------------
