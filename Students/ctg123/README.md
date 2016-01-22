@@ -1,1 +1,3 @@
-* Chaance Graves, chaanceg123, [ctg123](https://GitHubID.github.io/)
+Name: Chaance Graves
+GitHubID: ctg123
+NetID: chaanceg123
