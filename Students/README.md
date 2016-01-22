@@ -10,6 +10,7 @@ Undergraduate Students
 * Samuel Shore, sam_shore, [samshore](https://samshroe.github.io/)
 * Paul Crouther, paulcrouther, [paulcrouther](https://paulcrouther.github.io/)
 * Kyle Sparrow, captjack, [captjacksparrowz] (https://captjacksparrowz.github.io/)
+* Chaance Graves, chaanceg123, [ctg123] (https://ctg123.github.io/)
 
 Graduate Students
 -----------------
