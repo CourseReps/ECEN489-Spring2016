@@ -8,6 +8,7 @@ Undergraduate Students
 * Thomas Branyon, aggiebass2015, [tbranyon](https://tbranyon.github.io/)
 * Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
 * Samuel Shore, sam_shore, [samshore](https://samshroe.github.io/)
+* Paul Crouther, paulcrouther, [paulcrouther](https://paulcrouther.github.io/)
 
 Graduate Students
 -----------------
