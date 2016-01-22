@@ -5,5 +5,5 @@ You will find on our repository Assignment 1 and Opt-Out Challenge 1.  The first
 Cheers,
 Jean-Francois Chamberland, Gregory Huff
 
-Due Date: Jan 24.
+Due Date: Jan 27.
 https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Assignments
