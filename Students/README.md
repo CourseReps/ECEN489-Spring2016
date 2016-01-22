@@ -16,11 +16,9 @@ Graduate Students
 -----------------
 * John Lusher II, john.lusher, [johnlusher](https://johnlusher.github.io/)
 * Akash Sahoo, akash91, [akashatnitr](https://akashatnitr.github.io/)
-<<<<<<< HEAD
 * Yanxiang Yang, leoyyx2009, [yanxiang](https://yanxiang.github.io/)
-=======
 * Fanchao Zhou, fanchao92, [fanchao92](https://fanchao92.github.io/)
->>>>>>> 21596ebe29cd5c683b17e9cbbbe20c69d7112c39
+
 
 Faculty Members
 ---------------
