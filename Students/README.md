@@ -11,7 +11,7 @@ Undergraduate Students
 
 Graduate Students
 -----------------
-
+* John Lusher II, john.lusher, [johnlusher](https://johnlusher.github.io/)
 
 Faculty Members
 ---------------
