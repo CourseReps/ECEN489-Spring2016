@@ -1,3 +1,3 @@
-Name: Chaance Graves
-GitHubID: ctg123
+Name: Chaance Graves  
+GitHubID: ctg123  
 NetID: chaanceg123
