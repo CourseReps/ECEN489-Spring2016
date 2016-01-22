@@ -1,3 +1,3 @@
-Name: Keaton Brown
-GitHubID: Keabro
-
+Name: Keaton Brown  
+GitHubID: Keabro  
+NetID: keabro

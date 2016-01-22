@@ -3,7 +3,7 @@ Tutorials
 
 * [Git](https://github.com/CourseReps/ECEN489-Spring2016/wiki/git) - Thomas Branyon, Friday, Jan 22
 * [GitHub](https://github.com/CourseReps/ECEN489-Spring2016/wiki/github) - Keaton Brown, Friday, Jan 22
-* [Java](https://github.com/CourseReps/ECEN489-Spring2016/wiki/java)
+* [Java](https://github.com/CourseReps/ECEN489-Spring2016/wiki/java) - Paul Crouther, Monday, Jan 25
 * [IntelliJ IDEA](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij)
 * [SQLite](https://github.com/CourseReps/ECEN489-Spring2016/wiki/sqlite)
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc)
