@@ -9,6 +9,7 @@ Undergraduate Students
 * Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
 * Samuel Shore, sam_shore, [samshore](https://samshroe.github.io/)
 * Paul Crouther, paulcrouther, [paulcrouther](https://paulcrouther.github.io/)
+* Kyle Sparrow, captjack, [captjacksparrowz] (https://captjacksparrowz.github.io/)
 
 Graduate Students
 -----------------
@@ -20,4 +21,3 @@ Faculty Members
 
 * Jean-Francois Chamberland, chmbrlnd, [chmbrlnd](https://github.com/chmbrlnd)
 * Gregory H. Huff, ghuff, [ghuff](https://github.com/ghuff)
-
