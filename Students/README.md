@@ -12,6 +12,7 @@ Undergraduate Students
 Graduate Students
 -----------------
 * John Lusher II, john.lusher, [johnlusher](https://johnlusher.github.io/)
+* Akash Sahoo, akash91, [akashatnitr](https://akashatnitr.github.io/)
 
 Faculty Members
 ---------------
