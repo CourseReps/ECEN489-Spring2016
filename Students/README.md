@@ -7,7 +7,7 @@ Undergraduate Students
 
 * Thomas Branyon, aggiebass2015, [tbranyon](https://tbranyon.github.io/)
 * Keaton Brown, keabro, [Keabro](https://Keabro.github.io/)
-* Samuel Shore, sam_shore, [samshore](https://samshroe.github.io/)
+* Samuel Shore, sam_shore, [samshore](https://samshore.github.io/)
 * Paul Crouther, paulcrouther, [paulcrouther](https://paulcrouther.github.io/)
 * Kyle Sparrow, captjack, [captjacksparrowz] (https://captjacksparrowz.github.io/)
 * Chaance Graves, chaanceg123, [ctg123] (https://ctg123.github.io/)
