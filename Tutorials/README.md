@@ -5,7 +5,7 @@ Tutorials
 * [GitHub](https://github.com/CourseReps/ECEN489-Spring2016/wiki/github) - Keaton Brown, Friday, Jan 22
 * [Java](https://github.com/CourseReps/ECEN489-Spring2016/wiki/java) - Paul Crouther, Monday, Jan 25
 * [IntelliJ IDEA](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij) - Kyle Sparrow, Monday, Jan 25
-* [SQLite](https://github.com/CourseReps/ECEN489-Spring2016/wiki/sqlite)
+* [SQLite](https://github.com/CourseReps/ECEN489-Spring2016/wiki/sqlite) - John Lusher II, Monday, Jan 25
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc)
 * [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json)
 * [Java Threads](https://github.com/CourseReps/ECEN489-Spring2016/wiki/threads)
