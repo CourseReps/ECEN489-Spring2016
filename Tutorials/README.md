@@ -11,6 +11,6 @@ Tutorials
 * [Java Threads](https://github.com/CourseReps/ECEN489-Spring2016/wiki/threads) - Akash Sahoo, Wednesday Jan 27
 * [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android)
 * [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio)
-* [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables)
+* [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday Feb 1
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
 
