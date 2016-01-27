@@ -17,3 +17,4 @@ Tutorials
 * [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs)
 * [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl)
 * [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb)
+* [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
