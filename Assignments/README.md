@@ -13,3 +13,5 @@ An opt-out challenge is graded as satisfactory (full credit) or unsatisfactory (
 
 ## Progression of Opt-Out Challenges
 
+ * [Challenge 1](./1optout.md): Getting started with [IntelliJ IDEA](https://www.jetbrains.com/idea/), [Git](https://git-scm.com/), and [GitHub](https://github.com/).
+ * [Challenge 2](./2optout.md): Establishing a server-client infrastructure in [Java](https://java.com/).
