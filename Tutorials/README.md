@@ -9,7 +9,7 @@ Tutorials
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc) - Chaance Graves, Friday, Jan 29
 * [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json) - John Lusher II, Monday, Feb 1
 * [Java Threads](https://github.com/CourseReps/ECEN489-Spring2016/wiki/threads) - Akash Sahoo, Wednesday Jan 27
-* [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android)
+* [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android) - Yanxiang Yang, Wednesday Feb 3
 * [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) - Sam Shore, Monday, Feb 1
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday Feb 1
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
