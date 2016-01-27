@@ -20,7 +20,7 @@ Some of the attribute may return null.
 Create a server-client infrastructure using stream sockets.
 The client should be able to access the server over the Internet, query the server for the information listed above, and display this information locally.
 
-### Server
+### Simple Server Using Stream Sockets
 
 Establishing a simple server in Java requires five steps.
  * Create a ```ServerSocket``` object:
@@ -46,4 +46,15 @@ In the processing phase, the server and the client communicate via the ```Output
  * Closing the connection:
 The server closes the connection by invoking the ```close``` method on the streams and on the ```Socket```.
 
+### Simple Client Using Stream Sockets
 
+Establishing a simple client in Java necessitates four steps.
+ * Create a ```Socket``` to connect to the server:
+```java
+  Socket connection = new Socket( serverAddress, port);
+```
+When the connection attempt is successful, this returns a ```Socket```.
+ * Manage the I/O streams.
+ * Support the live interaction.
+ * Close the connection:
+The client closes the connection by invoking the ```close``` method on the streams and on the ```Socket```.
