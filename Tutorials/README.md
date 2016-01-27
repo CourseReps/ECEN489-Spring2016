@@ -13,4 +13,7 @@ Tutorials
 * [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) - Sam Shore, Monday, Feb 1
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday Feb 1
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
-
+* [Data Serialization](https://github.com/CourseReps/ECEN489-Spring2016/wiki/serialization)
+* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs)
+* [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl)
+* [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb)
