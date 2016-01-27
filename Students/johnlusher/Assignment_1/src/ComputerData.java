@@ -38,8 +38,9 @@ public class ComputerData
     //	----------------------------------------------------------------------------------------------------------------
     public void GetUpdatedData( )
     {
-        time = new Date();
-        JavaVersion = System.getProperty("java.version");
-        OS = System.getProperty("os.name");
+        time = new Date();                                          // Get current date and time
+                                                                    // Get system properties
+        JavaVersion = System.getProperty("java.version");           // Get the java version from the system
+        OS = System.getProperty("os.name");                         // Get the OS name from the system
     }
 }
