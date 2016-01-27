@@ -15,6 +15,6 @@ Tutorials
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
 * [Data Serialization](https://github.com/CourseReps/ECEN489-Spring2016/wiki/serialization) - Thomas Branyon, Friday, Jan 29
 * [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs)
-* [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl)
+* [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl) - Kyle Sparrow, Monday Feb 8
 * [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb)
 * [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
