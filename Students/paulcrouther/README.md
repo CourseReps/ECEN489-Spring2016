@@ -1,9 +1,4 @@
-This is a readme. 
+This is readme is for the assignments and work I'll be committing for the semester.
 
-Is there is stuff in here?
-
-...
-
-I believe so.
-
-https://www.jetbrains.com/idea/help/creating-and-running-your-first-java-application.html
+* Paul Crouther
+* www.paulcrouther.github.io
