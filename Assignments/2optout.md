@@ -41,7 +41,7 @@ connection.getInputStream();
 ```
 These objects can subsequently be employed to send or receive bytes with the ```OutputStream``` method ```write``` and the ```InputStream``` method ```read```, respectively.
 One can also use classes such ```ObjectInputStream``` and ```ObjectOutputStream``` to enable entire objects to be read from or written to a stream, a technique called wrapping.
- * Support the live interaction:
+ * Support live interaction:
 In the processing phase, the server and the client communicate via the ```OutputStream``` and ```InputStream``` objects.
  * Closing the connection:
 The server closes the connection by invoking the ```close``` method on the streams and on the ```Socket```.
@@ -55,6 +55,12 @@ Establishing a simple client in Java necessitates four steps.
 ```
 When the connection attempt is successful, this returns a ```Socket```.
  * Manage the I/O streams.
- * Support the live interaction.
+ * Support live interaction.
  * Close the connection:
 The client closes the connection by invoking the ```close``` method on the streams and on the ```Socket```.
+
+### Code
+
+ * Implement this task in Java.
+ * Using IntelliJ IDEA, Git, and GitHub, commit your code for the server as a project labeled ```Challenge2server``` under ```Students/<GitHubID>/```, where ```<GitHubID>``` should be replaced by your username on [GitHub](https://GitHub.com).
+ * In a similar fashion, commit your code for the client as a project labeled ```Challenge2client``` under ```Students/<GitHubID>/```.
