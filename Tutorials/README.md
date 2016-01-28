@@ -10,11 +10,11 @@ Tutorials
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc) - Chaance Graves, Friday, Jan 29
 * [Data Serialization](https://github.com/CourseReps/ECEN489-Spring2016/wiki/serialization) - Thomas Branyon, Friday, Jan 29
 * [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json) - John Lusher II, Monday, Feb 1
-* [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) - Sam Shore, Friday, Feb 5
+* [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) 
 * [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android) - Yanxiang Yang, Friday, Feb 5
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday, Feb 8
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
-* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs)
+* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs) - Sam Shore, Friday, Feb 5
 * [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl) - Kyle Sparrow, Monday Feb 8
 * [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb)
 * [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
