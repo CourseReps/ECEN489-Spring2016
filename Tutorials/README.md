@@ -14,7 +14,7 @@ Tutorials
 * [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android) - Yanxiang Yang, Friday, Feb 5
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday, Feb 8
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
-* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs) - Sam Shore, Friday, Feb 5
+* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs) - Sam Shore, Wednesday, Feb 3
 * [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl) - Kyle Sparrow, Monday Feb 8
 * [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb)
 * [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
