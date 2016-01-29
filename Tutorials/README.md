@@ -19,5 +19,5 @@ Tutorials
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday, Feb 8
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
 * [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl) - Kyle Sparrow, Monday Feb 8
-* [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb)
+* [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb) - John Lusher II, Monday, Feb 15
 * [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
