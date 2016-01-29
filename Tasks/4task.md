@@ -10,3 +10,10 @@ This platform has a large community of developers creating applications that ext
 Among its many components, the Android Studio includes an IDE, the Android SDK tools, an Android platform and an emulator system image.
 Basically, it leverages the strengths of IntelliJ, and adds the necessary software to rapidly build new applications.
 
+### Action Items
+
+* __Read__: [SQLite Quick Start Guide](https://www.sqlite.org/quickstart.html).
+* __Peruse__: [Android Design](https://developer.android.com/design/) and [Develop](https://developer.android.com/develop/).
+* __Download and Install__: [Android Studio](https://developer.android.com/sdk/)
+* __Download__: [Samples](https://developer.android.com/samples/).
+
