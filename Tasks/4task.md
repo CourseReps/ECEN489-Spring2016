@@ -11,9 +11,17 @@ Among its many components, the Android Studio includes an IDE, the Android SDK t
 Basically, it leverages the strengths of IntelliJ, and adds the necessary software to rapidly build new applications.
 
 ### Action Items
-
-* __Read__: [SQLite Quick Start Guide](https://www.sqlite.org/quickstart.html).
 * __Peruse__: [Android Design](https://developer.android.com/design/) and [Develop](https://developer.android.com/develop/).
 * __Download and Install__: [Android Studio](https://developer.android.com/sdk/)
 * __Download__: [Samples](https://developer.android.com/samples/).
 
+
+## Getting Started
+
+Having completed the preparation of your programming platform, you are now ready to create your first applications.
+
+### Action Items
+* __Read and Complete__: [Building Your First App](https://developer.android.com/training/).
+Complete the four stages of the Building Your First App tutorial -- Creating an Android project, Running your application, Building a simple user interface, Starting another activity.
+* __Commit__: Using Android Studio, Git, and GitHub, commit your code as a project labeled ```Android1``` under ```Students/<GitHubID>/```.
+* __Read__: [Saving Data](https://developer.android.com/training/).
