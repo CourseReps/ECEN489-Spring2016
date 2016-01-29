@@ -23,7 +23,7 @@ These tasks consist in installing and mastering pertinent software packages.
 * [Android Development](https://developer.android.com/)
 * [Android Studio](https://developer.android.com/sdk/)
 
-Task 5: Google Fusion Tables
+[Task 5](./5task.md): Google Fusion Tables
 ----------------------------
 * [Fusion Table API](https://developers.google.com/fusiontables/)
 * Getting Started
