@@ -13,7 +13,7 @@ Tutorials
 * [JAX-WS](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jaxws)
 * [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json) - John Lusher II, Monday, Feb 1
 * [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs) - Sam Shore, Monday, Feb 1
-* [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) 
+* [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) - Paul Crouther, Wednesday, Feb 3
 * [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android) - Yanxiang Yang, Friday, Feb 5
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday, Feb 8
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
