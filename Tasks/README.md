@@ -18,7 +18,7 @@ These tasks consist in installing and mastering pertinent software packages.
 * [SQLite](http://www.sqlite.org)
 * JDBC
 
-Task 4: Android Development and Studio
+[Task 4](./4task.md): Android Development and Studio
 --------------------------------------
 * [Android Development](https://developer.android.com/)
 * [Android Studio](https://developer.android.com/sdk/)
