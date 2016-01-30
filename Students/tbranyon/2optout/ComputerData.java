@@ -1,5 +1,8 @@
 import java.io.IOException;
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by tbranyon on 1/29/16.
@@ -14,6 +17,7 @@ public class ComputerData implements Serializable
     private String OS_version;
     private String userHome;
     private String userName;
+    private String dateTime;
 
     public ComputerData()
     {
@@ -25,11 +29,16 @@ public class ComputerData implements Serializable
         OS_version = System.getProperty("os.version");
         userHome = System.getProperty("user.home");
         userName = System.getProperty("user.name");
+
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date curTimeDate = new Date();
+        dateTime = fmt.format(curTimeDate);
     }
 
     public String toString()
     {
-        return    ("Classpath     : " + classpath + "\n" +
+        return    ("Timestamp     : " + dateTime + "\n" +
+                   "Classpath     : " + classpath + "\n" +
                    "JRE Vendor    : " + jreVendor + "\n" +
                    "JRE Version   : " + jreVersion + "\n" +
                    "OS Arch       : " + OS_arch + "\n" +
