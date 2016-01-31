@@ -11,19 +11,6 @@ import java.util.Scanner;
 public class Client {
     private static String cmdServerData = "get_data";
 
-    public static void display(final ComputerData serverData){
-        System.out.println(
-                "Server Time   : " + serverData.getTime() + "\n" +
-                "Classpath     : " + serverData.getClassPath() + "\n" +
-                "JRE Vendor    : " + serverData.getJavaVender() + "\n" +
-                "JRE Version   : " + serverData.getJavaVer() + "\n" +
-                "OS Arch       : " + serverData.getOSArch() + "\n" +
-                "OS Name       : " + serverData.getOSName() + "\n" +
-                "OS Version    : " + serverData.getOSVer() + "\n" +
-                "User Home Dir : " + serverData.getUserHome() + "\n" +
-                "Username      : " + serverData.getUserName()
-        );
-    }
 
     public static void main(String[] args){
         Scanner kbInput = new Scanner(System.in);
@@ -39,10 +26,10 @@ public class Client {
             ObjectInputStream inputFromNet = new ObjectInputStream(server.getInputStream());  //Get Ready to receive commands
             ObjectOutputStream outputToNet = new ObjectOutputStream(server.getOutputStream());//Get Ready to send data
 
-            System.out.printf("Sending Request to server%n");
+            System.out.println("Sending Request to server");
             outputToNet.writeObject("get_data");
             ComputerData serverData = (ComputerData)inputFromNet.readObject();
-            display(serverData);
+            System.out.println(serverData.toString());
 
             inputFromNet.close();
             outputToNet.close();

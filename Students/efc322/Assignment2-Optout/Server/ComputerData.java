@@ -1,59 +1,50 @@
 import java.io.Serializable;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by Fanchao Zhou on 1/31/2016.
+ * Created by Fanchao on 1/31/16.
  */
-
-public class ComputerData implements Serializable {
-    private String classPath;
-    private String javaVender;
-    private String javaVer;
-    private String osArch;
-    private String osName;
-    private String osVer;
+public class ComputerData implements Serializable
+{
+    private String classpath;
+    private String jreVendor;
+    private String jreVersion;
+    private String OS_arch;
+    private String OS_name;
+    private String OS_version;
     private String userHome;
     private String userName;
-    private String time;
+    private String dateTime;
 
-    public ComputerData(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        time = dateFormat.format(new Date());
-        javaVer = System.getProperty("java.version");
-        javaVender = System.getProperty("java.vendor");
-        osVer = System.getProperty("os.version");
-        osName = System.getProperty("os.name");
-        classPath = System.getProperty("java.class.path");
-        osArch = System.getProperty("os.arch");
-        userName = System.getProperty("user.name");
+    public ComputerData()
+    {
+        classpath = System.getProperty("java.class.path");
+        jreVendor = System.getProperty("java.vendor");
+        jreVersion = System.getProperty("java.version");
+        OS_arch = System.getProperty("os.arch");
+        OS_name = System.getProperty("os.name");
+        OS_version = System.getProperty("os.version");
         userHome = System.getProperty("user.home");
+        userName = System.getProperty("user.name");
+
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date curTimeDate = new Date();
+        dateTime = fmt.format(curTimeDate);
     }
-    public String getTime(){
-        return time;
-    }
-    public String getJavaVer(){
-        return javaVer;
-    }
-    public String getOSVer(){
-        return osVer;
-    }
-    public String getOSName(){
-        return osName;
-    }
-    public String getJavaVender(){
-        return javaVender;
-    }
-    public String getClassPath(){
-        return classPath;
-    }
-    public String getUserName(){
-        return userName;
-    }
-    public String getUserHome(){
-        return userHome;
-    }
-    public String getOSArch(){
-        return osArch;
+
+    public String toString()
+    {
+        return    ("Timestamp     : " + dateTime + "\n" +
+                "Classpath     : " + classpath + "\n" +
+                "JRE Vendor    : " + jreVendor + "\n" +
+                "JRE Version   : " + jreVersion + "\n" +
+                "OS Arch       : " + OS_arch + "\n" +
+                "OS Name       : " + OS_name + "\n" +
+                "OS Version    : " + OS_version + "\n" +
+                "User Home Dir : " + userHome + "\n" +
+                "Username      : " + userName
+        );
     }
 }
