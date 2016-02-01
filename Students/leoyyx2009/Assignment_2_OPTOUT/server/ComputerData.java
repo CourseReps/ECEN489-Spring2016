@@ -1,24 +1,13 @@
-// ---------------------------------------------------------------------------------------------------------------------
-// ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
-//
-// File Name: 		ComputerData.java
-// Version:			1.0.0
-// Date:			January 29, 2016
-// Description:	    Assignment #2 - Shared ComputerData class
-// ---------------------------------------------------------------------------------------------------------------------
-
-//  --------------------------------------------------------------------------------------------------------------------
-//  Imports
-//  --------------------------------------------------------------------------------------------------------------------
+/**
+ * Created by YYX on 1/30/16.
+ * ECEN689-610:SPTP: DATA ACQ EMBEDDED SYS
+ * Auther:  Yanxiang Yang
+ * Assignment2: OPT-OUT
+ */
 import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-//  --------------------------------------------------------------------------------------------------------------------
-//        Class:    ComputerData
-//  Description:	ComputerData class for project
-//  --------------------------------------------------------------------------------------------------------------------
 public class ComputerData implements Serializable
 {
     private String classpath;

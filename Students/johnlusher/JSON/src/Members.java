@@ -1,10 +1,11 @@
 // ---------------------------------------------------------------------------------------------------------------------
 // ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
 //
-// File Name: 		Main.java
+// File Name: 		Members.java
 // Version:			1.0.0
 // Date:			January 31, 2016
-// Description:	    Assignment #2 - Main Class (Simple Client)
+// Description:	    Tutorial - JSON/Gson - JavaScript Object Notation
+//
 // Author:          John Lusher II
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -16,32 +17,29 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import javax.swing.JFrame;
 
 //  --------------------------------------------------------------------------------------------------------------------
-//        Class:    Main
-//  Description:	Main class for project
+//        Class:    Members
+//  Description:	Members class - simple test class for JSON / Gson example
 //  --------------------------------------------------------------------------------------------------------------------
-public class Main
+public class Members
 {
+    public int ID;
+    public String firstName;
+    public String lastName;
+    public String phoneNumber;
+
     //	----------------------------------------------------------------------------------------------------------------
-    //    Function:     Class Construction
-    //      Inputs:	    arguments
+    //    Function:     Members - Constructor
+    //      Inputs:	    none
     //     Outputs:	    none
-    //  Description:    Defines and initializes the class: main
+    //  Description:    Simple test class
     //	----------------------------------------------------------------------------------------------------------------
-    public static void main(String[] args)
+    public Members()
     {
                                                                         // ---------------------------------------------
-        SimpleClient simpleclient;                                      // Create Simple Client Class
-                                                                        // IF there is no arguments, then user default
-                                                                        // connect to localhost
-        if (args.length == 0) simpleclient = new SimpleClient("192.168.1.2");
-        else simpleclient = new SimpleClient(args[0]);                  // else, use given address
-        simpleclient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Default Close Operation
-        simpleclient.RunSimpleClient();                                 // Run the client application
+        ID = -1;                                                        // Default ID is -1 (undefined)
                                                                         // ---------------------------------------------
     }
 }
-
 

@@ -1,26 +1,11 @@
-// ---------------------------------------------------------------------------------------------------------------------
-// ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
-//
-// File Name: 		ComputerData.java
-// Version:			1.0.0
-// Date:			January 29, 2016
-// Description:	    Assignment #2 - Shared ComputerData class
-// ---------------------------------------------------------------------------------------------------------------------
-
-//  --------------------------------------------------------------------------------------------------------------------
-//  Imports
-//  --------------------------------------------------------------------------------------------------------------------
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//  --------------------------------------------------------------------------------------------------------------------
-//        Class:    ComputerData
-//  Description:	ComputerData class for project
-//  --------------------------------------------------------------------------------------------------------------------
-public class ComputerData implements Serializable
-{
+/**
+ * Created by tbranyon on 1/29/16.
+ */
+public class ComputerData {
     private String classpath;
     private String jreVendor;
     private String jreVersion;
@@ -31,8 +16,7 @@ public class ComputerData implements Serializable
     private String userName;
     private String dateTime;
 
-    public ComputerData()
-    {
+    public void getInfo() {
         classpath = System.getProperty("java.class.path");
         jreVendor = System.getProperty("java.vendor");
         jreVersion = System.getProperty("java.version");
@@ -47,9 +31,8 @@ public class ComputerData implements Serializable
         dateTime = fmt.format(curTimeDate);
     }
 
-    public String toString()
-    {
-        return    ("Timestamp     : " + dateTime + "\n" +
+    public void print() {
+        System.out.println("Timestamp     : " + dateTime + "\n" +
                 "Classpath     : " + classpath + "\n" +
                 "JRE Vendor    : " + jreVendor + "\n" +
                 "JRE Version   : " + jreVersion + "\n" +
@@ -60,4 +43,10 @@ public class ComputerData implements Serializable
                 "Username      : " + userName
         );
     }
+    public static void main(String[] args) {
+        ComputerData compData = new ComputerData();
+        compData.getInfo();
+        compData.print();
+    }
 }
+
