@@ -64,3 +64,9 @@ The client closes the connection by invoking the ```close``` method on the strea
  * Implement this task in Java.
  * Using IntelliJ IDEA, Git, and GitHub, commit your code for the server as a project labeled ```Challenge2server``` under ```Students/<GitHubID>/```, where ```<GitHubID>``` should be replaced by your username on [GitHub](https://GitHub.com).
  * In a similar fashion, commit your code for the client as a project labeled ```Challenge2client``` under ```Students/<GitHubID>/```.
+ 
+
+### Interoperability
+[Discussion](https://github.com/CourseReps/ECEN489-Spring2016/issues/1)  
+Proposed: Use [this class](https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Students/tbranyon/2optout/ComputerData.java) to obtain and store the data for sending and as a container for received data. The class is serializable so it can be easily sent and received over a socket.  
+Client should send string "get_data" to request the transfer from the server. Use port number 2000.
