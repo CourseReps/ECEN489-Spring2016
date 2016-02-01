@@ -17,7 +17,7 @@ Tutorials
 * [Doxygen](https://github.com/CourseReps/ECEN489-Spring2016/wiki/doxygen)
 * [Android Architecture](https://github.com/CourseReps/ECEN489-Spring2016/wiki/android) - Yanxiang Yang, Friday, Feb 5
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, Monday, Feb 8
-* [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth)
+* [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth) - Yanxiang Yang, Friday, Feb 12
 * [HTTPS/SSL](https://github.com/CourseReps/ECEN489-Spring2016/wiki/https_ssl) - Kyle Sparrow, Monday Feb 8
 * [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb) - John Lusher II, Monday, Feb 15
 * [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
