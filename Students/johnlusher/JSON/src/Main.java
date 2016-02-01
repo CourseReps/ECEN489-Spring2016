@@ -4,7 +4,7 @@
 // File Name: 		SimpleServer.java
 // Version:			1.0.0
 // Date:			January 31, 2016
-// Description:	    Tutorial - JSON - JavaScript Object Notation
+// Description:	    Tutorial - JSON/Gson - JavaScript Object Notation
 //
 // Author:          John Lusher II
 // ---------------------------------------------------------------------------------------------------------------------
@@ -17,7 +17,9 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import javax.swing.JFrame;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import java.io.*;
 
 //  --------------------------------------------------------------------------------------------------------------------
 //        Class:    Main
@@ -34,8 +36,44 @@ public class Main
     public static void main(String[] args)
     {
                                                                         // ---------------------------------------------
-        JSONTest testJSON = new JSONTest();                             // Create JSON Test Class
-        testJSON.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        // Default Close Operation
+        Members testperson = new Members();                             // Create example member
+                                                                        // ---------------------------------------------
+
+                                                                        // ---------------------------------------------
+        testperson.lastName = "Lusher";                                 // Set some values
+        testperson.firstName = "John";                                  //
+        testperson.phoneNumber = "(979) 229-1950";                      //
+        testperson.ID = 1;                                              //
+                                                                        // ---------------------------------------------
+
+                                                                        // ---------------------------------------------
+        Gson gson = new GsonBuilder().create();                         // Create Gson builder
+        gson.toJson(testperson, System.out);                            // Convert to JSON and send out the console
+                                                                        //
+        System.out.println();                                           // Print blank line x 2
+        System.out.println();                                           //
+                                                                        //
+        try                                                             // Catch and file expections
+        {                                                               //
+            Writer writer = new FileWriter("Output.json");              // Create file writer - filename  Output.json
+            Reader reader = new FileReader("Input.json");               // Create file reader - filename  Input.json
+                                                                        //
+            gson.toJson(testperson, writer);                            // now send out via the file writer
+            Members newperson = gson.fromJson(reader, Members.class);   // now read via file reader, create new person
+                                                                        //
+            System.out.println("New Person via JSON file");             // Print out new person data
+            System.out.println("        ID: " + newperson.ID);          //
+            System.out.println("First Name: " + newperson.firstName);   //
+            System.out.println(" Last Name: " + newperson.lastName);    //
+            System.out.println("   Phone #: " + newperson.phoneNumber); //
+                                                                        //
+            writer.close();                                             // Clean up objects, close writer/reader
+            reader.close();                                             //
+        }                                                               //
+        catch (IOException ioException)                                 // Process exception
+        {                                                               //
+            ioException.printStackTrace();                              // Just printout the exception trace
+        }                                                               //
                                                                         // ---------------------------------------------
     }
 }
