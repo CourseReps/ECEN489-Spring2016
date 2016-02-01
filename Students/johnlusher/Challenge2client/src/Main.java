@@ -16,7 +16,7 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import java.text.*;
+import javax.swing.JFrame;
 
 //  --------------------------------------------------------------------------------------------------------------------
 //        Class:    Main
@@ -32,12 +32,15 @@ public class Main
     //	----------------------------------------------------------------------------------------------------------------
     public static void main(String[] args)
     {
-        // Date/Time Format
-        SimpleDateFormat date_ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss");
-
-
-        // Print data out the console
-        System.out.println("Hello Work");
+                                                                        // ---------------------------------------------
+        SimpleClient simpleclient;                                      // Create Simple Client Class
+                                                                        // IF there is no arguments, then user default
+                                                                        // connect to localhost
+        if (args.length == 0) simpleclient = new SimpleClient("192.168.1.2");
+        else simpleclient = new SimpleClient(args[0]);                  // else, use given address
+        simpleclient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Default Close Operation
+        simpleclient.RunSimpleClient();                                 // Run the client application
+                                                                        // ---------------------------------------------
     }
 }
 
