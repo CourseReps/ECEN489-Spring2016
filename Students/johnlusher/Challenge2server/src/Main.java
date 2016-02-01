@@ -5,6 +5,8 @@
 // Version:			1.0.0
 // Date:			January 31, 2016
 // Description:	    Assignment #2 - Main Class (Simple Server)
+//                  Create a simple shell and run the SimpleServer Class
+//
 // Author:          John Lusher II
 // ---------------------------------------------------------------------------------------------------------------------
 
@@ -16,7 +18,7 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import java.text.*;
+import javax.swing.JFrame;
 
 //  --------------------------------------------------------------------------------------------------------------------
 //        Class:    Main
@@ -32,20 +34,11 @@ public class Main
     //	----------------------------------------------------------------------------------------------------------------
     public static void main(String[] args)
     {
-        // Create instance of ComputerData class (from Assignment #1)
-        ComputerData cdata = new ComputerData();
-
-        // Date/Time Format
-        SimpleDateFormat date_ft = new SimpleDateFormat ("E yyyy.MM.dd 'at' hh:mm:ss");
-
-
-        // Get the updated information
-        cdata.GetUpdatedData();
-
-        // Print data out the console
-        System.out.println("   Date/Time:  " + date_ft.format(cdata.time));
-        System.out.println("Java Version:  " + cdata.JavaVersion);
-        System.out.println("          OS:  " + cdata.OS);
+                                                                        // ---------------------------------------------
+        SimpleServer simpleserver = new SimpleServer();                 // Create Simple Server Class
+        simpleserver.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Default Close Operation
+        simpleserver.RunSimpleServer();                                 // Run the server application
+                                                                        // ---------------------------------------------
     }
 }
 

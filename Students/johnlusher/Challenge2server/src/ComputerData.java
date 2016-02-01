@@ -3,44 +3,61 @@
 //
 // File Name: 		ComputerData.java
 // Version:			1.0.0
-// Date:			January 25, 2016
-// Description:	    Assignment #1 - ComputerData Class
-// Author:          John Lusher II
+// Date:			January 29, 2016
+// Description:	    Assignment #2 - Shared ComputerData class
 // ---------------------------------------------------------------------------------------------------------------------
-
-//  --------------------------------------------------------------------------------------------------------------------
-//  Revision(s):     Date:                       Description:
-//  v1.0.0           January 25, 2016  	        Initial Release
-//  --------------------------------------------------------------------------------------------------------------------
 
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //  --------------------------------------------------------------------------------------------------------------------
 //        Class:    ComputerData
 //  Description:	ComputerData class for project
 //  --------------------------------------------------------------------------------------------------------------------
-public class ComputerData
+public class ComputerData implements Serializable
 {
-    // Public members
-    public Date time = new Date();
-    public String JavaVersion = new String();
-    public String OS = new String();
+    private String classpath;
+    private String jreVendor;
+    private String jreVersion;
+    private String OS_arch;
+    private String OS_name;
+    private String OS_version;
+    private String userHome;
+    private String userName;
+    private String dateTime;
 
-
-    //	----------------------------------------------------------------------------------------------------------------
-    //    Function:     GetUpdatedData
-    //      Inputs:	    none
-    //     Outputs:	    none
-    //  Description:    Get Updated Data
-    //	----------------------------------------------------------------------------------------------------------------
-    public void GetUpdatedData( )
+    public ComputerData()
     {
-        time = new Date();                                          // Get current date and time
-                                                                    // Get system properties
-        JavaVersion = System.getProperty("java.version");           // Get the java version from the system
-        OS = System.getProperty("os.name");                         // Get the OS name from the system
+        classpath = System.getProperty("java.class.path");
+        jreVendor = System.getProperty("java.vendor");
+        jreVersion = System.getProperty("java.version");
+        OS_arch = System.getProperty("os.arch");
+        OS_name = System.getProperty("os.name");
+        OS_version = System.getProperty("os.version");
+        userHome = System.getProperty("user.home");
+        userName = System.getProperty("user.name");
+
+        DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date curTimeDate = new Date();
+        dateTime = fmt.format(curTimeDate);
+    }
+
+    public String toString()
+    {
+        return    ("Timestamp     : " + dateTime + "\n" +
+                "Classpath     : " + classpath + "\n" +
+                "JRE Vendor    : " + jreVendor + "\n" +
+                "JRE Version   : " + jreVersion + "\n" +
+                "OS Arch       : " + OS_arch + "\n" +
+                "OS Name       : " + OS_name + "\n" +
+                "OS Version    : " + OS_version + "\n" +
+                "User Home Dir : " + userHome + "\n" +
+                "Username      : " + userName
+        );
     }
 }
