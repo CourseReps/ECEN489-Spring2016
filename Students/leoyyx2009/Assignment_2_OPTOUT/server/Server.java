@@ -1,67 +1,35 @@
 /**
- * Created by YYX on 1/31/16.
+ * Created by YYX on 1/30/16.
+ * ECEN689-610:SPTP: DATA ACQ EMBEDDED SYS
+ * Auther:  Yanxiang Yang
+ * Assignment2: OPT-OUT
  */
-
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 
-public class Server extends JFrame{
+public class Server{
+    public static final int TCP_PORT = 2000;
+    public static final int MAX_CLINENT = 1;
     private ServerSocket server;
     private Socket connection;
-    private ObjectOutputStream output;
     private ObjectInputStream input;
-    private int counter = 1;
-    private JTextField enterField;
-    private JTextArea displayArea;
+    private ObjectOutputStream output;
 
-    public Server(){
-        super("Server");
-
-        enterField = new JTextField();
-        enterField.setEditable(false);
-        enterField.addActionListener(
-                new ActionListener() {
-
-                    public void actionPerformed(ActionEvent event) {
-                        sendData(event.getActionCommand());
-                        enterField.setText("");
-                    }
-                }
-
-
-        );
-        add(enterField, BorderLayout.NORTH);
-        displayArea = new JTextArea();
-        add(new JScrollPane(displayArea),BorderLayout.CENTER);
-        setSize(300, 150);
-        setVisible(true);
-    }
     public void runServer(){
         try{
-            server = new ServerSocket(2000,1);
-            while (true){
+            server = new ServerSocket(TCP_PORT, MAX_CLINENT);
+            while(true){
                 try{
                     waitForConnection();
                     getStreams();
                     processConnection();
                 }
                 catch(EOFException eofException){
-                    displayMessage("\nServer termincated connection");
+                    System.out.println("Server terminated connection");
                 }
                 finally{
                     closeConnection();
-                    ++counter;
                 }
             }
         }
@@ -69,79 +37,39 @@ public class Server extends JFrame{
             ioException.printStackTrace();
         }
     }
-    private void waitForConnection() throws IOException {
-        displayMessage("waiting for connection\n");
+
+    public void waitForConnection() throws IOException{
+        System.out.println("waiting for connection");
         connection = server.accept();
-        displayMessage("Connection " + counter + "received from: " + connection.getInetAddress().getHostName());
+        System.out.println("Connection received from: " + connection.getInetAddress().getHostName());
     }
+
     private void getStreams() throws IOException{
         output = new ObjectOutputStream(connection.getOutputStream());
-        output.flush();
         input = new ObjectInputStream(connection.getInputStream());
-        displayMessage("\nGot I/O streams\n");
+        System.out.println("Got I/O streams");
     }
-    private void processConnection() throws IOException {
-        String message = "Connection Successful";
-        sendData(message);
-        setTextFieldEditable(true);
-        do {
-            try{
-                message = (String) input.readObject();
-                displayMessage("\n" + message);
+    private void processConnection() throws IOException{
+        System.out.println("Connection Successful");
+        try {
+            String clientData = (String) input.readObject();
+            if (clientData.equals("get_data")){
+                // clientData = (String) input.readObject();
+                System.out.println("Connection Successful");
+                ComputerData computerData = new ComputerData();
+                output.writeObject(computerData);
             }
-            catch (ClassNotFoundException classNotFoundException){
-                displayMessage("\nUnknown object type received");
-            }
-        }while(!message.equals("CLIENT>>> TERMNATE"));
-    }
-    private void closeConnection(){
-        displayMessage("\nterminate connection ");
-        setTextFieldEditable(false);
-        try{
-            output.close();
-            input.close();
-            connection.close();
         }
-        catch (IOException ioException)
-        {
-            ioException.printStackTrace();
+        catch (ClassNotFoundException classNotFoundException){
+            System.out.println("\nUnknown object type received");
         }
     }
-    private void sendData(String message){
-        try{
-            output.writeObject("SERVER>>> " + message);
-            output.flush();
-            displayMessage("\nSERVER>>>" + message);
-        }
-        catch (IOException ioException)
-        {
-            displayArea.append("\nError writing object");
-        }
+    private void closeConnection() throws IOException {
+        input.close();
+        output.close();
+        connection.close();
     }
-    private void setTextFieldEditable(final boolean editable)
-    {
-        SwingUtilities.invokeLater(
-                new Runnable()
-                {
-                    public void run()
-                    {
-                        enterField.setEditable(editable);
-                    }
-                }
-        );
-    }
-    private void displayMessage(final String messageToDisplay)
-    {
-        SwingUtilities.invokeLater(
-                new Runnable() {
-                    public void run() // updates displayArea
-                    {
-                        displayArea.append(messageToDisplay);
-                    }
-                }
-                    );
 
 
-    }
+
 }
-

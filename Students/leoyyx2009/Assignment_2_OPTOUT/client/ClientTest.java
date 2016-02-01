@@ -1,19 +1,12 @@
 /**
- * Created by YYX on 1/31/16.
+ * Created by YYX on 1/30/16.
+ * ECEN689-610:SPTP: DATA ACQ EMBEDDED SYS
+ * Auther:  Yanxiang Yang
+ * Assignment2: OPT-OUT
  */
-
-import javax.swing.JFrame;
-
-public class ClientTest
-{
-        public static void main(String[] args) {
-            Client application;
-        // if no command line args
-        if (args.length == 0)
-        application = new Client("127.0.0.1"); // connect to localhost
-        else
-        application = new Client(args[0]); // use args to connect
-        application.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        application.runClient(); // run client application
-        }
+public class ClientTest {
+    public static void main(String[] agrs) {
+        Client ins_client = new Client();
+        ins_client.runClient();
+    }
 }
