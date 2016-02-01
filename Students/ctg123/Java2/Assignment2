@@ -1,0 +1,51 @@
+# Assignment 2
+# Chaance Graves
+# ECEN 489
+
+---  True or False ---
+
+1. True
+2. True
+
+--- Short Questions ---
+1. while, do while and for
+
+2. The conditional opertator aslo known as ternary operator let's the programmer assign
+a particular variable based on a boolean expression (either boolean field, or statement that 
+evaluates to a boolean result). It is an alternative to if/then/else syntax and can also be 
+used on the right hand side of Java statements.
+
+3. 10
+
+4. Explanation:  Assignment:
+	b = b - 2	      3 to b
+	c = c*3         18 to c
+	d = d/4		      15/4 to d
+	e = e%5          2 to e
+	
+5. The sum needs to created prior to while loop.
+
+6. The scope is only the for statement in which it is intialized, it won't exist outside of it.
+
+7.  for(int i = 1; i <= 10; i++)
+	for(int i = 10; i > 0; i--)
+	for(int i = 0; i < 8; i++)
+	{
+	number = 1;
+	exp = i;
+	
+	while(exp > 0){
+		result *=2;
+		exp--;
+	
+	}
+	}
+
+8. A method you can use when you need to do things that doesn't need an instance of a class.
+
+9. initilization, termination, increment
+
+10. Is is not a syntax error, both will work when compiled
+
+11. When a feature allows a class to have 2 or more methods with the same name, if their argument list
+are different.
