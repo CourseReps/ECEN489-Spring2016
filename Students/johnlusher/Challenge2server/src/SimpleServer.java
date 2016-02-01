@@ -19,13 +19,13 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
+import java.awt.*;
 import java.io.EOFException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -38,7 +38,7 @@ import javax.swing.SwingUtilities;
 public class SimpleServer extends JFrame
 {
                                                                         // ---------------------------------------------
-    private JTextArea OutputText;                                      // Output data to user
+    private JTextArea OutputText;                                       // Output data to user
     private ServerSocket server;                                        // Server Socket
     private Socket connection;                                          // Connection to client
     private ObjectInputStream inputstream;                              // Input stream from client
@@ -60,6 +60,7 @@ public class SimpleServer extends JFrame
 
                                                                         // ---------------------------------------------
         OutputText = new JTextArea();                                   // Output Text Area
+        OutputText.setFont(new Font("Courier New", Font.BOLD, 12));     // Set font size
         add(new JScrollPane(OutputText), BorderLayout.CENTER);          // Set Scroll Plane
                                                                         // ---------------------------------------------
 
@@ -162,9 +163,9 @@ public class SimpleServer extends JFrame
     private void ProcessStream() throws IOException
     {
                                                                         // ---------------------------------------------
-        SendData("Connected to John's SimpleServer");                   // Send connection successful
-        SendData(computerdata.toString());                              // Send computer data (serialized)
-        SendData("TERMINATE");                                          // Send connection termination
+        SendData("SERVER> Connected to John's SimpleServer");           // Send connection successful
+        outputstream.writeObject(computerdata);                         // Send computer data object
+        SendData("SERVER> TERMINATE");                                  // Send connection termination
                                                                         // ---------------------------------------------
     }
 
@@ -179,9 +180,9 @@ public class SimpleServer extends JFrame
                                                                         // ---------------------------------------------
         try                                                             //
         {                                                               //
-            outputstream.writeObject("SERVER> " + message);             // Send Message
+            outputstream.writeObject(message);                          // Send Message
             outputstream.flush();                                       // Flush output to client
-            DisplayMessage("SERVER> " + message + "\n");                // Display message send to user on server side
+            DisplayMessage(message + "\n");                             // Display message send to user on server side
         }                                                               //
         catch (IOException ioException)                                 // Exception Processing:
         {                                                               // Display Error
