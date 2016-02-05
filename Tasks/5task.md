@@ -15,3 +15,13 @@ The results of queries can be CSV or JSON, or used in the [Google Maps API](http
 * __Peruse__: [Using the API](https://developers.google.com/fusiontables/docs/v2/using).
 * __Select and Complete__: One Tutorial.
 
+
+## Interacting with Fusion Tables
+
+### Action Items
+
+* __Create__: Fusion Table in [Google Drive](https://www.google.com/drive/).
+* __Create__: Project in [Developers Console](https://console.developers.google.com/).
+* __Generate__: Client ID and Public API Key.
+* __Utilize__: Fusion Table from Java or Android project.
+

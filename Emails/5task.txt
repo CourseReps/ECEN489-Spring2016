@@ -1,0 +1,11 @@
+Hello,
+
+Task 5 is an introduction to Google Fusion Tables.
+
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Tasks/5task.md
+
+Best regards,
+Jean-Francois Chamberland and Gregory Huff
+
+Due Date: February 10.
+GitHub: https://github.com/CourseReps/ECEN489-Spring2016

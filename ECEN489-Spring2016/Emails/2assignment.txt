@@ -1,0 +1,10 @@
+Hello,
+
+You will find Assignment 2 and Opt-Out Challenge 2 on GitHub.  As usual, you must commit your Java code on the repository for credit.
+
+Best regards,
+Jean-Francois Chamberland, Gregory Huff
+
+Due Date: Feb 1, 2016
+https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Assignments
+

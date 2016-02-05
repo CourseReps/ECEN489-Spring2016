@@ -1,0 +1,51 @@
+import java.sql.*;
+
+public class jdbc
+{
+    public static void main( String args[] )
+    {
+        Connection test1Connection = null;
+        Statement test1Stmt = null;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            test1Connection = DriverManager.getConnection("jdbc:sqlite:test1.db");
+
+            System.out.println("Opened database successfully");
+
+            test1Stmt = test1Connection.createStatement();
+            String sql = "CREATE TABLE IF NOT EXISTS LUNIVERSIT " +
+                    "(ID INT PRIMARY KEY     NOT NULL," +
+                    " NAME           TEXT    NOT NULL, " +
+                    " AGE            INT     NOT NULL, " +
+                    " STUFF     TEXT    NOT NULL)";
+            test1Stmt.executeUpdate(sql);
+
+            sql = "INSERT INTO LUNIVERSIT " +
+                    "VALUES " +
+                    "(1, 'Paul', 25, 'ECEN')";
+            test1Stmt.executeUpdate(sql);
+
+            sql = "INSERT INTO LUNIVERSIT " +
+                    "VALUES " +
+                    "(2, 'Dinosaur', 25, 'STUFF')";
+            test1Stmt.executeUpdate(sql);
+
+            sql = "INSERT INTO LUNIVERSIT " +
+                    "VALUES " +
+                    "(3, 'Dinosaur', 26, 'STUFF2')";
+            test1Stmt.executeUpdate(sql);
+
+            sql = "INSERT INTO LUNIVERSIT " +
+                    "VALUES " +
+                    "(4, 'Dinosaur', 28, 'STUFF3')";
+            test1Stmt.executeUpdate(sql);
+
+            test1Stmt.close();
+            test1Connection.close();
+
+        } catch ( Exception e ) {
+            System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+            System.exit(0);
+        }
+    }
+}
