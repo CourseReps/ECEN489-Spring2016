@@ -9,8 +9,8 @@ Tutorials
 * [Java Threads](https://github.com/CourseReps/ECEN489-Spring2016/wiki/threads) - Akash Sahoo, ~~Wednesday Jan 27~~
 * [Java Database Connectivity (JDBC)](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jdbc) - Chaance Graves, ~~Friday, Jan 29~~
 * [Data Serialization](https://github.com/CourseReps/ECEN489-Spring2016/wiki/serialization) - Thomas Branyon, ~~Friday, Jan 29~~
-* [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json) - John Lusher II, Monday, Feb 1
-* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs) - Sam Shore, Monday, Feb 1
+* [JSON and GSON](https://github.com/CourseReps/ECEN489-Spring2016/wiki/json) - John Lusher II, ~~Monday, Feb 1~~
+* [IntelliJ VCS Integration](https://github.com/CourseReps/ECEN489-Spring2016/wiki/intellij_vcs) - Sam Shore, ~~Monday, Feb 1~~
 * [Apache Tomcat](https://github.com/CourseReps/ECEN489-Spring2016/wiki/tomcat) - Akash Sahoo, Wednesday, Feb 3
 * [Android Studio](https://github.com/CourseReps/ECEN489-Spring2016/wiki/androidstudio) - Paul Crouther, Wednesday, Feb 3
 * [JAX-WS](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jaxws)
