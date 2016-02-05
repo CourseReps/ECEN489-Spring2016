@@ -20,4 +20,4 @@ Tutorials
 * [Doxygen](https://github.com/CourseReps/ECEN489-Spring2016/wiki/doxygen)
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth) - Yanxiang Yang, Friday, Feb 12
 * [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb) - John Lusher II, Monday, Feb 15
-* [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop)
+* [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop) - Chaance Graves, Monday, Feb 15 
