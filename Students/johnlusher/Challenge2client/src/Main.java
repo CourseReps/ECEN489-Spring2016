@@ -41,7 +41,6 @@ public class Main
         simpleclient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Default Close Operation
         simpleclient.RunSimpleClient();                                 // Run the client application
                                                                         // ---------------------------------------------
-        
     }
 }
 
