@@ -36,7 +36,7 @@ public class Main
         SimpleClient simpleclient;                                      // Create Simple Client Class
                                                                         // IF there is no arguments, then user default
                                                                         // connect to localhost
-        if (args.length == 0) simpleclient = new SimpleClient("192.168.1.2");
+        if (args.length == 0) simpleclient = new SimpleClient("10.202.99.216");
         else simpleclient = new SimpleClient(args[0]);                  // else, use given address
         simpleclient.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    // Default Close Operation
         simpleclient.RunSimpleClient();                                 // Run the client application
