@@ -1,0 +1,9 @@
+Hello,
+
+You will find Assignment 3 and Opt-Out Challenge 3 on GitHub.  As usual, you must commit your Java code on the repository for credit.
+
+Best regards,
+Jean-Francois Chamberland, Gregory Huff
+
+Due Date: Feb 12, 2016
+https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Assignments
