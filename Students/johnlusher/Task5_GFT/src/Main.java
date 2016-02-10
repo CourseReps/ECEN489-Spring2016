@@ -2,8 +2,8 @@
 // ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
 //
 // File Name: 		Main.java
-// Version:			1.0.0
-// Date:			February 8, 2016
+// Version:         1.0.0
+// Date:            February 8, 2016
 // Description:	    Task #5 - Main Class (Google Fusion Tables)
 //                  Use Google Fusion Tables
 //
