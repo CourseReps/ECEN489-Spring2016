@@ -91,17 +91,13 @@ public class FusionTableSample {
             fusiontables = new Fusiontables.Builder(
                     httpTransport, JSON_FACTORY, credential).setApplicationName(APPLICATION_NAME).build();
 
-            /*
-             * I added in a couple methods that can be used to retrieve a specific table ID for inserting data
-             * or for deleting a table. Try them out or create your own.
-             */
 
-            listTables();   //sample method that lists all tables under your Google Drive
-            String tableId = getTableId("Task 5 Table"); //make sure to use exact spelling for this method
-            showRows(tableId);
+            listTables();
+            String tableId = getTableId("Task 5 Table");
+            /*showRows(tableId);
             newRow(tableId);
-            showRows(tableId);
-            // done!
+            showRows(tableId);*/
+
 
             return;
         } catch (IOException e) {
@@ -147,7 +143,7 @@ public class FusionTableSample {
         catch (IllegalArgumentException e) {
         }
     }
-    /** Sample method. List tables for the authenticated user. */
+
     private static void listTables() throws IOException {
         View.header("Listing My Tables");
 
