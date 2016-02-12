@@ -22,16 +22,15 @@ Time frame: 2 weeks starting Feb 15
 ##Project areas  
 
 ###Necessary:  
-XBee - Pilot Sensing  
-Microcontroller  
-XBee <-> Microcontroller interface  
-Microcontroller <-> Android Serial interface  
-App Architecture  
-Android - Local DB  
-Android -> Server  
-Tomcat master server  
-Tomcat -> DB interaction Option: Push to fusion table  
-Algroithmic global reference system for database  
+XBee <-> Microcontroller interface XBee - Pilot Sensing - Yanxiang  
+Microcontroller <-> Android Serial interface - Paul  
+App Architecture - Keaton  
+Android - Local DB - Fanchao  
+Android - IMU,GPS - Chaance , Sam   
+Android -> Server - Thomas  
+Tomcat master server  - Capt Commit  
+Tomcat -> DB interaction Optional: Push to fusion table - John  
+Algroithmic global reference system for database - Akash  
 
 ###Extra:  
 3D Printing
