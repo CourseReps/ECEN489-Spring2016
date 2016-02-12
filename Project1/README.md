@@ -19,7 +19,8 @@ We should then be able to construct a tensor field map of the area.
 
 Time frame: 2 weeks starting Feb 15  
 
-[Interface Definition Document](https://github.com/CourseReps/ECEN489-Spring2016/Project1/interfaces.md)
+Use this document to define/document interfaces:  
+[Interface Definition Document](https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/interfaces.md)
 
 ##Project areas  
 
