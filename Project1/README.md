@@ -19,13 +19,15 @@ We should then be able to construct a tensor field map of the area.
 
 Time frame: 2 weeks starting Feb 15  
 
+[Interface Definition Document](https://github.com/CourseReps/ECEN489-Spring2016/Project1/interfaces.md)
+
 ##Project areas  
 
 ###Necessary:  
 XBee <-> Microcontroller interface XBee - Pilot Sensing - Yanxiang  
 Microcontroller <-> Android Serial interface - Paul  
 App Architecture - Keaton  
-Android - Local DB - Fanchao
+Android - Local DB - Fanchao  
 Android - Inject into Local DB - Sam    
 Android - IMU,GPS - Chaance  
 Android -> Server - Thomas  
