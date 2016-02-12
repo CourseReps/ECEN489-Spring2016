@@ -1,5 +1,5 @@
 #Project1 
----
+
 3-d printed mount attached to the back of an Android phone.  
 On the 3-d printed mount we are attaching a XBee with an SMA Antenna attachment and a Teensy Microcontroller.  
 A USB cable will be connected from the phone to the teensy.  
