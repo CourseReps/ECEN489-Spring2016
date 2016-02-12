@@ -25,8 +25,9 @@ Time frame: 2 weeks starting Feb 15
 XBee <-> Microcontroller interface XBee - Pilot Sensing - Yanxiang  
 Microcontroller <-> Android Serial interface - Paul  
 App Architecture - Keaton  
-Android - Local DB - Fanchao  
-Android - IMU,GPS - Chaance , Sam   
+Android - Local DB - Fanchao
+Android - Inject into Local DB - Sam    
+Android - IMU,GPS - Chaance  
 Android -> Server - Thomas  
 Tomcat master server  - Capt Commit  
 Tomcat -> DB interaction Optional: Push to fusion table - John  
