@@ -12,8 +12,28 @@ Pushes data only when wifi enabled.
 TomcatServer  
 JAX-WS or JSON
   
-The server should be able to log info into a database for multiple phones.
+The server should be able to log info into a database for multiple phones.  
 
-We should then be able to construct a tensor field map of the area.
+We should then be able to construct a tensor field map of the area.  
 
-Time frame: 2 weeks starting Feb 15
+
+Time frame: 2 weeks starting Feb 15  
+
+##Project areas  
+
+###Necessary:  
+XBee - Pilot Sensing  
+Microcontroller  
+XBee <-> Microcontroller interface  
+Microcontroller <-> Android Serial interface  
+---
+App Architecture  
+Android - Local DB  
+Android -> Server  
+---
+Tomcat master server  
+Tomcat -> DB interaction Option: Push to fusion table  
+Algroithmic global reference system for database  
+
+###Extra:  
+3D Printing
