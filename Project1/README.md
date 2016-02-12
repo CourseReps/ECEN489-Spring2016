@@ -26,11 +26,9 @@ XBee - Pilot Sensing
 Microcontroller  
 XBee <-> Microcontroller interface  
 Microcontroller <-> Android Serial interface  
----
 App Architecture  
 Android - Local DB  
 Android -> Server  
----
 Tomcat master server  
 Tomcat -> DB interaction Option: Push to fusion table  
 Algroithmic global reference system for database  
