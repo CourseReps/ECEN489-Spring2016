@@ -18,6 +18,6 @@ Tutorials
 * [Google Fusion Tables](https://github.com/CourseReps/ECEN489-Spring2016/wiki/fusiontables) - Fanchao Zhou, ~~Monday, Feb 8~~
 * [Doxygen](https://github.com/CourseReps/ECEN489-Spring2016/wiki/doxygen) - Keaton Brown, ~~Wednesday, Feb 10~~
 * [Bluetooth](https://github.com/CourseReps/ECEN489-Spring2016/wiki/bluetooth) - Yanxiang Yang, Monday, Feb 15
-* [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb) - John Lusher II, Monday, Feb 15
 * [Hadoop](https://github.com/CourseReps/ECEN489-Spring2016/wiki/hadoop) - Chaance Graves, Monday, Feb 15 
+* [MongoDB](https://github.com/CourseReps/ECEN489-Spring2016/wiki/mongodb) - John Lusher II, Monday, Feb 22
 * [JAX-WS](https://github.com/CourseReps/ECEN489-Spring2016/wiki/jaxws)
