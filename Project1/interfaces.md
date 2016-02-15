@@ -1,5 +1,20 @@
 ##Use this page to document interface definitions  
 
+###Datastructure
+JSON
+
+```
+{
+  "ID":"TeamName",
+  "IRRange":"xxx",
+  "PumpRate":"xxx",
+  "FlowRate":"xxx",
+  "SolenoidState":"ON/OFF",
+  "Timestamp":"Unix epoch",
+  "CurrentIP":"xx.xxx.xxx.xx"
+}
+```
+
 ###XBee to Microcontroller  
 [info here]  
 
