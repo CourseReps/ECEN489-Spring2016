@@ -8,7 +8,7 @@ JSON
 
 ```
 {
-  "Xbee ID" : "Device ID",
+  "Xbee ID":"Device ID",
   "Strength":"Decibels",
   "Conected Device":"Device ID",
 }
@@ -20,7 +20,7 @@ JSON
 
 ```
 {
-  "Xbee ID" : "Device ID",
+  "Xbee ID":"Device ID",
   "Strength":"Decibels",
   "Conected Device":"Device ID",
 }
@@ -31,7 +31,7 @@ JSON
 
 ```
 {
-  "Xbee ID" : "Device ID",
+  "Xbee ID":"Device ID",
   "Strength":"Decibels",
   "Conected Device":"Device ID",
   "GPS":"Location",
