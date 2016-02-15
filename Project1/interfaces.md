@@ -27,7 +27,17 @@ JSON
 ```
 
 ###Android DB Format  
-[info here]  
+JSON
+
+```
+{
+  "Xbee ID" : "Device ID",
+  "Strength":"Decibels",
+  "Conected Device":"Device ID",
+  "GPS":"Location",
+  "Orientation":"",
+}
+``` 
 
 ###Android to Web Server  
 Data should be stored in SQLite table on Android local storage
