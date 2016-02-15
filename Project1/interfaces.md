@@ -5,8 +5,9 @@ JSON
 
 ```
 {
+  "Xbee ID" : "Device ID",
   "Strength":"Decibels",
-  "Timestamp":"Unix epoch",
+  "Conected Device":"Device ID",
 }
 ```
 
