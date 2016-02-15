@@ -4,7 +4,6 @@
 
 
 ###XBee to Microcontroller  
-[info here]
 JSON
 
 ```
