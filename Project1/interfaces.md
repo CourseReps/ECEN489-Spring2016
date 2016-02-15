@@ -5,13 +5,8 @@ JSON
 
 ```
 {
-  "ID":"TeamName",
-  "IRRange":"xxx",
-  "PumpRate":"xxx",
-  "FlowRate":"xxx",
-  "SolenoidState":"ON/OFF",
+  "Strength":"Decibels",
   "Timestamp":"Unix epoch",
-  "CurrentIP":"xx.xxx.xxx.xx"
 }
 ```
 
