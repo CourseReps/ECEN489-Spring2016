@@ -1,6 +1,10 @@
 ##Use this page to document interface definitions  
 
 ###Datastructure
+
+
+###XBee to Microcontroller  
+[info here]
 JSON
 
 ```
@@ -11,11 +15,17 @@ JSON
 }
 ```
 
-###XBee to Microcontroller  
-[info here]  
-
 ###Microcontroller to Android  
-[info here]  
+
+JSON
+
+```
+{
+  "Xbee ID" : "Device ID",
+  "Strength":"Decibels",
+  "Conected Device":"Device ID",
+}
+```
 
 ###Android DB Format  
 [info here]  
