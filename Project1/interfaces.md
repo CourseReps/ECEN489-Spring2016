@@ -40,5 +40,6 @@ JSON
 ``` 
 
 ###Android to Web Server  
-Data should be stored in SQLite table on Android local storage
-On wifi connection, this routine will connect to the Tomcat server and send new rows from local DB to the remote one with HTTP POST
+Data should be stored in SQLite table on Android local storage  
+On wifi connection, this routine will connect to the Tomcat server and send new rows from local DB to the remote one with HTTP POST  
+Use same JSON format as Android DB
