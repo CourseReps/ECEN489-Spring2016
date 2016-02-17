@@ -28,7 +28,7 @@ Use this document to define/document interfaces:
 XBee <-> Microcontroller interface XBee - Pilot Sensing - Yanxiang  
 Microcontroller <-> Android Serial interface - Paul  
 App Architecture - Keaton  
-Android - Local DB - Fanchao  
+App ASynch and ui fragmentation - Fanchao  
 Android - Inject into Local DB - Sam    
 Android - IMU,GPS - Chaance  
 Android -> Server - Thomas  
