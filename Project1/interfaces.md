@@ -8,9 +8,9 @@ JSON
 
 ```
 {
-  "Xbee ID":"Device ID",
-  "Strength":"Decibels",
-  "Connected Device":"Device ID"
+  "Transmit ID":"Device ID",
+  "RSSI":"Decibels",
+  "Receive ID":"Device ID"
 }
 ```
 
@@ -20,9 +20,9 @@ JSON
 
 ```
 {
-  "Xbee ID":"Device ID",
-  "Strength":"Decibels",
-  "Connected Device":"Device ID"
+  "Transmit ID":"Device ID",
+  "RSSI":"Decibels",
+  "Receive ID":"Device ID"
 }
 ```
 
@@ -31,11 +31,11 @@ JSON
 
 ```
 {
-  "Xbee ID":"Device ID",
-  "Strength":"Decibels",
-  "Connected Device":"Device ID",
+  "Transmit ID":"Device ID",
+  "RSSI":"Decibels",
+  "Receive ID":"Device ID"
   "GPS":"Location",
-  "Orientation":"",
+  "IMU":"Orientation",
   "Timestamp":"<UNIX time>"
 }
 ``` 
