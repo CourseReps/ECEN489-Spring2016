@@ -41,6 +41,12 @@ JSON
 ``` 
 
 ###Android to Web Server  
-Data should be stored in SQLite table on Android local storage  
-On wifi connection, this routine will connect to the Tomcat server and send new rows from local DB to the remote one with HTTP POST  
-Use same JSON format as Android DB
+Use same JSON format as Android DB for each entry  
+Process:
+* Android connects to WiFi
+* App sends GET request to server asking for most recent entry stored in remote DB
+* Server sends response to app with timestamp of most recent entry
+* App starts at newest entry in local DB not contained on server
+    * App sends next line as JSON via POST to server
+    * App waits for ACK from server (string "ACK")
+    * If more new entries, continue, else done.
