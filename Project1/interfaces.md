@@ -44,12 +44,8 @@ JSON
 Use same JSON format as Android DB for each entry  
 Process:
 * Android connects to WiFi
-* App sends GET request to server asking for most recent entry stored in remote DB
-* Server sends response to app with timestamp of most recent entry
-* App starts at newest entry in local DB not contained on server
-    * App sends next line as JSON via POST to server
-    * App waits for ACK from server (string "ACK")
-    * If more new entries, continue, else done.
+* App iterates through local database, sending each new entry to server via HTTP POST
+* Sent entries are marked as old
 
 ###Web Server to Database Interface Class
 Uses sames JSON format as Android DB for each entry
