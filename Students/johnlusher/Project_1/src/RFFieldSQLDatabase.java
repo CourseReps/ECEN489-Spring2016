@@ -17,8 +17,12 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Properties;
 import java.util.ArrayList;
 
@@ -52,6 +56,59 @@ public class RFFieldSQLDatabase
 {
     // Define class members
     private Connection conn = null;                                     // MySql Database connection
+
+    private static final String APPLICATION_NAME = "ECEN689Project1";   // Set the Application Name
+
+    // Directory to store user credentials for this
+    // application.
+    private static final java.io.File DATA_STORE_DIR =
+            new java.io.File(System.getProperty("user.dir"),
+                    ".store/fusion_tables_sample");
+
+    private static FileDataStoreFactory DATA_STORE_FACTORY;             // Global instance of the {@link FileDataStoreFactory}.
+    private static HttpTransport HTTP_TRANSPORT;                        // Global instance of the HTTP transport
+                                                                        // Global instance of the JSON factory.
+    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static Fusiontables FusionTables;                           // Global instance of the Fusion Tables
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // Create new instances of HTTP_TRANSPORT
+    static                                                              //
+    {                                                                   // and DATA_STORE_FACTORY
+        try                                                             //
+        {                                                               //
+            HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+        }                                                               //
+        catch (Throwable t)                                             //
+        {                                                               //
+            t.printStackTrace();                                        //
+            System.exit(1);                                             //
+        }                                                               //
+    }                                                                   //
+
+    //	----------------------------------------------------------------------------------------------------------------
+    //      Method:     authorize
+    //      Inputs:	    none
+    //     Outputs:	    Credentials
+    // Description:     Creates an authorized credential object, will throw IO exception
+    //	----------------------------------------------------------------------------------------------------------------
+    private static Credential authorize() throws IOException
+    {
+        // Load client secrets (from JSON file)
+        InputStream in = Main.class.getResourceAsStream("/client_secret.json");
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+
+        // Build flow and trigger user authorization request
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+                HTTP_TRANSPORT, JSON_FACTORY, clientSecrets,
+                Collections.singleton(FusiontablesScopes.FUSIONTABLES)).setDataStoreFactory(DATA_STORE_FACTORY).build();
+
+        // Authorize and get the credential
+        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+        System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+        return credential;                                              // Return the credential
+    }
 
     //	----------------------------------------------------------------------------------------------------------------
     //       Method:    getConnection
@@ -465,6 +522,9 @@ public class RFFieldSQLDatabase
             sql_string += "fltRoll,";                                   // Field: fltRoll
             sql_string += "dtSampleDate ";                              // Field: dtSampleDate
             sql_string += "FROM  RF_Fields ";                           // Table: RF_Fields
+
+                                                                        // If, 0,0,0,0 return all records
+
             sql_string += "WHERE (";                                    // Where statement
             sql_string += "fltLatitude >= " + StartLatitude + " AND ";  // Field on Where and condition
             sql_string += "fltLatitude >= " + StartLongitude + " AND "; // Field on Where and condition
@@ -517,6 +577,4 @@ public class RFFieldSQLDatabase
         }                                                               //
         return json;                                                    // Return JSON string
     }
-
-
 }
