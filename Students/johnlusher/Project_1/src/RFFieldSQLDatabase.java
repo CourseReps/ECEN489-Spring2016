@@ -175,6 +175,48 @@ public class RFFieldSQLDatabase
     }
 
     //	----------------------------------------------------------------------------------------------------------------
+    //      Method:     ReadRecords
+    //      Inputs:	    Result Set and Array List
+    //     Outputs:	    (by ref) Array List
+    // Description:     Read the Records, Fill Array List with JSON data
+    //	----------------------------------------------------------------------------------------------------------------
+    public void ReadRecords(ResultSet rs, ArrayList records)
+    {
+        Gson gson = new GsonBuilder().create();                         // Create Gson builder
+        try                                                             // Try to get JSON, and save data to database
+        {                                                               //
+            while (rs.next())                                           // Loop through all the returned records, until EOF
+            {                                                           //
+                RFData RFMember = new RFData();                         // Create new RF data
+
+                // Capture the data from the record set
+                RFMember.SampleNumber = rs.getInt("intSampleNum");      // Get sample #
+                RFMember.XbeeID = rs.getInt("intXbeeID");               // Get Xbee ID
+                RFMember.DeviceID = rs.getInt("intDeviceID");           // Get Device ID
+                RFMember.RSSI = rs.getFloat("fltRSSI");                 // Get RSSI
+                RFMember.Latitude = rs.getFloat("fltLatitude");         // Get Latitude
+                RFMember.Longitude = rs.getFloat("fltLongitude");       // Get Longitude
+                RFMember.Yaw = rs.getFloat("fltYaw");                   // Get Yaw
+                RFMember.Pitch = rs.getFloat("fltPitch");               // Get Pitch
+                RFMember.Roll = rs.getFloat("fltRoll");                 // Get Roll
+                RFMember.SampleDate = rs.getTimestamp("dtSampleDate");  // Get Sample Date
+
+                // Print debug information to port
+                SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
+
+                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
+                records.add(json_record);                               // Add the JSON string to the record
+            }
+        }
+        catch (Exception e)
+        {
+            System.err.println("ReadRecords: " + e.getMessage() );      // Print the exception data and exit
+        }
+
+    }
+
+    //	----------------------------------------------------------------------------------------------------------------
     //      Method:     ListDataByEntryID
     //      Inputs:	    SampleNum
     //     Outputs:	    RF Data Entry (JSON)
@@ -287,32 +329,8 @@ public class RFFieldSQLDatabase
 
             Statement stmt = conn.createStatement();                    // Build SQL statement
             ResultSet rs = stmt.executeQuery(sql_string);               // Execute the SQL statement as a query
-            ArrayList records = new ArrayList();
-
-            while ( rs.next() )                                         // Loop through all the returned records, until EOF
-            {                                                           //
-                RFData RFMember = new RFData();                         // Create new RF data
-
-                // Capture the data from the record set
-                RFMember.SampleNumber = rs.getInt("intSampleNum");      // Get sample #
-                RFMember.XbeeID = rs.getInt("intXbeeID");               // Get Xbee ID
-                RFMember.DeviceID = rs.getInt("intDeviceID");           // Get Device ID
-                RFMember.RSSI = rs.getFloat("fltRSSI");                 // Get RSSI
-                RFMember.Latitude = rs.getFloat("fltLatitude");         // Get Latitude
-                RFMember.Longitude = rs.getFloat("fltLongitude");       // Get Longitude
-                RFMember.Yaw = rs.getFloat("fltYaw");                   // Get Yaw
-                RFMember.Pitch = rs.getFloat("fltPitch");               // Get Pitch
-                RFMember.Roll = rs.getFloat("fltRoll");                 // Get Roll
-                RFMember.SampleDate = rs.getTimestamp("dtSampleDate");  // Get Sample Date
-
-                // Print debug information to port
-                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-                System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
-
-                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
-                records.add(json_record);                               // Add the JSON string to the record
-            }
-
+            ArrayList records = new ArrayList();                        // Build the Array List
+            ReadRecords(rs, records);                                   // Read the records
             json = gson.toJson(records);                                // Get JSON data from this record
 
             rs.close();                                                 // Close the record set
@@ -375,34 +393,9 @@ public class RFFieldSQLDatabase
 
             Statement stmt = conn.createStatement();                    // Build SQL statement
             ResultSet rs = stmt.executeQuery(sql_string);               // Execute the SQL statement as a query
-            ArrayList records = new ArrayList();
-
-            while ( rs.next() )                                         // Loop through all the returned records, until EOF
-            {                                                           //
-                RFData RFMember = new RFData();                         // Create new RF data
-
-                // Capture the data from the record set
-                RFMember.SampleNumber = rs.getInt("intSampleNum");      // Get sample #
-                RFMember.XbeeID = rs.getInt("intXbeeID");               // Get Xbee ID
-                RFMember.DeviceID = rs.getInt("intDeviceID");           // Get Device ID
-                RFMember.RSSI = rs.getFloat("fltRSSI");                 // Get RSSI
-                RFMember.Latitude = rs.getFloat("fltLatitude");         // Get Latitude
-                RFMember.Longitude = rs.getFloat("fltLongitude");       // Get Longitude
-                RFMember.Yaw = rs.getFloat("fltYaw");                   // Get Yaw
-                RFMember.Pitch = rs.getFloat("fltPitch");               // Get Pitch
-                RFMember.Roll = rs.getFloat("fltRoll");                 // Get Roll
-                RFMember.SampleDate = rs.getTimestamp("dtSampleDate");  // Get Sample Date
-
-                // Print debug information to port
-                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-                System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
-
-                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
-                records.add(json_record);                               // Add the JSON string to the record
-            }
-
+            ArrayList records = new ArrayList();                        // Build the Array List
+            ReadRecords(rs, records);                                   // Read the records
             json = gson.toJson(records);                                // Get JSON data from this record
-
             rs.close();                                                 // Close the record set
             stmt.close();                                               // Close the statement
 
@@ -460,32 +453,8 @@ public class RFFieldSQLDatabase
 
             Statement stmt = conn.createStatement();                    // Build SQL statement
             ResultSet rs = stmt.executeQuery(sql_string);               // Execute the SQL statement as a query
-            ArrayList records = new ArrayList();
-
-            while ( rs.next() )                                         // Loop through all the returned records, until EOF
-            {                                                           //
-                RFData RFMember = new RFData();                         // Create new RF data
-
-                // Capture the data from the record set
-                RFMember.SampleNumber = rs.getInt("intSampleNum");      // Get sample #
-                RFMember.XbeeID = rs.getInt("intXbeeID");               // Get Xbee ID
-                RFMember.DeviceID = rs.getInt("intDeviceID");           // Get Device ID
-                RFMember.RSSI = rs.getFloat("fltRSSI");                 // Get RSSI
-                RFMember.Latitude = rs.getFloat("fltLatitude");         // Get Latitude
-                RFMember.Longitude = rs.getFloat("fltLongitude");       // Get Longitude
-                RFMember.Yaw = rs.getFloat("fltYaw");                   // Get Yaw
-                RFMember.Pitch = rs.getFloat("fltPitch");               // Get Pitch
-                RFMember.Roll = rs.getFloat("fltRoll");                 // Get Roll
-                RFMember.SampleDate = rs.getTimestamp("dtSampleDate");  // Get Sample Date
-
-                // Print debug information to port
-                SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
-                System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
-
-                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
-                records.add(json_record);                               // Add the JSON string to the record
-            }
-
+            ArrayList records = new ArrayList();                        // Build the Array List
+            ReadRecords(rs, records);                                   // Read the records
             json = gson.toJson(records);                                // Get JSON data from this record
 
             rs.close();                                                 // Close the record set
