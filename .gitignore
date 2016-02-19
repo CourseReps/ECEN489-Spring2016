@@ -43,7 +43,6 @@ proguard/
 gitpull.bat
 
 Students/johnlusher/Task2_Java/.idea/compiler.xml
-*.xml
 Students/johnlusher/Task2_Java/.idea/description.html
 *.iml
 Students/johnlusher/Task2_Java/out/production/JavaHelloWorld/Main.class
