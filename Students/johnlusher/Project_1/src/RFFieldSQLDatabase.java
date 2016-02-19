@@ -309,8 +309,8 @@ public class RFFieldSQLDatabase
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
                 System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
 
-
-                records.add(RFMember);
+                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
+                records.add(json_record);                               // Add the JSON string to the record
             }
 
             json = gson.toJson(records);                                // Get JSON data from this record
@@ -397,8 +397,8 @@ public class RFFieldSQLDatabase
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
                 System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
 
-
-                records.add(RFMember);
+                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
+                records.add(json_record);                               // Add the JSON string to the record
             }
 
             json = gson.toJson(records);                                // Get JSON data from this record
@@ -482,8 +482,8 @@ public class RFFieldSQLDatabase
                 SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
                 System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
 
-
-                records.add(RFMember);
+                String json_record = gson.toJson(RFMember);             // Get JSON data of this record
+                records.add(json_record);                               // Add the JSON string to the record
             }
 
             json = gson.toJson(records);                                // Get JSON data from this record

@@ -17,10 +17,12 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonElement;
 
 
 //  --------------------------------------------------------------------------------------------------------------------
@@ -86,6 +88,19 @@ public class Main
         System.out.println("ListDataByGeoArea Test:");                  // Perform test of ListDataByGeoArea - LT
         jsondata = RFFieldDatabase.ListDataByGeoArea(30.0F, -97.0F, 31.0F, -96.0F);
         System.out.println("JSON: " + jsondata);                        // Print result
+
+                                                                        // Pull apart JSON
+        ArrayList records = gson.fromJson(jsondata, ArrayList.class);   // Convert from JSON to Array List
+        Iterator itr = records.iterator();                              // Build an Iterator for the Array List
+        while(itr.hasNext())                                            // Loop through the list
+        {                                                               // Entries are JSON strings
+            Object element = itr.next();                                // Get the next object
+                                                                        // Convert from JSON to Array List
+            RFData RFMember = gson.fromJson((String)element, RFData.class);
+                                                                        // Print debug information to port
+            SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd HH:mm:ss");
+            System.out.println("Got Record: # " + RFMember.SampleNumber + " - XbeeID: " + RFMember.XbeeID + ", RSSI: " + RFMember.RSSI + " Date/Time: " + ft.format(RFMember.SampleDate));
+        }
 
         RFFieldDatabase.DisconnectDatabase();                           // Disconnect from MySql database
     }
