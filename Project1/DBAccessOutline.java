@@ -1,3 +1,4 @@
+// This is the sqlite database class for the android app
 public class DBAccess extends SQLiteOpenHelper{
 
 	/** CONSTRUCTOR **/
