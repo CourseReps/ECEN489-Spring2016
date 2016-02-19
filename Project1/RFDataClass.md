@@ -1,13 +1,38 @@
-##API Structure for SQL Database for Project 1  
+##Recommend structure for RF Data Class
 
-###Class Name: RFFieldSQLDatabase
-## Purpose of class:
-This class provides the interface between the calling fucntion and a MySQL database.  
-There are various functions to retrieve data based upon provided criteria such as 
-Latitude and Longitude, Device ID, etc...
+//  --------------------------------------------------------------------------------------------------------------------
+//  Imports
+//  --------------------------------------------------------------------------------------------------------------------
+import java.util.Date;
 
-###Methods
+//  --------------------------------------------------------------------------------------------------------------------
+//        Class:    RFData
+//  Description:	RFData class - RF Field Data w/ JSON support
+//  --------------------------------------------------------------------------------------------------------------------
+public class RFData
+{
+    public int SampleNumber;
+    public int XbeeID;
+    public int DeviceID;
+    public float RSSI;
+    public float Latitude;
+    public float Longitude;
+    public float Yaw;
+    public float Pitch;
+    public float Roll;
+    public Date SampleDate;
 
-## ConnectToDatabase
-Inputs:
+    //	----------------------------------------------------------------------------------------------------------------
+    //    Function:     RFData - Constructor
+    //      Inputs:	    none
+    //     Outputs:	    none
+    //  Description:    RFData, no initialization given, just set defaults
+    //	----------------------------------------------------------------------------------------------------------------
+    public RFData()
+    {
+        SampleNumber = -1;                                              // Default is -1 (undefined)
+        XbeeID = -1;                                                    // Default is -1 (undefined)
+        DeviceID = -1;                                                  // Default is -1 (undefined)
+    }
+}
 
