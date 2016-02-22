@@ -45,7 +45,12 @@ Use same JSON format as Android DB for each entry
 Process:
 * Android connects to WiFi
 * App iterates through local database, sending each new entry to server via HTTP POST
-* Sent entries are marked as old
+* Sent entries are deleted  
+ 
+```
+//sends data over HTTP to server and removes old entries. Must be run in separate thread.
+void sendData(JSONObject json)
+```
 
 ###Web Server to Database Interface Class
 Uses sames JSON format as Android DB for each entry
