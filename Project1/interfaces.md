@@ -48,7 +48,7 @@ Process:
 * Sent entries are deleted  
  
 ```
-//sends data over HTTP to server and removes old entries. Must be run in separate thread.
+//sends data over HTTP to server
 void sendData(JSONObject json)
 ```
 
