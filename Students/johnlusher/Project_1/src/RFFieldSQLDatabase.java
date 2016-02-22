@@ -17,13 +17,32 @@
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.*;
 import java.text.SimpleDateFormat;
-import java.util.Properties;
-import java.util.ArrayList;
+import java.util.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.client.util.DateTime;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.fusiontables.Fusiontables;
+import com.google.api.services.fusiontables.Fusiontables.Query.Sql;
+import com.google.api.services.fusiontables.FusiontablesScopes;
+import com.google.api.services.fusiontables.model.Table;
+import com.google.api.services.fusiontables.model.TableList;
 
 //  --------------------------------------------------------------------------------------------------------------------
 //        Class:    RFFieldSQLDatabase
@@ -34,6 +53,59 @@ public class RFFieldSQLDatabase
 {
     // Define class members
     private Connection conn = null;                                     // MySql Database connection
+
+    private static final String APPLICATION_NAME = "ECEN689Project1";   // Set the Application Name
+
+    // Directory to store user credentials for this
+    // application.
+    private static final java.io.File DATA_STORE_DIR =
+            new java.io.File(System.getProperty("user.dir"),
+                    ".store/ecen689project1");
+
+    private static FileDataStoreFactory DATA_STORE_FACTORY;             // Global instance of the {@link FileDataStoreFactory}.
+    private static HttpTransport HTTP_TRANSPORT;                        // Global instance of the HTTP transport
+    // Global instance of the JSON factory.
+    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
+    private static Fusiontables FusionTables;                           // Global instance of the Fusion Tables
+
+    // -----------------------------------------------------------------------------------------------------------------
+    // Create new instances of HTTP_TRANSPORT
+    static                                                              //
+    {                                                                   // and DATA_STORE_FACTORY
+        try                                                             //
+        {                                                               //
+            HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+            DATA_STORE_FACTORY = new FileDataStoreFactory(DATA_STORE_DIR);
+        }                                                               //
+        catch (Throwable t)                                             //
+        {                                                               //
+            t.printStackTrace();                                        //
+            System.exit(1);                                             //
+        }                                                               //
+    }                                                                   //
+
+    //	----------------------------------------------------------------------------------------------------------------
+    //      Method:     authorize
+    //      Inputs:	    none
+    //     Outputs:	    Credentials
+    // Description:     Creates an authorized credential object, will throw IO exception
+    //	----------------------------------------------------------------------------------------------------------------
+    private static Credential authorize() throws IOException
+    {
+        // Load client secrets (from JSON file)
+        InputStream in = Main.class.getResourceAsStream("/client_secret_ecen689project1.json");
+        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+
+        // Build flow and trigger user authorization request
+        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+                HTTP_TRANSPORT, JSON_FACTORY, clientSecrets,
+                Collections.singleton(FusiontablesScopes.FUSIONTABLES)).setDataStoreFactory(DATA_STORE_FACTORY).build();
+
+        // Authorize and get the credential
+        Credential credential = new AuthorizationCodeInstalledApp(flow, new LocalServerReceiver()).authorize("user");
+        System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
+        return credential;                                              // Return the credential
+    }
 
     //	----------------------------------------------------------------------------------------------------------------
     //       Method:    getConnection
@@ -72,6 +144,24 @@ public class RFFieldSQLDatabase
     {
         boolean status;                                                 // Return status (success / failure)
 
+        try
+        {
+                                                                        // Google Fusion Tables Authorization
+            Credential credential = authorize();                        // Client authorization
+                                                                        // Set up global FusionTables instance
+            FusionTables = new Fusiontables.Builder(HTTP_TRANSPORT,
+                    JSON_FACTORY,
+                    credential).setApplicationName(APPLICATION_NAME).build();
+        }                                                               //
+        catch (IOException e)                                           // Print out exception messages
+        {                                                               //
+            System.err.println(e.getMessage());                         //
+        }                                                               //
+        catch (Throwable t)                                             //
+        {                                                               //
+            t.printStackTrace();                                        //
+        }                                                               //
+
         try                                                             // Try and connect to the MySQL Database
         {                                                               // Use ECEN_RF_Field Database
             System.out.println("Attempting Connection");                // Print out connection success
@@ -109,6 +199,36 @@ public class RFFieldSQLDatabase
             status = false;                                             // Failure
         }                                                               //
         return status;                                                  // Return status
+    }
+
+
+    //	----------------------------------------------------------------------------------------------------------------
+    //      Method:     GetTableId
+    //      Inputs:	    none
+    //     Outputs:	    none
+    // Description:     Get Table ID from Table Nam
+    //	----------------------------------------------------------------------------------------------------------------
+    private static String GetTableId(String tableName) throws IOException
+    {
+        String tid = null;                                              // Set default return
+        System.out.println("Get Table ID: " + tableName);               // Print header
+        // Get the table list
+        Fusiontables.Table.List listTables = FusionTables.table().list();
+        TableList tablelist = listTables.execute();                     //
+        // If there are no tables, print that info
+        if (tablelist.getItems() == null || tablelist.getItems().isEmpty())
+        {                                                               //
+            System.out.println("No tables found!");                     //
+        }                                                               //
+        else                                                            // Else, loop through tables, find match
+        {                                                               // If it matches then save the table ID
+            for (Table table : tablelist.getItems())                    //
+            {                                                           //
+                if (table.getName().equals(tableName)) tid = table.getTableId();
+            }                                                           // Printout the results of that
+            System.out.println(tableName + " - tableId: " + tid);       //
+        }                                                               //
+        return tid;                                                     // Return the table ID
     }
 
 
@@ -159,6 +279,38 @@ public class RFFieldSQLDatabase
                 stmt.execute(sql_string);                               // Execute the SQL statement
                 stmt.close();                                           // Close the statement
                 status = true;                                          // Success
+
+                // Add to fusion table
+                String tableId = GetTableId("RF Field Data");           // Get the "Customer Data" Table
+                sql_string  = "INSERT INTO " + tableId + " (";          // Insert SQL statement, Table: Table ID
+                sql_string += "XbeeID,";                                // Field: intXbeeID
+                sql_string += "DeviceID,";                              // Field: intDeviceID
+                sql_string += "RSSI,";                                  // Field: fltRSSI
+                sql_string += "Location,";                              // Field: fltLatitude
+                sql_string += "Longitude,";                             // Field: fltLongitude
+                sql_string += "Yaw,";                                   // Field: fltYaw
+                sql_string += "Pitch,";                                 // Field: fltPitch
+                sql_string += "Roll,";                                  // Field: fltRoll
+                sql_string += "SampleDate) ";                           // Field: dtSampleDate
+                sql_string += "VALUES (";                               // Values indetifier
+                sql_string += RFMember.XbeeID + ",";                    // Value: XbeeID
+                sql_string += RFMember.DeviceID + ",";                  // Value: DeviceID
+                sql_string += RFMember.RSSI + ",";                      // Value: RSSI
+                sql_string += RFMember.Latitude + ",";                  // Value: Latitude
+                sql_string += RFMember.Longitude + ",";                 // Value: Longitude
+                sql_string += RFMember.Yaw + ",";                       // Value: Yaw
+                sql_string += RFMember.Pitch + ",";                     // Value: Pitch
+                sql_string += RFMember.Roll + ",";                      // Value: Roll
+                sql_string += "'" + ft.format(RFMember.SampleDate) + "')";
+                Sql sql = FusionTables.query().sql(sql_string);         // Build Fusion Query
+                // Try and execute the SQL command
+                try                                                     //
+                {                                                       //
+                    sql.executeAndDownloadTo(System.out);               // Execute command, stream to the system.out
+                }                                                       //
+                catch (IllegalArgumentException e)                      //
+                {                                                       //
+                }                                                       //
             }                                                           //
             else                                                        //
             {                                                           //
