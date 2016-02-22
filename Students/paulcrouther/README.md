@@ -4,4 +4,5 @@ This is readme is for the assignments and work I'll be committing for the semest
 
 * Name: Paul Crouther
 * GitHudID: paulcrouther
+* NetID: paul_crouther
 * www.paulcrouther.github.io
