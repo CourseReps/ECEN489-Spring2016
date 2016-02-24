@@ -42,7 +42,7 @@ public class Main
     public static void main(String[] args)
     {
         RFFieldDatabase = new RFFieldSQLDatabase();                     // Create new RF Field Database
-        RFFieldDatabase.ConnectToDatabase();                            // Connect to MySql database
+        RFFieldDatabase.ConnectToDatabase("10.202.102.173");            // Connect to MySql database
 
         RFData testmember = new RFData();                               // Create test RF data
         testmember.XbeeID = 456;                                        // Fill test with dummy data

@@ -140,7 +140,7 @@ public class RFFieldSQLDatabase
     //      Outputs:    Success = TRUE / Failure = FALSE
     //  Description:    Establishes a connection to the database
     //	----------------------------------------------------------------------------------------------------------------
-    public boolean ConnectToDatabase()
+    public boolean ConnectToDatabase(String host_address)
     {
         boolean status;                                                 // Return status (success / failure)
 
@@ -166,7 +166,8 @@ public class RFFieldSQLDatabase
         {                                                               // Use ECEN_RF_Field Database
             System.out.println("Attempting Connection");                // Print out connection success
             //conn = getConnection("jdbc:mysql://69.5.199.164/ECEN_RF_Fields", "ecen689", "ecen689$2016");
-            conn = getConnection("jdbc:mysql://192.168.1.25/ECEN_RF_Fields", "ecen689", "ecen689$2016");
+           // conn = getConnection("jdbc:mysql://10.202.102.173/ECEN_RF_Fields", "ecen689", "ecen689$2016");
+            conn = getConnection("jdbc:mysql://" + host_address + "/ECEN_RF_Fields", "ecen689", "ecen689$2016");
             System.out.println("Opened database successfully");         // Print out connection success
             status = true;                                              // Success
         }                                                               //
