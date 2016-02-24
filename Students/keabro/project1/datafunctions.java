@@ -1,6 +1,4 @@
 package project1.keatonbrown.datafunctions;
-
-
 import java.util.ArrayList;
 import android.content.Context;
 import android.Manifest;
@@ -23,6 +21,7 @@ public class datafunctions{
     private String imu = "";
     private String timestamp = "";
     Context mContext;
+    private DBAccess data2 = new DBAccess(mContext);
     public datafunctions(Context mContext){
         this.mContext = mContext;
     }
@@ -68,6 +67,7 @@ public class datafunctions{
 
     public void pushtodb(){
         try {
+
             JSONObject dbdata = new JSONObject();
             dbdata.put("Transmit ID", transmitID);
             dbdata.put("RSSI", rssi);
@@ -75,10 +75,11 @@ public class datafunctions{
             dbdata.put("GPS", gps);
             dbdata.put("IMU", imu);
             dbdata.put("Timestamp", timestamp);
+            data2.addData(dbdata.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        addData(dbdata);
+
 
     }
 }
