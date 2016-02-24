@@ -165,7 +165,8 @@ public class RFFieldSQLDatabase
         try                                                             // Try and connect to the MySQL Database
         {                                                               // Use ECEN_RF_Field Database
             System.out.println("Attempting Connection");                // Print out connection success
-            conn = getConnection("jdbc:mysql://69.5.199.164/ECEN_RF_Fields", "ecen689", "ecen689$2016");
+            //conn = getConnection("jdbc:mysql://69.5.199.164/ECEN_RF_Fields", "ecen689", "ecen689$2016");
+            conn = getConnection("jdbc:mysql://192.168.1.25/ECEN_RF_Fields", "ecen689", "ecen689$2016");
             System.out.println("Opened database successfully");         // Print out connection success
             status = true;                                              // Success
         }                                                               //
