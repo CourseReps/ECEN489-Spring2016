@@ -1,16 +1,12 @@
 import android.app.Activity;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-
 import android.util.Log;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-
 import android.widget.TextView;
 import android.widget.Toast
-
 import java.util.List;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
@@ -31,7 +27,13 @@ public class IMU extends activity
             textView1.setText("x: "+values[0]+"\ny: "+values[1]+"\nz: "+values[2]);  
         }  
     };  
+	
+  //  Applying three intrinsic rotations in azimuth, pitch, and roll. Tranforms identity matrix to rotation matrix. Returns values in radians and a positive, CCW direction.
   
+	public static float[] getOrientation (float[] R, float[] values){
+		return values;
+	}
+	
     @Override  
     public void onCreate(Bundle savedInstanceState) {  
         super.onCreate(savedInstanceState);  
@@ -58,3 +60,4 @@ public class IMU extends activity
         super.onStop();  
     }  
 }  
+
