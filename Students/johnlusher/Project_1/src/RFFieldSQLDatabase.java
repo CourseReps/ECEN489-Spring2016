@@ -601,12 +601,14 @@ public class RFFieldSQLDatabase
             sql_string += "FROM  RF_Fields ";                           // Table: RF_Fields
 
                                                                         // If, 0,0,0,0 return all records
-
-            sql_string += "WHERE (";                                    // Where statement
-            sql_string += "fltLatitude >= " + StartLatitude + " AND ";  // Field on Where and condition
-            sql_string += "fltLatitude >= " + StartLongitude + " AND "; // Field on Where and condition
-            sql_string += "fltLatitude <= " + EndLatitude + " AND ";    // Field on Where and condition
-            sql_string += "fltLongitude <= " + EndLongitude + ")";      // Field on Where and condition
+            if ((StartLatitude != 0) | (StartLongitude != 0) | (EndLatitude != 0) | (EndLongitude != 0))
+            {
+                sql_string += "WHERE (";                                    // Where statement
+                sql_string += "fltLatitude >= " + StartLatitude + " AND ";  // Field on Where and condition
+                sql_string += "fltLatitude >= " + StartLongitude + " AND "; // Field on Where and condition
+                sql_string += "fltLatitude <= " + EndLatitude + " AND ";    // Field on Where and condition
+                sql_string += "fltLongitude <= " + EndLongitude + ")";      // Field on Where and condition
+            }
 
             System.out.println("SQL: " + sql_string);                   // Debug print the SQL statement
 
