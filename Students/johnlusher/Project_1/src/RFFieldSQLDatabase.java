@@ -27,6 +27,7 @@ import java.util.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+/*
 import com.google.api.client.auth.oauth2.Credential;
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
 import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
@@ -43,6 +44,7 @@ import com.google.api.services.fusiontables.Fusiontables.Query.Sql;
 import com.google.api.services.fusiontables.FusiontablesScopes;
 import com.google.api.services.fusiontables.model.Table;
 import com.google.api.services.fusiontables.model.TableList;
+ */
 
 //  --------------------------------------------------------------------------------------------------------------------
 //        Class:    RFFieldSQLDatabase
@@ -54,6 +56,7 @@ public class RFFieldSQLDatabase
     // Define class members
     private Connection conn = null;                                     // MySql Database connection
 
+/*
     private static final String APPLICATION_NAME = "ECEN689Project1";   // Set the Application Name
 
     // Directory to store user credentials for this
@@ -106,6 +109,7 @@ public class RFFieldSQLDatabase
         System.out.println("Credentials saved to " + DATA_STORE_DIR.getAbsolutePath());
         return credential;                                              // Return the credential
     }
+*/
 
     //	----------------------------------------------------------------------------------------------------------------
     //       Method:    getConnection
@@ -122,7 +126,6 @@ public class RFFieldSQLDatabase
         props.put("autoReconnect", "true");                             // Enabled auto-reconnection
         return DriverManager.getConnection(dbURL, props);               // Return the connection to the database
     }
-
 
     //	----------------------------------------------------------------------------------------------------------------
     //      Method:     Class Construction
@@ -144,7 +147,7 @@ public class RFFieldSQLDatabase
     {
         boolean status;                                                 // Return status (success / failure)
 
-        try
+/*        try
         {
                                                                         // Google Fusion Tables Authorization
             Credential credential = authorize();                        // Client authorization
@@ -161,6 +164,7 @@ public class RFFieldSQLDatabase
         {                                                               //
             t.printStackTrace();                                        //
         }                                                               //
+*/
 
         try                                                             // Try and connect to the MySQL Database
         {                                                               // Use ECEN_RF_Field Database
@@ -202,7 +206,7 @@ public class RFFieldSQLDatabase
         }                                                               //
         return status;                                                  // Return status
     }
-
+/*
 
     //	----------------------------------------------------------------------------------------------------------------
     //      Method:     GetTableId
@@ -232,7 +236,7 @@ public class RFFieldSQLDatabase
         }                                                               //
         return tid;                                                     // Return the table ID
     }
-
+*/
 
     //	----------------------------------------------------------------------------------------------------------------
     //      Method:     AddNewEntry
@@ -281,7 +285,7 @@ public class RFFieldSQLDatabase
                 stmt.execute(sql_string);                               // Execute the SQL statement
                 stmt.close();                                           // Close the statement
                 status = true;                                          // Success
-
+/*
                 // Add to fusion table
                 String tableId = GetTableId("RF Field Data");           // Get the "Customer Data" Table
                 sql_string  = "INSERT INTO " + tableId + " (";          // Insert SQL statement, Table: Table ID
@@ -313,6 +317,7 @@ public class RFFieldSQLDatabase
                 catch (IllegalArgumentException e)                      //
                 {                                                       //
                 }                                                       //
+*/
             }                                                           //
             else                                                        //
             {                                                           //
@@ -596,12 +601,14 @@ public class RFFieldSQLDatabase
             sql_string += "FROM  RF_Fields ";                           // Table: RF_Fields
 
                                                                         // If, 0,0,0,0 return all records
-
-            sql_string += "WHERE (";                                    // Where statement
-            sql_string += "fltLatitude >= " + StartLatitude + " AND ";  // Field on Where and condition
-            sql_string += "fltLatitude >= " + StartLongitude + " AND "; // Field on Where and condition
-            sql_string += "fltLatitude <= " + EndLatitude + " AND ";    // Field on Where and condition
-            sql_string += "fltLongitude <= " + EndLongitude + ")";      // Field on Where and condition
+            if ((StartLatitude != 0) | (StartLongitude != 0) | (EndLatitude != 0) | (EndLongitude != 0))
+            {
+                sql_string += "WHERE (";                                    // Where statement
+                sql_string += "fltLatitude >= " + StartLatitude + " AND ";  // Field on Where and condition
+                sql_string += "fltLatitude >= " + StartLongitude + " AND "; // Field on Where and condition
+                sql_string += "fltLatitude <= " + EndLatitude + " AND ";    // Field on Where and condition
+                sql_string += "fltLongitude <= " + EndLongitude + ")";      // Field on Where and condition
+            }
 
             System.out.println("SQL: " + sql_string);                   // Debug print the SQL statement
 

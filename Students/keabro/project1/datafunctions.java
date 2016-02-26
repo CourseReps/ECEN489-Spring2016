@@ -1,8 +1,14 @@
 package project1.keatonbrown.datafunctions;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 import android.content.Context;
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -15,19 +21,22 @@ import org.json.JSONObject;
  */
 public class datafunctions{
     private String transmitID = "x";
-    private String rssi = "y";
+    private float rssi = 0;
     private String receiveID = "z";
-    private String gps = "";
-    private String imu = "";
-    private String timestamp = "";
+    private double latitude = 0;
+    private double longitude = 0;
+    private ArrayList imu = new ArrayList();
+    private DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private String rssist = "";
+    private String gpsst = "";
+    private String imust = "";
+    private String timestampst = "";
+    private float yaw = 0;
+    private float pitch = 0;
+    private float roll = 0;
     Context mContext;
-    private DBAccess data2 = new DBAccess(mContext);
     public datafunctions(Context mContext){
         this.mContext = mContext;
-    }
-
-    public static float[] getorientation(float[] r, float[] values) {
-        return values;
     }
 
     private void location() {
@@ -40,42 +49,51 @@ public class datafunctions{
                 2000, 1, (LocationListener) this);
                 */
         Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        gps = "(" + location.getLatitude() + "," + location.getLongitude() + ")";
+        gpsst = "(" + location.getLatitude() + "," + location.getLongitude() + ")";
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+
     }
 
 
     public ArrayList<String> pulldata(){
         location();
-        float[] orient = new float[0];
-        float[] rotation = new float[0];
-        getorientation(rotation , orient);
+        float[] orient = new float[3];
+        float[] rotation = new float[3];
+        imu myimu = new imu();
+        myimu.getOrientation(rotation,orient);
         ArrayList<String> data = new ArrayList<>();
-        long timestampint = System.currentTimeMillis() / 1000L;
+        yaw = orient[0];
+        pitch = orient[1];
+        roll = orient[2];
+        timestamp.format(Calendar.getInstance().getTime());
         transmitID = "x";
-        rssi = "y";
+        rssist = "y";
         receiveID = "z";
-        imu = Float.toString(orient[0]) + Float.toString(orient[1]) + Float.toString(orient[2]);
-        timestamp = Long.toString(timestampint);
+        imust = Float.toString(orient[0]) + Float.toString(orient[1]) + Float.toString(orient[2]);
+        timestampst = timestamp.toString();
         data.add(transmitID);
-        data.add(rssi);
+        data.add(rssist);
         data.add(receiveID);
-        data.add(imu);
-        data.add(gps);
-        data.add(timestamp);
+        data.add(imust);
+        data.add(gpsst);
+        data.add(timestampst);
         return data;
     }
 
     public void pushtodb(){
         try {
-
+            pulldata();
             JSONObject dbdata = new JSONObject();
-            dbdata.put("Transmit ID", transmitID);
+            dbdata.put("Xbee ID", transmitID);
             dbdata.put("RSSI", rssi);
-            dbdata.put("Receive ID", receiveID);
-            dbdata.put("GPS", gps);
+            dbdata.put("Device ID", receiveID);
+            dbdata.put("Latitude", latitude);
+            dbdata.put("Longitude", longitude);
             dbdata.put("IMU", imu);
-            dbdata.put("Timestamp", timestamp);
-            data2.addData(dbdata.toString());
+            dbdata.put("Date", timestamp);
+            DBAccess data2 = new DBAccess(mContext);
+            data2.addData(dbdata);
         } catch (JSONException e) {
             e.printStackTrace();
         }

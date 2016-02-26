@@ -20,6 +20,7 @@
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.lang.Math;
 import java.util.Iterator;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -42,17 +43,24 @@ public class Main
     public static void main(String[] args)
     {
         RFFieldDatabase = new RFFieldSQLDatabase();                     // Create new RF Field Database
-        RFFieldDatabase.ConnectToDatabase("10.202.102.173");            // Connect to MySql database
+//        RFFieldDatabase.ConnectToDatabase("10.202.102.173");            // Connect to MySql database (local to EIC)
+
+        // Lusher Test MySQL Server
+        RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com");
+
+        // Get a new Lat/Long randomly around the EIC area
+        LatLong newpos = new LatLong(359.99 * Math.random(), 650.0 * Math.random(),  30.618651, -96.341498);
+
 
         RFData testmember = new RFData();                               // Create test RF data
         testmember.XbeeID = 456;                                        // Fill test with dummy data
         testmember.DeviceID = 1234;
-        testmember.Latitude = 30.759920F;
-        testmember.Longitude = -96.222884F;
-        testmember.RSSI = 100;
-        testmember.Yaw = 10;
-        testmember.Pitch = 20;
-        testmember.Roll = 30;
+        testmember.Latitude = (float)newpos.Latitude;
+        testmember.Longitude = (float)newpos.Longitude;
+        testmember.RSSI = (float)(100.0 * Math.random());
+        testmember.Yaw = (float)(359.99 * Math.random());
+        testmember.Pitch = (float)(359.99 * Math.random());
+        testmember.Roll = (float)(359.99 * Math.random());
         testmember.SampleDate = new Date();
 
         String jsondata;                                                // Create JSON holding string
@@ -104,6 +112,10 @@ public class Main
 
         RFFieldDatabase.DisconnectDatabase();                           // Disconnect from MySql database
     }
+
+
+
+
 }
 
 

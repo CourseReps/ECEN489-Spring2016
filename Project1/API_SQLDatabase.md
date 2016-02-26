@@ -10,9 +10,9 @@ Latitude and Longitude, Device ID, etc...
 
 ###ConnectToDatabase
 Purpose: Establishes a connection to the database<BR>  
-Input: none<BR>
+Input: Host Address for MySQL server<BR>
 Return: Success (TRUE) or Failure (FALSE) as boolean<BR><BR>
-Example: RFFieldDatabase.ConnectToDatabase();
+Example: RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com");
 
 ###DisconnectDatabase
 Purpose: Disconnects the connection to the database<BR>  
