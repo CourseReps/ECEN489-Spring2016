@@ -1,0 +1,1 @@
+The JSON format was updated to match John's. Also, the getUnsentdata and getAlldata methods now return JSON arrays. The size of the array can be found using the method size(), and objects can be retreived from the array using the getJSONObject(i) method, where i is the array index. http://developer.android.com/reference/org/json/JSONArray.html
