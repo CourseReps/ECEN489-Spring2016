@@ -25,6 +25,7 @@ public class MainFragment extends Fragment {
 
     private static ArrayList<String> dataList = new ArrayList<>();
     private static ArrayAdapter<String> dataListAdaptor;
+    private int HTTP_SEND_STATUS = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -110,8 +111,58 @@ public class MainFragment extends Fragment {
                     dataListAdaptor.notifyDataSetChanged();
                 }
             });
+
+            final Button button_sendData = (Button)rootView.findViewById(R.id.button_sendData);
+            button_sendData.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v){
+                    ArrayList<JSONObject> JSONlist = new ArrayList();
+                    //@TODO get list of JSON objects from local DB
+                    Thread t = new Thread() {
+                        public void run() {
+                            for(int x = 0; x < JSONlist.size(); ++x)
+                            {
+                                HTTP_SEND_STATUS = 0;
+                                sendHTTPdata(JSONlist.get(x), "127.0.0.1"); //!!! change IP
+                                if(HTTP_SEND_STATUS == -1)
+                                    System.err.println("Error sending!"); //change later to toast message on phone screen
+                            }
+                            System.out.println("Send thread finished");
+                        }
+                    };
+                    t.start(); //start send thread
+                }
+            });
         }
 
         return rootView;
     }
+
+    protected void sendHTTPdata(JSONObject json, String serverAddress)
+    {
+    final String data = json.toString();
+    try{
+        URL url = new URL(serverAddress);
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setReadTimeout(1000);
+        conn.setConnectTimeout(1000);
+        conn.setDoInput(true);
+        conn.setDoOutput(true);
+        conn.setRequestMethod("POST");
+        conn.connect();
+
+        OutputStream os = conn.getOutputStream();
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
+        writer.write(data);
+        writer.close();
+        os.close();
+
+        int result = conn.getResponseCode();
+        HTTP_SEND_STATUS = 1;
+    }catch(Exception e){
+        System.err.print(e);
+        HTTP_SEND_STATUS = -1;
+    }
+}
+
 }
