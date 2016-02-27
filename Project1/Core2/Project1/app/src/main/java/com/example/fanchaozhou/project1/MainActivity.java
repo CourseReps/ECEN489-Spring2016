@@ -16,7 +16,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private SettingsFragment settingsFrag;
-    private MainFragment mainFrag;
+    private com.example.fanchaozhou.project1.MainFragment mainFrag;
     private AboutUsFragment aboutFrag;
     private Fragment curFrag;
 
