@@ -18,21 +18,21 @@ import org.json.JSONObject;
  * Created by keatonbrown on 2/22/16.
  */
 public class DataFunctions{
-    private String transmitID = "x";
-    private float rssi = 0;
-    private String receiveID = "z";
-    private double latitude = 0;
-    private double longitude = 0;
-    private ArrayList imu = new ArrayList();
-    private DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private String rssist = "";
-    private String gpsst = "";
-    private String imust = "";
-    private String timestampst = "";
-    private float yaw = 0;
-    private float pitch = 0;
-    private float roll = 0;
-    private float[] orient = new float[3];
+    private static String transmitID = "";
+    private static float RSSI = 0;
+    private static String receiveID = "";
+    private static double latitude = 0;
+    private static double longitude = 0;
+    private static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static float[] imu = new float[3];
+    private static String rssist = "";
+    private static String gpsst = "";
+    private static String imust = "";
+    private static String timestampst = "";
+    private static float yaw = 0;
+    private static float pitch = 0;
+    private static float roll = 0;
+    private static float[] orient = new float[3];
     Context mContext;
 
     public DataFunctions(Context mContext){
@@ -54,7 +54,7 @@ public class DataFunctions{
     }
 
 
-    public ArrayList<String> pulldata(String transmitID, float RSSI, String receiveID, float[] imu){
+    public ArrayList<String> pulldata(String transmitIDs, float RSSIs, String receiveIDs, float[] imus){
         location();
         /*
         float[] orient = new float[3];
@@ -63,7 +63,10 @@ public class DataFunctions{
         orient = myimu.getorient(rotation,orient);
         */
         ArrayList<String> data = new ArrayList<>();
-
+        transmitID = transmitIDs;
+        RSSI = RSSIs;
+        receiveID = receiveIDs;
+        imu = imus;
         yaw = imu[0];
         pitch = imu[1];
         roll = imu[2];
@@ -84,17 +87,17 @@ public class DataFunctions{
 
     public void pushtodb(DBAccess data2){
         try {
-            pulldata(transmitID, rssi, receiveID, orient);
+            pulldata(transmitID, RSSI, receiveID, orient);
             JSONObject dbdata = new JSONObject();
-            dbdata.put("Xbee ID", transmitID);
-            dbdata.put("RSSI", rssi);
-            dbdata.put("Device ID", receiveID);
+            dbdata.put("XbeeID", transmitID);
+            dbdata.put("RSSI", RSSI);
+            dbdata.put("DeviceID", receiveID);
             dbdata.put("Latitude", latitude);
             dbdata.put("Longitude", longitude);
-            dbdata.put("yaw", yaw);
-            dbdata.put("pitch", pitch);
-            dbdata.put("roll", roll);
-            dbdata.put("Date", timestamp);
+            dbdata.put("Yaw", yaw);
+            dbdata.put("Pitch", pitch);
+            dbdata.put("Roll", roll);
+            dbdata.put("SampleDate", timestampst);
             data2.addData(dbdata);
         } catch (JSONException e) {
             e.printStackTrace();

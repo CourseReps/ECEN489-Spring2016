@@ -24,15 +24,15 @@ import org.json.JSONObject;
 public class DBAccess extends SQLiteOpenHelper{
 
     public static final String DB_NAME 			  = "DATA.db";
-    public static final String COLUMN_XBEE_ID     = "xbeeID";
-    public static final String COLUMN_RSSI		  = "rssi";
-    public static final String COLUMN_DEVICE_ID   = "deviceID";
-    public static final String COLUMN_LAT 		  = "latitude";
-    public static final String COLUMN_LONG        = "longitude";
-    public static final String COLUMN_YAW 		  = "yaw";
-    public static final String COLUMN_PITCH 	  = "pitch";
-    public static final String COLUMN_ROLL 		  = "roll";
-    public static final String COLUMN_TIMESTAMP	  = "timestamp";
+    public static final String COLUMN_XBEE_ID     = "XbeeID";
+    public static final String COLUMN_RSSI		  = "RSSI";
+    public static final String COLUMN_DEVICE_ID   = "DeviceID";
+    public static final String COLUMN_LAT 		  = "Latitude";
+    public static final String COLUMN_LONG        = "Longitude";
+    public static final String COLUMN_YAW 		  = "Yaw";
+    public static final String COLUMN_PITCH 	  = "Pitch";
+    public static final String COLUMN_ROLL 		  = "Roll";
+    public static final String COLUMN_TIMESTAMP	  = "SampleDate";
 
     /** creating a database and connecting **/
     DBAccess(Context context){
@@ -46,8 +46,8 @@ public class DBAccess extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
 
-        db.execSQL("create table if not exists DATA " + "(xbeeID text, rssi real, deviceID text, latitude real, " +
-                "longitude real, yaw real, pitch real, roll real, timestamp text PRIMARY KEY, sent text)");
+        db.execSQL("create table if not exists DATA " + "(XbeeID text, RSSI real, DeviceID text, Latitude real, " +
+                "Longitude real, Yaw real, Pitch real, Roll real, SampleDate text, sent text)");
 
     }
 
@@ -82,15 +82,15 @@ public class DBAccess extends SQLiteOpenHelper{
             /** INSERT INTO DB **/
             SQLiteDatabase db = this.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
-            contentValues.put("transmitID", transmitID);
-            contentValues.put("rssi", rssi);
-            contentValues.put("receiveID", receiveID);
-            contentValues.put("latitude", latitude);
-            contentValues.put("longitude", longitude);
-            contentValues.put("yaw", yaw);
-            contentValues.put("pitch", pitch);
-            contentValues.put("roll", roll);
-            contentValues.put("timestamp", timestamp);
+            contentValues.put("XbeeID", transmitID);
+            contentValues.put("RSSI", rssi);
+            contentValues.put("DeviceID", receiveID);
+            contentValues.put("Latitude", latitude);
+            contentValues.put("Longitude", longitude);
+            contentValues.put("Yaw", yaw);
+            contentValues.put("Pitch", pitch);
+            contentValues.put("Roll", roll);
+            contentValues.put("SampleDate", timestamp);
             contentValues.put("sent", sent);
             db.insert("DATA", null, contentValues);
 
@@ -116,7 +116,7 @@ public class DBAccess extends SQLiteOpenHelper{
         String timestamp;
         Date date;
 
-        SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy hh:mm:ss aa");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         JSONArray resultsArray = new JSONArray();
 

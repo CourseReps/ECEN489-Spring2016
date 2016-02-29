@@ -104,9 +104,11 @@ public class MainFragment extends Fragment {
                             JSONArray JSONlist = dbHandle.getUnsentData();
 							for(int x = 0; x < JSONlist.length(); ++x)
 							{
+
 								HTTP_SEND_STATUS = 0;
                                 try {
                                     sendHTTPdata((JSONObject)JSONlist.get(x), serverAddr);
+                                    System.out.println(JSONlist.get(x));
                                 }catch(Exception e)
                                 {System.err.print(e);}
                                 if(HTTP_SEND_STATUS == -1)
