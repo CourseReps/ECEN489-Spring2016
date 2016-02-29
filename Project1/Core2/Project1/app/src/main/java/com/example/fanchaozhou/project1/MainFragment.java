@@ -43,7 +43,7 @@ public class MainFragment extends Fragment {
                     dataList                          //The source of the data
             );
         }
-        dbHandle = new DBAccess(this.getContext());
+        dbHandle = new DBAccess(this.getActivity());
     }
 
     @Override
