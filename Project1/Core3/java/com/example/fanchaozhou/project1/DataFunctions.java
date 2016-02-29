@@ -88,9 +88,9 @@ public class DataFunctions{
             dbdata.put("Device ID", receiveID);
             dbdata.put("Latitude", latitude);
             dbdata.put("Longitude", longitude);
-            dbdata.put("yaw");
-            dbdata.put("pitch");
-            dbdata.put("roll");
+            dbdata.put("yaw", yaw);
+            dbdata.put("pitch", pitch);
+            dbdata.put("roll", roll);
             dbdata.put("Date", timestamp);
             data2.addData(dbdata);
         } catch (JSONException e) {
