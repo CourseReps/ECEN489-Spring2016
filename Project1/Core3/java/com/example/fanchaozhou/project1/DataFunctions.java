@@ -85,7 +85,7 @@ public class DataFunctions{
         return data;
     }
 
-    public void pushtodb(){
+    public void pushtodb(DBAccess data2){
         try {
             pulldata();
             JSONObject dbdata = new JSONObject();
@@ -98,7 +98,6 @@ public class DataFunctions{
             dbdata.put("pitch");
             dbdata.put("roll");
             dbdata.put("Date", timestamp);
-            DBAccess data2 = new DBAccess(mContext);
             data2.addData(dbdata);
         } catch (JSONException e) {
             e.printStackTrace();
