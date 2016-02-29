@@ -39,7 +39,6 @@ public class DataFunctions{
     }
 
     private void location() {
-        /*
         LocationManager locationManager;
         locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
         if(ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -50,9 +49,7 @@ public class DataFunctions{
             gpsst = "(" + location.getLatitude() + "," + location.getLongitude() + ")";
         } else {
             gpsst = "Unknown Position";
-        }*/
-
-        gpsst = "Unknown Position";
+        }
     }
 
 
