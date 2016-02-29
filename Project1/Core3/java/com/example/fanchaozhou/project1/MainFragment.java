@@ -83,13 +83,52 @@ public class MainFragment extends Fragment {
                 public void onClick(View v) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
-
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
-                    // TODO:Add code for DATA TRANSMISSION here
+                    Thread t = new Thread() {
+						public void run() {
+							for(int x = 0; x < JSONlist.size(); ++x)
+							{
+								HTTP_SEND_STATUS = 0;
+								sendHTTPdata(JSONlist.get(x),serverAddr);
+								if(HTTP_SEND_STATUS == -1)
+									System.err.println("Error sending!"); //change later to toast message on phone screen
+							}
+							System.out.println("Send thread finished");
+						}
+					}; //End of thread t
+					t.start(); //start send thread
                 }
             });
         }
 
         return rootView;
     }
+    
+    protected void sendHTTPdata(JSONObject json, String serverAddress)
+	{
+		final String data = json.toString();
+		try{
+		    URL url = new URL(serverAddress);
+
+		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+		    conn.setReadTimeout(1000);
+		    conn.setConnectTimeout(1000);
+		    conn.setDoInput(true);
+		    conn.setDoOutput(true);
+		    conn.setRequestMethod("POST");
+		    conn.connect();
+
+		    OutputStream os = conn.getOutputStream();
+		    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
+		    writer.write(data);
+		    writer.close();
+		    os.close();
+
+		    int result = conn.getResponseCode();
+		    HTTP_SEND_STATUS = 1;
+		}catch(Exception e){
+		    System.err.print(e);
+		    HTTP_SEND_STATUS = -1;
+		}
+	}
 }
