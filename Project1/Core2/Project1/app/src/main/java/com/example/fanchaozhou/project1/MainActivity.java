@@ -2,7 +2,6 @@ package com.example.fanchaozhou.project1;
 
 import android.app.Fragment;
 import android.app.FragmentTransaction;
-import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,7 +15,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     private SettingsFragment settingsFrag;
-    private com.example.fanchaozhou.project1.MainFragment mainFrag;
+    private MainFragment mainFrag;
     private AboutUsFragment aboutFrag;
     private Fragment curFrag;
 
