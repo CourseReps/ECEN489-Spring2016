@@ -71,9 +71,6 @@ public class DataFunctions{
 
         rssist = float.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
-        transmitID = "x";
-        rssist = "y";
-        receiveID = "z";
         imust = Float.toString(imu[0]) + " " + Float.toString(imu[1]) + " " + Float.toString(imu[2]);
         timestampst = timestamp.format(Calendar.getInstance().getTime());
         data.add(transmitID);
