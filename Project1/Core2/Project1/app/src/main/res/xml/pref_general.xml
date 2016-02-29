@@ -9,8 +9,4 @@
         android:defaultValue="@string/pref_http_default"
         />
 
-    <EditTextPreference
-        android:title="@string/pref_http_title"
-        />
-
 </PreferenceScreen>

@@ -42,8 +42,9 @@ public class MainFragment extends Fragment {
                     R.id.list_item_record,            //The id of the textview
                     dataList                          //The source of the data
             );
+
+            dbHandle = new DBAccess(this.getActivity());
         }
-        dbHandle = new DBAccess(this.getActivity());
     }
 
     @Override
