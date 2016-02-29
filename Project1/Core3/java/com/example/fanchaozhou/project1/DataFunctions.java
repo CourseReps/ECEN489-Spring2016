@@ -56,21 +56,25 @@ public class DataFunctions{
     }
 
 
-    public ArrayList<String> pulldata(){
+    public ArrayList<String> pulldata(String transmitID, float RSSI, String receiveID, Float[] imu){
         location();
+        /*
         float[] orient = new float[3];
         float[] rotation = new float[9];
         imu myimu = new imu(mContext);
         orient = myimu.getorient(rotation,orient);
         ArrayList<String> data = new ArrayList<>();
-        yaw = orient[0];
-        pitch = orient[1];
-        roll = orient[2];
+        */
+        yaw = imu[0];
+        pitch = imu[1];
+        roll = imu[2];
+
+        rssist = float.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
         transmitID = "x";
         rssist = "y";
         receiveID = "z";
-        imust = Float.toString(orient[0]) + " " + Float.toString(orient[1]) + " " + Float.toString(orient[2]);
+        imust = Float.toString(imu[0]) + " " + Float.toString(imu[1]) + " " + Float.toString(imu[2]);
         timestampst = timestamp.format(Calendar.getInstance().getTime());
         data.add(transmitID);
         data.add(rssist);
@@ -86,11 +90,13 @@ public class DataFunctions{
             pulldata();
             JSONObject dbdata = new JSONObject();
             dbdata.put("Xbee ID", transmitID);
-            dbdata.put("RSSI", rssi);
+            dbdata.put("RSSI", RSSI);
             dbdata.put("Device ID", receiveID);
             dbdata.put("Latitude", latitude);
             dbdata.put("Longitude", longitude);
-            dbdata.put("IMU", imu);
+            dbdata.put("yaw");
+            dbdata.put("pitch");
+            dbdata.put("roll");
             dbdata.put("Date", timestamp);
             DBAccess data2 = new DBAccess(mContext);
             data2.addData(dbdata);
