@@ -8,10 +8,7 @@ import java.util.Calendar;
 import android.content.Context;
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.hardware.Sensor;
-import android.hardware.SensorManager;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import org.json.JSONException;
@@ -35,6 +32,7 @@ public class DataFunctions{
     private float yaw = 0;
     private float pitch = 0;
     private float roll = 0;
+    private float[] orient = new float[3];
     Context mContext;
 
     public DataFunctions(Context mContext){
@@ -56,21 +54,24 @@ public class DataFunctions{
     }
 
 
-    public ArrayList<String> pulldata(){
+    public ArrayList<String> pulldata(String transmitID, float RSSI, String receiveID, float[] imu){
         location();
+        /*
         float[] orient = new float[3];
         float[] rotation = new float[9];
         imu myimu = new imu(mContext);
         orient = myimu.getorient(rotation,orient);
+        */
         ArrayList<String> data = new ArrayList<>();
-        yaw = orient[0];
-        pitch = orient[1];
-        roll = orient[2];
+
+        yaw = imu[0];
+        pitch = imu[1];
+        roll = imu[2];
+        orient = imu;
+
+        rssist = Float.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
-        transmitID = "x";
-        rssist = "y";
-        receiveID = "z";
-        imust = Float.toString(orient[0]) + Float.toString(orient[1]) + Float.toString(orient[2]);
+        imust = Float.toString(imu[0]) + " " + Float.toString(imu[1]) + " " + Float.toString(imu[2]);
         timestampst = timestamp.format(Calendar.getInstance().getTime());
         data.add(transmitID);
         data.add(rssist);
@@ -81,18 +82,19 @@ public class DataFunctions{
         return data;
     }
 
-    public void pushtodb(){
+    public void pushtodb(DBAccess data2){
         try {
-            pulldata();
+            pulldata(transmitID, rssi, receiveID, orient);
             JSONObject dbdata = new JSONObject();
             dbdata.put("Xbee ID", transmitID);
             dbdata.put("RSSI", rssi);
             dbdata.put("Device ID", receiveID);
             dbdata.put("Latitude", latitude);
             dbdata.put("Longitude", longitude);
-            dbdata.put("IMU", imu);
+            dbdata.put("yaw", yaw);
+            dbdata.put("pitch", pitch);
+            dbdata.put("roll", roll);
             dbdata.put("Date", timestamp);
-            DBAccess data2 = new DBAccess(mContext);
             data2.addData(dbdata);
         } catch (JSONException e) {
             e.printStackTrace();

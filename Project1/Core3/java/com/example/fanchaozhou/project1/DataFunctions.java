@@ -39,7 +39,6 @@ public class DataFunctions{
     }
 
     private void location() {
-        /*
         LocationManager locationManager;
         locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
         if(ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -50,27 +49,26 @@ public class DataFunctions{
             gpsst = "(" + location.getLatitude() + "," + location.getLongitude() + ")";
         } else {
             gpsst = "Unknown Position";
-        }*/
-
-        gpsst = "Unknown Position";
+        }
     }
 
 
-    public ArrayList<String> pulldata(){
+    public ArrayList<String> pulldata(String transmitID, float RSSI, String receiveID, Float[] imu){
         location();
+        /*
         float[] orient = new float[3];
         float[] rotation = new float[9];
         imu myimu = new imu(mContext);
         orient = myimu.getorient(rotation,orient);
         ArrayList<String> data = new ArrayList<>();
-        yaw = orient[0];
-        pitch = orient[1];
-        roll = orient[2];
+        */
+        yaw = imu[0];
+        pitch = imu[1];
+        roll = imu[2];
+
+        rssist = float.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
-        transmitID = "x";
-        rssist = "y";
-        receiveID = "z";
-        imust = Float.toString(orient[0]) + " " + Float.toString(orient[1]) + " " + Float.toString(orient[2]);
+        imust = Float.toString(imu[0]) + " " + Float.toString(imu[1]) + " " + Float.toString(imu[2]);
         timestampst = timestamp.format(Calendar.getInstance().getTime());
         data.add(transmitID);
         data.add(rssist);
@@ -81,18 +79,19 @@ public class DataFunctions{
         return data;
     }
 
-    public void pushtodb(){
+    public void pushtodb(DBAccess data2){
         try {
             pulldata();
             JSONObject dbdata = new JSONObject();
             dbdata.put("Xbee ID", transmitID);
-            dbdata.put("RSSI", rssi);
+            dbdata.put("RSSI", RSSI);
             dbdata.put("Device ID", receiveID);
             dbdata.put("Latitude", latitude);
             dbdata.put("Longitude", longitude);
-            dbdata.put("IMU", imu);
+            dbdata.put("yaw", yaw);
+            dbdata.put("pitch", pitch);
+            dbdata.put("roll", roll);
             dbdata.put("Date", timestamp);
-            DBAccess data2 = new DBAccess(mContext);
             data2.addData(dbdata);
         } catch (JSONException e) {
             e.printStackTrace();

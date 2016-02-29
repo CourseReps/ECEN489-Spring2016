@@ -46,7 +46,7 @@ public class DBAccess extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db){
 
-        db.execSQL("create table DATA " + "(xbeeID text, rssi real, deviceID text, latitude real, " +
+        db.execSQL("create table if not exists DATA " + "(xbeeID text, rssi real, deviceID text, latitude real, " +
                 "longitude real, yaw real, pitch real, roll real, timestamp text PRIMARY KEY, sent text)");
 
     }

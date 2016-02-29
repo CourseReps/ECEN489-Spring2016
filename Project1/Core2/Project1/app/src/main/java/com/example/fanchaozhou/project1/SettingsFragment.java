@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 /**
  * Created by Fanchao Zhou on 2/21/2016.
  */
-public class SettingsFragment extends PreferenceFragment
-        implements Preference.OnPreferenceChangeListener{
+public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener{
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,7 +26,7 @@ public class SettingsFragment extends PreferenceFragment
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
         if(savedInstanceState == null){
-            Preference datatxPref = findPreference(getString(R.string.pref_datatx_key));
+            Preference datatxPref = findPreference(getString(R.string.pref_http_key));
             datatxPref.setOnPreferenceChangeListener(this);
         }
 
@@ -36,17 +35,11 @@ public class SettingsFragment extends PreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        String newValueStr = newValue.toString();
 
         //The CheckBox for data transmission has be clicked on
-        if(preference.getKey().equals(getString(R.string.pref_datatx_key))){
-            if(newValueStr == "true"){
-                preference.setSummary("On");
-                //TODO: Add Code to OPEN the DATA TRANSMISSION
-            }else{
-                preference.setSummary("Off");
-                //TODO: Add Code to PAUSE the DATA TRANSMISSION
-            }
+        if(preference.getKey().equals(getString(R.string.pref_http_key))){
+            String newValueStr = newValue.toString();
+            preference.setSummary(newValueStr);
         }
 
         return true;
