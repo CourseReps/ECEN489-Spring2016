@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
@@ -27,6 +28,8 @@ public class MainFragment extends Fragment {
 
     private static ArrayList<String> dataList = new ArrayList<>();
     private static ArrayAdapter<String> dataListAdaptor;
+    private static DBAccess dbHandle;
+    private int HTTP_SEND_STATUS = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,7 @@ public class MainFragment extends Fragment {
                     dataList                          //The source of the data
             );
         }
+        dbHandle = new DBAccess(this.getContext());
     }
 
     @Override
@@ -71,8 +75,12 @@ public class MainFragment extends Fragment {
                     // TODO:Add code for DATA COLLECTION(From IMU, GPS and Serial) and PUSHING DATA INTO LOCAL DATABASE HERE
                     //I've already added them below for testing, but I don't know if I did this correctly.
                     DataFunctions dataFunc = new DataFunctions(getActivity());
-                    ArrayList<String> data = dataFunc.pulldata();
-                    dataFunc.pushtodb();
+                    String transmitID = "txid";
+                    float RSSI = 6;
+                    String receiveID = "rxid";
+                    float[] imu = {0,1,2};
+                    ArrayList<String> data = dataFunc.pulldata(transmitID, RSSI,receiveID,imu);
+                    dataFunc.pushtodb(dbHandle);
                     dataList.add(0,
                             "Transmitter ID: " + data.get(0) + "\n" +
                                     "Receiver ID: " + data.get(2) + "\n" +
@@ -89,15 +97,19 @@ public class MainFragment extends Fragment {
             button_datatx.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
+                    final String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
                     Thread t = new Thread() {
 						public void run() {
-							for(int x = 0; x < JSONlist.size(); ++x)
+                            JSONArray JSONlist = dbHandle.getUnsentData();
+							for(int x = 0; x < JSONlist.length(); ++x)
 							{
 								HTTP_SEND_STATUS = 0;
-								sendHTTPdata(JSONlist.get(x),serverAddr);
-								if(HTTP_SEND_STATUS == -1)
+                                try {
+                                    sendHTTPdata((JSONObject)JSONlist.get(x), serverAddr);
+                                }catch(Exception e)
+                                {System.err.print(e);}
+                                if(HTTP_SEND_STATUS == -1)
 									System.err.println("Error sending!"); //change later to toast message on phone screen
 							}
 							System.out.println("Send thread finished");
