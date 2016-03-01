@@ -46,7 +46,7 @@ public class Main
 //        RFFieldDatabase.ConnectToDatabase("10.202.102.173");            // Connect to MySql database (local to EIC)
 
         // Lusher Test MySQL Server
-        RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com");
+        RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com" , true);
 
         // Get a new Lat/Long randomly around the EIC area
         LatLong newpos = new LatLong(359.99 * Math.random(), 650.0 * Math.random(),  30.618651, -96.341498);
@@ -69,7 +69,7 @@ public class Main
 
         System.out.println("AddNewEntry Test:");                        // Perform test of AddNewEntry
         System.out.println("JSON Data: " + jsondata);                   //
-        RFFieldDatabase.AddNewEntry(jsondata);                          // Insert data into database
+        RFFieldDatabase.AddNewEntry(jsondata, true);                    // Insert data into database, with FT
 
         System.out.println("")                      ;                   //
         System.out.println("ListDataByEntryID Test:");                  // Perform test of ListDataByEntryID
