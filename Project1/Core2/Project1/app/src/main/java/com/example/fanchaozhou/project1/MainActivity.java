@@ -1,6 +1,5 @@
 package com.example.fanchaozhou.project1;
 
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +16,6 @@ public class MainActivity extends AppCompatActivity {
     private SettingsFragment settingsFrag;
     private MainFragment mainFrag;
     private AboutUsFragment aboutFrag;
-    private Fragment curFrag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +25,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mainFrag = new MainFragment();
-        settingsFrag = new SettingsFragment();
-        aboutFrag = new AboutUsFragment();
-
         if (savedInstanceState == null/*When the app has just started*/) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, mainFrag)  //Start a main fragment
+                    .add(R.id.container, mainFrag = new MainFragment())  //Start a main fragment
                     .commit();
-            curFrag = mainFrag;
         }
     }
 
@@ -54,38 +47,27 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        if(mainFrag.isVisible()){
-            curFrag = mainFrag;
-        } else if(settingsFrag.isVisible()){
-            curFrag = settingsFrag;
-        } else if(aboutFrag.isVisible()){
-            curFrag = aboutFrag;
-        }
-
-        if (id==R.id.action_settings && curFrag!=settingsFrag) {
+        if (id==R.id.action_settings) {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.remove(curFrag);
+            transaction.addToBackStack(null);
             transaction.replace(R.id.container, settingsFrag = new SettingsFragment());  //Start a settings fragment
             transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN ).show(settingsFrag);
-            transaction.addToBackStack(null);
             transaction.commit();
 
             return true;
-        } else if(id==R.id.action_about_us && curFrag!=aboutFrag){
+        } else if(id==R.id.action_about_us){
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.remove(curFrag);
+            transaction.addToBackStack(null);
             transaction.replace(R.id.container, aboutFrag = new AboutUsFragment());  //Start an about-us fragment
             transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_FADE ).show(aboutFrag);
-            transaction.addToBackStack(null);
             transaction.commit();
 
             return true;
-        } else if(id==R.id.action_data && curFrag!=mainFrag){
+        } else if(id==R.id.action_data){
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.remove(curFrag);
+            transaction.addToBackStack(null);
             transaction.replace(R.id.container, mainFrag = new MainFragment());  //Start a main fragment
             transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_FADE ).show(mainFrag);
-            transaction.addToBackStack(null);
             transaction.commit();
 
             return true;
