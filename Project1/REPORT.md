@@ -69,5 +69,13 @@ jsondata = RFFieldDatabase.ListDataByGeoArea(30.0F, -97.0F, 31.0F, -96.0F);
 For more detail on the API of the class please go here:<br>
 https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/API_SQLDatabase.md
 
+The source files for the class libary are:
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/WebApp/RFDatabase/src/RFFieldSQLDatabase.java
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/WebApp/RFDatabase/src/RFData.java
+
+The library is tested using these files:
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/WebApp/RFDatabase/src/Main.java
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/WebApp/RFDatabase/src/LatLong.java
+
 
 ###Interpolation Algorithm
