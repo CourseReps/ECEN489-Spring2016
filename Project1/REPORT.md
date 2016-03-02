@@ -7,6 +7,7 @@ The objective of this project is to use a handheld android device with an antenn
 ##App Development  
 
 ###App and Fragmentation  
+----
 This is a single-activity, multi-fragment app. Basically, there's only one activity running in the app, while the three fragments in this app can be swapped in and out, in order to provide different user interfaces on the screen. The three fragments are:
 * Main Fragment
 * Settings Fragment
@@ -63,8 +64,10 @@ clearData uses the SQLiteDatabase method delete() to delete all rows from the ta
 The full class can be found here: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/DBAccess.java
 
 ###USB Connection  
+----
 
 ###HTTPpost  
+----
 The HTTP POST routine takes a given JSONObject (which contains a line of data from the local database) and pushes it to the remote server using an HTTP POST request. The user must specify the remote server URL in the app's settings. This routine was provided as a single function placed in the MainFragment code and was called from a button click handler. This button was provided for the user to specify when to push all unsent data to the remote database. On a click event, the button handler obtains an array of all unsent database lines and loops through and sends each one to the server. The POST method is launched in a separate thread using Java's standard Thread object.  
 
 Send data method, placed in MainFragment:
@@ -75,6 +78,7 @@ protected void sendHTTPdata(JSONObject json, String serverAddress)
 
 
 ###DATA Collection and Formatting  
+----
 This section of the app collects all the data from the different parts of the app and formats it into a JSON object with the correct data types.
 ```javascript
 private static String transmitID = "";
@@ -161,8 +165,10 @@ https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/XBEE/src%2
 ##Server Implementation and Data Processing
 
 ###Tomcat Server  
+----
 
 ###Tomcat DB Interaction - John Lusher II 
+----
 For this portion of the project I focused on the development of a Java class library that could be called by a Java application and would:
 * Connect to a MySQL database given a host address (i.e. localhost)
 * Enable adding of data to the SQL database by just passing a JSON formatted string
@@ -217,6 +223,7 @@ https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/WebApp/RFD
 
 
 ###Interpolation Algorithm
+----
 
 The source code for the Algorithm and Mapping Visualization is under <br>
 https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Students/akashatnitr/Project1/ECEN689Project1 <br>
