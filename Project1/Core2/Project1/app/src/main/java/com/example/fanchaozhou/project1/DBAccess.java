@@ -261,3 +261,5 @@ public class DBAccess extends SQLiteOpenHelper{
     }
 }
 
+/* Make sure to use close() method when finished to prevent memory leaks */
+
