@@ -38,6 +38,8 @@ public void clearData()
 ```
 clearData uses the SQLiteDatabase method delete() to delete all rows from the table.
 
+The full class can be found here: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/DBAccess.java
+
 ###USB Connection  
 
 ###HTTPpost  
