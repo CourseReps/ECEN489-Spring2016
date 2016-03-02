@@ -1,6 +1,7 @@
 #Project1
 
-##Synopsis  
+##Synopsis 
+The objective of this project is to use a 
 
 
 ##App Development  
@@ -73,8 +74,34 @@ protected void sendHTTPdata(JSONObject json, String serverAddress)
 
 
 
-###DATA Collection and Formating  
-
+###DATA Collection and Formatting  
+This section of the app collects all the data from the different parts of the app and formats it into a JSON object with the correct data types.
+```javascript
+private static String transmitID = "";
+    private static float RSSI = 0;
+    private static String receiveID = "";
+    private static double latitude = 0;
+    private static double longitude = 0;
+    private static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private static float yaw = 0;
+    private static float pitch = 0;
+    private static float roll = 0;
+```
+```javascript
+pulldata(transmitID, RSSI, receiveID, orient);
+            JSONObject dbdata = new JSONObject();
+            dbdata.put("XbeeID", transmitID);
+            dbdata.put("RSSI", RSSI);
+            dbdata.put("DeviceID", receiveID);
+            dbdata.put("Latitude", latitude);
+            dbdata.put("Longitude", longitude);
+            dbdata.put("Yaw", yaw);
+            dbdata.put("Pitch", pitch);
+            dbdata.put("Roll", roll);
+            dbdata.put("SampleDate", timestampst);
+            data2.addData(dbdata);
+```
+It is split up into two different functions. A pulldata function and a pushtodb function. The pull data function returns an array of strings in order to easily display updated information on the user interface. The pushtodb function creates a JSON object and pushes it to the local database with the correct data types.
 ###IMU and GPS Data  
 
 ##Antenna Setup  
