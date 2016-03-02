@@ -66,8 +66,8 @@ The full class can be found here: https://github.com/CourseReps/ECEN489-Spring20
 ###HTTPpost  
 The HTTP POST routine takes a given JSONObject (which contains a line of data from the local database) and pushes it to the remote server using an HTTP POST request. The user must specify the remote server URL in the app's settings. This routine was provided as a single function placed in the MainFragment code and was called from a button click handler. This button was provided for the user to specify when to push all unsent data to the remote database. On a click event, the button handler obtains an array of all unsent database lines and loops through and sends each one to the server. The POST method is launched in a separate thread using Java's standard Thread object.  
 
-Send data method, placed in MainFragment
-```
+Send data method, placed in MainFragment:
+```javascript
 protected void sendHTTPdata(JSONObject json, String serverAddress)
 ```
 
