@@ -1,7 +1,6 @@
 #Project1
 
 ##Synopsis 
-----
 The objective of this project is to use a handheld android device with an antenna attached in order to interpolate an RF field over a geographical area. We are doing this by GPS location, Recieved Signal Strength, and 3-dimensional orientation of the device. We have a transmission antenna connected to a teensy that is sending datapackets continuously. On the otherside we have a reciever connected to a teensy that has been attached to the android device. This takes the RSSI data and transmitts it via USB to the android device. Once in the android device it is collected and pushed to a local database. After all the data we want has been collected over a large area and we have returned to a wi-fi environment we push all the data from the local database to a server. This is for data processing and so that we can have multiple devices collecting data for the database. 
 
 
@@ -110,7 +109,7 @@ pulldata(transmitID, RSSI, receiveID, orient);
 ```
 It is split up into two different functions. A pulldata function and a pushtodb function. The pull data function returns an array of strings in order to easily display updated information on the user interface. The pushtodb function creates a JSON object and pushes it to the local database with the correct data types.
 ###IMU and GPS Data  
-
+----
 ##Antenna Setup  
 ----
 The configuration of XBEE
