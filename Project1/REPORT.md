@@ -125,7 +125,7 @@ Data
 ```javascript
 {
 ID of Transmitter: 78(Defined in Transmitter)
-ID of Transmitter: 87(Defined in Receiver)
+ID of Receiver: 87(Defined in Receiver)
 Random number: 0 ~ 255
 RSSI
 } 
