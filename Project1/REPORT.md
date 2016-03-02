@@ -197,6 +197,7 @@ And from the AndroidMansifest.xml file that was integrated into the core app, we
 ```
 	<uses-permission android:name="android.permission.INTERNET" />
     	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+```
     	
 ----
 ##Antenna Setup  
