@@ -110,7 +110,7 @@ It is split up into two different functions. A pulldata function and a pushtodb 
 ###IMU and GPS Data  
 ----
 ##Antenna Setup  
-----
+
 The configuration of XBEE
 
 * The function set should be XBee Pro 802.15.4 10ef.
