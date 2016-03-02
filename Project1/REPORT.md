@@ -5,7 +5,28 @@
 
 ##App Development  
 
-###App/Fragmentation  
+###App and Fragmentation  
+This is a single-activity, multi-fragment app. Basically, there's only one activity running in the app, while the three fragments in this app can be swapped in and out, in order to provide different user interfaces on the screen. The three fragments are:
+* Main Fragment
+* Settings Fragment
+* AboutUs Fragment
+
+The main fragment is where the app starts. It extends Fragment Class. The layout of this fragment is in: ``` /res/layout/fragment_main.xml ```. Basically, there are three buttons and a scrollable list(defined as a ListView object) on the main fragment. The format of entries in the scrollable list is defined in ``` /res/layout/single_record.xml ```. The three buttons are "refresh", "clear all" and "connecting to server". The "refresh" button triggers a new data collection, displays the lastest data at the top of the scrollable list(completed by Chaance, Keaton, Paul and Fanchao), and pushes the data to the local SQLite database(completed by Sam). The "clear all" button clears all the existing data on the screen(but does NOT affect the data in the database)(completed by Fanchao). The "connecting to server" button launches a new thread for data transmission(completed by Thomas). 
+<br>
+The settings fragment is for the user to set the server address. It extends PreferenceFragment Class. The format of this entry(officially called a 'preference') is defined in ``` /res/xml/pref_general.xml ```. In the main fragment, in order to connect to the server, the following code is used to read the server address set by the user:
+```javascript
+SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+final String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
+```
+The AboutUs fragment is just a brief, scrollable introduction to the project. It extends Fragment Class. The layout is defined in ```/res/layout/fragment_about_us.xml```. And the "about us" file is stored in ``` /res/raw/aboutus ```
+<br>
+The choices of these three fragments are in the main menu, which will pop out if the top right menu button is clicked. The format of the menu is defined in ``` /res/menu/menu_main.xml ```. And since the menu is set up in the main activity, it's visible in every fragment. The historical records of fragments can also be traced back by clicking on the BACK button on the left bottom corner. 
+<br>
+The following are the links to the code:
+The main activity: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/MainActivity.java<br>
+The main fragment: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/MainFragment.java<br>
+The settings fragment: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/SettingsFragment.java<br>
+The AboutUs fragment: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/AboutUsFragment.java<br>
 
 ###Local Android Database  
 The local database stores received data locally on the android device using an SQLite database. This allows the device to wait until it connects to wifi and is ready to push the data to the server. The database is implemented with the DBAccess class, which extends the SQLiteOpenHelper class. A connection to the database is established when an object of the class is instantiated. This is done via the constructor, which will create or open a database with the name passed to it. When the class is instantiated, it will automatically create a data table in the database using the SQLiteOpenHelper method, onCreate(SQLiteDatabase db). The columns of the table include:
