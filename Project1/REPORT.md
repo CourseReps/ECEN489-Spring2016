@@ -114,7 +114,7 @@ In this section, we will discuss the function that will call the GPS (Global Pos
 From this class, the latitude and longitude was able to be pulled and integrated into the main core app. 
 
 ```
-```java
+```javascript
 package com.example.chaance.gpstracker;
 
 import android.Manifest;
@@ -197,6 +197,7 @@ And from the AndroidMansifest.xml file that was integrated into the core app, we
 ```
 	<uses-permission android:name="android.permission.INTERNET" />
     	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    	
 ----
 ##Antenna Setup  
 
