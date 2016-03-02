@@ -120,10 +120,10 @@ The configuration of XBEE
 (We set API mode to API escaped operating mode) : API escaped operating mode (AP = 2) works similarly to API mode. The only 		difference is that when working in API escaped mode, some bytes of the API frame specific data must be escaped.
 * Address: 
 ```javascript
-	Destionation Address High of Transmitter: 0013A200
-	Destionation Address Low of Transmitter: 40C556C5
-	Destionation Address High of Receiver: 0013A200
-	Destionation Address Low of Receiver: 40C556CE
+	Destination Address High of Transmitter: 0013A200
+	Destination Address Low of Transmitter: 40C556C5
+	Destination Address High of Receiver: 0013A200
+	Destination Address Low of Receiver: 40C556CE
 	16-bit Source Address of Receiver: 0817
 	16-bit Source Address of Receiver: default
 ```
