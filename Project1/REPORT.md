@@ -332,3 +332,4 @@ The UI has components
 * Longitude - Enter the longitude for which the RSSI values need to be computed
 * The text label show the location and RSSI values
 * You have to add location for transmitter by default it takes the EIC location.
+* Image Link <br> https://www.dropbox.com/s/6wrxh9tr52ujkkz/Screen%20Shot%202016-03-02%20at%202.55.08%20PM.png?dl=0
