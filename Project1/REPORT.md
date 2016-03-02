@@ -67,33 +67,6 @@ The full class can be found here: https://github.com/CourseReps/ECEN489-Spring20
 ###USB Connection  
 ----
 
-The USB serial connection opens a serial port between the Teensy LC and the Android phone. It works by taking the XBee data in JSON "String" format and passing it to the Android device serial port. 
-
-* USB OTG
-
-USB OTG, implemented in Android 3.0+ and gives the phone the ability to be a host of the USB connection - where the phone is normally an accessory/slave. USB OTG tells the phone to 'power' a device as an accessory. In some cases, you will need external power source for larger devices such as the Arduino with some sketches.
-
-The serial port is opened with the application, and by default it is opened with the serial device list "devices.xml".
-
- [device_filter.xml](http://usb-serial-for-android.googlecode.com/git/UsbSerialExamples/res/xml/device_filter.xml) to your project's `res/xml/` directory.
-
-Then --
-
-```xml
-<activity
-    android:name="..."
-    ...>
-  <intent-filter>
-    <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
-  </intent-filter>
-  <meta-data
-      android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" 
-      android:resource="@xml/device_filter" />
-</activity>
-```
-
-We also need to give permission to the android application to access the USB device where the phone is in hostmode.
-
 ###HTTPpost  
 ----
 The HTTP POST routine takes a given JSONObject (which contains a line of data from the local database) and pushes it to the remote server using an HTTP POST request. The user must specify the remote server URL in the app's settings. This routine was provided as a single function placed in the MainFragment code and was called from a button click handler. This button was provided for the user to specify when to push all unsent data to the remote database. On a click event, the button handler obtains an array of all unsent database lines and loops through and sends each one to the server. The POST method is launched in a separate thread using Java's standard Thread object.  
@@ -134,10 +107,99 @@ pulldata(transmitID, RSSI, receiveID, orient);
             data2.addData(dbdata);
 ```
 It is split up into two different functions. A pulldata function and a pushtodb function. The pull data function returns an array of strings in order to easily display updated information on the user interface. The pushtodb function creates a JSON object and pushes it to the local database with the correct data types.
+
 ###IMU and GPS Data  
+
+In this section, we will discuss the function that will call the GPS (Global Positioning System) Data and IMU (Inertial Measurement Unit) data. Android platforms have the data GPS and IMU (under SensorManager) within the System Fuctions. As you can see below is the class written noted as GPSTracker.java.
+From this class, the latitude and longitude was able to be pulled and integrated into the main core app. 
+
+```
+```java
+package com.example.chaance.gpstracker;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.provider.Settings;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityCompat;
+import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends Activity implements LocationListener {
+
+    private LocationManager locationManager;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                2000, 1, this);
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+        String msg = "New Latitude: " + location.getLatitude()    // <------- This data was pulled
+                + "New Longitude: " + location.getLongitude();	  // <------- This data was pulled
+
+        Toast.makeText(getBaseContext(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivity(intent);
+        Toast.makeText(getBaseContext(), "Gps is turned off!! ",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+        Toast.makeText(getBaseContext(), "Gps is turned on!! ",
+                Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+        // TODO Auto-generated method stub
+
+    }
+
+}
+```
+And from the AndroidMansifest.xml file that was integrated into the core app, we needed provide permission for GPS to be accessed.
+```
+	<uses-permission android:name="android.permission.INTERNET" />
+    	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ----
 ##Antenna Setup  
-----
+
 The configuration of XBEE
 
 * The function set should be XBee Pro 802.15.4 10ef.
@@ -147,10 +209,10 @@ The configuration of XBEE
 (We set API mode to API escaped operating mode) : API escaped operating mode (AP = 2) works similarly to API mode. The only 		difference is that when working in API escaped mode, some bytes of the API frame specific data must be escaped.
 * Address: 
 ```javascript
-	Destionation Address High of Transmitter: 0013A200
-	Destionation Address Low of Transmitter: 40C556C5
-	Destionation Address High of Receiver: 0013A200
-	Destionation Address Low of Receiver: 40C556CE
+	Destination Address High of Transmitter: 0013A200
+	Destination Address Low of Transmitter: 40C556C5
+	Destination Address High of Receiver: 0013A200
+	Destination Address Low of Receiver: 40C556CE
 	16-bit Source Address of Receiver: 0817
 	16-bit Source Address of Receiver: default
 ```
@@ -269,4 +331,3 @@ The UI has components
 * Longitude - Enter the longitude for which the RSSI values need to be computed
 * The text label show the location and RSSI values
 * You have to add location for transmitter by default it takes the EIC location.
-* Image Link https://www.dropbox.com/s/6wrxh9tr52ujkkz/Screen%20Shot%202016-03-02%20at%202.55.08%20PM.png?dl=0
