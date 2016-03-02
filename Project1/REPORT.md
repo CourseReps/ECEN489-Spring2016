@@ -67,6 +67,33 @@ The full class can be found here: https://github.com/CourseReps/ECEN489-Spring20
 ###USB Connection  
 ----
 
+The USB serial connection opens a serial port between the Teensy LC and the Android phone. It works by taking the XBee data in JSON "String" format and passing it to the Android device serial port. 
+
+* USB OTG
+
+USB OTG, implemented in Android 3.0+ and gives the phone the ability to be a host of the USB connection - where the phone is normally an accessory/slave. USB OTG tells the phone to 'power' a device as an accessory. In some cases, you will need external power source for larger devices such as the Arduino with some sketches.
+
+The serial port is opened with the application, and by default it is opened with the serial device list "devices.xml".
+
+ [device_filter.xml](http://usb-serial-for-android.googlecode.com/git/UsbSerialExamples/res/xml/device_filter.xml) to your project's `res/xml/` directory.
+
+Then --
+
+```xml
+<activity
+    android:name="..."
+    ...>
+  <intent-filter>
+    <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+  </intent-filter>
+  <meta-data
+      android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" 
+      android:resource="@xml/device_filter" />
+</activity>
+```
+
+We also need to give permission to the android application to access the USB device where the phone is in hostmode.
+
 ###HTTPpost  
 ----
 The HTTP POST routine takes a given JSONObject (which contains a line of data from the local database) and pushes it to the remote server using an HTTP POST request. The user must specify the remote server URL in the app's settings. This routine was provided as a single function placed in the MainFragment code and was called from a button click handler. This button was provided for the user to specify when to push all unsent data to the remote database. On a click event, the button handler obtains an array of all unsent database lines and loops through and sends each one to the server. The POST method is launched in a separate thread using Java's standard Thread object.  
@@ -110,7 +137,7 @@ It is split up into two different functions. A pulldata function and a pushtodb 
 ###IMU and GPS Data  
 ----
 ##Antenna Setup  
-
+----
 The configuration of XBEE
 
 * The function set should be XBee Pro 802.15.4 10ef.
@@ -120,10 +147,10 @@ The configuration of XBEE
 (We set API mode to API escaped operating mode) : API escaped operating mode (AP = 2) works similarly to API mode. The only 		difference is that when working in API escaped mode, some bytes of the API frame specific data must be escaped.
 * Address: 
 ```javascript
-	Destination Address High of Transmitter: 0013A200
-	Destination Address Low of Transmitter: 40C556C5
-	Destination Address High of Receiver: 0013A200
-	Destination Address Low of Receiver: 40C556CE
+	Destionation Address High of Transmitter: 0013A200
+	Destionation Address Low of Transmitter: 40C556C5
+	Destionation Address High of Receiver: 0013A200
+	Destionation Address Low of Receiver: 40C556CE
 	16-bit Source Address of Receiver: 0817
 	16-bit Source Address of Receiver: default
 ```
