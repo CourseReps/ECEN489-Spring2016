@@ -66,7 +66,6 @@ The configuration of XBEE
 	16-bit Source Address of Receiver: default
 ```
 Data
-
 ```javascript
 {
 ID of Transmitter: 78(Defined in Transmitter)
