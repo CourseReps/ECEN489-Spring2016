@@ -100,6 +100,8 @@ public class MainFragment extends Fragment {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     final String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
+
+                    //code block from tbranyon
                     Thread t = new Thread() {
 						public void run() {
                             JSONArray JSONlist = dbHandle.getUnsentData();
@@ -126,6 +128,7 @@ public class MainFragment extends Fragment {
         return rootView;
     }
     
+    //tbranyon: Method for sending JSON lines from local DB to server
     protected void sendHTTPdata(JSONObject json, String serverAddress)
 	{
 		final String data = json.toString();
