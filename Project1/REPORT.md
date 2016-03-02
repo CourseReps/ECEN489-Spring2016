@@ -171,7 +171,7 @@ The major parts of the project done by me were
 * Getting the data from SQL database and create RFData objects  and pushing into the hashmap
 * Distance matrix of all points and finding the 3 nearest distance points from the point of interest and finding the RSSI
 * Point markers at each point with color shadding for RSSI values
-<br>
+<br> <br>
 The UI has components 
 * Latitude - Enter the latitute for which the RSSI values need to be computed
 * Longitude - Enter the longitude for which the RSSI values need to be computed
