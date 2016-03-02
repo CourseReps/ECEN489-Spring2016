@@ -161,3 +161,19 @@ https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/WebApp/RFD
 
 
 ###Interpolation Algorithm
+
+The source code for the Algorithm and Mapping Visualization is under <br>
+https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Students/akashatnitr/Project1/ECEN689Project1 <br>
+
+The major parts of the project done by me were
+* GUI based on Applet and Map library
+* Algorithms to estimate the RSSI at any distance from the transmitter
+* Getting the data from SQL database and create RFData objects  and pushing into the hashmap
+* Distance matrix of all points and finding the 3 nearest distance points from the point of interest and finding the RSSI
+* Point markers at each point with color shadding for RSSI values
+<br>
+The UI has components 
+* Latitude - Enter the latitute for which the RSSI values need to be computed
+* Longitude - Enter the longitude for which the RSSI values need to be computed
+* The text label show the location and RSSI values
+* You have to add location for transmitter by default it takes the EIC location.
