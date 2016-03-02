@@ -5,7 +5,6 @@ The objective of this project is to use a handheld android device with an antenn
 
 
 ##App Development  
-----
 
 ###App and Fragmentation  
 ----
