@@ -30,7 +30,8 @@ The main fragment: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/
 The settings fragment: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/SettingsFragment.java<br>
 The AboutUs fragment: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/AboutUsFragment.java<br>
 
-###Local Android Database  
+###Local Android Database 
+----
 The local database stores received data locally on the android device using an SQLite database. This allows the device to wait until it connects to wifi and is ready to push the data to the server. The database is implemented with the DBAccess class, which extends the SQLiteOpenHelper class. A connection to the database is established when an object of the class is instantiated. This is done via the constructor, which will create or open a database with the name passed to it. When the class is instantiated, it will automatically create a data table in the database using the SQLiteOpenHelper method, onCreate(SQLiteDatabase db). The columns of the table include:
 * Xbee ID - the ID of the Xbee device transmitting the signal
 * Device ID - the ID of the Android device receiving the transmitted data
@@ -109,6 +110,7 @@ It is split up into two different functions. A pulldata function and a pushtodb 
 ###IMU and GPS Data  
 
 ##Antenna Setup  
+----
 The configuration of XBEE
 
 * The function set should be XBee Pro 802.15.4 10ef.
