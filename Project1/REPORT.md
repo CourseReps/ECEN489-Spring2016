@@ -49,7 +49,60 @@ The full class can be found here: https://github.com/CourseReps/ECEN489-Spring20
 ###IMU and GPS Data  
 
 ##Antenna Setup  
+The configuration of XBEE
 
+* The function set should be XBee Pro 802.15.4 10ef.
+* The PAN ID and the channel of two XBees should be the same.
+* We set both XBee as end device.
+* Radio module operating modes: 1. Application Transparent (AT) operating mode. 2. API operating mode. 3. API escaped operating mode 
+(We set API mode to API escaped operating mode) : API escaped operating mode (AP = 2) works similarly to API mode. The only 		difference is that when working in API escaped mode, some bytes of the API frame specific data must be escaped.
+* Address: 
+```javascript
+	Destionation Address High of Transmitter: 0013A200
+	Destionation Address Low of Transmitter: 40C556C5
+	Destionation Address High of Receiver: 0013A200
+	Destionation Address Low of Receiver: 40C556CE
+	16-bit Source Address of Receiver: 0817
+	16-bit Source Address of Receiver: default
+```
+Data
+
+```javascript
+{
+ID of Transmitter: 78(Defined in Transmitter)
+ID of Transmitter: 87(Defined in Receiver)
+Random number: 0 ~ 255
+RSSI
+} 
+```
+The communication setup
+
+To initialize the serial port
+```javascript
+void setup() {
+	  // put your setup code here, to run once:
+	  Serial.begin(baud);
+	  Serial3.begin(baud);
+	  xbee.setSerial(Serial3);
+	  pinMode(ledPin, OUTPUT);
+}
+```	
+XBee- arduino API:
+https://github.com/leoyyx2009/xbee-arduino
+* Send data:
+```javascript
+  Tx16Request Tx16 = Tx16Request(0x0817, payload, sizeof(payload));
+  xbee.send(Tx16);
+```
+* Receive data:
+```javascript
+  xbee.readPacket();
+  xbee.getResponse().getRx16Response(rx16);
+```
+* Source code of transmitter:
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/XBEE/src%20of%20TX/TX.ino
+* Source code of receiver:
+https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/XBEE/src%20of%20RX/RX.ino
 
 ##Server Implementation and Data Processing
 
