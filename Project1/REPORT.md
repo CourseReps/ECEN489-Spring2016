@@ -3,28 +3,28 @@
 ##Synopsis  
 
 
-##App development  
+##App Development  
 
 ###App/Fragmentation  
 
-###Local Database  
+###Local Android Database  
 
-###USB connection  
+###USB Connection  
 
 ###HTTPpost  
 
-###DATA collection and formating  
+###DATA Collection and Formating  
 
 ###IMU and GPS Data  
 
-##Antenna setup  
+##Antenna Setup  
 
 
-##Server Implementation  and Data processing
+##Server Implementation and Data Processing
 
 ###Tomcat Server  
 
-###Tomcat DB interaction - John Lusher II 
+###Tomcat DB Interaction - John Lusher II 
 For this portion of the project I focused on the development of a Java class library that could be called by a Java application and would:
 * Connect to a MySQL database given a host address (i.e. localhost)
 * Enable adding of data to the SQL database by just passing a JSON formatted string
