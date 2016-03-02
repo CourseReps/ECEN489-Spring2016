@@ -8,6 +8,35 @@
 ###App/Fragmentation  
 
 ###Local Android Database  
+The local database stores received data locally on the android device. This allows the device to wait until it connects to wifi and is ready to push the data to the server. The database is implemented with the DBAccess class, which extends the SQLiteOpenHelper class. A connection to the database is established when an object of the class is instantiated. This is done via the constructor, which will create or open a database with the name passed to it. When the class is instantiated, it will automatically create a data table in the database using the SQLiteOpenHelper method, onCreate(SQLiteDatabase db). The columns of the table include:
+* Xbee ID - the ID of the Xbee device transmitting the signal
+* Device ID - the ID of the Android device receiving the transmitted data
+* RSSI - the strength of the received signal
+* Latitude - the Latitude coordinate of the Android device at the time it receives the signal
+* Longitude - the Latitude coordinate of the Android device at the time it receives the signal
+* Yaw - The yaw of the Android device at the time it receives the signal
+* Pitch - The pitch of the Android device at the time it receives the signal
+* Roll - The roll of the Android device at the time it receives the signal
+* Sample Date - The time and date at which the signal is received
+* Sent - An internal field to indicate whether or not the data has been sent to the server
+
+DBAccess contains methods to store data, retreive data that has not yet been sent to the server, retreive all stored data, and clear the table. These methods are listed and explained below:
+```javascript
+public boolean addData(JSONObject data)
+```
+This method accepts a JSON object parameter. The JSON object should include all of the data to be stored in the database, excluding the sent field. The method parses the object and uses the ContentValues and SQLiteDatabase classes to insert the data into the database. If the add is successful, the method will return true.
+```javascript
+public JSONArray getUnsentData()
+```
+This method uses the SQLiteDatabase and Cursor classes to perform a query on the database for all rows that are not marked as sent. It then stores each row in a JSON object (again, excluding the sent field). Each JSON object is then stored in a JSON array, which is returned by the method. The rows in the database that were retreived are marked as sent with an sql update.
+```javascript
+public JSONArray getAllData()
+```
+This method functions the same as getUnsentData, except it queries for all data rather than just the unsent data.
+```javascript
+public void clearData()
+```
+clearData uses the SQLiteDatabase method delete() to delete all rows from the table.
 
 ###USB Connection  
 
