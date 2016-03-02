@@ -77,7 +77,6 @@ RSSI
 ```
 The communication setup
 
-To initialize the serial port
 ```javascript
 void setup() {
 	  // put your setup code here, to run once:
