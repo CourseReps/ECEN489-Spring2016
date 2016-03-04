@@ -66,3 +66,4 @@ Screens:
     * Data from Fusion Table (tabs to switch between)
         * As map
         * As table
+    * Allow user to select from Fusion Tables in dropdown
