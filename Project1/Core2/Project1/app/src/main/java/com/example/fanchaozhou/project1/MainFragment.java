@@ -1,8 +1,13 @@
 package com.example.fanchaozhou.project1;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
 import android.os.AsyncTask;
@@ -34,7 +39,7 @@ import java.util.List;
 /**
  * Created by Fanchao Zhou on 2/22/2016.
  */
-public class MainFragment extends Fragment {
+public class MainFragment extends Fragment implements SensorEventListener {
 
     private ArrayList<String> dataList;
     private ArrayAdapter<String> dataListAdaptor;
@@ -45,6 +50,11 @@ public class MainFragment extends Fragment {
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
+    private SensorManager senSensorManager;
+    private Sensor senAccelerometer;
+    private float x = 0;
+    private float y = 0;
+    private float z = 0;
 
     public MainFragment(){
         dataList = new ArrayList<>();
@@ -63,7 +73,9 @@ public class MainFragment extends Fragment {
             );
 
             dbHandle = new DBAccess(this.getActivity());
-
+            senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
+            senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+            senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
             // Find all available drivers from attached devices.
             UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
             List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
@@ -106,6 +118,23 @@ public class MainFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        Sensor mySensor = event.sensor;
+
+        if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
+            x = event.values[0];
+            y = event.values[1];
+            z = event.values[2];
+
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
     private class PullData extends AsyncTask<Void, Void, ArrayList<String>>{
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
@@ -135,7 +164,7 @@ public class MainFragment extends Fragment {
                 System.out.println(e);
             }
 
-            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, imu);
+            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, x, y, z);
             dataFunc.pushtodb(dbHandle);
 
             return data;

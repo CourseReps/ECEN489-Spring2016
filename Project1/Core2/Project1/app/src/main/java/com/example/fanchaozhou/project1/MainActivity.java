@@ -1,6 +1,9 @@
 package com.example.fanchaozhou.project1;
 
 import android.app.FragmentTransaction;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,7 +14,7 @@ import android.view.MenuItem;
  * Created by Fanchao Zhou on 2/21/2016.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private SettingsFragment settingsFrag;
     private MainFragment mainFrag;
@@ -84,4 +87,5 @@ public class MainActivity extends AppCompatActivity {
             super.onBackPressed();
         }
     }
+
 }

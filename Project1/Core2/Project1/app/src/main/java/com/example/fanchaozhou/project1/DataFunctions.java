@@ -18,9 +18,9 @@ import org.json.JSONObject;
  * Created by keatonbrown on 2/22/16.
  */
 public class DataFunctions{
-    private String transmitID = "";
+    private String transmitID = "5";
     private double RSSI = 0;
-    private String receiveID = "";
+    private String receiveID = "6";
     private double latitude = 0;
     private double longitude = 0;
     private DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -54,7 +54,7 @@ public class DataFunctions{
     }
 
 
-    public ArrayList<String> pulldata(String transmitIDs, double RSSIs, String receiveIDs, float[] imus){
+    public ArrayList<String> pulldata(String transmitIDs, double RSSIs, String receiveIDs, float x, float y, float z){
         location();
         /*
         float[] orient = new float[3];
@@ -66,15 +66,14 @@ public class DataFunctions{
         transmitID = transmitIDs;
         RSSI = RSSIs;
         receiveID = receiveIDs;
-        imu = imus;
-        yaw = imu[0];
-        pitch = imu[1];
-        roll = imu[2];
+        yaw = x;
+        pitch = y;
+        roll = z;
         orient = imu;
 
         rssist = Double.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
-        imust = Float.toString(imu[0]) + " " + Float.toString(imu[1]) + " " + Float.toString(imu[2]);
+        imust = Float.toString(yaw) + " " + Float.toString(pitch) + " " + Float.toString(roll);
         timestampst = timestamp.format(Calendar.getInstance().getTime());
         data.add(transmitID);
         data.add(rssist);
@@ -87,7 +86,7 @@ public class DataFunctions{
 
     public void pushtodb(DBAccess data2){
         try {
-            pulldata(transmitID, RSSI, receiveID, orient);
+            pulldata(transmitID, RSSI, receiveID, yaw, pitch, roll);
             JSONObject dbdata = new JSONObject();
             dbdata.put("XbeeID", transmitID);
             dbdata.put("RSSI", RSSI);
