@@ -15,14 +15,31 @@ This is a single-activity, multi-fragment app. Basically, there's only one activ
 
 The main fragment is where the app starts. It extends Fragment Class. The layout of this fragment is in: ``` /res/layout/fragment_main.xml ```. Basically, there are three buttons and a scrollable list(defined as a ListView object) on the main fragment. The format of entries in the scrollable list is defined in ``` /res/layout/single_record.xml ```. The three buttons are "refresh", "clear all" and "connecting to server". The "refresh" button triggers a new data collection, displays the lastest data at the top of the scrollable list(completed by Chaance, Keaton, Paul and Fanchao), and pushes the data to the local SQLite database(completed by Sam). The "clear all" button clears all the existing data on the screen(but does NOT affect the data in the database)(completed by Fanchao). The "connecting to server" button launches a new thread for data transmission(completed by Thomas). 
 <br>
-The settings fragment is for the user to set the server address. It extends PreferenceFragment Class. The format of this entry(officially called a 'preference') is defined in ``` /res/xml/pref_general.xml ```. In the main fragment, in order to connect to the server, the following code is used to read the server address set by the user:
+The settings fragment is for the user to set the server address and the baud rate of the serial. It extends PreferenceFragment Class. The format of this entry(officially called a 'preference') is defined in ``` /res/xml/pref_general.xml ```. In the main fragment, in order to connect to the server, the following code is used to read the server address set by the user:
 ```javascript
 SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 final String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
 ```
+The way to get the user-set baud rate is similar.
+<br>
 The AboutUs fragment is just a brief, scrollable introduction to the project. It extends Fragment Class. The layout is defined in ```/res/layout/fragment_about_us.xml```. And the "about us" file is stored in ``` /res/raw/aboutus ```
 <br>
-The choices of these three fragments are in the main menu, which will pop out if the top right menu button is clicked. The format of the menu is defined in ``` /res/menu/menu_main.xml ```. And since the menu is set up in the main activity, it's visible in every fragment. The historical records of fragments can also be traced back by clicking on the BACK button on the left bottom corner. 
+In order to prevent the data pulling from blocking the main thread, a private class within the main fragment that extends AsyncTask is used for data collection:
+```javascript
+private class PullData extends AsyncTask<Void, Void, ArrayList<String>>
+```
+The first method in this class is:
+```javascript
+protected ArrayList<String> doInBackground(Void... params)
+```
+It's used for pulling data from the serial, imu and gps. Since the data from the serial is a JSON string, it also parses the string to get TX id, RX id and RSSI. After pulling data, the method pushes the data to the local database.
+The second method in the class is:
+```javascript
+protected void onPostExecute(ArrayList<String> data)
+```
+In this method, all the data are displayed on the screen as an entry in the scrollable list. 
+<br>
+The options of the three fragments are in the main menu, which will pop out if the top right menu button is clicked. The format of the menu is defined in ``` /res/menu/menu_main.xml ```. And since the menu is set up in the main activity, it's visible in every fragment. The historical records of fragments can also be traced back by clicking on the BACK button on the left bottom corner. 
 <br>
 The following are the links to the code:
 The main activity: https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/Core2/Project1/app/src/main/java/com/example/fanchaozhou/project1/MainActivity.java<br>
