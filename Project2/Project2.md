@@ -41,7 +41,6 @@ Screens:
         * Local RSS
         * External RSS
         * Gyro
-        * Mag
         * Compass
     * Server settings
         * Send rate (fixed values)
@@ -64,4 +63,6 @@ Screens:
     * Indicate connection status with WiFi and XBee sensor
         * Shows device ID of XBee/AP
 * Display
-    * Data from Fusion Table
+    * Data from Fusion Table (tabs to switch between)
+        * As map
+        * As table
