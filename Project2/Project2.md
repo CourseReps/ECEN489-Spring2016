@@ -69,3 +69,9 @@ Screens:
         * As map
         * As table
     * Allow user to select from Fusion Tables in dropdown
+
+
+##Individual Tasks  
+* Task 1 here
+* Task 2 here
+* ...
