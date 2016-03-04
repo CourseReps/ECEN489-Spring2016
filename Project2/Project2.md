@@ -31,3 +31,31 @@ Due Friday 3/11/16
     * Add visual feedback for orientation  
 * Add mapping/Fusion Table functionality on server and phone side  
 
+##Phone App Storyboarding Notes  
+Screens:  
+* About
+* Settings
+    * Rates for data measurement for live display
+        * GPS
+        * Local RSS
+        * External RSS
+        * Gyro
+        * Mag
+        * Compass
+    * Server settings
+        * Send rate (fixed values)
+        * Server Address
+        * Port Number
+        * Source 1 (AP) MAC Address
+        * Source 2 (XBee) ID
+* Data
+    * Displays on open
+    * Shows live update of sensor strength and orientation
+    * Graphical tool to help user determine if phone is oriented properly (e.g. "bubble level"-style graphic with indicator)
+    * Orientation use on/off
+    * Measures RSS when orientation is within some tolerance
+    * Button for manual operation
+    * Indicate connection status with WiFi and XBee sensor
+        * Shows device ID of XBee/AP
+* Display
+    * Data from Fusion Table 
