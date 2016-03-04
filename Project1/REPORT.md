@@ -95,7 +95,7 @@ We also need to give permission to the android application to access the USB dev
 
 We use the UsbManager class to construct an device manager object--
 
-```
+```javascript
 // Find all available drivers from attached devices.
 UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
 List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
@@ -107,7 +107,7 @@ if (availableDrivers.isEmpty()) {
 
 From which, we pick the first device.. usually the first device is the only one connected to the USB port. We open a connection object from the first driver device we choose--
 
-```
+```javascript
 / Open a connection to the first available driver.
 UsbSerialDriver driver = availableDrivers.get(0);
 UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
@@ -119,7 +119,7 @@ if (connection == null) {
 
 Then we read from the serial port connection.
 
-```
+```javascript
 // Read some data! Most have just one port (port 0).
 UsbSerialPort port = driver.getPort(0);
 port.open(connection);
