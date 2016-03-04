@@ -18,22 +18,22 @@ import org.json.JSONObject;
  * Created by keatonbrown on 2/22/16.
  */
 public class DataFunctions{
-    private static String transmitID = "";
-    private static float RSSI = 0;
-    private static String receiveID = "";
-    private static double latitude = 0;
-    private static double longitude = 0;
-    private static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private static float[] imu = new float[3];
-    private static String rssist = "";
-    private static String gpsst = "";
-    private static String imust = "";
-    private static String timestampst = "";
-    private static float yaw = 0;
-    private static float pitch = 0;
-    private static float roll = 0;
-    private static float[] orient = new float[3];
-    Context mContext;
+    private String transmitID = "";
+    private double RSSI = 0;
+    private String receiveID = "";
+    private double latitude = 0;
+    private double longitude = 0;
+    private DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private float[] imu = new float[3];
+    private String rssist = "";
+    private String gpsst = "";
+    private String imust = "";
+    private String timestampst = "";
+    private float yaw = 0;
+    private float pitch = 0;
+    private float roll = 0;
+    private float[] orient = new float[3];
+    private Context mContext;
 
     public DataFunctions(Context mContext){
         this.mContext = mContext;
@@ -54,7 +54,7 @@ public class DataFunctions{
     }
 
 
-    public ArrayList<String> pulldata(String transmitIDs, float RSSIs, String receiveIDs, float[] imus){
+    public ArrayList<String> pulldata(String transmitIDs, double RSSIs, String receiveIDs, float[] imus){
         location();
         /*
         float[] orient = new float[3];
@@ -72,7 +72,7 @@ public class DataFunctions{
         roll = imu[2];
         orient = imu;
 
-        rssist = Float.toString(RSSI);
+        rssist = Double.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
         imust = Float.toString(imu[0]) + " " + Float.toString(imu[1]) + " " + Float.toString(imu[2]);
         timestampst = timestamp.format(Calendar.getInstance().getTime());

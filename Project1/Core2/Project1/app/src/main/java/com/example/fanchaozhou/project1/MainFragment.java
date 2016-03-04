@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -35,13 +36,19 @@ import java.util.List;
  */
 public class MainFragment extends Fragment {
 
-    private ArrayList<String> dataList = new ArrayList<>();
+    private ArrayList<String> dataList;
     private ArrayAdapter<String> dataListAdaptor;
     private DBAccess dbHandle;
     private UsbSerialPort port;
     private int HTTP_SEND_STATUS = 0;
-    public final static int BUFSIZE = 64;
-    public final static int BAUDRATE = 9600;
+    public final static int BUFSIZE = 128;
+    private final static String RXID = "Receive ID";
+    private final static String TXID = "Transmit ID";
+    private final static String RSSI = "RSSI";
+
+    public MainFragment(){
+        dataList = new ArrayList<>();
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +64,6 @@ public class MainFragment extends Fragment {
 
             dbHandle = new DBAccess(this.getActivity());
 
-
             // Find all available drivers from attached devices.
             UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
             List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
@@ -72,7 +78,10 @@ public class MainFragment extends Fragment {
             port = portList.get(0);
             try{
                 port.open(connection);
-                port.setParameters(BAUDRATE, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+                int BaudRate = sharedPref.getInt(getString(R.string.pref_serial_baudrate_key),
+                        Integer.parseInt(getString(R.string.pref_http_default)));  //Get the Baud Rate
+                port.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
             } catch(Exception e) {
                 System.out.println(e);
             }
@@ -91,9 +100,59 @@ public class MainFragment extends Fragment {
         super.onDestroy();
 
         try {
-            port.close();
+            port.close();        //Release the serial port
         } catch (Exception e){
             System.out.println(e);
+        }
+    }
+
+    private class PullData extends AsyncTask<Void, Void, ArrayList<String>>{
+        @Override
+        protected ArrayList<String> doInBackground(Void... params) {
+            String serialJSONData;
+            String transmitID = null;
+            String receiveID = null;
+            double rssi = Float.NaN;
+            float[] imu = new float[ 3 ];
+            DataFunctions dataFunc = new DataFunctions(getActivity());
+            byte buffer[] = new byte[ BUFSIZE ];
+
+            try {
+                if(port != null){
+                    port.read(buffer, BUFSIZE);
+                    serialJSONData = new String(buffer, "UTF-8");
+                    try{
+                        JSONObject serialJSONObj = new JSONObject(serialJSONData);
+                        receiveID = serialJSONObj.getString(RXID);
+                        transmitID = serialJSONObj.getString(TXID);
+                        rssi = serialJSONObj.getDouble(RSSI);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
+                }
+            } catch
+                    (IOException e) {
+                System.out.println(e);
+            }
+
+            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, imu);
+            dataFunc.pushtodb(dbHandle);
+
+            return data;
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<String> data) {
+            dataList.add(0,
+                    "Transmitter ID: " + data.get(0) + "\n" +
+                            "Receiver ID: " + data.get(2) + "\n" +
+                            "TimeStamp: " + data.get(5) + "\n" +
+                            "RSSI: " + -Double.parseDouble(data.get(1)) + " dBm\n" +
+                            "Orientation: " + data.get(3) + "\n" +
+                            "Location: " + data.get(4)
+            );
+
+            dataListAdaptor.notifyDataSetChanged();
         }
     }
 
@@ -113,43 +172,21 @@ public class MainFragment extends Fragment {
                     dataListAdaptor.notifyDataSetChanged();
                 }
             });
+
             final Button button_refresh = (Button)rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    // TODO:Add code for DATA COLLECTION(From IMU, GPS and Serial) and PUSHING DATA INTO LOCAL DATABASE HERE
-                    //I've already added them below for testing, but I don't know if I did this correctly.
-                    byte buffer[] = new byte[ BUFSIZE ];
-                    String transmitID = null;
-                    try {
-                        port.read(buffer, BUFSIZE);
-                        transmitID = new String(buffer, "UTF-8");
-                    } catch (IOException e) {
-                        System.out.println(e);
-                    }
-                    DataFunctions dataFunc = new DataFunctions(getActivity());
-                    //String transmitID = "txid";
-                    float RSSI = 6;
-                    String receiveID = "rxid";
-                    float[] imu = {0,1,2};
-                    ArrayList<String> data = dataFunc.pulldata(transmitID, RSSI,receiveID,imu);
-                    dataFunc.pushtodb(dbHandle);
-                    dataList.add(0,
-                            "Transmitter ID: " + data.get(0) + "\n" +
-                                  //  "Receiver ID: " + data.get(2) + "\n" +
-                                    "TimeStamp: " + data.get(5) + "\n" +
-                                  //  "RSSI: " + data.get(1) + "\n" +
-                                    "Orientation: " + data.get(3) + "\n" +
-                                    "Location: " + data.get(4)
-                    );
-
-                    dataListAdaptor.notifyDataSetChanged();
+                    new PullData().execute();
                 }
             });
+
             final Button button_datatx = (Button)rootView.findViewById(R.id.button_datatx);
             button_datatx.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    final String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
+                    final String serverAddr =
+                            sharedPref.getString(getString(R.string.pref_http_key),
+                                    getString(R.string.pref_http_default));  //Get the server Address
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
 
                     //code block from tbranyon
@@ -158,7 +195,6 @@ public class MainFragment extends Fragment {
                             JSONArray JSONlist = dbHandle.getUnsentData();
 							for(int x = 0; x < JSONlist.length(); ++x)
 							{
-
 								HTTP_SEND_STATUS = 0;
                                 try {
                                     sendHTTPdata((JSONObject)JSONlist.get(x), serverAddr);

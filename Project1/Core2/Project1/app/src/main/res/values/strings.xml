@@ -2,9 +2,17 @@
     <string name="app_name">Project1</string>
     <string name="action_settings">Settings</string>
 
+    <string name="pref_category_datatx_title">Connecting to Server</string>
+    <string name="pref_category_datatx_key">pref_category_datatx_key</string>
+    <string name="pref_category_serial_title">XBee Connection</string>
+    <string name="pref_category_serial_key">pref_category_serial_key</string>
+
     <string name="pref_http_key">pref_http_key</string>
     <string name="pref_http_title">Server\'s IP or Domain Name</string>
     <string name="pref_http_default">localhost</string>
+    <string name="pref_serial_baudrate_title">Baud Rate</string>
+    <string name="pref_serial_baudrate_key">pref_serial_baudrate_key</string>
+    <string name="pref_serial_baudrate_default">9600</string>
 
     <string name="action_about_us">About Us</string>
     <string name="action_data">Data</string>

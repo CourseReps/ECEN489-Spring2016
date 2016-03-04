@@ -30,6 +30,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         if(savedInstanceState == null){
             Preference datatxPref = findPreference(getString(R.string.pref_http_key));
             datatxPref.setOnPreferenceChangeListener(this);
+            Preference serialBaudPref = findPreference(getString(R.string.pref_serial_baudrate_key));
+            serialBaudPref.setOnPreferenceChangeListener(this);
         }
 
         return rootView;
@@ -40,15 +42,20 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         super.onStart();
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
         String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
         findPreference(getString(R.string.pref_http_key)).setSummary(serverAddr);
+        String baudRate = sharedPref.getString(getString(R.string.pref_serial_baudrate_key), getString(R.string.pref_serial_baudrate_default));  //Get the Baud Rate of the Serial
+        findPreference(getString(R.string.pref_serial_baudrate_key)).setSummary(baudRate);
     }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
 
-        //The CheckBox for data transmission has be clicked on
         if(preference.getKey().equals(getString(R.string.pref_http_key))){
+            String newValueStr = newValue.toString();
+            preference.setSummary(newValueStr);
+        } else if(preference.getKey().equals(getString(R.string.pref_serial_baudrate_key))) {
             String newValueStr = newValue.toString();
             preference.setSummary(newValueStr);
         }
