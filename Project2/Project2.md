@@ -16,8 +16,8 @@ Due Friday 3/11/16
 * Get GPS location  
 * Get IMU data  
 * Concatenate into JSON  
-* Send to Fusion Table, plot on map  
-* Send to server, server sends to Fusion Table, plot on map    
+* Send to Fusion Table, plot on map (new)  
+* Send to server, server sends to Fusion Table, plot on map (new)  
 
 ###Data Acquisition  
 * Source 1 - XBee-based sensor tool with NUC or Android Phone  
