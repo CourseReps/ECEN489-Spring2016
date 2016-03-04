@@ -126,6 +126,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
             x = event.values[0];
             y = event.values[1];
             z = event.values[2];
+            //pitch = atan(event.values[0]/sqrt((Int)(y)^2+z^2));
 
         }
     }
@@ -139,10 +140,9 @@ public class MainFragment extends Fragment implements SensorEventListener {
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             String serialJSONData;
-            String transmitID = null;
-            String receiveID = null;
-            double rssi = Float.NaN;
-            float[] imu = new float[ 3 ];
+            String transmitID = "5";
+            String receiveID = "6";
+            double rssi = 0;
             DataFunctions dataFunc = new DataFunctions(getActivity());
             byte buffer[] = new byte[ BUFSIZE ];
 
