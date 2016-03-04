@@ -3,13 +3,12 @@
 Due Friday 3/11/16
 
 ##Overview  
-* Set up Android app to be used with Teensy/XBee combo to collect signal strength data  
-* Create server image that can be downloaded and set up to work with app  
-
-* Phone will now push to user's Fusion Table  
-* Set up NUC Access Point  
-* NUC server will push to Fusion Table  
-* Should be able to do this with many devices in parallel  
+* Set up Android app to be used with Teensy/XBee combo to collect signal strength data
+* Create server image that can be downloaded and set up to work with app
+* Phone will now push to user's Fusion Table
+* Set up NUC Access Point
+* NUC server will push to Fusion Table
+* Should be able to do this with many devices in parallel
 
 ##Phone App  
 * Get internal RSS (new)  
