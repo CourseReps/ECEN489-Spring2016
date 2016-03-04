@@ -91,7 +91,7 @@ Then --
 ```
 We also need to give permission to the android application to access the USB device where the phone is in hostmode.
 
-*UsbManager
+* UsbManager
 
 We use the UsbManager class to construct an device manager object--
 
@@ -103,7 +103,7 @@ if (availableDrivers.isEmpty()) {
   return;
 }
 ```
-
+* UsbSerialDriver and UsbDeviceConnection
 From which, we pick the first device.. usually the first device is the only one connected to the USB port. We open a connection object from the first driver device we choose--
 
 ```
