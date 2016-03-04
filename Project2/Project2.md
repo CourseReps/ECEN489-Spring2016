@@ -32,8 +32,9 @@ Due Friday 3/11/16
 * Add mapping/Fusion Table functionality on server and phone side  
 
 ##Phone App Storyboarding Notes  
-On open, "create table if not exists" (Fusion Table) (Use user's Google account)
-Screens:  
+On open, "create table if not exists" (Fusion Table) (Use user's Google account)  
+
+Screens:
 * About
 * Settings
     * Selection of data fields desired for recording and/or live display
