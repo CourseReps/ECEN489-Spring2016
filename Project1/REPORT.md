@@ -66,6 +66,74 @@ The full class can be found here: https://github.com/CourseReps/ECEN489-Spring20
 
 ###USB Connection  
 ----
+The USB serial connection opens a serial port between the Teensy LC and the Android phone. It works by taking the XBee data in JSON "String" format and passing it to the Android device serial port.
+
+* USB OTG
+
+USB OTG, implemented in Android 3.0+ and gives the phone the ability to be a host of the USB connection - where the phone is normally an accessory/slave. USB OTG tells the phone to 'power' a device as an accessory. In some cases, you will need external power source for larger devices such as the Arduino with some sketches.
+
+The serial port is opened with the application, and by default it is opened with the serial device list "devices.xml".
+
+[device_filter.xml](http://usb-serial-for-android.googlecode.com/git/UsbSerialExamples/res/xml/device_filter.xml) to your project's `res/xml/` directory.
+Then --
+
+```xml
+<activity
+	android:name="..."
+	...>
+	<intent-filter>
+	<action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" />
+	</intent-filter>
+	<meta-data
+	android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED" 
+	android:resource="@xml/device_filter" />
+</activity>
+```
+We also need to give permission to the android application to access the USB device where the phone is in hostmode.
+
+*UsbManager
+
+We use the UsbManager class to construct an device manager object--
+
+```
+// Find all available drivers from attached devices.
+UsbManager manager = (UsbManager) getSystemService(Context.USB_SERVICE);
+List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
+if (availableDrivers.isEmpty()) {
+  return;
+}
+```
+
+From which, we pick the first device.. usually the first device is the only one connected to the USB port. We open a connection object from the first driver device we choose--
+
+```
+/ Open a connection to the first available driver.
+UsbSerialDriver driver = availableDrivers.get(0);
+UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
+if (connection == null) {
+  // You probably need to call UsbManager.requestPermission(driver.getDevice(), ..)
+  return;
+}
+```
+
+Then we read from the serial port connection.
+
+```
+// Read some data! Most have just one port (port 0).
+UsbSerialPort port = driver.getPort(0);
+port.open(connection);
+try {
+  port.setParameters(9600, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+  byte buffer[] = new byte[16];
+  int numBytesRead = port.read(buffer, 1000);
+  //Log.d(TAG, "Read " + numBytesRead + " bytes.");
+} catch (IOException e) {
+  // Deal with error.
+} finally {
+  port.close();
+}
+```
+The port stays open, and when there is no data, returns a null string. It also handles data as a JSON object.
 
 ###HTTPpost  
 ----
