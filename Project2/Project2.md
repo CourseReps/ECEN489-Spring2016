@@ -32,6 +32,7 @@ Due Friday 3/11/16
 * Add mapping/Fusion Table functionality on server and phone side  
 
 ##Phone App Storyboarding Notes  
+On open, "create table if not exists" (Fusion Table) (Use user's Google account)
 Screens:  
 * About
 * Settings
@@ -48,6 +49,10 @@ Screens:
         * Port Number
         * Source 1 (AP) MAC Address
         * Source 2 (XBee) ID
+    * Option to initialize/create table
+        * Creates if not exists
+        * If exists, prompts user if it is desired to clear the table
+    * Option to specify table name (default "Test")
 * Data
     * Displays on open
     * Shows live update of sensor strength and orientation
@@ -58,4 +63,4 @@ Screens:
     * Indicate connection status with WiFi and XBee sensor
         * Shows device ID of XBee/AP
 * Display
-    * Data from Fusion Table 
+    * Data from Fusion Table
