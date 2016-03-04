@@ -37,11 +37,12 @@ On open, "create table if not exists" (Fusion Table) (Use user's Google account)
 Screens:
 * About
 * Settings
-    * Selection of data fields desired for recording and/or live display
+    * Selection of data fields desired for live display
         * GPS
         * Local RSS
         * External RSS
         * Gyro
+        * Magnetometer
         * Compass
     * Server settings
         * Send rate (fixed values)
