@@ -36,7 +36,7 @@ On open, "create table if not exists" (Fusion Table) (Use user's Google account)
 Screens:  
 * About
 * Settings
-    * Rates for data measurement for live display
+    * Selection of data fields desired for recording and/or live display
         * GPS
         * Local RSS
         * External RSS
@@ -53,13 +53,14 @@ Screens:
         * Creates if not exists
         * If exists, prompts user if it is desired to clear the table
     * Option to specify table name (default "Test")
+    * Allow user to specify tolerable deviation from perfect orientation in theta and phi directions
 * Data
     * Displays on open
     * Shows live update of sensor strength and orientation
     * Graphical tool to help user determine if phone is oriented properly (e.g. "bubble level"-style graphic with indicator)
     * Orientation use on/off
     * Measures RSS when orientation is within some tolerance
-    * Button for manual operation
+    * Button for manual collect/send, Enable switch for turning on auto stream
     * Indicate connection status with WiFi and XBee sensor
         * Shows device ID of XBee/AP
 * Display
