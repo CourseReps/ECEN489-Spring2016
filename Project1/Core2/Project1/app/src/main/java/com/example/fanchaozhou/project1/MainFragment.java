@@ -65,6 +65,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
         super.onCreate(savedInstanceState);
 
         if(savedInstanceState==null){
+            //Initializing the data list adaptor
             dataListAdaptor = new ArrayAdapter<String>(
                     getActivity(),                    //The Current Parent Activity
                     R.layout.single_record,           //The .xml file that contains the textview
@@ -73,6 +74,8 @@ public class MainFragment extends Fragment implements SensorEventListener {
             );
 
             dbHandle = new DBAccess(this.getActivity());
+
+            //Initializing the sensor manager
             senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
             senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
@@ -104,6 +107,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
     public void onStart() {
         super.onStart();
 
+        //Populate the list with currently collected data when switching back to the main fragment
         dataListAdaptor.notifyDataSetChanged();
     }
 
@@ -146,7 +150,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
             DataFunctions dataFunc = new DataFunctions(getActivity());
             byte buffer[] = new byte[ BUFSIZE ];
 
-            try {
+            try {  //Reading RSSI, TX id, RX id from the serial port
                 if(port != null){
                     port.read(buffer, BUFSIZE);
                     serialJSONData = new String(buffer, "UTF-8");
@@ -172,16 +176,18 @@ public class MainFragment extends Fragment implements SensorEventListener {
 
         @Override
         protected void onPostExecute(ArrayList<String> data) {
-            dataList.add(0,
-                    "Transmitter ID: " + data.get(0) + "\n" +
-                            "Receiver ID: " + data.get(2) + "\n" +
-                            "TimeStamp: " + data.get(5) + "\n" +
-                            "RSSI: " + -Double.parseDouble(data.get(1)) + " dBm\n" +
-                            "Orientation: " + data.get(3) + "\n" +
-                            "Location: " + data.get(4)
-            );
+            synchronized (dataList){
+                dataList.add(0,  //Add the new data to the top of the list
+                        "Transmitter ID: " + data.get(0) + "\n" +
+                                "Receiver ID: " + data.get(2) + "\n" +
+                                "TimeStamp: " + data.get(5) + "\n" +
+                                "RSSI: " + -Double.parseDouble(data.get(1)) + " dBm\n" +
+                                "Orientation: " + data.get(3) + "\n" +
+                                "Location: " + data.get(4)
+                );
+            }
 
-            dataListAdaptor.notifyDataSetChanged();
+            dataListAdaptor.notifyDataSetChanged();  //Refresh the list display
         }
     }
 
@@ -196,7 +202,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
 
             final Button button_clear_all = (Button)rootView.findViewById(R.id.button_clear_all);
             button_clear_all.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
+                public void onClick(View v) {  //Button handler for clearing the data list
                     dataList.clear();
                     dataListAdaptor.notifyDataSetChanged();
                 }
@@ -204,14 +210,14 @@ public class MainFragment extends Fragment implements SensorEventListener {
 
             final Button button_refresh = (Button)rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
+                public void onClick(View v) {  //Button handler for pulling data
                     new PullData().execute();
                 }
             });
 
             final Button button_datatx = (Button)rootView.findViewById(R.id.button_datatx);
             button_datatx.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
+                public void onClick(View v) {  //Button handler for triggering a data transmission
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
                     final String serverAddr =
                             sharedPref.getString(getString(R.string.pref_http_key),

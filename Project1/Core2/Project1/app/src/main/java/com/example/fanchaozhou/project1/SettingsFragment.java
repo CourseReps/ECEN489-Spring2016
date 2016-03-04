@@ -28,10 +28,11 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
         if(savedInstanceState == null){
+            //Setting up the items in the settings list
             Preference datatxPref = findPreference(getString(R.string.pref_http_key));
-            datatxPref.setOnPreferenceChangeListener(this);
+            datatxPref.setOnPreferenceChangeListener(this);   //Registering a listener for this item
             Preference serialBaudPref = findPreference(getString(R.string.pref_serial_baudrate_key));
-            serialBaudPref.setOnPreferenceChangeListener(this);
+            serialBaudPref.setOnPreferenceChangeListener(this);//Registering a listener for this item
         }
 
         return rootView;
@@ -43,6 +44,8 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
+        //The following code in this method is for displaying the values of all the settings whenever
+        //the app switches to the settings page
         String serverAddr = sharedPref.getString(getString(R.string.pref_http_key), getString(R.string.pref_http_default));  //Get the server Address
         findPreference(getString(R.string.pref_http_key)).setSummary(serverAddr);
         String baudRate = sharedPref.getString(getString(R.string.pref_serial_baudrate_key), getString(R.string.pref_serial_baudrate_default));  //Get the Baud Rate of the Serial
@@ -51,11 +54,12 @@ public class SettingsFragment extends PreferenceFragment implements Preference.O
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        //This method is invoked whenever a change has been made to any of the settings items
 
-        if(preference.getKey().equals(getString(R.string.pref_http_key))){
+        if(preference.getKey().equals(getString(R.string.pref_http_key))){  //If the server address is changed
             String newValueStr = newValue.toString();
-            preference.setSummary(newValueStr);
-        } else if(preference.getKey().equals(getString(R.string.pref_serial_baudrate_key))) {
+            preference.setSummary(newValueStr);    //Setting the summary of an item
+        } else if(preference.getKey().equals(getString(R.string.pref_serial_baudrate_key))) {  //If the baud rate is changed
             String newValueStr = newValue.toString();
             preference.setSummary(newValueStr);
         }

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity{
 
+    //These three references are proved to be redundant
     private SettingsFragment settingsFrag;
     private MainFragment mainFrag;
     private AboutUsFragment aboutFrag;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Initializing the action bar
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,15 +52,18 @@ public class MainActivity extends AppCompatActivity{
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
+        //Switching to the settings page
         if (id==R.id.action_settings) {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.addToBackStack(null);
+            transaction.addToBackStack(null);    //Pushing to the stack for BACK button to trace back to previous fragments
             transaction.replace(R.id.container, settingsFrag = new SettingsFragment());  //Start a settings fragment
-            transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN ).show(settingsFrag);
+            transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_OPEN ).show(settingsFrag);//Setting the animation
             transaction.commit();
 
             return true;
-        } else if(id==R.id.action_about_us){
+        }
+        //Switching to the about-us page
+        else if(id==R.id.action_about_us){
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.addToBackStack(null);
             transaction.replace(R.id.container, aboutFrag = new AboutUsFragment());  //Start an about-us fragment
@@ -66,7 +71,9 @@ public class MainActivity extends AppCompatActivity{
             transaction.commit();
 
             return true;
-        } else if(id==R.id.action_data){
+        }
+        //Switching to the main page
+        else if(id==R.id.action_data){
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.addToBackStack(null);
             transaction.replace(R.id.container, mainFrag = new MainFragment());  //Start a main fragment
@@ -80,7 +87,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {  //Popping the previous fragments out when the BACK button is pressed
         if (getFragmentManager().getBackStackEntryCount() > 0 ){
             getFragmentManager().popBackStackImmediate();
         } else {
