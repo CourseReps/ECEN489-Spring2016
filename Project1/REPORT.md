@@ -108,7 +108,7 @@ if (availableDrivers.isEmpty()) {
 From which, we pick the first device.. usually the first device is the only one connected to the USB port. We open a connection object from the first driver device we choose--
 
 ```javascript
-/ Open a connection to the first available driver.
+// Open a connection to the first available driver.
 UsbSerialDriver driver = availableDrivers.get(0);
 UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
 if (connection == null) {
