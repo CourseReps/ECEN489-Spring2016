@@ -80,5 +80,5 @@ Screens:
 * Fusion map - John
 * UI - Kyle
 * Data collection - Thomas
-* IMU - Akash
+* IMU, gps etc. - Akash
 * 
