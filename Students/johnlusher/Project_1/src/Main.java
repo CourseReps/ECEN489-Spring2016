@@ -46,7 +46,7 @@ public class Main
 //        RFFieldDatabase.ConnectToDatabase("10.202.102.173");            // Connect to MySql database (local to EIC)
 
         // Lusher Test MySQL Server
-        RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com" , true);
+        RFFieldDatabase.ConnectToDatabase("10.202.103.254" , true);
 
         // Get a new Lat/Long randomly around the EIC area
         LatLong newpos = new LatLong(359.99 * Math.random(), 650.0 * Math.random(),  30.618651, -96.341498);
