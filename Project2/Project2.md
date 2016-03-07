@@ -81,4 +81,5 @@ Screens:
 * UI - Kyle
 * Data collection - Thomas
 * IMU, gps etc. - Akash
+* Wireframe then UI - Paul
 * 
