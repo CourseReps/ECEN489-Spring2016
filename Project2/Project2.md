@@ -78,4 +78,7 @@ Screens:
 * Doxygen - Keaton
 * Graphic (orientation) - Sam
 * Fusion map - John
+* UI - Kyle
+* Data collection - Thomas
+* IMU - Akash
 * 
