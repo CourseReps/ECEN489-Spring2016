@@ -76,7 +76,7 @@ Screens:
 
 ##Individual Tasks  
 * Doxygen - Keaton
-* Graphic (orientation) - Sam
+* Graphic (orientation) - Sam, Chaance
 * Fusion map - John
 * UI - Kyle
 * Data collection - Thomas
