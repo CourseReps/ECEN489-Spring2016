@@ -72,6 +72,7 @@ Screens:
 
 
 ##Individual Tasks  
-* Task 1 here
-* Task 2 here
-* ...
+* Doxygen - Keaton
+* Graphic (orientation) - Sam
+* Fusion map - John
+* 
