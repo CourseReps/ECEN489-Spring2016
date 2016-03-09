@@ -9,7 +9,7 @@ First example is for commenting of a file.
 * 
 **/
 ```
-second example is for commenting of a class
+Second example is for commenting of a class
 ```
 /** 
 * @class Example 
@@ -19,7 +19,7 @@ second example is for commenting of a class
 * A more detailed class description 
 */ 
 ```
-third example is for commenting of a function
+Third example is for commenting of a function
 ```
 /** 
 * @brief A short function description 
