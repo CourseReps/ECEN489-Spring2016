@@ -193,7 +193,7 @@ public class DBAccess extends SQLiteOpenHelper{
         String timestamp;
         Date date;
 
-        SimpleDateFormat format = new SimpleDateFormat("MMM dd, yyyy hh:mm:ss aa");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         JSONArray resultsArray = new JSONArray();
 
