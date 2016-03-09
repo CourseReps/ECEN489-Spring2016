@@ -24,7 +24,6 @@ public class DataFunctions{
     private double latitude = 0;
     private double longitude = 0;
     private DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private float[] imu = new float[3];
     private String rssist = "";
     private String gpsst = "";
     private String imust = "";
@@ -32,36 +31,14 @@ public class DataFunctions{
     private float yaw = 0;
     private float pitch = 0;
     private float roll = 0;
-    private float[] orient = new float[3];
     private Context mContext;
 
     public DataFunctions(Context mContext){
         this.mContext = mContext;
     }
 
-    private void location() {
-        LocationManager locationManager;
-        locationManager = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
-        if(ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-        }
-        Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        if(location != null){
-            gpsst = "(" + location.getLatitude() + "," + location.getLongitude() + ")";
-        } else {
-            gpsst = "Unknown Position";
-        }
-    }
-
-
-    public ArrayList<String> pulldata(String transmitIDs, double RSSIs, String receiveIDs, float x, float y, float z){
-        location();
-        /*
-        float[] orient = new float[3];
-        float[] rotation = new float[9];
-        imu myimu = new imu(mContext);
-        orient = myimu.getorient(rotation,orient);
-        */
+    public ArrayList<String> pulldata(String transmitIDs, double RSSIs, String receiveIDs, float x, float y, float z, double lat, double longi){
         ArrayList<String> data = new ArrayList<>();
         transmitID = transmitIDs;
         RSSI = RSSIs;
@@ -69,12 +46,13 @@ public class DataFunctions{
         yaw = x;
         pitch = y;
         roll = z;
-        orient = imu;
-
+        latitude = lat;
+        longitude = longi;
         rssist = Double.toString(RSSI);
         timestamp.format(Calendar.getInstance().getTime());
         imust = Float.toString(yaw) + " " + Float.toString(pitch) + " " + Float.toString(roll);
         timestampst = timestamp.format(Calendar.getInstance().getTime());
+        gpsst = Double.toString(latitude) + ',' + Double.toString(latitude);
         data.add(transmitID);
         data.add(rssist);
         data.add(receiveID);
@@ -86,7 +64,7 @@ public class DataFunctions{
 
     public void pushtodb(DBAccess data2){
         try {
-            pulldata(transmitID, RSSI, receiveID, yaw, pitch, roll);
+            pulldata(transmitID, RSSI, receiveID, yaw, pitch, roll, latitude, longitude);
             JSONObject dbdata = new JSONObject();
             dbdata.put("XbeeID", transmitID);
             dbdata.put("RSSI", RSSI);

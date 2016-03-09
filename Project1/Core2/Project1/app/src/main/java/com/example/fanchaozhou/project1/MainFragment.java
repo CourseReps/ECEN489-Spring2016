@@ -1,5 +1,6 @@
 package com.example.fanchaozhou.project1;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -10,9 +11,15 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
+import android.location.Location;
+import android.location.LocationManager;
+import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +46,7 @@ import java.util.List;
 /**
  * Created by Fanchao Zhou on 2/22/2016.
  */
-public class MainFragment extends Fragment implements SensorEventListener {
+public class MainFragment extends Fragment implements SensorEventListener, LocationListener {
 
     private ArrayList<String> dataList;
     private ArrayAdapter<String> dataListAdaptor;
@@ -55,6 +62,9 @@ public class MainFragment extends Fragment implements SensorEventListener {
     private float x = 0;
     private float y = 0;
     private float z = 0;
+    private double latitude = 0;
+    private double longitude = 0;
+    private LocationManager locationManager;
 
     public MainFragment(){
         dataList = new ArrayList<>();
@@ -79,6 +89,14 @@ public class MainFragment extends Fragment implements SensorEventListener {
             senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
             senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+
+            locationManager = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
+            try {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
+            } catch (SecurityException e) {
+                Log.e("PERMISSION_EXCEPTION", "PERMISSION_NOT_GRANTED");
+            }
+
             // Find all available drivers from attached devices.
             UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
             List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
@@ -135,8 +153,31 @@ public class MainFragment extends Fragment implements SensorEventListener {
         }
     }
 
+
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+        latitude = location.getLatitude();
+        longitude = location.getLongitude();
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
 
     }
 
@@ -168,7 +209,7 @@ public class MainFragment extends Fragment implements SensorEventListener {
                 System.out.println(e);
             }
 
-            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, x, y, z);
+            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, x, y, z, latitude,longitude);
             dataFunc.pushtodb(dbHandle);
 
             return data;
