@@ -22,8 +22,14 @@ Second example is for commenting of a class
 Third example is for commenting of a function
 ```
 /** 
+* @fn function name
 * @brief A short function description 
 * 
 * A more detailed function description 
 */ 
+```
+
+inline variable commenting
+```
+int var; /*!< Detailed description after the member */
 ```
