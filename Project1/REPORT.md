@@ -376,6 +376,7 @@ Below is a portion of the doPost request that passes the JSON string
         entry = db.AddNewEntry(receiveJson.toString());             //Make sure to switch the entry when debugging
         test=6;
 ```
+Some minor reformating had to be done to JSON object to correct the mismatch between John's functions and the JSON being passed.
 
 ###Tomcat DB Interaction - John Lusher II 
 ----
