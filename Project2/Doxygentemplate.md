@@ -25,7 +25,7 @@ Third example is for commenting of a function
 * @fn function name
 * @brief A short function description 
 * 
-* A more detailed function description 
+* A more detailed function description (Only use detailed description if the function needs explanation otherwise your brief description * should suffice)
 */ 
 ```
 
