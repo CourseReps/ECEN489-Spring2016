@@ -371,7 +371,10 @@ Below is a portion of the doPost request that passes the JSON string
 
         is.close();
 
-        /* This section is for reformatting the JSON string we receive...
+        RFFieldSQLDatabase  db = new RFFieldSQLDatabase();
+        connection = db.ConnectToDatabase("localhost");
+        entry = db.AddNewEntry(receiveJson.toString());             //Make sure to switch the entry when debugging
+        test=6;
 ```
 
 ###Tomcat DB Interaction - John Lusher II 
