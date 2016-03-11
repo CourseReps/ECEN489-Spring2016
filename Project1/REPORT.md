@@ -345,6 +345,38 @@ https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Project1/XBEE/src%2
 
 ###Tomcat Server  
 ----
+Once the Tomcat server was running on my laptop I had to transfer it to the computer running Ubuntu that we are using. 
+All the server had to fo was recieve the JSON object being sent from the Android phone, and pass the JSON to John's functions.
+For monitoring and display purposes. I added extra functionality to display every object that passes through the server.
+
+Below is a portion of the doPost request that passes the JSON string
+```javascript
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+        test =1;
+        System.out.println("POST received");
+        BufferedReader is = request.getReader();
+
+        /* convert input string from JSON */
+        JSONObject receiveJson = null;
+
+        try {
+			/*Here is where we could add checks on the data to ensure we are reading a json,
+			but there is no need in this current application. */
+            receiveJson = new JSONObject(is.readLine());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+		/* each GET command from phone will eb a single json, so we cna close now */
+
+        is.close();
+
+        RFFieldSQLDatabase  db = new RFFieldSQLDatabase();
+        connection = db.ConnectToDatabase("localhost");
+        entry = db.AddNewEntry(receiveJson.toString());             //Make sure to switch the entry when debugging
+        test=6;
+```
+Some minor reformating had to be done to JSON object to correct the mismatch between John's functions and the JSON being passed.
 
 ###Tomcat DB Interaction - John Lusher II 
 ----
