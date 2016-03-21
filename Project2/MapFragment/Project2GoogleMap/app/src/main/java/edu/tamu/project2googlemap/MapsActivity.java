@@ -13,7 +13,6 @@ package edu.tamu.project2googlemap;
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -29,13 +28,9 @@ import com.google.android.gms.maps.model.TileOverlay;
 import com.google.android.gms.maps.model.TileOverlayOptions;
 import com.google.maps.android.heatmaps.WeightedLatLng;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Iterator;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -68,8 +63,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
-    /**
-     */
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
@@ -93,7 +86,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(eic).title("EIC"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eic, 19));
 
-        new GetRFData().execute("");                                    /// Execute the task to get the data from the database
+        UpdateMap(30.618708F, -96.341558F, 1000F);
+        //new GetRFData().execute("");                                    /// Execute the task to get the data from the database
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -104,14 +98,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      *           Return: none
      *           Manipulates the map once available.
      *           This callback is triggered when the map is ready to be used.
-
+     *
      *           If Google Play services is not installed on the device, the user will be prompted to install
      *           it inside the SupportMapFragment. This method will only be triggered once the user has
      *           installed Google Play services and returned to the app.
      */
     public void UpdateMap(float RefLatitude, float RefLongitude, float Radius)
     {
-        new GetRFData().execute("");                                    /// Execute the task to get the data from the database
+        LatLng ref_location = new LatLng(RefLatitude, RefLongitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ref_location, 19));
+        GetRFData UpdateMapTask =  new GetRFData();
+        UpdateMapTask.RefLatitude = RefLatitude;
+        UpdateMapTask.RefLongitude = RefLongitude;
+        UpdateMapTask.Radius = Radius;
+        UpdateMapTask.execute("");
     }
 
 
