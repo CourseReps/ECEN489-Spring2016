@@ -1,0 +1,39 @@
+ABOUT US
+
+This is Project 1 for ECEN 489/689, Spring 2016.
+The project is to measure the strength of an EM(ElectroMagnetic) signal in a specific orientation, and record the geological position of the measurement. The orientation and location come from sensors on an android device, and the strength measurement comes from a Tenssy micro-controller that is connected to the android device by a serial line. The android device pushes data into a local database, and also a distant server where the spatial distribution of the signal is computed and reconstructed visually.
+
+This class is lead by:
+Professor Chamberland
+Professor Huff
+
+Student Team Members and Division of Work(Names are listed alphabetically in FIRST NAME):
+Akash Sahoo
+Design of Algorithms to compute signal distribution
+
+Chaance Graves
+Data Reading from IMU and GPS
+
+Fanchao Zhou
+Graphic Interface
+
+John Lusher
+On-Server Database
+
+Keaton Brown
+Multithreading for On-Device Data Collection
+
+Kyle E Sparrow
+Distant Server Setup
+
+Paul Crouther
+Data Reading on Android from Tenssy
+
+Sam Shore
+On-Device Database Setup
+
+Thomas Branyon
+Device-to-Server Wifi Connection
+
+Yanxiang Yang
+Tenssy Setup and Programming
