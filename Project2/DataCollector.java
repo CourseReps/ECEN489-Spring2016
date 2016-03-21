@@ -15,19 +15,32 @@
 public class DataCollector implements Runnable
 {
 	//settings fields
-	private static int refresh_ms; /*!< Data refresh rate in ms */
-	private static String serverURL; /*!< URL of Tomcat server */
-	private static int portNum; /*!< Tomcat server port number */
-	private static int s1_ID; /*!< ID of Source 1 */ 
-	private static int s2_ID; /*!< ID of Source 2 */
-	private static String fusionTableName; /*!< Text name of Fusion Table */
-	private static boolean displayVars[]; /*!< Indicates which data should be recorded */
-	private static float angleTolerance[]; /*!< Maximum deviation in degrees for orientation in (phi,theta) */
-	private static boolean collectEnable; /*!< Flag to enable/disable data collection */
-	private static boolean settingsChangedFlag; /*!< Indicates that the user has changed a setting in the Settings Activity */
+	public static int refresh_ms; /*!< Data refresh rate in ms */
+	public static String serverURL; /*!< URL of Tomcat server */
+	public static int portNum; /*!< Tomcat server port number */
+	public static int s1_ID; /*!< ID of Source 1 */ 
+	public static int s2_ID; /*!< ID of Source 2 */
+	public static String fusionTableName; /*!< Text name of Fusion Table */
+	public static boolean displayVars[]; /*!< Indicates which data should be recorded */
+	public static float angleTolerance[]; /*!< Maximum deviation in degrees for orientation in (phi,theta) */
+	public static boolean collectEnable; /*!< Flag to enable/disable data collection */
+	public static boolean settingsChangedFlag; /*!< Indicates that the user has changed a setting in the Settings Activity */
 	
 	//data fields
-	//@TODO
+	//currently copied from Project 1, may need review
+	public static String transmitID = "5";
+    public static double RSSI = 0;
+    public static String receiveID = "6";
+    public static double latitude = 0;
+    public static double longitude = 0;
+    public static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static String rssist = "";
+    public static String gpsst = "";
+    public static String imust = "";
+    public static String timestampst = "";
+    public static float yaw = 0;
+    public static float pitch = 0;
+    public static float roll = 0;
 	
 	public DataCollector()
 	{
@@ -35,101 +48,6 @@ public class DataCollector implements Runnable
 		angleTolerance = new float[2];
 		//@TODO add any needed instantiations of class objects for sensor reads
 	}
-	
-	/*****************
-	* Accessor Methods
-	*****************/
-
-	/**
-	*	@fn getRate
-	*	@brief Returns refresh rate in milliseconds
-	**/
-	public int getRate(){return refresh_ms;}
-	
-	/**
-	*	@fn getURL
-	*	@brief Returns currently specified Tomcat server address
-	**/
-	public String getURL(){return serverURL;}
-	
-	/**
-	*	@fn getPort
-	*	@brief Returns currently specified port number
-	**/
-	public int getPort(){return portNum;}
-	
-	/**
-	*	@fn getID1
-	*	@brief Returns currently specified source 1 ID
-	**/
-	public int getID1(){return s1_ID;}
-	
-	/**
-	*	@fn getID2
-	*	@brief Returns currently specified source 2 ID
-	**/
-	public int getID2(){return s2_ID;}
-	
-	/**
-	*	@fn getTblName
-	*	@brief Returns name of specified Fusion Table
-	**/
-	public String getTblName(){return fusionTableName;}
-	
-	/**
-	*	@fn getActiveVars
-	*	@brief Returns bool array of variables currently marked for display
-	**/
-	public boolean[] getActiveVars(){return displayVars;}
-	
-	/**
-	*	@fn getTolerance
-	*	@brief Returns 2-entry float array of angle tolerances for orientation
-	**/
-	public float[] getTolerance(){return angleTolerance;}
-	
-	/**
-	*	@fn getCollectEnableStatus
-	*	@brief Returns true if data collection is enabled currently
-	**/
-	public boolean getCollectEnableStatus(){return collectEnable;}
-	
-	/*****************
-	* Modifier Methods
-	*****************/
-
-	/**
-	*	@fn setRate
-	*	@brief Sets the refresh rate to [rate_ms] milliseconds
-	**/
-	public void setRate(int rate_ms){refresh_ms = rate_ms;}
-
-	/**
-	*	@fn setURL
-	*	@brief Sets server address to [url]
-	**/
-	public void setURL(String url){serverURL = url;}
-
-	/**
-	*	@fn setPort
-	*	@brief Sets remote server port to [port]
-	**/
-	public void setPort(int port){portNum = port;}
-	
-	/**
-	*	@fn setSource1ID
-	*	@brief Sets Source 1 ID to [S1ID]
-	**/
-	public void setSource1ID(int S1ID){s1_ID = S1ID;}
-
-	/**
-	*	@fn setSource1ID
-	*	@brief Sets Source 2 ID to [S2ID]
-	**/
-	public void setSource2ID(int S2ID){s2_ID = S2ID;}
-
-	//@TODO finish set methods
-	
 
 	/**
 	*	@fn run
