@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorMainBackground">
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="360dp"
+        android:id="@+id/list"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/imageView" />
+
+    <ImageView
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="80dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLEAR ALL"
+        android:id="@+id/button_clear_all"
+        android:layout_below="@+id/list"
+        android:layout_toRightOf="@+id/button_refresh"
+        android:layout_toEndOf="@+id/button_refresh" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Manual Single"
+        android:id="@+id/button_refresh"
+        android:layout_alignTop="@+id/button_datatx"
+        android:layout_toRightOf="@+id/button_datatx"
+        android:layout_toEndOf="@+id/button_datatx" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connecting"
+        android:id="@+id/button_datatx"
+        android:layout_below="@+id/list"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Run Continuously"
+        android:id="@+id/action_alignment"
+        android:layout_below="@+id/button_refresh"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is aligned?"
+        android:id="@+id/isAlignedCheck"
+        android:layout_marginBottom="44dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Is Used?"
+        android:id="@+id/isUsedCheck"
+        android:layout_above="@+id/isAlignedCheck"
+        android:layout_centerHorizontal="true" />
+
+
+
+
+
+</RelativeLayout>

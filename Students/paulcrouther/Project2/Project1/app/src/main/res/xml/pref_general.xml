@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <PreferenceCategory
+        android:title="@string/pref_category_datasettings_title"
+        android:key="@string/pref_category_datasettings_key">
+
+        <CheckBoxPreference
+            android:title="@string/pref_gps_title"
+            android:key="@string/pref_gps_changes_key"
+            android:defaultValue="false"
+            />
+        <CheckBoxPreference
+            android:title="@string/pref_rss_s1_title"
+            android:key="@string/pref_rss_s1_key"
+            android:defaultValue="false"
+            />
+        <CheckBoxPreference
+            android:title="@string/pref_rss_s2_title"
+            android:key="@string/pref_rss_s2_key"
+            android:defaultValue="false"
+            />
+        <CheckBoxPreference
+            android:title="@string/pref_gyro_title"
+            android:key="@string/pref_gyro_key"
+            android:defaultValue="false"
+            />
+        <CheckBoxPreference
+            android:title="@string/pref_mag_title"
+            android:key="@string/pref_mag_key"
+            android:defaultValue="false"
+            />
+        <CheckBoxPreference
+            android:title="@string/pref_compass_title"
+            android:key="@string/pref_compass_key"
+            android:defaultValue="false"
+            />
+
+
+        <MultiSelectListPreference
+        android:title="@string/action_jsonsettings"
+        android:key="@string/pref_json_changes_key"
+        android:entries="@array/listArray"
+        android:entryValues="@array/listValues"
+        android:defaultValue="@array/listArray"
+        />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_datatx_title"
+        android:key="@string/pref_category_datatx_key">
+
+        <EditTextPreference
+            android:title="@string/pref_http_title"
+            android:key="@string/pref_http_key"
+            android:defaultValue="@string/pref_http_default"
+            />
+
+        <EditTextPreference
+            android:title="@string/pref_serial_baudrate_title"
+            android:key="@string/pref_serial_baudrate_key"
+            android:defaultValue="@string/pref_serial_baudrate_default"
+            />
+
+        <EditTextPreference
+            android:title="@string/pref_port_numb_title"
+            android:key="@string/pref_port_numb_key"
+            android:defaultValue="@string/pref_port_numb_default"
+            />
+
+        <EditTextPreference
+            android:title="@string/pref_s1_id_title"
+            android:key="@string/pref_s1_id_key"
+            android:defaultValue="@string/pref_s1_id_default"
+            />
+
+        <EditTextPreference
+            android:title="@string/pref_s2_id_title"
+            android:key="@string/pref_s2_id_key"
+            android:defaultValue="@string/pref_s2_id_default"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_init_table"
+        android:key="@string/pref_category_init_table_key">
+
+        <EditTextPreference
+            android:title="@string/pref_init_table_title"
+            android:key="@string/pref_init_table_key"
+            android:defaultValue="false"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_table_name"
+        android:key="@string/pref_category_table_name_key">
+
+        <EditTextPreference
+            android:title="@string/pref_table_name_title"
+            android:key="@string/pref_table_name_key"
+            android:defaultValue="@string/pref_table_name_default"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/pref_category_tolerance"
+        android:key="@string/pref_category_tolerance_key">
+
+        <EditTextPreference
+            android:title="@string/pref_tolerance_theta_title"
+            android:key="@string/pref_tolerance_theta_key"
+            android:defaultValue="@string/pref_tolerance_theta_default"
+            />
+
+        <EditTextPreference
+            android:title="@string/pref_tolerance_phi_title"
+            android:key="@string/pref_tolerance_phi_key"
+            android:defaultValue="@string/pref_tolerance_phi_default"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
