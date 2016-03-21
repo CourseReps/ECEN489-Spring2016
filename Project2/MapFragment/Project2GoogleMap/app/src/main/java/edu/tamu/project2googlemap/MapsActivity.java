@@ -243,4 +243,68 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @brief    SaveRFData
+     *
+     *           AsyncTask that gets data from MySQL datbase and displays it on map
+     */
+    private class SaveRFData extends AsyncTask<String, Void, String>
+    {
+        private Exception exception;
+        public RFData RFMember;
+        public boolean AddComplete = false;
+        public boolean AddErr = false;
+
+        //--------------------------------------------------------------------------------------------------------------
+        /**
+         * @brief    doInBackground
+         *
+         *           Gets the data from the MySQL server then calls onPostExecute
+         */
+        protected String doInBackground(String... parameters)
+        {
+            try
+            {
+                AddComplete = false;
+                if (RFMember != null)
+                {
+                    /// Pull from database the data that matches this range
+                    RFFieldSQLDatabase RFFieldDatabase = new RFFieldSQLDatabase();
+
+                    /// Connect to test server (for now), if not connected return null
+                    if (RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com") == true) {
+                        /// Store data to database, return the results
+                        boolean status = RFFieldDatabase.AddNewEntry(RFMember);
+                        if (status) return "Success";
+                        else return "Failed to add";
+                    }
+                    else return "Not Connected";
+                }
+                else return "Null Data";
+
+            }
+            catch (Exception e)
+            {
+                /// Exception processing, display error and then return null
+                System.out.println("Err: " + e.getMessage());
+                this.exception = e;
+                return e.getMessage();
+            }
+        }
+
+        //--------------------------------------------------------------------------------------------------------------
+        /**
+         * @brief    onPostExecute
+         *
+         *           Process and display the resulting records
+         */
+        protected void onPostExecute(String result)
+        {
+            if (result == "Success") AddErr = false;
+            else AddErr = true;
+            AddComplete = true;
+        }
+    }
 }
