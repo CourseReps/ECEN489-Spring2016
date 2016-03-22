@@ -90,7 +90,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private TextView pitchText;
     private TextView rollText;
 
-
+    private DataCollector dataStruct;
 
     public MainFragment(){
         dataList = new ArrayList<>();
@@ -159,6 +159,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e);
             }
         }
+        dataStruct = new DataCollector(); //data access/storage wrapper
     }
 
     /**
@@ -191,7 +192,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      * @brief gets the new imu values
      */
     /* set up constants for orientation graphic */
-    private float pitchTol = 10.0f;
+    private float pitchTol = 10.0f; //@TODO these need to pull settings from XML instead of hardcoding
     private float rollTol = 5.0f;
     private float PITCH_MIN = 90 - pitchTol;
     private float PITCH_MAX = 90 + pitchTol;

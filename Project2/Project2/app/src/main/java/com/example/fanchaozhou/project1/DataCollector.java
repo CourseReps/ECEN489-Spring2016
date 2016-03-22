@@ -5,6 +5,8 @@
 *			
 **/
 
+package com.example.fanchaozhou.project1;
+
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
@@ -19,18 +21,6 @@ import java.text.SimpleDateFormat;
 **/
 public class DataCollector implements Runnable
 {
-	//settings fields
-	public static int refresh_ms; /*!< Data refresh rate in ms */
-	public static String serverURL; /*!< URL of Tomcat server */
-	public static int portNum; /*!< Tomcat server port number */
-	public static int s1_ID; /*!< ID of Source 1 */ 
-	public static int s2_ID; /*!< ID of Source 2 */
-	public static String fusionTableName; /*!< Text name of Fusion Table */
-	public static boolean displayVars[]; /*!< Indicates which data should be recorded */
-	public static float angleTolerance[]; /*!< Maximum deviation in degrees for orientation in (phi,theta) */
-	public static boolean collectEnable; /*!< Flag to enable/disable data collection */
-	public static boolean settingsChangedFlag; /*!< Indicates that the user has changed a setting in the Settings Activity */
-	
 	//data fields
 	//currently copied from Project 1, may need review
 	public static String transmitID = "5"; /*!< Antenna ID */
@@ -45,8 +35,6 @@ public class DataCollector implements Runnable
 
 	public DataCollector()
 	{
-		displayVars = new boolean[8]; //@TODO check actual number of vars
-		angleTolerance = new float[2];
 	}
 
 	/**
@@ -59,7 +47,8 @@ public class DataCollector implements Runnable
 		while(true)
 		{
 			try{
-				Thread.sleep(refresh_ms*1000); //delay based on user-defined refresh rate
+				//@TODO pull user-defined refresh rate from XML
+				Thread.sleep(500); //run at 2Hz
 			}catch(InterruptedException e){System.err.println(e);}; //print any errors to system log
 
 
