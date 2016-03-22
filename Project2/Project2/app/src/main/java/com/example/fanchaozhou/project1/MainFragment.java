@@ -77,9 +77,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RSSI = "RSSI";
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
-    /*private float roll = 0;
+    private float roll = 0;
     private float pitch = 0;
-    private float yaw = 0;*/
+    private float yaw = 0;
     private double latitude = 0;
     private double longitude = 0;
     private LocationManager locationManager;
@@ -91,6 +91,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private TextView rollText;
 
     private DataCollector dataStruct;
+    private SharedPreferences sharedPref;
 
     public MainFragment(){
         dataList = new ArrayList<>();
@@ -160,6 +161,10 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
         }
         dataStruct = new DataCollector(); //data access/storage wrapper
+
+        // Creating a Shared Preference Manager
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
     }
 
     /**
@@ -191,38 +196,62 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      * @fn onSensorChanged
      * @brief gets the new imu values
      */
-    /* set up constants for orientation graphic */
-    private float pitchTol = 10.0f; //@TODO these need to pull settings from XML instead of hardcoding
-    private float rollTol = 5.0f;
-    private float PITCH_MIN = 90 - pitchTol;
-    private float PITCH_MAX = 90 + pitchTol;
-    private float ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
-    float red[] = {0.85f, 0.0f, 0.0f, 1.0f};
-    float green[] = {0.57843137f, 0.83921569f, 0.0f, 1.0f};
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
 
+        /* set up constants for orientation graphic */
+        String pitchTolString;
+        String rollTolString;
+        float red[] = {0.85f, 0.0f, 0.0f, 1.0f};
+        float green[] = {0.57843137f, 0.83921569f, 0.0f, 1.0f};
+        float pitchTol;
+        float rollTol;
+        float PITCH_MIN; //= 90 - pitchTol;
+        float PITCH_MAX;// = 90 + pitchTol;
+        float ROLL_MAX;// = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
+
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
-            dataStruct.yaw = event.values[0];
-            dataStruct.pitch = event.values[1];
-            dataStruct.roll = event.values[2];
+            yaw = event.values[0];
+            pitch = event.values[1];
+            roll = event.values[2];
         }
 
-        yawText.setText("z: " + String.valueOf((int)dataStruct.yaw));
-        pitchText.setText("y: " + String.valueOf((int)dataStruct.pitch));
-        rollText.setText("x: " + String.valueOf((int)dataStruct.roll));
+        /* Display yaw pitch and roll in a text view */
+        yawText.setText("z: " + String.valueOf((int)yaw));
+        pitchText.setText("y: " + String.valueOf((int)pitch));
+        rollText.setText("x: " + String.valueOf((int)roll));
 
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        /* the next two lines are causing the app to crash */
-        //pitchTol = sharedPref.getFloat(getString(R.string.pref_tolerance_theta_key), 10.0f);
-        //rollTol = sharedPref.getFloat(getString(R.string.pref_tolerance_phi_key), 5.0f);
+        /* Get orientation tolerances from preferences */
+        pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
+        rollTolString = sharedPref.getString(getString(R.string.pref_tolerance_phi_key), "5");
+
+        /* Handle inputs that are not parsable floats */
+        try {
+            pitchTol = Float.parseFloat(pitchTolString);
+            rollTol = Float.parseFloat(rollTolString);
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+            pitchTol = 10.0f;
+            rollTol = 5.0f;
+        }
+
+        /* Make sure the tolerances are acceptable values */
+        if(!((0<=pitchTol)&&(pitchTol<=90))){
+            pitchTol = 10.0f;
+        }
+        if(!((0<=rollTol)&&(rollTol<=360))){
+            rollTol = 5.0f;
+        }
+
+        /* Set acceptable orientation boundaries */
         PITCH_MIN = 90 - pitchTol;
         PITCH_MAX = 90 + pitchTol;
-        ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
+        ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using absolute value
 
-        if((PITCH_MIN<(Math.abs(dataStruct.pitch)))&&((Math.abs(dataStruct.pitch))<PITCH_MAX)&&((Math.abs(dataStruct.roll))<ROLL_MAX)){
+        /* Set orientation graphic color based on current orientation and set boundaries */
+        if((PITCH_MIN<(Math.abs(pitch)))&&((Math.abs(pitch))<PITCH_MAX)&&((Math.abs(roll))<ROLL_MAX)){
             square.setColor(green);
         }
         else{

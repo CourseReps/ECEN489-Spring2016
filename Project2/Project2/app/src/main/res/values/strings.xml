@@ -70,11 +70,11 @@
 
     <string name="pref_tolerance_theta_title">Tolerance Theta</string>
     <string name="pref_tolerance_theta_key">pref_tolerance_theta_key</string>
-    <string name="pref_tolerance_theta_default">Angle1</string>
+    <string name="pref_tolerance_theta_default">10</string>
 
     <string name="pref_tolerance_phi_title">Tolerance Phi</string>
     <string name="pref_tolerance_phi_key">pref_tolerance_phi_key</string>
-    <string name="pref_tolerance_phi_default">Angle2</string>
+    <string name="pref_tolerance_phi_default">5</string>
 
     <string name="action_about_us">About Us</string>
     <string name="action_data">Data</string>
