@@ -10,6 +10,8 @@ package com.example.fanchaozhou.project1;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
 *	@class DataCollector
@@ -28,7 +30,7 @@ public class DataCollector implements Runnable
     public static String receiveID = "6"; /*!< XBee ID */
     public static double latitude = 0; /*!< GPS latitude */
     public static double longitude = 0; /*!< GPS longitude */
-    public static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); /*!< Timestamp of current data read */
+    public static Date timestamp = new Date(); /*!< Timestamp of current data read */
     public static float yaw = 0; /*!< X-axis orientation */
     public static float pitch = 0; /*!< Y-axis orientation */
     public static float roll = 0; /*!< Z-axis orientation */
@@ -52,6 +54,7 @@ public class DataCollector implements Runnable
 			}catch(InterruptedException e){System.err.println(e);}; //print any errors to system log
 
 			//@TODO collect live data that isn't already collected in the MainFragment and send to server
+			timestamp = Calendar.getInstance().getTime();
 		}
 	}
 }
