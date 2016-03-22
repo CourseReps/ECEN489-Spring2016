@@ -126,4 +126,10 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory>
+        <Preference
+            android:title="Reset"
+            android:key="mybutton"/>
+    </PreferenceCategory>
+
 </PreferenceScreen>
