@@ -77,9 +77,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RSSI = "RSSI";
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
-    private float roll = 0;
+    /*private float roll = 0;
     private float pitch = 0;
-    private float yaw = 0;
+    private float yaw = 0;*/
     private double latitude = 0;
     private double longitude = 0;
     private LocationManager locationManager;
@@ -205,14 +205,14 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         Sensor mySensor = event.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
-            yaw = event.values[0];
-            pitch = event.values[1];
-            roll = event.values[2];
+            dataStruct.yaw = event.values[0];
+            dataStruct.pitch = event.values[1];
+            dataStruct.roll = event.values[2];
         }
 
-        yawText.setText("z: " + String.valueOf((int)yaw));
-        pitchText.setText("y: " + String.valueOf((int)pitch));
-        rollText.setText("x: " + String.valueOf((int)roll));
+        yawText.setText("z: " + String.valueOf((int)dataStruct.yaw));
+        pitchText.setText("y: " + String.valueOf((int)dataStruct.pitch));
+        rollText.setText("x: " + String.valueOf((int)dataStruct.roll));
 
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         /* the next two lines are causing the app to crash */
@@ -222,7 +222,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         PITCH_MAX = 90 + pitchTol;
         ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
 
-        if((PITCH_MIN<(Math.abs(pitch)))&&((Math.abs(pitch))<PITCH_MAX)&&((Math.abs(roll))<ROLL_MAX)){
+        if((PITCH_MIN<(Math.abs(dataStruct.pitch)))&&((Math.abs(dataStruct.pitch))<PITCH_MAX)&&((Math.abs(dataStruct.roll))<ROLL_MAX)){
             square.setColor(green);
         }
         else{
@@ -316,7 +316,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e);
             }
 
-            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, yaw, pitch, roll, latitude,longitude);
+            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, dataStruct.yaw, dataStruct.pitch, dataStruct.roll, latitude,longitude);
             dataFunc.pushtodb(dbHandle);
 
             return data;

@@ -29,9 +29,9 @@ public class DataCollector implements Runnable
     public static double latitude = 0; /*!< GPS latitude */
     public static double longitude = 0; /*!< GPS longitude */
     public static DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); /*!< Timestamp of current data read */
-    public static float x = 0; /*!< X-axis orientation */
-    public static float y = 0; /*!< Y-axis orientation */
-    public static float z = 0; /*!< Z-axis orientation */
+    public static float yaw = 0; /*!< X-axis orientation */
+    public static float pitch = 0; /*!< Y-axis orientation */
+    public static float roll = 0; /*!< Z-axis orientation */
 
 	public DataCollector()
 	{
