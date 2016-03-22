@@ -115,13 +115,13 @@
         <EditTextPreference
             android:title="@string/pref_tolerance_theta_title"
             android:key="@string/pref_tolerance_theta_key"
-            android:defaultValue="@string/pref_tolerance_theta_default"
+            android:defaultValue="10"
             />
 
         <EditTextPreference
             android:title="@string/pref_tolerance_phi_title"
             android:key="@string/pref_tolerance_phi_key"
-            android:defaultValue="@string/pref_tolerance_phi_default"
+            android:defaultValue="5"
             />
 
     </PreferenceCategory>

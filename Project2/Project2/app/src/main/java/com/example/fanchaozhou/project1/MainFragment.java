@@ -35,6 +35,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
@@ -76,12 +77,20 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RSSI = "RSSI";
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
-    private float x = 0;
-    private float y = 0;
-    private float z = 0;
+    private float roll = 0;
+    private float pitch = 0;
+    private float yaw = 0;
     private double latitude = 0;
     private double longitude = 0;
     private LocationManager locationManager;
+
+    private MyGLSurfaceView mGLView;
+    private Square square = new Square();
+    private TextView yawText;
+    private TextView pitchText;
+    private TextView rollText;
+
+
 
     public MainFragment(){
         dataList = new ArrayList<>();
@@ -181,17 +190,44 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      * @fn onSensorChanged
      * @brief gets the new imu values
      */
+    /* set up constants for orientation graphic */
+    private float pitchTol = 10.0f;
+    private float rollTol = 5.0f;
+    private float PITCH_MIN = 90 - pitchTol;
+    private float PITCH_MAX = 90 + pitchTol;
+    private float ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
+    float red[] = {0.85f, 0.0f, 0.0f, 1.0f};
+    float green[] = {0.57843137f, 0.83921569f, 0.0f, 1.0f};
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
 
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
-            x = event.values[0];
-            y = event.values[1];
-            z = event.values[2];
-            //pitch = atan(event.values[0]/sqrt((Int)(y)^2+z^2));
-
+            yaw = event.values[0];
+            pitch = event.values[1];
+            roll = event.values[2];
         }
+
+        yawText.setText("z: " + String.valueOf((int)yaw));
+        pitchText.setText("y: " + String.valueOf((int)pitch));
+        rollText.setText("x: " + String.valueOf((int)roll));
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        /* the next two lines are causing the app to crash */
+        //pitchTol = sharedPref.getFloat(getString(R.string.pref_tolerance_theta_key), 10.0f);
+        //rollTol = sharedPref.getFloat(getString(R.string.pref_tolerance_phi_key), 5.0f);
+        PITCH_MIN = 90 - pitchTol;
+        PITCH_MAX = 90 + pitchTol;
+        ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
+
+        if((PITCH_MIN<(Math.abs(pitch)))&&((Math.abs(pitch))<PITCH_MAX)&&((Math.abs(roll))<ROLL_MAX)){
+            square.setColor(green);
+        }
+        else{
+            square.setColor(red);
+        }
+
     }
 
 
@@ -279,7 +315,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e);
             }
 
-            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, x, y, z, latitude,longitude);
+            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, yaw, pitch, roll, latitude,longitude);
             dataFunc.pushtodb(dbHandle);
 
             return data;
@@ -318,6 +354,12 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         if(savedInstanceState == null){
+            //Create a GL Surfaceview
+            mGLView = (MyGLSurfaceView) rootView.findViewById(R.id.glSurfaceViewID);
+            yawText = (TextView)rootView.findViewById(R.id.yawText);
+            pitchText = (TextView)rootView.findViewById(R.id.pitchText);
+            rollText = (TextView)rootView.findViewById(R.id.rollText);
+
             ListView list = (ListView)rootView.findViewById(R.id.list);  //Find the id of the target ListView
             list.setAdapter(dataListAdaptor);                            //Bind the adaptor to the ListView
 

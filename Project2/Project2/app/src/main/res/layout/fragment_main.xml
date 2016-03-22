@@ -81,7 +81,9 @@
         android:name="com.example.fanchaozhou.project1.AlignmentFragment"
         android:id="@+id/align_fragment"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/button_clear_all"
+        android:layout_toStartOf="@+id/button_clear_all" />
 
 </RelativeLayout>
 
