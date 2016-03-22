@@ -1,7 +1,9 @@
 /**
  * @file DBAccess.java
  *
- * @brief Contains every function needed to interact with local SQlite database
+ * @brief Contains functions needed to interact with local SQlite database, including methods to save data to the database,
+ * retreive data from the database that has not yet been sent to the server, retreive all data from the database, and clear 
+ * data from the database. 
  *
  **/
 
@@ -31,7 +33,8 @@ import org.json.JSONObject;
 /**
  * @class DBAccess
  *
- * @brief Creates DB, Table, and manages input and output of data
+ * @brief Creates a local SQLite database and data table in that database, as well as
+ * manages saving and retreiving data from the database. It extends the SQLiteOpenHelper class.
  */
 public class DBAccess extends SQLiteOpenHelper{
 
@@ -47,6 +50,12 @@ public class DBAccess extends SQLiteOpenHelper{
     public static final String COLUMN_TIMESTAMP	  = "SampleDate";
 
     /** creating a database and connecting **/
+    /**
+     * @fn DBAccess
+     * @brief Constructor for the DBAccess class. DBAccess extends SQLiteOpenHelper, so it just uses the super constructor.
+     * The parameters passed are the current context, the name of the database to create/open, the cursor factory (null),
+     * and the database version.
+     * /
     DBAccess(Context context){
 
         super(context, DB_NAME, null, 1);
@@ -56,7 +65,9 @@ public class DBAccess extends SQLiteOpenHelper{
 
     /**
      * @fn onCreate
-     * @brief create a table in the database with columns for Transmit ID, RSSI, Receive ID, GPS, IMU, Timestamp, and a sent field
+     * @brief When the class is instantiated, onCreate creates a table called DATA in the database, if there is not already an
+     * existing table with that name. The table contains columns for the Xbee ID, Device ID, RSSI, Latitude and Longitude,
+     * Yaw, Pitch, and Roll, Timestamp, and an indicator field showing whether or not a row has been sent to the server.
      */
     @Override
     public void onCreate(SQLiteDatabase db){
@@ -69,7 +80,8 @@ public class DBAccess extends SQLiteOpenHelper{
 
     /**
      * @fn onUpgrade
-     * @brief  method for upgrading to a new database (this is not important, it was just necessary for SQLiteOpenHelper)
+     * @brief  method for upgrading to a new database version
+     * (this is not important for this project, it was just necessary for SQLiteOpenHelper)
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -82,7 +94,8 @@ public class DBAccess extends SQLiteOpenHelper{
 
     /**
      * @fn addData
-     * @brief method for adding data to the database
+     * @brief addData is a method for adding data to the database. It parses the JSON object passed to it and uses the 
+     * classes ContentValues and SQLiteDatabase to write those values to the database. If successful, it returns true.
      */
     public boolean addData(JSONObject data){
 
@@ -123,7 +136,10 @@ public class DBAccess extends SQLiteOpenHelper{
 
     /**
      * @fn getUnsentData
-     * @brief method to return data that has not been sent to the database
+     * @brief getUnsentData is a method to retreive data that has not been sent to the remote server. It retreives data by using
+     * the classes SQLiteDatabase and Cursor. It does and SQL query to retreive all rows that are marked as unsent. It then puts
+     * the columns from this row into an aprropriately formatted JSON object. This object is then added to a JSON array. Finally, 
+     * the method executes an SQL statement to mark all of the rows it just retreived as sent and returns the JSON array.
      */
     public JSONArray getUnsentData(){
 
@@ -192,6 +208,7 @@ public class DBAccess extends SQLiteOpenHelper{
             cursor.moveToNext();
 
         }
+        /** MARK RETREIVED DATA AS SENT **/
         SQLiteStatement update = read.compileStatement("UPDATE DATA SET sent='yes' WHERE sent='no'");
         update.executeUpdateDelete();
 
@@ -202,7 +219,9 @@ public class DBAccess extends SQLiteOpenHelper{
 
     /**
      * @fn getAllData
-     * @brief method to return all data in the table
+     * @brief getAllData functions almost exactly the same as getUnsentData. The only difference is the first SQL query retreives
+     * all data ("SELECT * FROM Data") rather than only the unsent data ("SELECT * FROM Data WHERE sent='no'"). It still marks 
+     * unsent data as sent. This method returns a JSON array containing all of the rows it retreived from the table.
      */
     public JSONArray getAllData(){
 
