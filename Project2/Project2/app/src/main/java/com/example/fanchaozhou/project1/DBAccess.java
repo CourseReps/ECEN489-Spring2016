@@ -55,7 +55,7 @@ public class DBAccess extends SQLiteOpenHelper{
      * @brief Constructor for the DBAccess class. DBAccess extends SQLiteOpenHelper, so it just uses the super constructor.
      * The parameters passed are the current context, the name of the database to create/open, the cursor factory (null),
      * and the database version.
-     * /
+     * */
     DBAccess(Context context){
 
         super(context, DB_NAME, null, 1);
