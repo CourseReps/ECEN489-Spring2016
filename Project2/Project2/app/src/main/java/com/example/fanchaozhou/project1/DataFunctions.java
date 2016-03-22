@@ -30,20 +30,9 @@ import org.json.JSONObject;
  * @brief contains simple pull and push functions
  */
 public class DataFunctions{
-    private String transmitID = "5";
-    private double RSSI = 0;
-    private String receiveID = "6";
-    private double latitude = 0;
-    private double longitude = 0;
     private DateFormat timestamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    private String rssist = "";
-    private String gpsst = "";
-    private String imust = "";
-    private String timestampst = "";
-    private float yaw = 0;
-    private float pitch = 0;
-    private float roll = 0;
     private Context mContext;
+    private DataCollector dataStruct;
 
     /**
      * @fn DataFunctions
@@ -51,30 +40,23 @@ public class DataFunctions{
      */
     public DataFunctions(Context mContext){
         this.mContext = mContext;
+        dataStruct = new DataCollector();
     }
 
     /**
      * @fn pulldata
      * @brief puts recived data into an arraylist
      */
-    public ArrayList<String> pulldata(String transmitIDs, double RSSIs, String receiveIDs, float x, float y, float z, double lat, double longi){
+    public ArrayList<String> pulldata(){
         ArrayList<String> data = new ArrayList<>();
-        transmitID = transmitIDs;
-        RSSI = RSSIs;
-        receiveID = receiveIDs;
-        yaw = x;
-        pitch = y;
-        roll = z;
-        latitude = lat;
-        longitude = longi;
-        rssist = Double.toString(RSSI);
+        String rssist = Double.toString(dataStruct.RSSI);
         timestamp.format(Calendar.getInstance().getTime());
-        imust = Float.toString(yaw) + " " + Float.toString(pitch) + " " + Float.toString(roll);
-        timestampst = timestamp.format(Calendar.getInstance().getTime());
-        gpsst = Double.toString(latitude) + ',' + Double.toString(latitude);
-        data.add(transmitID);
+        String imust = Float.toString(dataStruct.yaw) + " " + Float.toString(dataStruct.pitch) + " " + Float.toString(dataStruct.roll);
+        String timestampst = timestamp.format(dataStruct.timestamp);
+        String gpsst = Double.toString(dataStruct.latitude) + ',' + Double.toString(dataStruct.latitude);
+        data.add(dataStruct.transmitID);
         data.add(rssist);
-        data.add(receiveID);
+        data.add(dataStruct.receiveID);
         data.add(imust);
         data.add(gpsst);
         data.add(timestampst);
@@ -83,21 +65,21 @@ public class DataFunctions{
 
     /**
      * @fn pushtodb
-     * @brief puts received data into JSON and putds JSON into local SQLite db
+     * @brief puts most recent received data into JSON and putds JSON into local SQLite db
      */
     public void pushtodb(DBAccess data2){
         try {
-            pulldata(transmitID, RSSI, receiveID, yaw, pitch, roll, latitude, longitude);
+            //pulldata();//transmitID, RSSI, receiveID, yaw, pitch, roll, latitude, longitude);
             JSONObject dbdata = new JSONObject();
-            dbdata.put("XbeeID", transmitID);
-            dbdata.put("RSSI", RSSI);
-            dbdata.put("DeviceID", receiveID);
-            dbdata.put("Latitude", latitude);
-            dbdata.put("Longitude", longitude);
-            dbdata.put("Yaw", yaw);
-            dbdata.put("Pitch", pitch);
-            dbdata.put("Roll", roll);
-            dbdata.put("SampleDate", timestampst);
+            dbdata.put("XbeeID", dataStruct.transmitID);
+            dbdata.put("RSSI", dataStruct.RSSI);
+            dbdata.put("DeviceID", dataStruct.receiveID);
+            dbdata.put("Latitude", dataStruct.latitude);
+            dbdata.put("Longitude", dataStruct.longitude);
+            dbdata.put("Yaw", dataStruct.yaw);
+            dbdata.put("Pitch", dataStruct.pitch);
+            dbdata.put("Roll", dataStruct.roll);
+            dbdata.put("SampleDate", timestamp.format(dataStruct.timestamp));
             data2.addData(dbdata);
         } catch (JSONException e) {
             e.printStackTrace();

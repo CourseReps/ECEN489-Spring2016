@@ -81,7 +81,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private float pitch = 0;
     private float yaw = 0;
     private double latitude = 0;
-    private double longitude = 0;
+    private double longitude = 0;*/
     private LocationManager locationManager;
 
     private MyGLSurfaceView mGLView;
@@ -276,8 +276,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      */
     @Override
     public void onLocationChanged(Location location) {
-        latitude = location.getLatitude();
-        longitude = location.getLongitude();
+        dataStruct.latitude = location.getLatitude();
+        dataStruct.longitude = location.getLongitude();
 
     }
 
@@ -321,9 +321,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             String serialJSONData;
-            String transmitID = "5";
-            String receiveID = "6";
-            double rssi = 0;
+            //@TODO don't hardcode these
+            dataStruct.transmitID = "5";
+            dataStruct.receiveID = "6";
             DataFunctions dataFunc = new DataFunctions(getActivity());
             byte buffer[] = new byte[ BUFSIZE ];
 
@@ -333,9 +333,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     serialJSONData = new String(buffer, "UTF-8");
                     try{
                         JSONObject serialJSONObj = new JSONObject(serialJSONData);
-                        receiveID = serialJSONObj.getString(RXID);
-                        transmitID = serialJSONObj.getString(TXID);
-                        rssi = serialJSONObj.getDouble(RSSI);
+                        dataStruct.receiveID = serialJSONObj.getString(RXID);
+                        dataStruct.transmitID = serialJSONObj.getString(TXID);
+                        dataStruct.RSSI = serialJSONObj.getDouble(RSSI);
                     } catch (Exception e) {
                         System.out.println(e);
                     }
@@ -345,7 +345,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e);
             }
 
-            ArrayList<String> data = dataFunc.pulldata(transmitID, rssi, receiveID, dataStruct.yaw, dataStruct.pitch, dataStruct.roll, latitude,longitude);
+            ArrayList<String> data = dataFunc.pulldata();
             dataFunc.pushtodb(dbHandle);
 
             return data;
