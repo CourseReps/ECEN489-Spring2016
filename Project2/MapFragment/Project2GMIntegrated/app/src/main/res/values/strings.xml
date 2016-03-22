@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">ECEN489 Project 2</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_map">Map</string>
+
+    <string name="pref_category_datasettings_title">Data Settings</string>
+    <string name="pref_category_datasettings_key">pref_category_datasettings_key</string>
+    <string name="pref_category_datatx_title">Connecting to Server</string>
+    <string name="pref_category_datatx_key">pref_category_datatx_key</string>
+    <string name="pref_category_serial_title">XBee Connection</string>
+    <string name="pref_category_serial_key">pref_category_serial_key</string>
+    <string name="pref_category_json_changes">pref_category_json_changes</string>
+    <string name="pref_category_connection_settings">pref_category_connection_settings</string>
+    <string name="pref_category_init_table">Initialize Table</string>
+    <string name="pref_category_init_table_key">pref_category_init_table_key</string>
+
+    <string name="pref_category_table_name">Table Name</string>
+    <string name="pref_category_table_name_key">pref_category_table_name_key</string>
+
+    <string name="pref_category_tolerance">Tolerance</string>
+    <string name="pref_category_tolerance_key">pref_category_tolerance_key</string>
+
+    <string name="pref_json_changes_title">JSON Settings</string>
+    <string name="pref_json_changes_key">pref_json_changes_key</string>
+
+    <string name="pref_gps_title">GPS</string>
+    <string name="pref_gps_changes_key">pref_gps_key</string>
+
+    <string name="pref_rss_s1_title">RSS S1</string>
+    <string name="pref_rss_s1_key">pref_rss_s1_key</string>
+
+    <string name="pref_rss_s2_title">RSS S2</string>
+    <string name="pref_rss_s2_key">pref_rss_s2_key</string>
+
+    <string name="pref_gyro_title">Gyro</string>
+    <string name="pref_gyro_key">pref_gyro_key</string>
+
+    <string name="pref_mag_title">Mag</string>
+    <string name="pref_mag_key">pref_mag_key</string>
+
+    <string name="pref_compass_title">Compass</string>
+    <string name="pref_compass_key">pref_compass_key</string>
+
+    <string name="pref_http_key">pref_http_key</string>
+    <string name="pref_http_title">Server\'s IP or Domain Name</string>
+    <string name="pref_http_default">localhost</string>
+
+    <string name="pref_serial_baudrate_title">Rate</string>
+    <string name="pref_serial_baudrate_key">pref_serial_baudrate_key</string>
+    <string name="pref_serial_baudrate_default">9600</string>
+
+    <string name="pref_s1_id_title">S1 ID</string>
+    <string name="pref_s1_id_key">pref_s1_id_key</string>
+    <string name="pref_s1_id_default">S1 ID</string>
+
+    <string name="pref_s2_id_title">S2 ID</string>
+    <string name="pref_s2_id_key">pref_s2_id_key</string>
+    <string name="pref_s2_id_default">S2 ID</string>
+
+    <string name="pref_port_numb_title">Port Number</string>
+    <string name="pref_port_numb_key">pref_port_numb_key</string>
+    <string name="pref_port_numb_default">portnumber</string>
+
+    <string name="pref_init_table_title">Initialize Table</string>
+    <string name="pref_init_table_key">pref_init_table_key</string>
+
+    <string name="pref_table_name_title">Table Name</string>
+    <string name="pref_table_name_key">pref_table_name_key</string>
+    <string name="pref_table_name_default">Test1</string>
+
+    <string name="pref_tolerance_theta_title">Tolerance Theta</string>
+    <string name="pref_tolerance_theta_key">pref_tolerance_theta_key</string>
+    <string name="pref_tolerance_theta_default">Angle1</string>
+
+    <string name="pref_tolerance_phi_title">Tolerance Phi</string>
+    <string name="pref_tolerance_phi_key">pref_tolerance_phi_key</string>
+    <string name="pref_tolerance_phi_default">Angle2</string>
+
+    <string name="action_about_us">About Us</string>
+    <string name="action_data">Data</string>
+    <string name="action_display">Display</string>
+    <string name="action_alignment">Alignment</string>
+    <string name="action_jsonsettings">JSON Settings</string>
+    <string name="action_connectionsettings">Connection Settings</string>
+    <string name="action_tableinit">Table Settings</string>
+    <string name="action_tolerance">Tolerance</string>
+
+    <string name="title_activity_maps">Map</string>
+</resources>
+
