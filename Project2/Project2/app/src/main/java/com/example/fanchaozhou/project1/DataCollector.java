@@ -51,7 +51,7 @@ public class DataCollector implements Runnable
 				Thread.sleep(500); //run at 2Hz
 			}catch(InterruptedException e){System.err.println(e);}; //print any errors to system log
 
-
+			//@TODO collect live data that isn't already collected in the MainFragment and send to server
 		}
 	}
 }
