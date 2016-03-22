@@ -208,9 +208,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         float green[] = {0.57843137f, 0.83921569f, 0.0f, 1.0f};
         float pitchTol;
         float rollTol;
-        float PITCH_MIN; //= 90 - pitchTol;
-        float PITCH_MAX;// = 90 + pitchTol;
-        float ROLL_MAX;// = rollTol; // Roll is symmetric about zero, so no need for min field if using abs value
+        float PITCH_MIN;
+        float PITCH_MAX;
+        float ROLL_MAX; // Roll is symmetric about zero, so no need for min field if using absolute value
 
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
             yaw = event.values[0];
