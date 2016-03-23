@@ -86,10 +86,13 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private TextView rollText;
 
     private DataCollector dataStruct;
+    private Thread dataThread;
     private SharedPreferences sharedPref;
 
     public MainFragment(){
         dataList = new ArrayList<>();
+        dataStruct = new DataCollector(); //data access/storage wrapper
+        dataThread = new Thread(dataStruct);
     }
 
     /**
@@ -155,9 +158,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e);
             }
         }
-        dataStruct = new DataCollector(); //data access/storage wrapper
-        Thread t = new Thread(dataStruct);
-        t.start(); //launches data collection loop in background thread
 
         // Creating a Shared Preference Manager
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -172,6 +172,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onStart() {
         super.onStart();
         dataListAdaptor.notifyDataSetChanged();
+        if(!dataThread.isAlive()) //make sure thread isn't already running
+            dataThread.start(); //launches data collection loop in background thread
     }
 
     /**
