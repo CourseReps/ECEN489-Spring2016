@@ -34,6 +34,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -72,6 +73,15 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private UsbSerialPort port;
     private int HTTP_SEND_STATUS = 0;
     public final static int BUFSIZE = 128;
+    public final static boolean IS_AUTO_RUNNING_DEF = false;
+    public final static boolean IS_USED_DEF = false;
+    public final static boolean IS_ALIGNED_DEF = false;
+    public final static String IS_AUTO_RUNNING_PREF_KEY = "Auto Running Preference";
+    public final static String IS_USED_PREF_KEY = "Is_Used Preference";
+    public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
+    public static final String SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
+    private SharedPreferences.Editor editor = null;
+    private SharedPreferences settings;
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
@@ -94,6 +104,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         dataList = new ArrayList<>();
         dataStruct = new DataCollector(); //data access/storage wrapper
         //dataThread = new Thread(dataStruct);
+        settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
+        editor = settings.edit();
     }
 
     /**
@@ -174,8 +186,19 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onStart() {
         super.onStart();
         dataListAdaptor.notifyDataSetChanged();
+
         //if(!dataThread.isAlive()) //make sure thread isn't already running
-            //dataThread.start(); //launches data collection loop in background thread
+           // dataThread.start(); //launches data collection loop in background thread
+        /*Get the previous values of the settings*/
+        boolean isAutoRunning = settings.getBoolean(IS_AUTO_RUNNING_PREF_KEY, IS_AUTO_RUNNING_DEF);
+        boolean isAligned = settings.getBoolean(IS_ALIGNED_PREF_KEY, IS_ALIGNED_DEF);
+        boolean isUsed = settings.getBoolean(IS_USED_PREF_KEY, IS_USED_DEF);
+
+        /*Set the three checkboxes to the previous values*/
+        CheckBox isAlignedCheckBox = (CheckBox)getActivity().findViewById(R.id.alignment_checkbox);
+        isAlignedCheckBox.setChecked(isAligned);
+        //CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
+        //CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
     }
 
     /**
@@ -394,6 +417,11 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         if(savedInstanceState == null){
+            /*Set the three checkboxes to the previous values*/
+            final CheckBox isAlignedCheckBox = (CheckBox)getActivity().findViewById(R.id.alignment_checkbox);
+            //final CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
+            //final CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
+
             //Create a GL Surfaceview
             mGLView = (MyGLSurfaceView) rootView.findViewById(R.id.glSurfaceViewID);
             yawText = (TextView)rootView.findViewById(R.id.yawText);
@@ -402,6 +430,15 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
             ListView list = (ListView)rootView.findViewById(R.id.list);  //Find the id of the target ListView
             list.setAdapter(dataListAdaptor);                            //Bind the adaptor to the ListView
+
+            isAlignedCheckBox.setOnClickListener(new View.OnClickListener() {//Checkbox handler for alignment
+                @Override
+                public void onClick(View v) {
+                    //Save the alignment checkbox status in the SharedPreferences File
+                    editor.putBoolean(IS_ALIGNED_PREF_KEY, isAlignedCheckBox.isChecked());
+                    editor.commit();
+                }
+            });
 
             final Button button_clear_all = (Button)rootView.findViewById(R.id.button_clear_all);
             button_clear_all.setOnClickListener(new View.OnClickListener() {
