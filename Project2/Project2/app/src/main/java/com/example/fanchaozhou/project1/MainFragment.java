@@ -102,6 +102,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Creating a Shared Preference Manager
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
         //Adding the AlignmentFragment
         FragmentManager FM = getFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
@@ -156,9 +159,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
         }
         dataStruct = new DataCollector(); //data access/storage wrapper
-
-        // Creating a Shared Preference Manager
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
     }
 
