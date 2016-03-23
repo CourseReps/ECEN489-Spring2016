@@ -156,6 +156,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
         }
         dataStruct = new DataCollector(); //data access/storage wrapper
+        Thread t = new Thread(dataStruct);
+        t.start(); //launches data collection loop in background thread
 
         // Creating a Shared Preference Manager
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -369,7 +371,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
     /**
      * @fn onCreateView
-     * @brief adds button click listensers, creats http connection, sends data to server
+     * @brief adds button click listeners, creates http connection, sends data to server
      *
      * A more detailed function description (Only use detailed description if the function needs explanation otherwise your brief description * should suffice)
      */
