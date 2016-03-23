@@ -220,14 +220,15 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         pitchText.setText("y: " + String.valueOf((int)dataStruct.pitch));
         rollText.setText("x: " + String.valueOf((int)dataStruct.roll));
 
+        //@TODO Debug XML problem here
         /* Get orientation tolerances from preferences */
         //pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
         //rollTolString = sharedPref.getString(getString(R.string.pref_tolerance_phi_key), "5");
 
         /* Handle inputs that are not parsable floats */
         try {
-            pitchTol = 10.0f//Float.parseFloat(pitchTolString);
-            rollTol = 5.0f//Float.parseFloat(rollTolString);
+            pitchTol = 10.0f;//Float.parseFloat(pitchTolString);
+            rollTol = 5.0f;//Float.parseFloat(rollTolString);
         }catch(NumberFormatException e){
             e.printStackTrace();
             pitchTol = 10.0f;
