@@ -97,15 +97,19 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private TextView rollText;
 
     private DataCollector dataStruct;
-    //private Thread dataThread;
     private SharedPreferences sharedPref;
+
+    private boolean runEnable, loopIsRunning; //flags for data collection start/stop
 
     public MainFragment(){
         dataList = new ArrayList<>();
         dataStruct = new DataCollector(); //data access/storage wrapper
-        //dataThread = new Thread(dataStruct);
+
         settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
         editor = settings.edit();
+
+        runEnable = false;
+        loopIsRunning = false;
     }
 
     /**
@@ -416,19 +420,19 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         super.onCreateView(inflater, container, savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        if(savedInstanceState == null){
+        if(savedInstanceState == null) {
             /*Set the three checkboxes to the previous values*/
-            final CheckBox isAlignedCheckBox = (CheckBox)getActivity().findViewById(R.id.alignment_checkbox);
+            final CheckBox isAlignedCheckBox = (CheckBox) getActivity().findViewById(R.id.alignment_checkbox);
             //final CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
             //final CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
 
             //Create a GL Surfaceview
             mGLView = (MyGLSurfaceView) rootView.findViewById(R.id.glSurfaceViewID);
-            yawText = (TextView)rootView.findViewById(R.id.yawText);
-            pitchText = (TextView)rootView.findViewById(R.id.pitchText);
-            rollText = (TextView)rootView.findViewById(R.id.rollText);
+            yawText = (TextView) rootView.findViewById(R.id.yawText);
+            pitchText = (TextView) rootView.findViewById(R.id.pitchText);
+            rollText = (TextView) rootView.findViewById(R.id.rollText);
 
-            ListView list = (ListView)rootView.findViewById(R.id.list);  //Find the id of the target ListView
+            ListView list = (ListView) rootView.findViewById(R.id.list);  //Find the id of the target ListView
             list.setAdapter(dataListAdaptor);                            //Bind the adaptor to the ListView
 
             isAlignedCheckBox.setOnClickListener(new View.OnClickListener() {//Checkbox handler for alignment
@@ -440,7 +444,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 }
             });
 
-            final Button button_clear_all = (Button)rootView.findViewById(R.id.button_clear_all);
+            final Button button_clear_all = (Button) rootView.findViewById(R.id.button_clear_all);
             button_clear_all.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for clearing the data list
                     dataList.clear();
@@ -448,14 +452,14 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 }
             });
 
-            final Button button_refresh = (Button)rootView.findViewById(R.id.button_refresh);
+            final Button button_refresh = (Button) rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for pulling data
                     new PullData().execute();
                 }
             });
 
-            final Button button_datatx = (Button)rootView.findViewById(R.id.button_datatx);
+            final Button button_datatx = (Button) rootView.findViewById(R.id.button_datatx);
             button_datatx.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for triggering a data transmission
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
@@ -466,27 +470,51 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
                     //code block from tbranyon
                     Thread t = new Thread() {
-						public void run() {
+                        public void run() {
                             JSONArray JSONlist = dbHandle.getUnsentData();
-							for(int x = 0; x < JSONlist.length(); ++x)
-							{
-								HTTP_SEND_STATUS = 0;
+                            for (int x = 0; x < JSONlist.length(); ++x) {
+                                HTTP_SEND_STATUS = 0;
                                 try {
-                                    sendHTTPdata((JSONObject)JSONlist.get(x), serverAddr);
+                                    sendHTTPdata((JSONObject) JSONlist.get(x), serverAddr);
                                     System.out.println(JSONlist.get(x));
-                                }catch(Exception e)
-                                {System.err.print(e);}
-                                if(HTTP_SEND_STATUS == -1)
-									System.err.println("Error sending!"); //change later to toast message on phone screen
-							}
-							System.out.println("Send thread finished");
-						}
-					}; //End of thread t
-					t.start(); //start send thread
+                                } catch (Exception e) {
+                                    System.err.print(e);
+                                }
+                                if (HTTP_SEND_STATUS == -1)
+                                    System.err.println("Error sending!"); //change later to toast message on phone screen
+                            }
+                            System.out.println("Send thread finished");
+                        }
+                    }; //End of thread t
+                    t.start(); //start send thread
+                }
+            });
+
+            final Button button_dataCollect = (Button) rootView.findViewById(R.id.run_button);
+            button_dataCollect.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    if (loopIsRunning) {
+                        runEnable = false;
+                        loopIsRunning = false;
+                        return;
+                    } else
+                        runEnable = true;
+
+                    loopIsRunning = true;
+                    Thread t = new Thread() {
+                        public void run() {
+                            while (runEnable) {
+                                new PullData().execute();
+                                try {
+                                    Thread.sleep(1000, 0); //execute at 1Hz //@TODO pull refresh speed from user prefs
+                                }catch(Exception e){System.err.println(e);}
+                            }
+                        }
+                    };
+                    t.start();
                 }
             });
         }
-
         return rootView;
     }
 
