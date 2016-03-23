@@ -77,11 +77,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RSSI = "RSSI";
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
-    private float roll = 0;
-    private float pitch = 0;
-    private float yaw = 0;
-    private double latitude = 0;
-    private double longitude = 0;*/
     private LocationManager locationManager;
 
     private MyGLSurfaceView mGLView;
@@ -213,15 +208,15 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         float ROLL_MAX; // Roll is symmetric about zero, so no need for min field if using absolute value
 
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
-            yaw = event.values[0];
-            pitch = event.values[1];
-            roll = event.values[2];
+            dataStruct.yaw = event.values[0];
+            dataStruct.pitch = event.values[1];
+            dataStruct.roll = event.values[2];
         }
 
         /* Display yaw pitch and roll in a text view */
-        yawText.setText("z: " + String.valueOf((int)yaw));
-        pitchText.setText("y: " + String.valueOf((int)pitch));
-        rollText.setText("x: " + String.valueOf((int)roll));
+        yawText.setText("z: " + String.valueOf((int)dataStruct.yaw));
+        pitchText.setText("y: " + String.valueOf((int)dataStruct.pitch));
+        rollText.setText("x: " + String.valueOf((int)dataStruct.roll));
 
         /* Get orientation tolerances from preferences */
         pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
@@ -251,7 +246,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using absolute value
 
         /* Set orientation graphic color based on current orientation and set boundaries */
-        if((PITCH_MIN<(Math.abs(pitch)))&&((Math.abs(pitch))<PITCH_MAX)&&((Math.abs(roll))<ROLL_MAX)){
+        if((PITCH_MIN<(Math.abs(dataStruct.pitch)))&&((Math.abs(dataStruct.pitch))<PITCH_MAX)&&((Math.abs(dataStruct.roll))<ROLL_MAX)){
             square.setColor(green);
         }
         else{

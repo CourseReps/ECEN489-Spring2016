@@ -50,6 +50,7 @@ public class DataCollector implements Runnable
 		{
 			try{
 				//@TODO pull user-defined refresh rate from XML
+				//Thread.sleep(Double.parseDouble(R.string.pref_refresh_ms)); ??
 				Thread.sleep(500); //run at 2Hz
 			}catch(InterruptedException e){System.err.println(e);}; //print any errors to system log
 
