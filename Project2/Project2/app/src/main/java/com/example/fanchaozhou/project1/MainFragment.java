@@ -105,8 +105,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         dataList = new ArrayList<>();
         dataStruct = new DataCollector(); //data access/storage wrapper
 
-        settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
-        editor = settings.edit();
+        //settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
+        //editor = settings.edit();
 
         runEnable = false;
         loopIsRunning = false;
@@ -124,6 +124,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
         // Creating a Shared Preference Manager
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
+        editor = settings.edit();
 
         //Adding the AlignmentFragment
         FragmentManager FM = getFragmentManager();
