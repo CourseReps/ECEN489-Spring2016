@@ -1,3 +1,18 @@
+
+/** @mainpage Project 2 Mobile RF Mapper
+ *
+ * @section intro_sec Introduction
+ *
+ * The Mobile RF Mapper collects various pieces of data from the android device such as GPS location, Orientation, and Recieved Signal Strength.
+ * It takes this data formats it and pushes it to a Google Fusion table for your use.
+ *
+ * @section install_sec Installation
+ * This app will be available through the Google Play store.
+ *
+ * @subsection step1 Step 1: Opening the box
+ *
+ * 
+ **/
 /**
  * @file MainActivity.java
  *
@@ -5,7 +20,6 @@
  *
  *  contains the java brains needed for switching between fragments to load onto its xml file
  **/
-
 /**
  * Created by fanchaozhou on 2/22/16.
  */
