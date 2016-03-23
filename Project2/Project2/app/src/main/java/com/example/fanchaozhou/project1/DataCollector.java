@@ -35,8 +35,13 @@ public class DataCollector implements Runnable
     public static float pitch = 0; /*!< Y-axis orientation */
     public static float roll = 0; /*!< Z-axis orientation */
 
+	private Object mPauseLock;
+	private boolean mPaused;
+
 	public DataCollector()
 	{
+		mPauseLock = new Object();
+		mPaused = false;
 	}
 
 	/**
@@ -48,14 +53,37 @@ public class DataCollector implements Runnable
 	{
 		while(true)
 		{
+			synchronized (mPauseLock) {
+				while (mPaused) {
+					try {
+						mPauseLock.wait();
+					} catch (InterruptedException e) {
+					}
+				}
+			}
 			try{
 				//@TODO pull user-defined refresh rate from XML
 				//Thread.sleep(Double.parseDouble(R.string.pref_refresh_ms)); ??
 				Thread.sleep(500); //run at 2Hz
-			}catch(InterruptedException e){System.err.println(e);}; //print any errors to system log
+			}catch(InterruptedException e){System.err.println("DataCollector Thread error: " + e.toString());}; //print any errors to system log
 
 			//@TODO collect live data that isn't already collected in the MainFragment and send to server
 			timestamp = Calendar.getInstance().getTime();
+		}
+	}
+
+	public void onPause()
+	{
+		synchronized (mPauseLock) {
+			mPaused = true;
+		}
+	}
+
+	public void onResume()
+	{
+		synchronized (mPauseLock) {
+			mPaused = false;
+			mPauseLock.notifyAll();
 		}
 	}
 }
