@@ -431,13 +431,21 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             button_datatx.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for triggering a data transmission
                     SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    final String serverAddr =
+                    /*final String serverAddr =
                             sharedPref.getString(getString(R.string.pref_http_key),
-                                    getString(R.string.pref_http_default));  //Get the server Address
+                                    getString(R.string.pref_http_default));  //Get the server Address*/
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
 
+                    /**********************************/
+                    //@TODO this only sends the most current line to the server!!!
+                    SaveRFData saveRF = new SaveRFData();
+                    dataStruct.updateObject();
+                    saveRF.RFMember = dataStruct.kludge;
+                    saveRF.execute();
+                    /**********************************/
+
                     //tbranyon: code block to push data to server
-                    Thread t = new Thread() {
+                    /*Thread t = new Thread() {
                         public void run() {
                             JSONArray JSONlist = dbHandle.getUnsentData();
                             for (int x = 0; x < JSONlist.length(); ++x) {
@@ -454,7 +462,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                             System.out.println("Send thread finished");
                         }
                     }; //End of thread t
-                    t.start(); //start send thread
+                    t.start(); //start send thread*/
                 }
             });
 
@@ -487,10 +495,53 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     }
 
     /**
+     * @brief    SaveRFData
+     *
+     *           AsyncTask that gets data from MySQL datbase and displays it on map
+     */
+    private class SaveRFData extends AsyncTask<String, Void, String> {
+        private Exception exception;
+        public RFData RFMember;
+        public boolean AddComplete = false;
+        //public boolean AddErr = false;
+
+        //--------------------------------------------------------------------------------------------------------------
+
+        /**
+         * @brief doInBackground
+         * <p/>
+         * Gets the data from the MySQL server then calls onPostExecute
+         */
+        protected String doInBackground(String... parameters) {
+            try {
+                AddComplete = false;
+                if (RFMember != null) {
+                    /// Pull from database the data that matches this range
+                    RFFieldSQLDatabase RFFieldDatabase = new RFFieldSQLDatabase();
+
+                    /// Connect to test server (for now), if not connected return null
+                    if (RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com") == true) {
+                        /// Store data to database, return the results
+                        boolean status = RFFieldDatabase.AddNewEntry(RFMember);
+                        if (status) return "Success";
+                        else return "Failed to add";
+                    } else return "Not Connected";
+                } else return "Null Data";
+
+            } catch (Exception e) {
+                /// Exception processing, display error and then return null
+                System.out.println("Err: " + e.getMessage());
+                this.exception = e;
+                return e.getMessage();
+            }
+        }
+    }
+
+    /**
      * @fn sendHTTPdata
      * @brief Method for sending JSON lines from local DB to server
      */
-    protected void sendHTTPdata(JSONObject json, String serverAddress)
+    /*protected void sendHTTPdata(JSONObject json, String serverAddress)
 	{
 		final String data = json.toString();
 		try{
@@ -516,5 +567,5 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 		    System.err.print(e);
 		    HTTP_SEND_STATUS = -1;
 		}
-	}
+	}*/
 }
