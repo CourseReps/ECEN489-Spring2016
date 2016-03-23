@@ -221,13 +221,13 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         rollText.setText("x: " + String.valueOf((int)dataStruct.roll));
 
         /* Get orientation tolerances from preferences */
-        pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
-        rollTolString = sharedPref.getString(getString(R.string.pref_tolerance_phi_key), "5");
+        //pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
+        //rollTolString = sharedPref.getString(getString(R.string.pref_tolerance_phi_key), "5");
 
         /* Handle inputs that are not parsable floats */
         try {
-            pitchTol = Float.parseFloat(pitchTolString);
-            rollTol = Float.parseFloat(rollTolString);
+            pitchTol = 10.0f//Float.parseFloat(pitchTolString);
+            rollTol = 5.0f//Float.parseFloat(rollTolString);
         }catch(NumberFormatException e){
             e.printStackTrace();
             pitchTol = 10.0f;
