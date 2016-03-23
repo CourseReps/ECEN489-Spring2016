@@ -1,3 +1,22 @@
+# Project 2b  
+Technical work needs to be integrated/polished/finished by Wednesday, 30 March at 3:50PM
+Any individual work that is done outside of the app should be finished no later than Monday night to leave time for integration and testing.
+
+## Individual Tasks
+* Project Lead/Integration and Testing - Thomas
+* OAuth/Fusion Tables/Maps - John
+* Debug screen orientation change crash - 
+* Debug back button crash -
+* Debug app exit crash -
+* Performance improvements (fix crashes due to slowness) -
+* Implement dynamic data collection based on user settings -
+* Stop recording data when orientation error is outside of tolerance -
+* Code organization/cleaning, UI polishing - 
+
+-----------------------------------------------------
+-----------------------------------------------------
+
+
 #Project 2  
 
 Due Friday 3/11/16
