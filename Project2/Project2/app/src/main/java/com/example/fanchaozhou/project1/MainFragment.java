@@ -73,7 +73,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private UsbSerialPort port;
     private int HTTP_SEND_STATUS = 0;
     public final static int BUFSIZE = 128;
-    public final static boolean IS_AUTO_RUNNING_DEF = false;
+    /*public final static boolean IS_AUTO_RUNNING_DEF = false;
     public final static boolean IS_USED_DEF = false;
     public final static boolean IS_ALIGNED_DEF = false;
     public final static String IS_AUTO_RUNNING_PREF_KEY = "Auto Running Preference";
@@ -81,7 +81,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
     public static final String SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
     private SharedPreferences.Editor editor = null;
-    private SharedPreferences settings;
+    private SharedPreferences settings;*/
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
@@ -105,9 +105,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         dataList = new ArrayList<>();
         dataStruct = new DataCollector(); //data access/storage wrapper
 
-        //settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
-        //editor = settings.edit();
-
         runEnable = false;
         loopIsRunning = false;
     }
@@ -124,9 +121,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
         // Creating a Shared Preference Manager
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-        settings = getActivity().getSharedPreferences(SETTINGS_FILE, Context.MODE_PRIVATE);
-        editor = settings.edit();
 
         //Adding the AlignmentFragment
         FragmentManager FM = getFragmentManager();
@@ -192,20 +186,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     @Override
     public void onStart() {
         super.onStart();
-        dataListAdaptor.notifyDataSetChanged();
-
-        //if(!dataThread.isAlive()) //make sure thread isn't already running
-           // dataThread.start(); //launches data collection loop in background thread
-        /*Get the previous values of the settings*/
-        boolean isAutoRunning = settings.getBoolean(IS_AUTO_RUNNING_PREF_KEY, IS_AUTO_RUNNING_DEF);
-        boolean isAligned = settings.getBoolean(IS_ALIGNED_PREF_KEY, IS_ALIGNED_DEF);
-        boolean isUsed = settings.getBoolean(IS_USED_PREF_KEY, IS_USED_DEF);
-
-        /*Set the three checkboxes to the previous values*/
-        CheckBox isAlignedCheckBox = (CheckBox)getActivity().findViewById(R.id.alignment_checkbox);
-        isAlignedCheckBox.setChecked(isAligned);
-        //CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
-        //CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
+        dataListAdaptor.notifyDataSetChanged(); //@TODO this line causes an exception on app close
     }
 
     /**
@@ -356,12 +337,11 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private class PullData extends AsyncTask<Void, Void, ArrayList<String>>{
         /**
          * @fn doInBackground
-         * @brief reads from serial port; calls dataFunc.pulldata from DataFunctiond
+         * @brief reads from serial port; calls dataFunc.pulldata from DataFunctions
          */
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             String serialJSONData;
-            //@TODO don't hardcode these
             dataStruct.transmitID = "5";
             dataStruct.receiveID = "6";
             DataFunctions dataFunc = new DataFunctions(getActivity());
@@ -415,8 +395,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     /**
      * @fn onCreateView
      * @brief adds button click listeners, creates http connection, sends data to server
-     *
-     * A more detailed function description (Only use detailed description if the function needs explanation otherwise your brief description * should suffice)
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -424,10 +402,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         if(savedInstanceState == null) {
-            /*Set the three checkboxes to the previous values*/
-            final CheckBox isAlignedCheckBox = (CheckBox) getActivity().findViewById(R.id.alignment_checkbox);
-            //final CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
-            //final CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
 
             //Create a GL Surfaceview
             mGLView = (MyGLSurfaceView) rootView.findViewById(R.id.glSurfaceViewID);
@@ -437,15 +411,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
             ListView list = (ListView) rootView.findViewById(R.id.list);  //Find the id of the target ListView
             list.setAdapter(dataListAdaptor);                            //Bind the adaptor to the ListView
-
-            isAlignedCheckBox.setOnClickListener(new View.OnClickListener() {//Checkbox handler for alignment
-                @Override
-                public void onClick(View v) {
-                    //Save the alignment checkbox status in the SharedPreferences File
-                    editor.putBoolean(IS_ALIGNED_PREF_KEY, isAlignedCheckBox.isChecked());
-                    editor.commit();
-                }
-            });
 
             final Button button_clear_all = (Button) rootView.findViewById(R.id.button_clear_all);
             button_clear_all.setOnClickListener(new View.OnClickListener() {
@@ -471,7 +436,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                                     getString(R.string.pref_http_default));  //Get the server Address
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
 
-                    //code block from tbranyon
+                    //tbranyon: code block to push data to server
                     Thread t = new Thread() {
                         public void run() {
                             JSONArray JSONlist = dbHandle.getUnsentData();
@@ -494,9 +459,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             });
 
             final Button button_dataCollect = (Button) rootView.findViewById(R.id.run_button);
-            button_dataCollect.setOnClickListener(new View.OnClickListener() {
+            button_dataCollect.setOnClickListener(new View.OnClickListener() { //tbranyon: click listener for run/stop button
                 public void onClick(View v) {
-                    if (loopIsRunning) {
+                    if (loopIsRunning) { //code block to ensure proper run/stop functionality
                         runEnable = false;
                         loopIsRunning = false;
                         return;
@@ -504,7 +469,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                         runEnable = true;
 
                     loopIsRunning = true;
-                    Thread t = new Thread() {
+                    Thread t = new Thread() { //runs data collection loop in separate thread
                         public void run() {
                             while (runEnable) {
                                 new PullData().execute();
@@ -522,10 +487,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     }
 
     /**
-     * @fn snedHTTPdata
+     * @fn sendHTTPdata
      * @brief Method for sending JSON lines from local DB to server
      */
-
     protected void sendHTTPdata(JSONObject json, String serverAddress)
 	{
 		final String data = json.toString();
