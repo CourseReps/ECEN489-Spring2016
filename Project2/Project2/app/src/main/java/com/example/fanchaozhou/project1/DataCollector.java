@@ -30,7 +30,7 @@ public class DataCollector //implements Runnable
     public static float pitch = 0; /*!< Y-axis orientation */
     public static float roll = 0; /*!< Z-axis orientation */
 	public static float magField[] = new float[3]; /*!< Magnetic field strength matrix */
-	public static RFData kludge = new RFData(); /*!< Object for passing data to remote SQL server */
+	//public static RFData kludge = new RFData(); /*!< Object for passing data to remote SQL server */
 
 	//private Object mPauseLock;
 	//private boolean mPaused;
@@ -39,7 +39,7 @@ public class DataCollector //implements Runnable
 	{
 	}
 
-	public void updateObject()
+	/*public void updateObject()
 	{
 		kludge.DeviceID = Integer.parseInt(transmitID); //@TODO verify
 		kludge.RSSI = (float)RSSI; //@TODO possible loss of precision
@@ -51,5 +51,5 @@ public class DataCollector //implements Runnable
 		kludge.Yaw = yaw;
 		kludge.SampleDate = timestamp;
 		//kludge.SampleNumber?
-	}
+	}*/
 }

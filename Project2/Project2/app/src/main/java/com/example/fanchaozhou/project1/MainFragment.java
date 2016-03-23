@@ -436,13 +436,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                                     getString(R.string.pref_http_default));  //Get the server Address*/
                     //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
 
-                    /**********************************/
-                    //@TODO this only sends the most current line to the server!!!
                     SaveRFData saveRF = new SaveRFData();
-                    dataStruct.updateObject();
-                    saveRF.RFMember = dataStruct.kludge;
-                    saveRF.execute();
-                    /**********************************/
+                    saveRF.execute(); //will pull all unsent data and send to server
 
                     //tbranyon: code block to push data to server
                     /*Thread t = new Thread() {
@@ -503,7 +498,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         private Exception exception;
         public RFData RFMember;
         public boolean AddComplete = false;
-        //public boolean AddErr = false;
+        public boolean AddErr = false;
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -522,8 +517,24 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     /// Connect to test server (for now), if not connected return null
                     if (RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com") == true) {
                         /// Store data to database, return the results
-                        boolean status = RFFieldDatabase.AddNewEntry(RFMember);
-                        if (status) return "Success";
+                        JSONArray jsonlist = dbHandle.getUnsentData();
+                        for(int x = 0; x < jsonlist.length(); ++x)
+                        {
+                            try {
+                                RFMember.assignValuesFromJSON(jsonlist.getJSONObject(x));
+                                boolean status = RFFieldDatabase.AddNewEntry(RFMember);
+                                if(!status)
+                                {
+                                    AddErr = true;
+                                    break;
+                                }
+                            }catch(Exception e){System.err.println(e);}
+                        }
+
+                        if (!AddErr){
+                            AddComplete = true;
+                            return "Success";
+                        }
                         else return "Failed to add";
                     } else return "Not Connected";
                 } else return "Null Data";

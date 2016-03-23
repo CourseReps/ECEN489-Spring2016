@@ -13,6 +13,10 @@ package com.example.fanchaozhou.project1;
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
+import org.json.JSONObject;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -33,6 +37,19 @@ public class RFData
     public float Roll;
     public Date SampleDate;
 
+    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+    //@TODO risky. These are copied from DBAccess.java. Changes there will not be reflected here
+    private final String COLUMN_XBEE_ID     = "XbeeID";
+    private final String COLUMN_RSSI		  = "RSSI";
+    private final String COLUMN_DEVICE_ID   = "DeviceID";
+    private final String COLUMN_LAT 		  = "Latitude";
+    private final String COLUMN_LONG        = "Longitude";
+    private final String COLUMN_YAW 		  = "Yaw";
+    private final String COLUMN_PITCH 	  = "Pitch";
+    private final String COLUMN_ROLL 		  = "Roll";
+    private final String COLUMN_TIMESTAMP	  = "SampleDate";
+
     //------------------------------------------------------------------------------------------------------------------
     /**
      * @brief    RFData - Constructor
@@ -44,6 +61,21 @@ public class RFData
         SampleNumber = -1;                                              /// Default is -1 (undefined)
         XbeeID = -1;                                                    /// Default is -1 (undefined)
         DeviceID = -1;                                                  /// Default is -1 (undefined)
+    }
+
+    public void assignValuesFromJSON(JSONObject json)
+    {
+        try {
+            XbeeID = json.getInt(COLUMN_XBEE_ID);
+            DeviceID = json.getInt(COLUMN_DEVICE_ID);
+            RSSI = (float)json.getDouble(COLUMN_RSSI); //possible issue here
+            Latitude = (float)json.getDouble(COLUMN_LAT);
+            Longitude = (float)json.getDouble(COLUMN_LONG);
+            Yaw = (float)json.getDouble(COLUMN_YAW);
+            Pitch = (float)json.getDouble(COLUMN_PITCH);
+            Roll = (float)json.getDouble(COLUMN_ROLL);
+            SampleDate = format.parse(json.getString(COLUMN_TIMESTAMP));
+        }catch(Exception e){System.err.println(e);}
     }
 }
 
