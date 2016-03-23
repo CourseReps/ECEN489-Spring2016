@@ -7,10 +7,6 @@
 
 package com.example.fanchaozhou.project1;
 
-import java.text.DateFormat;
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -21,7 +17,7 @@ import java.util.Date;
 *	DataCollector can be run as a thread to start the data collection process in the background.<br>
 *	DataCollector's fields store collected data as well as settings that are defined in the Settings Activity
 **/
-public class DataCollector implements Runnable
+public class DataCollector //implements Runnable
 {
 	//data fields
 	//currently copied from Project 1, may need review
@@ -34,14 +30,16 @@ public class DataCollector implements Runnable
     public static float yaw = 0; /*!< X-axis orientation */
     public static float pitch = 0; /*!< Y-axis orientation */
     public static float roll = 0; /*!< Z-axis orientation */
+	public static float magField[]; /*!< Magnetic field strength matrix */
 
-	private Object mPauseLock;
-	private boolean mPaused;
+	//private Object mPauseLock;
+	//private boolean mPaused;
 
 	public DataCollector()
 	{
-		mPauseLock = new Object();
-		mPaused = false;
+		//mPauseLock = new Object();
+		//mPaused = false;
+		magField = new float[3];
 	}
 
 	/**
@@ -49,7 +47,7 @@ public class DataCollector implements Runnable
 	*	@brief Data collection loop, run as thread from data activity
 	*	This function continously runs, collecting data when the user indicates to, calling the necessary classes and functions to read sensor data
 	**/
-	public void run()
+	/*public void run()
 	{
 		while(true)
 		{
@@ -68,7 +66,7 @@ public class DataCollector implements Runnable
 			}catch(InterruptedException e){System.err.println("DataCollector Thread error: " + e.toString());}; //print any errors to system log
 
 			//@TODO collect live data that isn't already collected in the MainFragment and send to server
-			timestamp = Calendar.getInstance().getTime();
+			//timestamp = Calendar.getInstance().getTime();
 		}
 	}
 
@@ -85,5 +83,5 @@ public class DataCollector implements Runnable
 			mPaused = false;
 			mPauseLock.notifyAll();
 		}
-	}
+	}*/
 }

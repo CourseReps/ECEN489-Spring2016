@@ -77,6 +77,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RSSI = "RSSI";
     private SensorManager senSensorManager;
     private Sensor senAccelerometer;
+    private Sensor senMagnetometer;
     private LocationManager locationManager;
 
     private MyGLSurfaceView mGLView;
@@ -86,13 +87,13 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private TextView rollText;
 
     private DataCollector dataStruct;
-    private Thread dataThread;
+    //private Thread dataThread;
     private SharedPreferences sharedPref;
 
     public MainFragment(){
         dataList = new ArrayList<>();
         dataStruct = new DataCollector(); //data access/storage wrapper
-        dataThread = new Thread(dataStruct);
+        //dataThread = new Thread(dataStruct);
     }
 
     /**
@@ -131,6 +132,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
             senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+            senSensorManager.registerListener(this, senMagnetometer,  SensorManager.SENSOR_DELAY_NORMAL);
 
             locationManager = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
             try {
@@ -172,8 +174,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onStart() {
         super.onStart();
         dataListAdaptor.notifyDataSetChanged();
-        if(!dataThread.isAlive()) //make sure thread isn't already running
-            dataThread.start(); //launches data collection loop in background thread
+        //if(!dataThread.isAlive()) //make sure thread isn't already running
+            //dataThread.start(); //launches data collection loop in background thread
     }
 
     /**
@@ -211,10 +213,19 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         float PITCH_MAX;
         float ROLL_MAX; // Roll is symmetric about zero, so no need for min field if using absolute value
 
-        if (mySensor.getType() == Sensor.TYPE_ORIENTATION) {
+        //store new orientation values
+        if (mySensor.getType() == Sensor.TYPE_ORIENTATION)
+        {
             dataStruct.yaw = event.values[0];
             dataStruct.pitch = event.values[1];
             dataStruct.roll = event.values[2];
+        }
+
+        if(mySensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+        {
+            dataStruct.magField[0] = event.values[0];
+            dataStruct.magField[1] = event.values[1];
+            dataStruct.magField[2] = event.values[2];
         }
 
         /* Display yaw pitch and roll in a text view */
