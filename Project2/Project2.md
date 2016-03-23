@@ -10,7 +10,7 @@ Any individual work that is done outside of the app should be finished no later 
 * Debug app exit crash -
 * Performance improvements (fix crashes due to slowness) -
 * Implement dynamic data collection based on user settings -
-* Stop recording data when orientation error is outside of tolerance -
+* Stop recording data when orientation error is outside of tolerance - Sam
 * Code organization/cleaning, UI polishing - Keaton
 
 -----------------------------------------------------
