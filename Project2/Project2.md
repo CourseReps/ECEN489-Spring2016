@@ -11,7 +11,7 @@ Any individual work that is done outside of the app should be finished no later 
 * Performance improvements (fix crashes due to slowness) -
 * Implement dynamic data collection based on user settings -
 * Stop recording data when orientation error is outside of tolerance -
-* Code organization/cleaning, UI polishing - 
+* Code organization/cleaning, UI polishing - Keaton
 
 -----------------------------------------------------
 -----------------------------------------------------
