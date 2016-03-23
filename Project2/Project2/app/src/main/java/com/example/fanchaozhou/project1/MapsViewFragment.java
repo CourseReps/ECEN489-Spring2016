@@ -26,6 +26,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.TileOverlay;
@@ -43,7 +44,7 @@ import java.util.List;
 /** @class      MapsViewFragment
  *  @brief      Maps View Fragment for Application Project
  */
-public class MapsViewFragment extends Fragment implements OnMapReadyCallback
+public class MapsViewFragment extends Fragment implements OnMapReadyCallback, OnMapClickListener
 {
     private GoogleMap mMap;                         /// Google Map Instance
     private HeatmapTileProvider mProvider;          /// Heatmap Provider
@@ -87,6 +88,7 @@ public class MapsViewFragment extends Fragment implements OnMapReadyCallback
             mapFragment.getMapAsync(this);
         }
 
+
         // Get the child tranaction and replace the map
         FragmentTransaction transaction = this.getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.map, mapFragment).commit();
@@ -94,7 +96,6 @@ public class MapsViewFragment extends Fragment implements OnMapReadyCallback
         // Return the view
         return v;
     }
-
 
     @Override
     //------------------------------------------------------------------------------------------------------------------
@@ -119,9 +120,25 @@ public class MapsViewFragment extends Fragment implements OnMapReadyCallback
         LatLng eic = new LatLng(30.618708, -96.341558);
         mMap.addMarker(new MarkerOptions().position(eic).title("EIC"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eic, 19));
+        mMap.setOnMapClickListener(this);
 
         // Calls function to update the map on the container
         UpdateMap((float) eic.latitude, (float) eic.longitude, 1000F);
+    }
+
+    //@Override
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @brief    OnMapClick
+     *
+     *           Inputs: Position (Lat/Long)
+     *           Return: none
+     *           Updates data from database upon map click
+     *           This callback is triggered when the map is clicked.
+     */
+    public void onMapClick(LatLng position)
+    {
+        UpdateMap((float) position.latitude, (float) position.longitude, 1000F);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -135,7 +152,6 @@ public class MapsViewFragment extends Fragment implements OnMapReadyCallback
     public void UpdateMap(float RefLatitude, float RefLongitude, float Radius)
     {
         LatLng ref_location = new LatLng(RefLatitude, RefLongitude);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ref_location, 19));
         GetRFData UpdateMapTask =  new GetRFData();
         UpdateMapTask.RefLatitude = RefLatitude;
         UpdateMapTask.RefLongitude = RefLongitude;
