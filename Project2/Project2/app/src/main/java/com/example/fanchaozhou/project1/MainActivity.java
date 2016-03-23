@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity{
     private SettingsFragment settingsFrag;
     private MainFragment mainFrag;
     private AboutUsFragment aboutFrag;
-   // private MapsFragment mapFrag;
+    private MapsViewFragment mapsFrag;
 
 
     /**
@@ -112,9 +112,8 @@ public class MainActivity extends AppCompatActivity{
         else if(id==R.id.action_map) {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.addToBackStack(null);
-            //CHANGE THIS LINE TO LOAD PROPER FRAGMENT
-            transaction.replace(R.id.container, mainFrag = new MainFragment());  //Start a main fragment
-            transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_FADE ).show(mainFrag);
+            transaction.replace(R.id.container, mapsFrag = new MapsViewFragment());     //Start a map fragment
+            transaction.setTransition( FragmentTransaction.TRANSIT_FRAGMENT_FADE ).show(mapsFrag);
             transaction.commit();
 
             return true;
