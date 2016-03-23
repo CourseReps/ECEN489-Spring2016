@@ -76,6 +76,10 @@
     <string name="pref_tolerance_phi_key">pref_tolerance_phi_key</string>
     <string name="pref_tolerance_phi_default">5</string>
 
+    <string name="yawsettext">Z: $d</string>
+    <string name="pitchsettext">Y: $d</string>
+    <string name="rollsettext">X: $d</string>
+
     <string name="action_about_us">About Us</string>
     <string name="action_data">Data</string>
     <string name="action_display">Display</string>

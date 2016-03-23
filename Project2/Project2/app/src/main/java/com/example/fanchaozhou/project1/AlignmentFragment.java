@@ -59,7 +59,7 @@ public class AlignmentFragment extends Fragment{
         CheckBox isAlignedCheckBox = (CheckBox)getActivity().findViewById(R.id.alignment_checkbox);
         isAlignedCheckBox.setChecked(isAligned);
         //CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
-        //CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
+        CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(R.id.alignment_used_checkbox);
     }
     /**
      * @fn onCreateView
@@ -79,6 +79,7 @@ public class AlignmentFragment extends Fragment{
             final CheckBox isAlignedCheckBox = (CheckBox) view.findViewById(R.id.alignment_checkbox);
             //final CheckBox isAutoCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the checkbox for continuous running);
             //final CheckBox isUsedCheckBox = (CheckBox)getActivity().findViewById(TODO: the id of the );
+            //final Checkbox isAligned = (CheckBox)getActivity9).findViewById();TODO: needs to be used for something
 
             isAlignedCheckBox.setOnClickListener(new View.OnClickListener() {//Checkbox handler for alignment
                 @Override

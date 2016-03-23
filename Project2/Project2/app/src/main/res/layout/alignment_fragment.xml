@@ -7,41 +7,51 @@
         android:id="@+id/glSurfaceViewID"
         android:layout_width="match_parent"
         android:layout_height="445dp"
-        android:layout_above="@+id/pitchText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/alignment_used_checkbox" />
 
 
 
     <CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Is Aligned?"
+    android:id="@+id/alignment_checkbox"
+    android:layout_gravity="center_horizontal"
+    android:layout_alignParentBottom="true"
+    android:layout_centerHorizontal="true"
+    android:checked="false" />
+
+    <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Is Aligned?"
-        android:id="@+id/alignment_checkbox"
+        android:text="Is Used?"
+        android:id="@+id/alignment_used_checkbox"
         android:layout_gravity="center_horizontal"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_above="@id/alignment_checkbox"
         android:checked="false" />
 
     <TextView android:id="@+id/pitchText"
         android:layout_width="57dp"
         android:layout_height="18dp"
         android:layout_toRightOf="@+id/yawText"
-        android:layout_above="@+id/alignment_checkbox"
+        android:layout_above="@+id/alignment_used_checkbox"
         />
 
     <TextView android:id="@+id/rollText"
         android:layout_width="57dp"
         android:layout_height="18dp"
         android:layout_toRightOf="@+id/pitchText"
-        android:layout_above="@+id/alignment_checkbox"
+        android:layout_above="@+id/alignment_used_checkbox"
         />
 
     <TextView android:id="@+id/yawText"
         android:layout_height="18dp"
         android:layout_width="57dp"
-        android:layout_above="@+id/alignment_checkbox"
+        android:layout_above="@+id/alignment_used_checkbox"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

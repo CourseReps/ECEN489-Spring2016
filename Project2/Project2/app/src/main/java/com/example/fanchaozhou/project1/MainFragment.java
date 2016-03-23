@@ -7,7 +7,7 @@
 
 package com.example.fanchaozhou.project1;
 
-import android.Manifest;
+//import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -26,15 +26,15 @@ import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+//import android.support.v4.app.ActivityCompat;
+//import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
+//import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -42,15 +42,15 @@ import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
 import com.hoho.android.usbserial.driver.UsbSerialProber;
 
-import org.json.JSONArray;
+//import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedWriter;
+//import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
+//import java.io.OutputStream;
+//import java.io.OutputStreamWriter;
+//import java.net.HttpURLConnection;
+//import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,7 +67,7 @@ import java.util.List;
  */
 public class MainFragment extends Fragment implements SensorEventListener, LocationListener {
 
-    private ArrayList<String> dataList;
+    private final ArrayList<String> dataList;
     private ArrayAdapter<String> dataListAdaptor;
     private DBAccess dbHandle;
     private UsbSerialPort port;
@@ -85,12 +85,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
-    private SensorManager senSensorManager;
-    private Sensor senAccelerometer;
     private Sensor senMagnetometer;
-    private LocationManager locationManager;
 
-    private MyGLSurfaceView mGLView;
+    private MyGLSurfaceView mGLView; //@TODO: Never used!
     private Square square = new Square();
     private TextView yawText;
     private TextView pitchText;
@@ -132,7 +129,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
         if(savedInstanceState==null){
             //Initializing the data list adaptor
-            dataListAdaptor = new ArrayAdapter<String>(
+            dataListAdaptor = new ArrayAdapter<>(
                     getActivity(),                    //The Current Parent Activity
                     R.layout.single_record,           //The .xml file that contains the textview
                     R.id.list_item_record,            //The id of the textview
@@ -142,12 +139,12 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             dbHandle = new DBAccess(this.getActivity());
 
             //Initializing the sensor manager
-            senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
-            senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
+            SensorManager senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
+            Sensor senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
             senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-            senSensorManager.registerListener(this, senMagnetometer,  SensorManager.SENSOR_DELAY_NORMAL);
+            senSensorManager.registerListener(this, senMagnetometer, SensorManager.SENSOR_DELAY_NORMAL);
 
-            locationManager = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
+            LocationManager locationManager = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
             try {
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 2000, 10, this);
             } catch (SecurityException e) {
@@ -173,7 +170,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                         Integer.parseInt(getString(R.string.pref_http_default)));  //Get the Baud Rate
                 port.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
             } catch(Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
         }
 
@@ -200,7 +197,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         try {
             port.close();        //Release the serial port
         } catch (Exception e){
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 
@@ -227,22 +224,22 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         //store new orientation values
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION)
         {
-            dataStruct.yaw = event.values[0];
-            dataStruct.pitch = event.values[1];
-            dataStruct.roll = event.values[2];
+            DataCollector.yaw = event.values[0];
+            DataCollector.pitch = event.values[1];
+            DataCollector.roll = event.values[2];
         }
 
         if(mySensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
         {
-            dataStruct.magField[0] = event.values[0];
-            dataStruct.magField[1] = event.values[1];
-            dataStruct.magField[2] = event.values[2];
+            DataCollector.magField[0] = event.values[0];
+            DataCollector.magField[1] = event.values[1];
+            DataCollector.magField[2] = event.values[2];
         }
 
         /* Display yaw pitch and roll in a text view */
-        yawText.setText("z: " + String.valueOf((int)dataStruct.yaw));
-        pitchText.setText("y: " + String.valueOf((int)dataStruct.pitch));
-        rollText.setText("x: " + String.valueOf((int)dataStruct.roll));
+        yawText.setText(getString(R.string.yawsettext, String.valueOf((int)DataCollector.yaw)));
+        pitchText.setText(getString(R.string.pitchsettext, String.valueOf((int) DataCollector.pitch)));
+        rollText.setText(getString(R.string.rollsettext, String.valueOf((int) DataCollector.roll)));
 
         /* Get orientation tolerances from preferences */
         pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
@@ -272,7 +269,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using absolute value
 
         /* Set orientation graphic color based on current orientation and set boundaries */
-        if((PITCH_MIN<(Math.abs(dataStruct.pitch)))&&((Math.abs(dataStruct.pitch))<PITCH_MAX)&&((Math.abs(dataStruct.roll))<ROLL_MAX)){
+        if((PITCH_MIN<(Math.abs(DataCollector.pitch)))&&((Math.abs(DataCollector.pitch))<PITCH_MAX)&&((Math.abs(DataCollector.roll))<ROLL_MAX)){
             square.setColor(green);
         }
         else{
@@ -297,8 +294,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      */
     @Override
     public void onLocationChanged(Location location) {
-        dataStruct.latitude = location.getLatitude();
-        dataStruct.longitude = location.getLongitude();
+        DataCollector.latitude = location.getLatitude();
+        DataCollector.longitude = location.getLongitude();
 
     }
 
@@ -342,8 +339,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             String serialJSONData;
-            dataStruct.transmitID = "5";
-            dataStruct.receiveID = "6";
+            DataCollector.transmitID = "5";
+            DataCollector.receiveID = "6";
             DataFunctions dataFunc = new DataFunctions(getActivity());
             byte buffer[] = new byte[ BUFSIZE ];
 
@@ -353,16 +350,16 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     serialJSONData = new String(buffer, "UTF-8");
                     try{
                         JSONObject serialJSONObj = new JSONObject(serialJSONData);
-                        dataStruct.receiveID = serialJSONObj.getString(RXID);
-                        dataStruct.transmitID = serialJSONObj.getString(TXID);
-                        dataStruct.RSSI = serialJSONObj.getDouble(RSSI);
+                        DataCollector.receiveID = serialJSONObj.getString(RXID);
+                        DataCollector.transmitID = serialJSONObj.getString(TXID);
+                        DataCollector.RSSI = serialJSONObj.getDouble(RSSI);
                     } catch (Exception e) {
-                        System.out.println(e);
+                        System.out.println(e.getMessage());
                     }
                 }
             } catch
                     (IOException e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
 
             ArrayList<String> data = dataFunc.pulldata();
@@ -440,7 +437,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     //@TODO this only sends the most current line to the server!!!
                     SaveRFData saveRF = new SaveRFData();
                     dataStruct.updateObject();
-                    saveRF.RFMember = dataStruct.kludge;
+                    saveRF.RFMember = DataCollector.kludge;
                     saveRF.execute();
                     /**********************************/
 
@@ -483,7 +480,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                                 new PullData().execute();
                                 try {
                                     Thread.sleep(1000, 0); //execute at 1Hz //@TODO pull refresh speed from user prefs
-                                }catch(Exception e){System.err.println(e);}
+                                }catch(Exception e){System.err.println(e.getMessage());}
                             }
                         }
                     };
@@ -500,7 +497,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      *           AsyncTask that gets data from MySQL datbase and displays it on map
      */
     private class SaveRFData extends AsyncTask<String, Void, String> {
-        private Exception exception;
+        private Exception exception; //@TODO: assigned but never accessed
         public RFData RFMember;
         public boolean AddComplete = false;
         //public boolean AddErr = false;
@@ -520,7 +517,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     RFFieldSQLDatabase RFFieldDatabase = new RFFieldSQLDatabase();
 
                     /// Connect to test server (for now), if not connected return null
-                    if (RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com") == true) {
+                    if (RFFieldDatabase.ConnectToDatabase("lusherengineeringservices.com")) {
                         /// Store data to database, return the results
                         boolean status = RFFieldDatabase.AddNewEntry(RFMember);
                         if (status) return "Success";
