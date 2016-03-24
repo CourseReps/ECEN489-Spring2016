@@ -7,7 +7,7 @@ Any individual work that is done outside of the app should be finished no later 
 * OAuth/Fusion Tables/Maps - John
 * Debug screen orientation change crash - 
 * Debug back button crash -
-* Debug app exit crash -
+* Debug app exit crash - Yanxiang
 * Performance improvements (fix crashes due to slowness) -
 * Implement dynamic data collection based on user settings -
 * Stop recording data when orientation error is outside of tolerance - Sam
