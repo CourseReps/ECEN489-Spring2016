@@ -5,7 +5,7 @@ Any individual work that is done outside of the app should be finished no later 
 ## Individual Tasks
 * Project Lead/Integration and Testing - Thomas
 * OAuth/Fusion Tables/Maps - John
-* Debug screen orientation change crash - 
+* Debug screen orientation change crash - Paul
 * Debug back button crash -
 * Debug app exit crash - Yanxiang
 * Performance improvements (fix crashes due to slowness) -
