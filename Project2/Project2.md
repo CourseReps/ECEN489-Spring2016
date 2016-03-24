@@ -1,5 +1,5 @@
 # Project 2b  
-Technical work needs to be integrated/polished/finished by Wednesday, 30 March at 3:50PM
+Technical work needs to be integrated/polished/finished by Wednesday, 30 March at 3:50PM.  
 Any individual work that is done outside of the app should be finished no later than Monday night to leave time for integration and testing.
 
 ## Individual Tasks
