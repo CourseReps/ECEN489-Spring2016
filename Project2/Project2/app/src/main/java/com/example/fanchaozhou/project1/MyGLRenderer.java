@@ -9,7 +9,9 @@ import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 /**
- * Created by Sam on 3/14/2016.
+ * @class MyGLRenderer
+ *
+ * @brief This class renders the opengl graphics.
  */
 public class MyGLRenderer implements GLSurfaceView.Renderer {
 
@@ -21,6 +23,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
     private final float[] mProjectionMatrix = new float[16];
     private final float[] mViewMatrix = new float[16];
 
+    /**
+     * @fn onSurfacecreated
+     * @brief This routine sets the background color and initializes the shape to be drawn
+     */
     public void onSurfaceCreated(GL10 unused, EGLConfig config){
         // set bg color
         GLES20.glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
@@ -29,6 +35,11 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         square = new Square();
     }
 
+    /**
+     * @fn onDrawFrame
+     * @brief This routine renders the graphic. It redraws the background, creates an mvp matrix
+     * (so that the square is square regardless of the viewport dimensions), and then draws the square
+     */
     public void onDrawFrame(GL10 unused){
         // redraw bg color
         GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT);
@@ -43,6 +54,10 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         square.draw(mMVPMatrix);
     }
 
+    /**
+     * @fn onSurfaceChanged
+     * @brief This adjusts the mvp matrix when the dimensions of the gl viewport change.
+     */
     public void onSurfaceChanged(GL10 unused, int width, int height){
         GLES20.glViewport(0, 0, width, height);
 
@@ -52,6 +67,11 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         Matrix.frustumM(mProjectionMatrix, 0, -ratio, ratio, -1, 1, 3, 7);
     }
 
+    /**
+     * @fn loadShader
+     * @brief loadShader creates a shader and compiles the shader code used to create the square.
+     * It returns the shader.
+     */
     public static int loadShader(int type, String shaderCode){
 
         // create a shader type (GLES20.GL_VERTEX_SHADER) or (GLES20.GL_FRAGMENT_SHADER)

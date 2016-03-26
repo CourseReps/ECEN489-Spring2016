@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 //import android.support.v4.app.ActivityCompat;
 //import android.support.v4.content.ContextCompat;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -87,14 +88,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String RSSI = "RSSI";
     private Sensor senMagnetometer;
 
-    private MyGLSurfaceView mGLView; //@TODO: Never used!
-    private Square square = new Square();
-    private TextView yawText;
-    private TextView pitchText;
-    private TextView rollText;
-
     private DataCollector dataStruct;
-    private SharedPreferences sharedPref;
 
     private boolean runEnable, loopIsRunning; //flags for data collection start/stop
 
@@ -115,9 +109,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Creating a Shared Preference Manager
-        sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
         //Adding the AlignmentFragment
         FragmentManager FM = getFragmentManager();
@@ -210,17 +201,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
 
-        /* set up constants for orientation graphic */
-        String pitchTolString;
-        String rollTolString;
-        float red[] = {0.85f, 0.0f, 0.0f, 1.0f};
-        float green[] = {0.57843137f, 0.83921569f, 0.0f, 1.0f};
-        float pitchTol;
-        float rollTol;
-        float PITCH_MIN;
-        float PITCH_MAX;
-        float ROLL_MAX; // Roll is symmetric about zero, so no need for min field if using absolute value
-
         //store new orientation values
         if (mySensor.getType() == Sensor.TYPE_ORIENTATION)
         {
@@ -236,48 +216,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             DataCollector.magField[2] = event.values[2];
         }
 
-        /* Display yaw pitch and roll in a text view */
-        yawText.setText(getString(R.string.yawsettext, String.valueOf((int)DataCollector.yaw)));
-        pitchText.setText(getString(R.string.pitchsettext, String.valueOf((int) DataCollector.pitch)));
-        rollText.setText(getString(R.string.rollsettext, String.valueOf((int) DataCollector.roll)));
-
-        /* Get orientation tolerances from preferences */
-        pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
-        rollTolString = sharedPref.getString(getString(R.string.pref_tolerance_phi_key), "5");
-
-        /* Handle inputs that are not parsable floats */
-        try {
-            pitchTol = Float.parseFloat(pitchTolString);
-            rollTol = Float.parseFloat(rollTolString);
-        }catch(NumberFormatException e){
-            e.printStackTrace();
-            pitchTol = 10.0f;
-            rollTol = 5.0f;
-        }
-
-        /* Make sure the tolerances are acceptable values */
-        if(!((0<=pitchTol)&&(pitchTol<=90))){
-            pitchTol = 10.0f;
-        }
-        if(!((0<=rollTol)&&(rollTol<=360))){
-            rollTol = 5.0f;
-        }
-
-        /* Set acceptable orientation boundaries */
-        PITCH_MIN = 90 - pitchTol;
-        PITCH_MAX = 90 + pitchTol;
-        ROLL_MAX = rollTol; // Roll is symmetric about zero, so no need for min field if using absolute value
-
-        /* Set orientation graphic color based on current orientation and set boundaries */
-        if((PITCH_MIN<(Math.abs(DataCollector.pitch)))&&((Math.abs(DataCollector.pitch))<PITCH_MAX)&&((Math.abs(DataCollector.roll))<ROLL_MAX)){
-            square.setColor(green);
-        }
-        else{
-            square.setColor(red);
-        }
-
     }
-
 
     /**
      * @fn onAccuracyChanged
@@ -400,12 +339,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
         if(savedInstanceState == null) {
 
-            //Create a GL Surfaceview
-            mGLView = (MyGLSurfaceView) rootView.findViewById(R.id.glSurfaceViewID);
-            yawText = (TextView) rootView.findViewById(R.id.yawText);
-            pitchText = (TextView) rootView.findViewById(R.id.pitchText);
-            rollText = (TextView) rootView.findViewById(R.id.rollText);
-
             ListView list = (ListView) rootView.findViewById(R.id.list);  //Find the id of the target ListView
             list.setAdapter(dataListAdaptor);                            //Bind the adaptor to the ListView
 
@@ -465,18 +398,25 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     if (loopIsRunning) { //code block to ensure proper run/stop functionality
                         runEnable = false;
                         loopIsRunning = false;
+                        Snackbar.make(v, "stopped", 700 ).show(); // create a snackbar notification to notify data collection status
                         return;
-                    } else
+                    } else {
                         runEnable = true;
+                        Snackbar.make(v, "collecting data...", 700 ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
+                    }
 
                     loopIsRunning = true;
                     Thread t = new Thread() { //runs data collection loop in separate thread
                         public void run() {
                             while (runEnable) {
-                                new PullData().execute();
-                                try {
-                                    Thread.sleep(1000, 0); //execute at 1Hz //@TODO pull refresh speed from user prefs
-                                }catch(Exception e){System.err.println(e.getMessage());}
+                                if(DataCollector.aligned) { // only run when aligned if the checkbox is checked
+                                    new PullData().execute();
+                                    try {
+                                        Thread.sleep(1000, 0); //execute at 1Hz //@TODO pull refresh speed from user prefs
+                                    } catch (Exception e) {
+                                        System.err.println(e.getMessage());
+                                    }
+                                }
                             }
                         }
                     };

@@ -1,6 +1,7 @@
 package com.example.fanchaozhou.project1;
 
 import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -8,7 +9,9 @@ import java.nio.FloatBuffer;
 import java.nio.ShortBuffer;
 
 /**
- * Created by Sam on 3/16/2016.
+ * @class Square
+ *
+ * @brief The Square class defines the geometry of the square that is used as the alignment graphic
  */
 public class Square {
 
@@ -41,6 +44,10 @@ public class Square {
     private final int mProgram;
     public static float COLOR[] = {0.85f, 0.0f, 0.0f, 1.0f};
 
+    /**
+     * @fn Square
+     * @brief The square constructor creates an OpenGL ES executable used to draw the square
+     */
     public Square() {
 
         // initialize vertex byte buffer for shape coordinates
@@ -79,6 +86,10 @@ public class Square {
         GLES20.glLinkProgram(mProgram);
     }
 
+    /**
+     * @fn setColor
+     * @brief This method changes the color of the square
+     */
     public void setColor(float color[]){
         this.COLOR = color;
     }
@@ -89,6 +100,11 @@ public class Square {
     private final int vertexCount = squareCoords.length / COORDS_PER_VERTEX;
     private final int vertexStride = COORDS_PER_VERTEX * 4; // 4 bytes per vertex
 
+    /**
+     * @fn draw
+     * @brief draw runs the executable program created in the constructor. It also links the color,
+     * position, and mvp matrix variables to the shader code
+     */
     public void draw(float[] mvpMatrix) {
         // Add program to OpenGL ES environment
         GLES20.glUseProgram(mProgram);
@@ -116,7 +132,7 @@ public class Square {
         // Pass the projection and view transformation to the shader
         GLES20.glUniformMatrix4fv(mMVPMatrixHandle, 1, false, mvpMatrix, 0);
 
-        // Draw the triangle
+        // Draw the triangles
         GLES20.glDrawArrays(GLES20.GL_TRIANGLE_FAN, 0, vertexCount);
 
         // Disable vertex array

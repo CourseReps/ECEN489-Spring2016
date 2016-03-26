@@ -31,6 +31,7 @@ public class DataCollector //implements Runnable
     public static float roll = 0; /*!< Z-axis orientation */
 	public static float magField[] = new float[3]; /*!< Magnetic field strength matrix */
 	//public static RFData kludge = new RFData(); /*!< Object for passing data to remote SQL server */
+	public static Boolean aligned = false;
 
 	//private Object mPauseLock;
 	//private boolean mPaused;
