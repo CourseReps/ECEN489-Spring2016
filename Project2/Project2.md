@@ -12,6 +12,7 @@ Any individual work that is done outside of the app should be finished no later 
 * Implement dynamic data collection based on user settings - Fanchao
 * Stop recording data when orientation error is outside of tolerance - Sam
 * Code organization/cleaning, UI polishing - Keaton
+* Get internal RSSI - 
 
 -----------------------------------------------------
 -----------------------------------------------------
