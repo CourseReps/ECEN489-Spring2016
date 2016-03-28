@@ -62,6 +62,7 @@ public class DataFunctions{
         data.add(gpsst);
         data.add(timestampst);
         data.add("" + dataStruct.magField[ 0 ] + " " + dataStruct.magField[ 1 ] + " " + dataStruct.magField[ 2 ]);
+        data.add(""+dataStruct.wifiRSSI);
 
         return data;
     }

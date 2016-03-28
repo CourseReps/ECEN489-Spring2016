@@ -23,6 +23,7 @@ import android.hardware.usb.UsbManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -299,6 +300,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e.getMessage());
             }
 
+            WifiManager wifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+            int wifiRssi = wifiManager.getConnectionInfo().getRssi();
+            DataCollector.wifiRSSI = wifiRssi;
             ArrayList<String> data = dataFunc.pulldata();
             dataFunc.pushtodb(dbHandle);
 
@@ -319,13 +323,16 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 displayStr += ("\nOrientation: " + data.get(3));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_rss_s1_key), false)){
-                displayStr += ("\nRSS Src1: " + -Double.parseDouble(data.get(1)));
+                displayStr += ("\nRSS Src1(External RSSI): " + -Double.parseDouble(data.get(1)));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_gps_changes_key), false)){
                 displayStr += ("\nLocation: " + data.get(4));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_mag_key), false)){
                 displayStr += ("\nMagnetic Field: " + data.get(6));
+            }
+            if(displaySettings.getBoolean(getString(R.string.pref_rss_s2_key), false)){
+                displayStr += ("\nRSS Src2(Internal RSSI): " + data.get(7));
             }
             synchronized (dataList){
                 dataList.add(0, displayStr);             //Add the new data to the top of the list
@@ -341,6 +348,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        container.removeAllViews();
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         if(savedInstanceState == null) {
