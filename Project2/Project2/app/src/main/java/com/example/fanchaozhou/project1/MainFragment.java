@@ -285,7 +285,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             String serialJSONData;
-            DataCollector.transmitID = "5";
+            DataCollector.transmitID = "5"; //@TODO do not hardcode these, get from environment
             DataCollector.receiveID = "6";
             DataFunctions dataFunc = new DataFunctions(getActivity());
             byte buffer[] = new byte[ BUFSIZE ];
@@ -468,36 +468,4 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
         }
     }
-
-    /**
-     * @fn sendHTTPdata
-     * @brief Method for sending JSON lines from local DB to server
-     */
-    /*protected void sendHTTPdata(JSONObject json, String serverAddress)
-	{
-		final String data = json.toString();
-		try{
-		    URL url = new URL(serverAddress);
-
-		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		    conn.setReadTimeout(1000);
-		    conn.setConnectTimeout(1000);
-		    conn.setDoInput(true);
-		    conn.setDoOutput(true);
-		    conn.setRequestMethod("POST");
-		    conn.connect();
-
-		    OutputStream os = conn.getOutputStream();
-		    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
-		    writer.write(data);
-		    writer.close();
-		    os.close();
-
-		    int result = conn.getResponseCode();
-		    HTTP_SEND_STATUS = 1;
-		}catch(Exception e){
-		    System.err.print(e);
-		    HTTP_SEND_STATUS = -1;
-		}
-	}*/
 }
