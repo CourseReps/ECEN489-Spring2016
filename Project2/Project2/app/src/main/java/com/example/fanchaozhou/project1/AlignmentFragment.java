@@ -36,13 +36,11 @@ public class AlignmentFragment extends Fragment{
 
     private DataCollector dataStruct;
     private SharedPreferences sharedPref;
-    public final static boolean IS_AUTO_RUNNING_DEF = false;
     public final static boolean IS_USED_DEF = false;
     public final static boolean IS_ALIGNED_DEF = false;
-    public final static String IS_AUTO_RUNNING_PREF_KEY = "Auto Running Preference";
     public final static String IS_USED_PREF_KEY = "Is_Used Preference";
     public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
-    public static final String SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
+    public final static String ALIGNMENT_SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
     private SharedPreferences.Editor editor = null;
     private SharedPreferences settings;
 
@@ -196,7 +194,6 @@ public class AlignmentFragment extends Fragment{
         super.onStart();
 
         /*Get the previous values of the settings*/
-        boolean isAutoRunning = sharedPref.getBoolean(IS_AUTO_RUNNING_PREF_KEY, IS_AUTO_RUNNING_DEF);
         boolean isAligned = sharedPref.getBoolean(IS_ALIGNED_PREF_KEY, IS_ALIGNED_DEF);
 
         /*Set the three checkboxes to the previous values*/
