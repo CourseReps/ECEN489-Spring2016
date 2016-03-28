@@ -455,6 +455,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         protected String doInBackground(String... parameters) {
             try {
                 AddComplete = false;
+                if (RFMember == null) {
+                    RFMember = new RFData();
+                }
                 if (RFMember != null) {
                     /// Pull from database the data that matches this range
                     RFFieldSQLDatabase RFFieldDatabase = new RFFieldSQLDatabase();

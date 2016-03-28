@@ -37,7 +37,12 @@ public class RFData
     public float Roll;
     public Date SampleDate;
 
-    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//    private DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+// JDL: updated format to match what is really in JSON object
+    private DateFormat format = new SimpleDateFormat("EEE MMM dd hh:mm:ss z yyyy");
+
+
 
     //@TODO risky. These are copied from DBAccess.java. Changes there will not be reflected here
     private final String COLUMN_XBEE_ID     = "XbeeID";
@@ -74,8 +79,12 @@ public class RFData
             Yaw = (float)json.getDouble(COLUMN_YAW);
             Pitch = (float)json.getDouble(COLUMN_PITCH);
             Roll = (float)json.getDouble(COLUMN_ROLL);
-            SampleDate = format.parse(json.getString(COLUMN_TIMESTAMP));
-        }catch(Exception e){System.err.println(e);}
+            SampleDate = (Date)format.parse(json.getString(COLUMN_TIMESTAMP));
+        }
+        catch(Exception e)
+        {
+            System.err.println(e);
+        }
     }
 }
 
