@@ -5,12 +5,12 @@ Any individual work that is done outside of the app should be finished no later 
 ## Individual Tasks
 * Project Lead/Integration and Testing - Thomas
 * OAuth/Fusion Tables/Maps - John
-* Debug screen orientation change crash - Paul
+* ~~Debug screen orientation change crash - Paul~~ Done.
 * Debug back button crash - Kyle
-* Debug app exit crash - Yanxiang
+* ~~Debug app exit crash - Yanxiang~~ Done.
 * Performance improvements (fix crashes due to slowness) -
 * Implement dynamic data collection based on user settings - Fanchao
-* Stop recording data when orientation error is outside of tolerance - Sam
+* ~~Stop recording data when orientation error is outside of tolerance - Sam~~ Done.
 * Code organization/cleaning, UI polishing - Keaton
 * Get internal RSSI - 
 
