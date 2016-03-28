@@ -13,6 +13,7 @@ Any individual work that is done outside of the app should be finished no later 
 * ~~Stop recording data when orientation error is outside of tolerance - Sam~~ Done.
 * Code organization/cleaning, UI polishing - Keaton
 * Get internal RSSI - 
+* Include mag field readings in data collection -
 
 -----------------------------------------------------
 -----------------------------------------------------
