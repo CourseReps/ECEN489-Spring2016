@@ -142,27 +142,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 Log.e("PERMISSION_EXCEPTION", "PERMISSION_NOT_GRANTED");
             }
 
-            // Find all available drivers from attached devices.
-            UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
-            List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
-            if (availableDrivers.isEmpty()) {
-                return;
-            }
 
-            // Open a connection to the first available driver.
-            UsbSerialDriver driver = availableDrivers.get(0);
-            UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
-            List<UsbSerialPort> portList = driver.getPorts();
-            port = portList.get(0);
-            try{
-                port.open(connection);
-                SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                int BaudRate = sharedPref.getInt(getString(R.string.pref_serial_baudrate_key),
-                        Integer.parseInt(getString(R.string.pref_http_default)));  //Get the Baud Rate
-                port.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
-            } catch(Exception e) {
-                System.out.println(e.getMessage());
-            }
         }
 
     }
@@ -174,9 +154,41 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     @Override
     public void onStart() {
         super.onStart();
+        // Find all available drivers from attached devices.
+        UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
+        List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
+        if (availableDrivers.isEmpty()) {
+            return;
+        }
+
+        // Open a connection to the first available driver.
+        UsbSerialDriver driver = availableDrivers.get(0);
+        UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
+        List<UsbSerialPort> portList = driver.getPorts();
+        port = portList.get(0);
+        try{
+            port.open(connection);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            int BaudRate = sharedPref.getInt(getString(R.string.pref_serial_baudrate_key),
+                    Integer.parseInt(getString(R.string.pref_http_default)));  //Get the Baud Rate
+            port.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
+
         dataListAdaptor.notifyDataSetChanged(); //@TODO this line causes an exception on app close
     }
 
+    @Override
+    public void onStop(){
+        super.onStop();
+
+        try {
+            port.close();        //Release the serial port
+        } catch (Exception e){
+            System.out.println(e);
+        }
+    }
     /**
      * @fn onDestroy
      * @brief closes serial port
@@ -185,11 +197,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onDestroy() {
         super.onDestroy();
 
-        try {
-            port.close();        //Release the serial port
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
     }
 
     /**
