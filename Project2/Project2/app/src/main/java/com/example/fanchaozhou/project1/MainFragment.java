@@ -367,35 +367,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             final Button button_datatx = (Button) rootView.findViewById(R.id.button_datatx);
             button_datatx.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for triggering a data transmission
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    /*final String serverAddr =
-                            sharedPref.getString(getString(R.string.pref_http_key),
-                                    getString(R.string.pref_http_default));  //Get the server Address*/
-                    //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
-
-                    SaveRFData saveRF = new SaveRFData();
-                    saveRF.execute();
-                    /**********************************/
-
-                    //tbranyon: code block to push data to server
-                    /*Thread t = new Thread() {
-                        public void run() {
-                            JSONArray JSONlist = dbHandle.getUnsentData();
-                            for (int x = 0; x < JSONlist.length(); ++x) {
-                                HTTP_SEND_STATUS = 0;
-                                try {
-                                    sendHTTPdata((JSONObject) JSONlist.get(x), serverAddr);
-                                    System.out.println(JSONlist.get(x));
-                                } catch (Exception e) {
-                                    System.err.print(e);
-                                }
-                                if (HTTP_SEND_STATUS == -1)
-                                    System.err.println("Error sending!"); //change later to toast message on phone screen
-                            }
-                            System.out.println("Send thread finished");
-                        }
-                    }; //End of thread t
-                    t.start(); //start send thread*/
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity()); //@TODO prefs need to be dealt with in send data routine (JSON prefs)
+                    new SaveRFData().execute();
                 }
             });
 
