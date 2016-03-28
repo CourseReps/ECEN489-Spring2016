@@ -74,15 +74,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private UsbSerialPort port;
     private int HTTP_SEND_STATUS = 0;
     public final static int BUFSIZE = 128;
-    /*public final static boolean IS_AUTO_RUNNING_DEF = false;
-    public final static boolean IS_USED_DEF = false;
-    public final static boolean IS_ALIGNED_DEF = false;
-    public final static String IS_AUTO_RUNNING_PREF_KEY = "Auto Running Preference";
-    public final static String IS_USED_PREF_KEY = "Is_Used Preference";
-    public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
-    public static final String SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
-    private SharedPreferences.Editor editor = null;
-    private SharedPreferences settings;*/
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
@@ -360,7 +351,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             final Button button_refresh = (Button) rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for pulling data
-                    new PullData().execute();
+                    if (!runEnable) {   //If the app is not in auto collection mode
+                        new PullData().execute();
+                    }
                 }
             });
 
