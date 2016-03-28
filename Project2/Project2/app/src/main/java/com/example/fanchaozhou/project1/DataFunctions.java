@@ -61,6 +61,8 @@ public class DataFunctions{
         data.add(imust);
         data.add(gpsst);
         data.add(timestampst);
+        data.add("" + dataStruct.magField[ 0 ] + " " + dataStruct.magField[ 1 ] + " " + dataStruct.magField[ 2 ]);
+
         return data;
     }
 

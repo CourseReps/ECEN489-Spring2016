@@ -311,18 +311,24 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
          */
         @Override
         protected void onPostExecute(ArrayList<String> data) {
-            synchronized (dataList){
-                dataList.add(0,  //Add the new data to the top of the list
-                        "Transmitter ID: " + data.get(0) + "\n" +
-                                "Receiver ID: " + data.get(2) + "\n" +
-                                "TimeStamp: " + data.get(5) + "\n" +
-                                "RSSI: " + -Double.parseDouble(data.get(1)) + " dBm\n" +
-                                "Orientation: " + data.get(3) + "\n" +
-                                "Location: " + data.get(4)
-                );
+            SharedPreferences displaySettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String displayStr = "Transmitter ID: " + data.get(0) + "\n" +
+                    "Receiver ID: " + data.get(2) + "\n" +
+                    "TimeStamp: " + data.get(5) + "\n" +
+                    "Orientation: " + data.get(3);
+            if(displaySettings.getBoolean(getString(R.string.pref_rss_s1_key), false)){
+                displayStr += ("\nRSS Src1: " + -Double.parseDouble(data.get(1)));
             }
-
-            dataListAdaptor.notifyDataSetChanged();  //Refresh the list display
+            if(displaySettings.getBoolean(getString(R.string.pref_gps_changes_key), false)){
+                displayStr += ("\nLocation: " + data.get(4));
+            }
+            if(displaySettings.getBoolean(getString(R.string.pref_mag_key), false)){
+                displayStr += ("\nMagnetic Field: " + data.get(6));
+            }
+            synchronized (dataList){
+                dataList.add(0, displayStr);             //Add the new data to the top of the list
+                dataListAdaptor.notifyDataSetChanged();  //Refresh the list display
+            }
         }
     }
 
