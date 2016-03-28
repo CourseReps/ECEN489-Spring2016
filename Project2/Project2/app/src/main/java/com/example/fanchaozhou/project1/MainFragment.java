@@ -377,12 +377,14 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 public void onClick(View v) {
                     if (loopIsRunning) { //code block to ensure proper run/stop functionality
                         runEnable = false;
+                        DataCollector.contCollection = false;
                         loopIsRunning = false;
-                        Snackbar.make(v, "stopped", 700 ).show(); // create a snackbar notification to notify data collection status
+                        Snackbar.make(v, "stopped", 700).show(); // create a snackbar notification to notify data collection status
                         return;
                     } else {
                         runEnable = true;
-                        Snackbar.make(v, "collecting data...", 700 ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
+                        DataCollector.contCollection = true;
+                        Snackbar.make(v, "collecting data...", 700).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
                     }
 
                     loopIsRunning = true;
