@@ -35,9 +35,7 @@ import java.util.TimerTask;
 public class AlignmentFragment extends Fragment{
 
     private DataCollector dataStruct;
-    public final static boolean IS_USED_DEF = false;
     public final static boolean IS_ALIGNED_DEF = false;
-    public final static String IS_USED_PREF_KEY = "Is_Used Preference";
     public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
     private SharedPreferences sharedPref;
 

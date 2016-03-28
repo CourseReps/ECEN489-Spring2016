@@ -314,8 +314,10 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             SharedPreferences displaySettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
             String displayStr = "Transmitter ID: " + data.get(0) + "\n" +
                     "Receiver ID: " + data.get(2) + "\n" +
-                    "TimeStamp: " + data.get(5) + "\n" +
-                    "Orientation: " + data.get(3);
+                    "TimeStamp: " + data.get(5);
+            if(displaySettings.getBoolean(getString(R.string.pref_gyro_key), false)){
+                displayStr += ("\nOrientation: " + data.get(3));
+            }
             if(displaySettings.getBoolean(getString(R.string.pref_rss_s1_key), false)){
                 displayStr += ("\nRSS Src1: " + -Double.parseDouble(data.get(1)));
             }
@@ -357,9 +359,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             final Button button_refresh = (Button) rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for pulling data
-                    if (!runEnable) {   //If the app is not in auto collection mode
-                        new PullData().execute();
-                    }
+                    new PullData().execute();
                 }
             });
 
@@ -404,16 +404,17 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     if (loopIsRunning) { //code block to ensure proper run/stop functionality
                         runEnable = false;
                         loopIsRunning = false;
-                        Snackbar.make(v, "stopped", 700 ).show(); // create a snackbar notification to notify data collection status
+                        Snackbar.make(v, "stopped", Snackbar.LENGTH_LONG ).show(); // create a snackbar notification to notify data collection status
                         return;
                     } else {
                         runEnable = true;
-                        Snackbar.make(v, "collecting data...", 700 ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
+                        Snackbar.make(v, "collecting data...", Snackbar.LENGTH_LONG ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
                     }
 
                     loopIsRunning = true;
                     Thread t = new Thread() { //runs data collection loop in separate thread
                         public void run() {
+                            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             while (runEnable) {
                                 if(DataCollector.aligned) { // only run when aligned if the checkbox is checked
                                     new PullData().execute();
