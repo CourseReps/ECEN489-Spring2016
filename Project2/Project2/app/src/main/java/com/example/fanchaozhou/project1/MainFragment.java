@@ -329,7 +329,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 displayStr += ("\nLocation: " + data.get(4));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_mag_key), false)){
-                displayStr += ("\nMagnetic Field: " + data.get(6));
+                displayStr += ("   \nMagnetic Field: " + data.get(6));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_rss_s2_key), false)){
                 displayStr += ("\nRSS Src2(Internal RSSI): " + data.get(7));
