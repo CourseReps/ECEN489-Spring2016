@@ -367,7 +367,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             final Button button_refresh = (Button) rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for pulling data
-                    new PullData().execute();
+                    new    PullData().execute();
                 }
             });
 
