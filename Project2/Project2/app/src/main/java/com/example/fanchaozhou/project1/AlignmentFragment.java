@@ -212,8 +212,6 @@ public class AlignmentFragment extends Fragment{
         rollText = (TextView) view.findViewById(R.id.rollText);
 
         if(savedInstanceState == null) {
-
-            /*Set the three checkboxes to the previous values*/
             final CheckBox isAlignedCheckBox = (CheckBox) view.findViewById(R.id.alignment_checkbox);
             isAlignedCheckBox.setOnClickListener(new View.OnClickListener() {//Checkbox handler for alignment
                 @Override
