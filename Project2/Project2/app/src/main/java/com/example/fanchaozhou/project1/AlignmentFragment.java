@@ -23,6 +23,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -117,11 +118,20 @@ public class AlignmentFragment extends Fragment{
         float rollError;
         boolean checkbox;
 
+        /* creating toast notifications */
+        Context context = getActivity().getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        CharSequence pauseText = "collection paused";
+        CharSequence resumeText = "collection resumed";
+        Toast pauseToast = Toast.makeText(context, pauseText, duration);
+        Toast resumeToast = Toast.makeText(context, resumeText, duration);
+
+
 
         /* Get orientation tolerances from preferences */
         pitchTolString = sharedPref.getString(getString(R.string.pref_tolerance_theta_key), "10");
         rollTolString = sharedPref.getString(getString(R.string.pref_tolerance_phi_key), "5");
-        checkbox = sharedPref.getBoolean(IS_ALIGNED_PREF_KEY, false);
+        checkbox = sharedPref.getBoolean(IS_ALIGNED_PREF_KEY, false); // check if checkbox is checked
 
         /* Handle inputs that are not parsable floats */
         try {
@@ -148,10 +158,16 @@ public class AlignmentFragment extends Fragment{
         /* Set orientation graphic color based on current orientation and set boundaries */
         if((PITCH_MIN<(Math.abs(DataCollector.pitch)))&&((Math.abs(DataCollector.pitch))<PITCH_MAX)&&((Math.abs(DataCollector.roll))<rollTol)){
             square.setColor(green); // set green if within the set tolerance
+            if(checkbox && !DataCollector.aligned && DataCollector.contCollection){ // if the device goes from out of alignment to in alignment
+                resumeToast.show();                  // make a toast notification to notify of collection resume
+            }
             DataCollector.aligned = true;
         }
         else if(((90-2*pitchTol)>(Math.abs(DataCollector.pitch)))||((Math.abs(DataCollector.pitch))>(90+2*pitchTol))||((Math.abs(DataCollector.roll))>(2*rollTol))){
             square.setColor(red); // set red if outside boundary described above
+            if(checkbox && DataCollector.aligned && DataCollector.contCollection){  // if the device goes from in alignment to out of alignment
+                pauseToast.show();                  // make a toast notification to notify of collection pause
+            }
             DataCollector.aligned = false;
         }
         else{ // if between tolerance and boundary, gradient from red to green
@@ -170,6 +186,9 @@ public class AlignmentFragment extends Fragment{
             color[0] = 0.57843137f + 0.27156863f * (pitchError/2 + rollError/2);
             color[1] = 0.83921569f - 0.83921569f * (pitchError/2 + rollError/2);
             square.setColor(color);
+            if(checkbox && DataCollector.aligned && DataCollector.contCollection){  // if the device goes from in alignment to out of alignment
+                pauseToast.show();                  // make a toast notification to notify of collection pause
+            }
             DataCollector.aligned = false;
         }
 

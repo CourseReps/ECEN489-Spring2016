@@ -277,7 +277,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         @Override
         protected ArrayList<String> doInBackground(Void... params) {
             String serialJSONData;
-            DataCollector.transmitID = "5";
+            DataCollector.transmitID = "5"; //@TODO do not hardcode these, get from environment
             DataCollector.receiveID = "6";
             DataFunctions dataFunc = new DataFunctions(getActivity());
             byte buffer[] = new byte[ BUFSIZE ];
@@ -373,35 +373,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             final Button button_datatx = (Button) rootView.findViewById(R.id.button_datatx);
             button_datatx.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for triggering a data transmission
-                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-                    /*final String serverAddr =
-                            sharedPref.getString(getString(R.string.pref_http_key),
-                                    getString(R.string.pref_http_default));  //Get the server Address*/
-                    //The server address is in the string "serverAddr". For debugging purposes, I set this address adjustable.
-
-                    SaveRFData saveRF = new SaveRFData();
-                    saveRF.execute();
-                    /**********************************/
-
-                    //tbranyon: code block to push data to server
-                    /*Thread t = new Thread() {
-                        public void run() {
-                            JSONArray JSONlist = dbHandle.getUnsentData();
-                            for (int x = 0; x < JSONlist.length(); ++x) {
-                                HTTP_SEND_STATUS = 0;
-                                try {
-                                    sendHTTPdata((JSONObject) JSONlist.get(x), serverAddr);
-                                    System.out.println(JSONlist.get(x));
-                                } catch (Exception e) {
-                                    System.err.print(e);
-                                }
-                                if (HTTP_SEND_STATUS == -1)
-                                    System.err.println("Error sending!"); //change later to toast message on phone screen
-                            }
-                            System.out.println("Send thread finished");
-                        }
-                    }; //End of thread t
-                    t.start(); //start send thread*/
+                    SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity()); //@TODO prefs need to be dealt with in send data routine (JSON prefs)
+                    new SaveRFData().execute();
                 }
             });
 
@@ -411,11 +384,11 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                     if (loopIsRunning) { //code block to ensure proper run/stop functionality
                         runEnable = false;
                         loopIsRunning = false;
-                        Snackbar.make(v, "stopped", Snackbar.LENGTH_LONG ).show(); // create a snackbar notification to notify data collection status
+                        Snackbar.make(v, "stopped", 700 ).show(); // create a snackbar notification to notify data collection status
                         return;
                     } else {
                         runEnable = true;
-                        Snackbar.make(v, "collecting data...", Snackbar.LENGTH_LONG ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
+                        Snackbar.make(v, "collecting data...", 700 ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
                     }
 
                     loopIsRunning = true;
@@ -462,6 +435,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         protected String doInBackground(String... parameters) {
             try {
                 AddComplete = false;
+                if (RFMember == null) {
+                    RFMember = new RFData();
+                }
                 if (RFMember != null) {
                     /// Pull from database the data that matches this range
                     RFFieldSQLDatabase RFFieldDatabase = new RFFieldSQLDatabase();
@@ -499,36 +475,4 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
         }
     }
-
-    /**
-     * @fn sendHTTPdata
-     * @brief Method for sending JSON lines from local DB to server
-     */
-    /*protected void sendHTTPdata(JSONObject json, String serverAddress)
-	{
-		final String data = json.toString();
-		try{
-		    URL url = new URL(serverAddress);
-
-		    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-		    conn.setReadTimeout(1000);
-		    conn.setConnectTimeout(1000);
-		    conn.setDoInput(true);
-		    conn.setDoOutput(true);
-		    conn.setRequestMethod("POST");
-		    conn.connect();
-
-		    OutputStream os = conn.getOutputStream();
-		    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
-		    writer.write(data);
-		    writer.close();
-		    os.close();
-
-		    int result = conn.getResponseCode();
-		    HTTP_SEND_STATUS = 1;
-		}catch(Exception e){
-		    System.err.print(e);
-		    HTTP_SEND_STATUS = -1;
-		}
-	}*/
 }
