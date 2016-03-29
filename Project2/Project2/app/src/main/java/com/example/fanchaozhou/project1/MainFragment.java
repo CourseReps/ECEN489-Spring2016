@@ -301,8 +301,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
 
             WifiManager wifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
-            int wifiRssi = wifiManager.getConnectionInfo().getRssi();
-            DataCollector.wifiRSSI = wifiRssi;
+            DataCollector.wifiRSSI = wifiManager.getConnectionInfo().getRssi();
             ArrayList<String> data = dataFunc.pulldata();
             dataFunc.pushtodb(dbHandle);
 
