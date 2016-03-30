@@ -3,7 +3,7 @@
  1. Motion detection through image difference.
  2. Wild flower identification application from finite set.   -Fanchao
  3. Voice recognition set of words to actions.   - Yanxiang Yang
- 4. Mouse guide based on phone IMU.
+ 4. Mouse guide based on phone IMU. - Sam Shore
  5. Magnetic object detection using phone IMU. -Keaton
  6. Differential FSK sound caputre and decoding.
  7. World cloud generator based on pictures of printed text.
