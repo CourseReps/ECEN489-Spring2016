@@ -105,9 +105,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         //Adding the AlignmentFragment
         FragmentManager FM = getFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
-        AlignmentFragment Al = new AlignmentFragment();
+        //AlignmentFragment Al = new AlignmentFragment();
 
-        FT.add(R.id.align_fragment, Al);
+        //FT.add(R.id.align_fragment, Al);
         FT.commit();
 
         if(savedInstanceState==null){
