@@ -1,6 +1,6 @@
 # Project 3 – Individual Projects
 
- 1. Motion detection through image difference.
+ 1. Motion detection through image difference. - Paul Crouther
  2. Wild flower identification application from finite set.   -Fanchao
  3. Voice recognition set of words to actions.   - Yanxiang Yang
  4. Mouse guide based on phone IMU. - Sam Shore
