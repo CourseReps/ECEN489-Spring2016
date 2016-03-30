@@ -6,6 +6,6 @@
  4. Mouse guide based on phone IMU. - Sam Shore
  5. Magnetic object detection using phone IMU. -Keaton
  6. Differential FSK sound caputre and decoding.
- 7. World cloud generator based on pictures of printed text.
+ 7. Word cloud generator based on pictures of printed text.
  8. Moon tracker on screen.
  9. Data to screen to barcode reader to server.
