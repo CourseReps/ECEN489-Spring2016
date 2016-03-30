@@ -4,7 +4,7 @@
 The objective of this project is to use a handheld android device with an antenna attached in order to interpolate an RF field over a geographical area. We are doing this by GPS location, Recieved Signal Strength, and 3-dimensional orientation of the device. We have a transmission antenna connected to a teensy that is sending datapackets continuously. On the otherside we have a reciever connected to a teensy that has been attached to the android device. This takes the RSSI data and transmitts it via USB to the android device. Once in the android device it is collected and pushed to a local database. After all the data we want has been collected over a large area and we have returned to a wi-fi environment we push all the data from the local database to a server. This is for data processing and so that we can have multiple devices collecting data for the database. 
 
 
-###Fusion Table / Database Integration and GoogleMap Display
+###Fusion Table / Database Integration and GoogleMap Display - John Lusher II
 ----
 For this portion of the application I focused on the development of a fragment (MapsViewFragment) that would:
 * Connect to the users Google Account and create and use a Fusion Table to store the collected data.
