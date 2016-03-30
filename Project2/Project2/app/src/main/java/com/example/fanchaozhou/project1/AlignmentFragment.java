@@ -36,16 +36,9 @@ import java.util.TimerTask;
 public class AlignmentFragment extends Fragment{
 
     private DataCollector dataStruct;
-    private SharedPreferences sharedPref;
-    public final static boolean IS_AUTO_RUNNING_DEF = false;
-    public final static boolean IS_USED_DEF = false;
     public final static boolean IS_ALIGNED_DEF = false;
-    public final static String IS_AUTO_RUNNING_PREF_KEY = "Auto Running Preference";
-    public final static String IS_USED_PREF_KEY = "Is_Used Preference";
     public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
-    public static final String SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
-    private SharedPreferences.Editor editor = null;
-    private SharedPreferences settings;
+    private SharedPreferences sharedPref;
 
     private TextView yawText;
     private TextView rollText;
@@ -65,7 +58,6 @@ public class AlignmentFragment extends Fragment{
 
         // Creating a Shared Preference Manager
         sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        editor = sharedPref.edit();
 
         /* orientation graphic thread */
         Thread thread = new Thread() {
@@ -215,7 +207,6 @@ public class AlignmentFragment extends Fragment{
         super.onStart();
 
         /*Get the previous values of the settings*/
-        boolean isAutoRunning = sharedPref.getBoolean(IS_AUTO_RUNNING_PREF_KEY, IS_AUTO_RUNNING_DEF);
         boolean isAligned = sharedPref.getBoolean(IS_ALIGNED_PREF_KEY, IS_ALIGNED_DEF);
 
         /*Set the three checkboxes to the previous values*/
@@ -240,15 +231,14 @@ public class AlignmentFragment extends Fragment{
         rollText = (TextView) view.findViewById(R.id.rollText);
 
         if(savedInstanceState == null) {
-
-            /*Set the three checkboxes to the previous values*/
             final CheckBox isAlignedCheckBox = (CheckBox) view.findViewById(R.id.alignment_checkbox);
             isAlignedCheckBox.setOnClickListener(new View.OnClickListener() {//Checkbox handler for alignment
                 @Override
                 public void onClick(View v) {
                     //Save the alignment checkbox status in the SharedPreferences File
+                    SharedPreferences.Editor editor;
+                    editor = sharedPref.edit();
                     editor.putBoolean(IS_ALIGNED_PREF_KEY, isAlignedCheckBox.isChecked());
-                    editor.commit();
                     editor.apply();
                 }
             });

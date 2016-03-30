@@ -22,6 +22,7 @@ public class DataCollector //implements Runnable
 	//currently copied from Project 1, may need review
 	public static String transmitID = "5"; /*!< Antenna ID */
     public static double RSSI = 0; /*!< Received Signal Strength in hex */
+	public static int wifiRSSI = 0;
     public static String receiveID = "6"; /*!< XBee ID */
     public static double latitude = 0; /*!< GPS latitude */
     public static double longitude = 0; /*!< GPS longitude */

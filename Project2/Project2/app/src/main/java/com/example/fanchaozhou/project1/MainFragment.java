@@ -23,6 +23,7 @@ import android.hardware.usb.UsbManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
+import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -287,6 +288,8 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e.getMessage());
             }
 
+            WifiManager wifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+            DataCollector.wifiRSSI = wifiManager.getConnectionInfo().getRssi();
             ArrayList<String> data = dataFunc.pulldata();
             dataFunc.pushtodb(dbHandle);
 
@@ -299,18 +302,29 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
          */
         @Override
         protected void onPostExecute(ArrayList<String> data) {
-            synchronized (dataList){
-                dataList.add(0,  //Add the new data to the top of the list
-                        "Transmitter ID: " + data.get(0) + "\n" +
-                                "Receiver ID: " + data.get(2) + "\n" +
-                                "TimeStamp: " + data.get(5) + "\n" +
-                                "RSSI: " + -Double.parseDouble(data.get(1)) + " dBm\n" +
-                                "Orientation: " + data.get(3) + "\n" +
-                                "Location: " + data.get(4)
-                );
+            SharedPreferences displaySettings = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            String displayStr = "Transmitter ID: " + data.get(0) + "\n" +
+                    "Receiver ID: " + data.get(2) + "\n" +
+                    "TimeStamp: " + data.get(5);
+            if(displaySettings.getBoolean(getString(R.string.pref_gyro_key), false)){
+                displayStr += ("\nOrientation: " + data.get(3));
             }
-
-            dataListAdaptor.notifyDataSetChanged();  //Refresh the list display
+            if(displaySettings.getBoolean(getString(R.string.pref_rss_s1_key), false)){
+                displayStr += ("\nRSS Src1(External RSSI): " + -Double.parseDouble(data.get(1)));
+            }
+            if(displaySettings.getBoolean(getString(R.string.pref_gps_changes_key), false)){
+                displayStr += ("\nLocation: " + data.get(4));
+            }
+            if(displaySettings.getBoolean(getString(R.string.pref_mag_key), false)){
+                displayStr += ("   \nMagnetic Field: " + data.get(6));
+            }
+            if(displaySettings.getBoolean(getString(R.string.pref_rss_s2_key), false)){
+                displayStr += ("\nRSS Src2(Internal RSSI): " + data.get(7));
+            }
+            synchronized (dataList){
+                dataList.add(0, displayStr);             //Add the new data to the top of the list
+                dataListAdaptor.notifyDataSetChanged();  //Refresh the list display
+            }
         }
     }
 
@@ -321,6 +335,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
+        container.removeAllViews();
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         if(savedInstanceState == null) {
@@ -339,7 +354,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             final Button button_refresh = (Button) rootView.findViewById(R.id.button_refresh);
             button_refresh.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {  //Button handler for pulling data
-                    new PullData().execute();
+                    new    PullData().execute();
                 }
             });
 
@@ -356,19 +371,18 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 public void onClick(View v) {
                     if (loopIsRunning) { //code block to ensure proper run/stop functionality
                         runEnable = false;
-                        DataCollector.contCollection = false;
                         loopIsRunning = false;
-                        Snackbar.make(v, "stopped", 700).show(); // create a snackbar notification to notify data collection status
+                        Snackbar.make(v, "stopped", 700 ).show(); // create a snackbar notification to notify data collection status
                         return;
                     } else {
                         runEnable = true;
-                        DataCollector.contCollection = true;
-                        Snackbar.make(v, "collecting data...", 700).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
+                        Snackbar.make(v, "collecting data...", 700 ).show(); //It says a number can't be hardcoded here, but it doesn't seem to cause any issues
                     }
 
                     loopIsRunning = true;
                     Thread t = new Thread() { //runs data collection loop in separate thread
                         public void run() {
+                            SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(getActivity());
                             while (runEnable) {
                                 if(DataCollector.aligned) { // only run when aligned if the checkbox is checked
                                     new PullData().execute();
