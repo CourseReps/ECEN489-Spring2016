@@ -16,10 +16,9 @@ import java.util.Date;
 *
 *	This class stores data variables in a manner that makes them simultaneously accessible to all fragments
 **/
-public class DataCollector //implements Runnable
+public class DataCollector
 {
 	//data fields
-	//currently copied from Project 1, may need review
 	public static String transmitID = "5"; /*!< Antenna ID */
     public static double RSSI = 0; /*!< Received Signal Strength in hex */
 	public static int wifiRSSI = 0;
@@ -31,28 +30,10 @@ public class DataCollector //implements Runnable
     public static float pitch = 0; /*!< Y-axis orientation */
     public static float roll = 0; /*!< Z-axis orientation */
 	public static float magField[] = new float[3]; /*!< Magnetic field strength matrix */
-	//public static RFData kludge = new RFData(); /*!< Object for passing data to remote SQL server */
 	public static Boolean aligned = false;
 	public static Boolean contCollection = false;
-
-	//private Object mPauseLock;
-	//private boolean mPaused;
 
 	public DataCollector()
 	{
 	}
-
-	/*public void updateObject()
-	{
-		kludge.DeviceID = Integer.parseInt(transmitID); //@TODO verify
-		kludge.RSSI = (float)RSSI; //@TODO possible loss of precision
-		kludge.XbeeID = Integer.parseInt(receiveID);
-		kludge.Latitude = (float)latitude;
-		kludge.Longitude = (float)longitude;
-		kludge.Pitch = pitch;
-		kludge.Roll = roll;
-		kludge.Yaw = yaw;
-		kludge.SampleDate = timestamp;
-		//kludge.SampleNumber?
-	}*/
 }

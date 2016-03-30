@@ -12,11 +12,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.content.Context;
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
-import android.support.v4.app.ActivityCompat;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -52,7 +47,7 @@ public class DataFunctions{
         String rssist = Double.toString(dataStruct.RSSI);
         timestamp.format(Calendar.getInstance().getTime());
         String imust = Float.toString(dataStruct.yaw) + " " + Float.toString(dataStruct.pitch) + " " + Float.toString(dataStruct.roll);
-        dataStruct.timestamp = Calendar.getInstance().getTime(); //update timestamp
+        //dataStruct.timestamp = Calendar.getInstance().getTime(); //update timestamp
         String timestampst = timestamp.format(dataStruct.timestamp);
         String gpsst = Double.toString(dataStruct.latitude) + ',' + Double.toString(dataStruct.latitude);
         data.add(dataStruct.transmitID);

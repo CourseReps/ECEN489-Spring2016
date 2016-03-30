@@ -7,7 +7,6 @@
 
 package com.example.fanchaozhou.project1;
 
-//import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -27,8 +26,6 @@ import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-//import android.support.v4.app.ActivityCompat;
-//import android.support.v4.content.ContextCompat;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -47,6 +44,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -280,6 +278,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
 
             WifiManager wifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
             DataCollector.wifiRSSI = wifiManager.getConnectionInfo().getRssi();
+            dataStruct.timestamp = Calendar.getInstance().getTime();
             ArrayList<String> data = dataFunc.pulldata();
             dataFunc.pushtodb(dbHandle);
 
