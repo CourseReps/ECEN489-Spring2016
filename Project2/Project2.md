@@ -8,11 +8,11 @@ Any individual work that is done outside of the app should be finished no later 
 * ~~Debug screen orientation change crash - Paul~~ Done.
 * Debug back button crash - Kyle
 * ~~Debug app exit crash - Yanxiang~~ Done.
-* Performance improvements (fix crashes due to slowness) -
-* Implement dynamic data collection based on user settings - Fanchao
+* ~~Performance improvements (fix crashes due to slowness) -~~ Fixed?
+* ~~Implement dynamic data collection based on user settings - Fanchao~~ Done.
 * ~~Stop recording data when orientation error is outside of tolerance - Sam~~ Done.
 * Code organization/cleaning, UI polishing - Keaton
-* Get internal RSSI - Fanchao
+* ~~Get internal RSSI - Fanchao~~ Done.
 
 -----------------------------------------------------
 -----------------------------------------------------
