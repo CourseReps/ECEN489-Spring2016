@@ -74,15 +74,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private UsbSerialPort port;
     private int HTTP_SEND_STATUS = 0;
     public final static int BUFSIZE = 128;
-    /*public final static boolean IS_AUTO_RUNNING_DEF = false;
-    public final static boolean IS_USED_DEF = false;
-    public final static boolean IS_ALIGNED_DEF = false;
-    public final static String IS_AUTO_RUNNING_PREF_KEY = "Auto Running Preference";
-    public final static String IS_USED_PREF_KEY = "Is_Used Preference";
-    public final static String IS_ALIGNED_PREF_KEY = "Is_Aligned Preference";
-    public static final String SETTINGS_FILE = "SETTINGS_ON_MAINFRAGMENT";
-    private SharedPreferences.Editor editor = null;
-    private SharedPreferences settings;*/
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
@@ -113,9 +104,9 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         //Adding the AlignmentFragment
         FragmentManager FM = getFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
-        AlignmentFragment Al = new AlignmentFragment();
+        //AlignmentFragment Al = new AlignmentFragment();
 
-        FT.add(R.id.align_fragment, Al);
+        //FT.add(R.id.align_fragment, Al);
         FT.commit();
 
         if(savedInstanceState==null){
@@ -141,10 +132,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             } catch (SecurityException e) {
                 Log.e("PERMISSION_EXCEPTION", "PERMISSION_NOT_GRANTED");
             }
-
-
         }
-
     }
 
     /**
@@ -222,7 +210,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             DataCollector.magField[1] = event.values[1];
             DataCollector.magField[2] = event.values[2];
         }
-
     }
 
     /**
@@ -230,9 +217,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      * @brief not implemented
      */
     @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
-    }
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
     /**
      * @fn onLocationChanged
@@ -250,27 +235,21 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      * @brief not implemented
      */
     @Override
-    public void onStatusChanged(String provider, int status, Bundle extras) {
-
-    }
+    public void onStatusChanged(String provider, int status, Bundle extras) {}
 
     /**
      * @fn onProviderEnabled
      * @brief not implemented
      */
     @Override
-    public void onProviderEnabled(String provider) {
-
-    }
+    public void onProviderEnabled(String provider) {}
 
     /**
      * @fn onProviderDisabled
      * @brief not implemented
      */
     @Override
-    public void onProviderDisabled(String provider) {
-
-    }
+    public void onProviderDisabled(String provider) {}
 
     /**
      * @class PullData
@@ -415,7 +394,7 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      *           AsyncTask that gets data from MySQL datbase and displays it on map
      */
     private class SaveRFData extends AsyncTask<String, Void, String> {
-        private Exception exception; //@TODO: assigned but never accessed
+        private Exception exception;
         public RFData RFMember;
         public boolean AddComplete = false;
         public boolean AddErr = false;
