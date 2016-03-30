@@ -36,9 +36,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-//import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.hoho.android.usbserial.driver.UsbSerialDriver;
 import com.hoho.android.usbserial.driver.UsbSerialPort;
@@ -47,12 +45,7 @@ import com.hoho.android.usbserial.driver.UsbSerialProber;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-//import java.io.BufferedWriter;
 import java.io.IOException;
-//import java.io.OutputStream;
-//import java.io.OutputStreamWriter;
-//import java.net.HttpURLConnection;
-//import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +66,6 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private ArrayAdapter<String> dataListAdaptor;
     private DBAccess dbHandle;
     private UsbSerialPort port;
-    private int HTTP_SEND_STATUS = 0;
     public final static int BUFSIZE = 128;
     private final static String RXID = "Receive ID";
     private final static String TXID = "Transmit ID";
@@ -102,12 +94,10 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Adding the AlignmentFragment
+        //@TODO the next three lines can probably be removed (related to AlignmentFragment but now probably unused)
         FragmentManager FM = getFragmentManager();
         FragmentTransaction FT = FM.beginTransaction();
-        //AlignmentFragment Al = new AlignmentFragment();
 
-        //FT.add(R.id.align_fragment, Al);
         FT.commit();
 
         if(savedInstanceState==null){
