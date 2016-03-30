@@ -8,4 +8,4 @@
  6. Differential FSK sound caputre and decoding.
  7. Word cloud generator based on pictures of printed text.
  8. Moon tracker on screen.
- 9. Data to screen to barcode reader to server.
+ 9. Data to screen to barcode reader to server. - Kyle
