@@ -53,3 +53,11 @@ The remaining portion of my time was spent working on the OAuth debugging.  I ha
 https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Students/johnlusher/TestOauthLogin<br>
 
 
+###Data Collection/Integration/Debugging - Thomas Branyon  
+
+This section of the codebase started off as a class that would run a background loop to collect data. The DataCollector class was created and implemented the 'Runnable' interface to allow it to be launched in a separate thread. As the task moved forward, it became clear that it was more practical to read sensors within the MainFragment class. DataCollector was reduced to a data container, much like a C-style "struct". The data members are both public and static, allowing all parts of the app to access the most current data at any time through a local instance of the DataCollector class.
+Other small modifications were made to RFData.java (added a method to populate the class's fields from a JSONObject), DataFunctions.java (modified to obtain latest data from DataCollector fields), and MainFragment (various).
+In MainFragment, I pulled in some of John's methods and used them in writing the button click handler for the "Send to Server" button (titled "Connect to Server" in the app, or "button_datatx" in the MainFragment source code). The send-to-server routine is handled in the "doInBackground" method of the private class SaveRFData, within MainFragment. Most of this code was John's, with some modifications to retrieve data from the local db and then iterate through these entries and send each one to the remote SQL server.  
+
+For the "2b" part of this project, I tried to lay out the necessary remaining tasks and ensure team members were assigned to handle each one, coordinate communication and problem-solving efforts, manage the code contributions from different members of the team, and test for errors and help point to potential solutions where needed. I did less coding for this part, but did make a change in MainFragment to prevent the app from doubly allocating resources for a fragment which was causing performance issues.
+
