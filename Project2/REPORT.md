@@ -79,3 +79,7 @@ The basic functionality is that it can maintain the changes. All changes will be
 ---
 This component of the project was to collect the IMU sensor (Accelerometer, Gyro, Magnetometer )data and display them. The display refreshed every 10ms. GPS had a button and on press of button, it takes 30-40secs to get location and send coordinates to the program. It has observer pattern which notifies once the GPS values are read. 
 The code is available <br> https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Students/akashatnitr/Project2/
+
+### UI/UX and Wireframe - Paul Crouther/Kyle Sparrow
+---
+The purpose of this component is the user interface and development of the visuals, the buttons, and the user experience of the app. The main components of the app are the windows from the MainFragment, SettingsFragment, AboutUsFragment, and MapViewFragment.
