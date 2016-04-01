@@ -84,6 +84,8 @@ The code is available <br> https://github.com/CourseReps/ECEN489-Spring2016/tree
 ---
 The purpose of this component is the user interface and development of the visuals, the buttons, and the user experience of the app. The main components of the app are the windows from the MainFragment, SettingsFragment, AboutUsFragment, and MapViewFragment.
 
+A significant amount of time was put into finding the cause of the app crashing when the back button is pressed. The ultimate cause of a poor implementation of fragment use where starting a new activity would have been the correct course of action. This was discovered too late, and was never corrected. 
+
 ### Preferences Management, Selective Display and Cellular Signal Detection - Fanchao Zhou
 
 This part of code is mainly in Alignment Fragment and Main Fragment. Since the checkbox for alignment testing in continuous running mode is just a View object, rather than a Prefrence object, the value of the checkbox is not written in the SharedPreferences file automatically. Thus, the saving of this value needs to be done by using a SharedPreferences Editor. As soon as the Alignment Fragment is created, a handler is registered to write the checkbox's value into the default SharedPreferences file by an SharedPreferences Editor(along with other preferences on the Settings Fragment), whenever the checkbox is clicked on. So, every time the app is opened, the checkbox will be pre-set to its previous value. 
