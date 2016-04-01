@@ -9,3 +9,4 @@
  7. Word cloud generator based on pictures of printed text.
  8. Moon tracker on screen. - Chaance
  9. Data to screen to barcode reader to server. - Kyle
+ 10. RF Signal Strength Mapping Tool - John Lusher II
