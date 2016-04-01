@@ -83,3 +83,9 @@ The code is available <br> https://github.com/CourseReps/ECEN489-Spring2016/tree
 ### UI/UX and Wireframe - Paul Crouther/Kyle Sparrow
 ---
 The purpose of this component is the user interface and development of the visuals, the buttons, and the user experience of the app. The main components of the app are the windows from the MainFragment, SettingsFragment, AboutUsFragment, and MapViewFragment.
+
+### Preferences Management, Selective Display and Cellular Signal Detection - Fanchao Zhou
+
+This part of code is mainly in Alignment Fragment and Main Fragment. Since the checkbox for alignment testing in continuous running mode is just a View object, rather than a Prefrence object, the value of the checkbox is not written in the SharedPreferences file automatically. Thus, the saving of this value needs to be done by using a SharedPreferences Editor. As soon as the Alignment Fragment is created, a handler is registered to write the checkbox's value into the default SharedPreferences file by an SharedPreferences Editor(along with other preferences on the Settings Fragment), whenever the checkbox is clicked on. So, every time the app is opened, the checkbox will be pre-set to its previous value. 
+
+In the Main Fragment, the selective display is implemented by reading the preferences on the Settings Fragment. One thing absent in project 1 is pulling the cellular RSSI. In order to get this value, first a TelephonyManager object is obtained by getting the corresponding system service. Then, one of its member methods, called getAllCellInfo() method, is invoked to pull a list of cellular information. The list may contain all the information about GSM, CDMA or LTE. So, a 'for' loop iterates through the list to check each item, and always returns the RSSI of the highest-version protocol. This RSSI value is passed to the DataCollector object, and is finally displayed on the Main Fragment.
