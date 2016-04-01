@@ -74,3 +74,8 @@ The alignment fragment also pauses automatic data collection if the phone is out
 The purpose of this portion is to monitor the information provided in setting fragment. And it can maintain and change the configuration to default. Android SharedPreferences allows us to store private primitive data in the form of key-value pair. The data will be stored as XML file in shared_prefs folder under DATA/data/[application] directory. The DATA folder can be obtained by calling Environment.getDataDirectory(). 
 
 The basic functionality is that it can maintain the changes. All changes will be automatically stored as XML file. When you reopen the app you can see the changes you made last time. In order to set everything to default, I add a reset button. Preference.OnPreferenceClickListener is an interface for a callback to be invoked when a preference is clicked. After clicking this button, the checkbox will be unchecked. The summary of the field and the editText of the UI will be changed to be default settings. 
+
+### IMU Sensor and GPS - Akash
+---
+This component of the project was to collect the IMU sensor (Accelerometer, Gyro, Magnetometer )data and display them. The display refreshed every 10ms. GPS had a button and on press of button, it takes 30-40secs to get location and send coordinates to the program. It has observer pattern which notifies once the GPS values are read. 
+The code is available <br> https://github.com/CourseReps/ECEN489-Spring2016/tree/master/Students/akashatnitr/Project2/
