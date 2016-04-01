@@ -61,3 +61,6 @@ In MainFragment, I pulled in some of John's methods and used them in writing the
 
 For the "2b" part of this project, I tried to lay out the necessary remaining tasks and ensure team members were assigned to handle each one, coordinate communication and problem-solving efforts, manage the code contributions from different members of the team, and test for errors and help point to potential solutions where needed. I did less coding for this part, but did make a change in MainFragment to prevent the app from doubly allocating resources for a fragment which was causing performance issues.
 
+### Alignment Fragment Implementation - Sam Shore, Chaance Graves
+----
+This portion of Project 2 focused on the Alignment fragment. Its purpose is to serve as a visual representation that the user can refer to in order to know if they're in the tolerable range for data collecting and RF mapping purposes. We originally were proposed two methods of approach to develop the visual aid tool within the Android API framework. We determined that we would use OpenGL and how to use to a modificated version of Gyroscope Explorer. After time, the Gyroscope modification was phased out for integration into the main app for a more simple Square that has a real-time gradient color response defined by the parameters of the x,y,z values from the  magnetometer readings.
