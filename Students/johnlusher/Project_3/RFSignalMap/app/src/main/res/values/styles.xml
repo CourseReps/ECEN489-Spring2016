@@ -1,3 +1,15 @@
+<!--
+********************************************************************************************************************
+** ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
+**          RF Signal Map
+**
+**   File Name: 	styles.xml
+**     Version:		1.0.0
+**        Date:	    April 1, 2016
+** Description:	    Styles for Application
+**      Author:     John Lusher II
+*********************************************************************************************************************
+-->
 <resources>
 
     <!-- Base application theme. -->
