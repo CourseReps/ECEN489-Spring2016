@@ -31,11 +31,6 @@ import android.view.ViewGroup;
  */
 public class MainActivity extends AppCompatActivity {
 
-   // private MainActivityFragment mainFrag;                      /// Main Activity Fragment
-   // private SettingsFragment settingsFrag;                      /// Application Settings Fragment
-    private AboutFragment aboutFrag;                            /// About Application Fragment
-
-
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
