@@ -38,13 +38,13 @@ UPON Scanning message. User will append to the JSON
 ```
 The Server Will read in the array of intented receivers and search from the names in the Scanned object. If all of the intened receivers have not added their name to the list, (they have not scanned and read the message), then the server will not display the message yet. 
 
-Now when Brandon Receives the message
+Now when Bob Receives the message
 ```
 {
    "Sender": "Kyle",
    "Receivers": [
-      "Thomas",
-      "Brandon"
+      "Joe",
+      "Bob"
    ],
    "Message": "Hi Guys",
    "Time": "12:00:00 4-7-1016",
@@ -71,6 +71,5 @@ What is left to define is the stucture of the Server that will store all of this
 
 Now How does the server start up another conversation? Very similar to how it starts the first one.
 * Read in the JSON object
-* Parse through it until it reads all the names (Sender: and all Receivers: If These names do not Match EXACTLY with a 
-+ JSON object already in storage then this is a new conversation
-+  Some notes: Sender1 does not have to = Sender2. The Overall list of names must match instead.
+* Parse through it until it reads all the names (Sender: and all Receivers: If These names do not Match EXACTLY with a JSON object already in storage then this is a new conversation
+*  Some notes: Sender1 does not have to = Sender2. The Overall list of names must match instead.
