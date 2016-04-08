@@ -7,4 +7,6 @@ Participants:
 - Thomas Branyon  
 
 ### Week 1 Progress  
-//todo...
+
+Thomas:  
+Code written for communications on NUC Server and Android sides. Uses TCP socket to transmit compressed image data.
