@@ -10,3 +10,6 @@ Participants:
 
 Thomas:  
 Code written for communications on NUC Server and Android sides. Uses TCP socket to transmit compressed image data.
+
+Keaton:
+Working with android to create a camera app that takes input from the TCP socket to take a picture and then stores it and sends it to the server.
