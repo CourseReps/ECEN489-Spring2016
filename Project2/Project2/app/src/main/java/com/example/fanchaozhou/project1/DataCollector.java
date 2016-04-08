@@ -21,7 +21,7 @@ public class DataCollector
 	//data fields
 	public static String transmitID = "5"; /*!< Antenna ID */
     public static double RSSI = 0; /*!< Received Signal Strength in hex */
-	public static int wifiRSSI = 0;
+	public static int phoneRSSI = 0;
     public static String receiveID = "6"; /*!< XBee ID */
     public static double latitude = 0; /*!< GPS latitude */
     public static double longitude = 0; /*!< GPS longitude */
