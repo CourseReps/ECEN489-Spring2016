@@ -2,9 +2,33 @@
 
 ##This is the project for motion detection from the camera. 
 
-Using Camera2 API, can make a file with the image:
+Using Camera2 API, can make a file with the image, with RAW or YUV:
 
 http://willowtreeapps.com/blog/camera2-and-you-leveraging-android-lollipops-new-camera/
+
+```javascript
+
+ImageReader rawImageReader = ImageReader.newInstance(rawWidth, rawHeight, ImageFormat.RAW_SENSOR, 1);
+rawImageReader.setOnImageAvailableListener(new OnImageAvailableListener() {
+    @Override
+    public void onImageAvailable(ImageReader reader) {
+        // save raw
+    }
+});
+ 
+ImageReader jpegImageReader = ImageReader.newInstance(jpegWidth, jpegHeight, ImageFormat.JPEG, 1);
+jpegImageReader.setOnImageAvailableListener(new OnImageAvailableListener() {
+    @Override
+    public void onImageAvailable(ImageReader reader) {
+        // save jpeg
+    }
+});
+ 
+Surface previewSurface = new Surface(mPreviewSurfaceTexture);
+Surface rawCaptureSurface = rawImageReader.getSurface();
+Surface jpegCaptureSurface = jpegImageReader.getSurface();
+```
+Using a listener:
 
 ```javascript
 DngCreatorrawImageReader.setOnImageAvailableListener(new OnImageAvailableListener() {
