@@ -22,11 +22,21 @@ import android.hardware.usb.UsbManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
-import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.provider.ContactsContract;
 import android.support.design.widget.Snackbar;
+import android.telephony.CellInfo;
+import android.telephony.CellInfoCdma;
+import android.telephony.CellInfoGsm;
+import android.telephony.CellInfoLte;
+import android.telephony.CellSignalStrengthCdma;
+import android.telephony.CellSignalStrengthGsm;
+import android.telephony.CellSignalStrengthLte;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,6 +53,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -69,6 +80,10 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
     private final static String TXID = "Transmit ID";
     private final static String RSSI = "RSSI";
     private Sensor senMagnetometer;
+    private TelephonyManager teleManager;
+    private int phoneRSSI;
+    private final String[] signalTypes = {"GSM", "CDMA", "LTE"};
+    private String signalType = "";
 
     private DataCollector dataStruct;
 
@@ -99,6 +114,10 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
         FT.commit();
 
         if(savedInstanceState==null){
+            //Initializing the telephony information manager
+//            teleManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+//            teleManager.listen(new PhoneRSSIListener(getActivity()), PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
+
             //Initializing the data list adaptor
             dataListAdaptor = new ArrayAdapter<>(
                     getActivity(),                    //The Current Parent Activity
@@ -123,7 +142,37 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
             }
         }
     }
+/*
+    private class PhoneRSSIListener extends PhoneStateListener {
+        Context mContext;
 
+        public PhoneRSSIListener(Context mContext){
+            super();
+            this.mContext = mContext;
+        }
+
+        @Override
+        public void onSignalStrengthsChanged(SignalStrength signalStrength) {
+            super.onSignalStrengthsChanged(signalStrength);
+
+            synchronized ((Integer)phoneRSSI){
+                if(signalStrength.getCdmaDbm() > 0) {
+//                signalType = signalTypeNames[ 1 ];
+                    phoneRSSI = signalStrength.getCdmaDbm();
+                } else {
+//                signalType = signalTypeNames[ 0 ];
+                    if(signalStrength.getGsmSignalStrength() == 99){
+                        phoneRSSI = -113;
+                    } else {
+                        phoneRSSI = 2*signalStrength.getGsmSignalStrength()-113;
+                    }
+                }
+            }
+
+            DataCollector.phoneRSSI = phoneRSSI;
+        }
+    }
+*/
     /**
      * @fn onStart
      * @brief Populate the list with currently collected data when switching back to the main fragment
@@ -239,6 +288,35 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
      */
     @Override
     public void onProviderDisabled(String provider) {}
+/**/
+    private int getPhoneRSSI(){
+        TelephonyManager teleManager = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+        int signalDbm = Integer.MIN_VALUE;
+        try {
+            for(CellInfo info : teleManager.getAllCellInfo()) {
+                if ((info instanceof CellInfoGsm) && signalType.equals("")) {
+                    signalType = signalTypes[ 0 ];
+                    CellSignalStrengthGsm gsm = ((CellInfoGsm) info).getCellSignalStrength();
+                    signalDbm = gsm.getDbm();
+                } else if (info instanceof CellInfoCdma) {
+                    signalType = signalTypes[ 1 ];
+                    CellSignalStrengthCdma cdma = ((CellInfoCdma) info).getCellSignalStrength();
+                    signalDbm = cdma.getDbm();
+                } else if (info instanceof CellInfoLte) {
+                    signalType = signalTypes[ 2 ];
+                    CellSignalStrengthLte lte = ((CellInfoLte) info).getCellSignalStrength();
+                    signalDbm = lte.getDbm();
+                    break;
+                } else {
+                    throw new Exception("Unknown type of cell signal!");
+                }
+            }
+        } catch(Exception e) {
+            System.out.println(e);
+        }
+
+        return signalDbm;
+    }
 
     /**
      * @class PullData
@@ -276,8 +354,11 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 System.out.println(e.getMessage());
             }
 
-            WifiManager wifiManager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
-            DataCollector.wifiRSSI = wifiManager.getConnectionInfo().getRssi();
+/*
+            synchronized ((Integer)phoneRSSI){
+                DataCollector.phoneRSSI = phoneRSSI;
+            }*/
+            DataCollector.phoneRSSI = getPhoneRSSI();
             dataStruct.timestamp = Calendar.getInstance().getTime();
             ArrayList<String> data = dataFunc.pulldata();
             dataFunc.pushtodb(dbHandle);
@@ -305,10 +386,10 @@ public class MainFragment extends Fragment implements SensorEventListener, Locat
                 displayStr += ("\nLocation: " + data.get(4));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_mag_key), false)){
-                displayStr += ("   \nMagnetic Field: " + data.get(6));
+                displayStr += ("\nMagnetic Field: " + data.get(6));
             }
             if(displaySettings.getBoolean(getString(R.string.pref_rss_s2_key), false)){
-                displayStr += ("\nRSS Src2(Internal RSSI): " + data.get(7));
+                displayStr += ("\nRSS Src2(Internal RSSI " + signalType + "): " + data.get(7));
             }
             synchronized (dataList){
                 dataList.add(0, displayStr);             //Add the new data to the top of the list
