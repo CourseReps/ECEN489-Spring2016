@@ -1,7 +1,7 @@
-Possible Group Messaging Version
+# Group Messaging Version
 
 When the QR Code is Made:
-
+```
 {
    "Sender": "Kyle",
    "Receivers": [
@@ -11,11 +11,12 @@ When the QR Code is Made:
    "Message": "Hi Guys",
    "Time": "12:00:00 4-7-1016"
 }
+```
+Upon scanning check users name to see if they indeed one of the intended receivers.
 
-Upon Scanning Check users name to see if they indeed one of the intended receivers.
+	-if not display "Nothing to see here"
 
--if not display "Nothing to see here"
-_if yes then display message
+	-if yes then display message
 
 If i want to funcationaly of displayingt the message on the server only when all the receivers have received the message, then the server will 
 
