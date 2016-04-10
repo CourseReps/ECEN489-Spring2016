@@ -16,8 +16,9 @@ package edu.tamu.rfsignalmap;
 //  --------------------------------------------------------------------------------------------------------------------
 import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentActivity;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import android.view.ViewGroup;
  */
 public class AboutFragment extends Fragment {
     //ThingsAdapter adapter;
-    FragmentActivity listener;
+ //   FragmentActivity listener;
 
     // This event fires 1st, before creation of fragment or any views
     // The onAttach method is called when the Fragment instance is associated with an Activity.
@@ -37,9 +38,9 @@ public class AboutFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Activity){
-            this.listener = (FragmentActivity) context;
-        }
+ //       if (context instanceof Activity){
+ //           this.listener = (FragmentActivity) context;
+ //       }
     }
 
     // This event fires 2nd, before views are created for the fragment
