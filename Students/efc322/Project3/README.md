@@ -25,5 +25,7 @@ Up to now, I haven't come up with what to do on the server side.
 ##Schedule
 
 *Week 1: UI, data storage
+
 *Week 2: JavaCV
+
 *Week 3: Tomcat Server, final Integration, probably some extensions(Such as face recognition in a live video stream).
