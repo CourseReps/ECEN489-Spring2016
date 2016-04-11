@@ -1,0 +1,32 @@
+<!--
+********************************************************************************************************************
+** ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
+**          RF Signal Map
+**
+**   File Name: 	menu_main.xml
+**     Version:		1.0.0
+**        Date:	    April 9, 2016
+** Description:	    Main Menu
+**      Author:     John Lusher II
+*********************************************************************************************************************
+-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="edu.tamu.rfsignalmap.MainActivity">
+    <item
+        android:id="@+id/action_rfview"
+        android:orderInCategory="100"
+        android:title="@string/action_rfview"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:title="@string/action_settings"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="@string/action_about"
+        app:showAsAction="never"/>
+</menu>

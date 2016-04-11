@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+********************************************************************************************************************
+** ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
+**          RF Signal Map
+**
+**   File Name: 	colors.xml
+**     Version:		1.0.0
+**        Date:	    April 9, 2016
+** Description:	    Color Codes for Application
+**      Author:     John Lusher II
+*********************************************************************************************************************
+-->
+<resources>
+    <color name="colorPrimary">#585962</color>
+    <color name="colorPrimaryDark">#585962</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorData">#1E7F91</color>
+</resources>
