@@ -167,6 +167,16 @@ public class MainActivity extends AppCompatActivity {
                 System.out.println(e);
             }
         }
+public class MainActivity extends AppCompatActivity
+{
+    @Override
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        ServerThread mThread = new ServerThread(this);
+        Thread t = new Thread(mThread);
+        t.start();
     }
 }
 
