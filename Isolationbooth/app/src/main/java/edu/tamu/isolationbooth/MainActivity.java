@@ -16,51 +16,15 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.net.ServerSocket;
 
-public class MainActivity extends AppCompatActivity {
-
-    final int portnumber = 2000;
-
+public class MainActivity extends AppCompatActivity
+{
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainloop();
-    }
-
-    private void mainloop()
-    {
-        while(true)
-        {
-            try {
-                ServerSocket server = new ServerSocket(portnumber, 1);
-                Socket connection = server.accept(); //wait for connect
-                ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());
-                ObjectInputStream is = new ObjectInputStream(connection.getInputStream());
-                String cmd = "";
-                while (!cmd.equals("get_pic"))
-                    cmd = (String) is.readObject();
-
-                //DO IMAGE CAPTURE HERE
-                //@TODO
-
-                //read picture file and send
-                //File root = Environment.getExternalStorageDirectory();
-                ImageView IV = (ImageView) findViewById(R.id.imgview);
-                Bitmap bmp = BitmapFactory.decodeFile("/storage/emulated/0/Pictures/Screenshots/Screenshot_2016-04-08-13-47-08.png");
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] buf = stream.toByteArray();
-                os.writeInt(buf.length); //write message length
-                os.write(buf);
-
-                //shutdown
-                os.close();
-                is.close();
-                connection.close();
-                server.close();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
+        ServerThread mThread = new ServerThread(this);
+        Thread t = new Thread(mThread);
+        t.start();
     }
 }
