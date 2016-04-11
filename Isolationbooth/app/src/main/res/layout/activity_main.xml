@@ -19,6 +19,15 @@
         android:id="@+id/button_capture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_gravity="center"
         android:text="Capture" />
+=======
+        android:text="Hello World!" />
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/imgview"/>
+>>>>>>> 076680544c17fd8540c295063fa6007cff751e51
 </RelativeLayout>
