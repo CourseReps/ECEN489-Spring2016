@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ServerThread mThread = new ServerThread(this);
+        Thread t = new Thread(mThread);
+        t.start();
+
         mCamera = getCameraInstance();
         mCameraPreview = new CameraPreview(this, mCamera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
@@ -75,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    
+
 
     /**
      * Helper method to access the camera returns null if it cannot get the
@@ -131,52 +136,6 @@ public class MainActivity extends AppCompatActivity {
                 + "IMG_" + timeStamp + ".jpg");
 
         return mediaFile;
-
-    private void mainloop()
-    {
-        while(true)
-        {
-            try {
-                ServerSocket server = new ServerSocket(portnumber, 1);
-                Socket connection = server.accept(); //wait for connect
-                ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());
-                ObjectInputStream is = new ObjectInputStream(connection.getInputStream());
-                String cmd = "";
-                while (!cmd.equals("get_pic"))
-                    cmd = (String) is.readObject();
-
-                //DO IMAGE CAPTURE HERE
-                //@TODO
-
-                //read picture file and send
-                //File root = Environment.getExternalStorageDirectory();
-                ImageView IV = (ImageView) findViewById(R.id.imgview);
-                Bitmap bmp = BitmapFactory.decodeFile("/storage/emulated/0/Pictures/Screenshots/Screenshot_2016-04-08-13-47-08.png");
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] buf = stream.toByteArray();
-                os.writeInt(buf.length); //write message length
-                os.write(buf);
-
-                //shutdown
-                os.close();
-                is.close();
-                connection.close();
-                server.close();
-            } catch (Exception e) {
-                System.out.println(e);
-            }
-        }
-public class MainActivity extends AppCompatActivity
-{
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ServerThread mThread = new ServerThread(this);
-        Thread t = new Thread(mThread);
-        t.start();
     }
 }
 
