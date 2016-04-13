@@ -1,6 +1,8 @@
 package edu.tamu.isolationbooth;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +11,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -66,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void serverThread()
     {
-        while(true)
-        {
+
+
+        while(true) {
             try {
                 ServerSocket server = new ServerSocket(portnumber, 1);
                 server.setReuseAddress(true);
@@ -77,12 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 String cmd = "";
                 while (!cmd.equals("get_pic"))
                     cmd = (String) is.readObject();
-                byte[] pic;
                 System.out.println("Command received");
                 Camera.PictureCallback mPicture = new Camera.PictureCallback() {
                     @Override
-                    public void onPictureTaken(byte[] data, Camera camera)
-                    {
+                    public void onPictureTaken(byte[] data, Camera camera) {
                         try {
                             File mediaStorageDir = new File(
                                     Environment
@@ -99,21 +102,33 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("DATA" + data.length);
                             */
 
-                        } catch (Exception e) {}
+                        } catch (Exception e) {
+                        }
                     }
                 };
 
                 //@TODO get picture
                 mCamera.takePicture(null, null, mPicture);
-
-            //shutdown
-            os.close();
-            is.close();
-            connection.close();
-            server.close();
-            }catch(Exception e) {
+                File mediaStorageDir = new File(
+                        Environment
+                                .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                        "MyCameraApp");
+                Bitmap bmp = BitmapFactory.decodeFile(mediaStorageDir.getPath() + File.separator
+                        + "IMG_.jpg");
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                byte[] buf = stream.toByteArray();
+                os.writeInt(buf.length); //write message length
+                os.write(buf);
+                //shutdown
+                os.close();
+                is.close();
+                connection.close();
+                //server.close();
+            } catch (Exception e) {
                 System.out.println(e);
             }
+
         }
 
         /**
