@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private Camera mCamera;
     private CameraPreview mCameraPreview;
 
-
     final int portnumber = 2000;
 
     @Override
