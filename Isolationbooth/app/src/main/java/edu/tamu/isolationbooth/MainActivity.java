@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     public Camera mCamera;
     public CameraPreview mCameraPreview;
     private final int portnumber = 2000;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,13 @@ public class MainActivity extends AppCompatActivity {
         mCameraPreview = new CameraPreview(this, mCamera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mCameraPreview);
+        Thread t = new Thread(){
+            public void run()
+            {
+                serverThread();
+            }
+        };
+        t.start();
 /*
         Button captureButton = (Button) findViewById(R.id.button_capture);
         captureButton.setOnClickListener(new View.OnClickListener() {
@@ -55,56 +63,45 @@ public class MainActivity extends AppCompatActivity {
         return camera;
     }
 
-    public void run() {
-        try {
-            ServerSocket server = new ServerSocket(portnumber, 1);
-            server.setReuseAddress(true);
-            Socket connection = server.accept(); //wait for connect
-             final ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());
-            ObjectInputStream is = new ObjectInputStream(connection.getInputStream());
-            String cmd = "";
-            while (!cmd.equals("get_pic"))
-                cmd = (String) is.readObject();
-            Camera.PictureCallback mPicture = new Camera.PictureCallback() {
-                @Override
-                public void onPictureTaken(byte[] data, Camera camera) {
-                    /*File pictureFile = getOutputMediaFile();
-                    if (pictureFile == null) {
-                        return;
+    public void serverThread()
+    {
+        while(true)
+        {
+            try {
+                ServerSocket server = new ServerSocket(portnumber, 1);
+                server.setReuseAddress(true);
+                Socket connection = server.accept(); //wait for connect
+                final ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());
+                ObjectInputStream is = new ObjectInputStream(connection.getInputStream());
+                String cmd = "";
+                while (!cmd.equals("get_pic"))
+                    cmd = (String) is.readObject();
+
+                System.out.println("Command received");
+
+                Camera.PictureCallback mPicture = new Camera.PictureCallback() {
+                    @Override
+                    public void onPictureTaken(byte[] data, Camera camera)
+                    {
+                        try {
+                            os.writeInt(data.length);
+                            os.write(data);
+                            System.out.println("Data[0]: " + data[0]);
+                        } catch (Exception e) {}
                     }
-                    */
-                    try {
-                        //FileOutputStream fos = new FileOutputStream(pictureFile);
-                        //fos.write(data);
-                        //fos.close();
-                        os.writeInt(data.length);
-                        os.write(data);
+                };
 
-                    } catch (FileNotFoundException e) {
+                //@TODO get picture
+                mCamera.takePicture(null, null, mPicture);
 
-                    } catch (IOException e) {
-                    }
-                }
-            };
-            //@TODO get picture
-            mCamera.takePicture(null, null, mPicture);
-
-            //read picture file and send
-            //File root = Environment.getExternalStorageDirectory();
-            /*
-            ImageView IV = (ImageView) mActivity.findViewById(R.id.imgview);
-            Bitmap bmp = BitmapFactory.decodeFile("/storage/emulated/0/Pictures/Screenshots/Screenshot_2016-04-08-13-47-08.png");
-            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            byte[] buf = stream.toByteArray();
-            */
             //shutdown
-        os.close();
-        is.close();
-        connection.close();
-        server.close();
-        }catch(Exception e){
-            System.out.println(e);
+            os.close();
+            is.close();
+            connection.close();
+            server.close();
+            }catch(Exception e) {
+                System.out.println(e);
+            }
         }
 
         /**
