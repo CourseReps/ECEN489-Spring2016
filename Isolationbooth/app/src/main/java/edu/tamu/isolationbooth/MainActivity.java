@@ -15,6 +15,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Date;
@@ -76,17 +77,28 @@ public class MainActivity extends AppCompatActivity {
                 String cmd = "";
                 while (!cmd.equals("get_pic"))
                     cmd = (String) is.readObject();
-
+                byte[] pic;
                 System.out.println("Command received");
-
                 Camera.PictureCallback mPicture = new Camera.PictureCallback() {
                     @Override
                     public void onPictureTaken(byte[] data, Camera camera)
                     {
                         try {
+                            File mediaStorageDir = new File(
+                                    Environment
+                                            .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                                    "MyCameraApp");
+                            File picturefile = new File(mediaStorageDir.getPath() + File.separator
+                                    + "IMG_.jpg");
+                            FileOutputStream picture = new FileOutputStream(picturefile);
+                            picture.write(data);
+                            picture.close();
+                            /*
                             os.writeInt(data.length);
-                            os.write(data);
-                            System.out.println("Data[0]: " + data[0]);
+                            os.write(data, 0, data.length);
+                            System.out.println("DATA" + data.length);
+                            */
+
                         } catch (Exception e) {}
                     }
                 };
