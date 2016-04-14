@@ -1,10 +1,14 @@
 package edu.tamu.isolationbooth;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.FrameLayout;
+
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
@@ -25,14 +29,15 @@ public class MainActivity extends AppCompatActivity {
         mCameraPreview = new CameraPreview(this, mCamera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mCameraPreview);
-        Thread t = new Thread(){
-            public void run()
-            {
-                while(true){
+        Thread t = new Thread() {
+            public void run() {
+                while (true) {
                     serverThread();
-                    try{
+                    try {
                         Thread.sleep(1000);
-                    }catch(Exception e){System.err.println(e);}
+                    } catch (Exception e) {
+                        System.err.println(e);
+                    }
                 }
 
             }
@@ -40,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         t.start();
     }
 
-    private Camera getCameraInstance () {
+    private Camera getCameraInstance() {
         Camera camera = null;
         try {
             camera = Camera.open();
@@ -61,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             String cmd = "";
             while (!cmd.equals("get_pic"))
                 cmd = (String) is.readObject();
-            byte[] pic;
             System.out.println("Command received");
 
             Camera.PictureCallback mPicture = new Camera.PictureCallback() {
@@ -69,22 +73,31 @@ public class MainActivity extends AppCompatActivity {
                 public void onPictureTaken(byte[] data, Camera camera) {
                     try {
                         File mediaStorageDir = new File(
-                                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                                Environment
+                                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                                 "MyCameraApp");
-                        File picturefile = new File(mediaStorageDir.getPath() + File.separator + "IMG_.jpg");
+                        File picturefile = new File(mediaStorageDir.getPath() + File.separator
+                                + "IMG_.jpg");
                         FileOutputStream picture = new FileOutputStream(picturefile);
                         picture.write(data);
                         picture.close();
-                        /*
-                        os.writeInt(data.length);
-                        os.write(data, 0, data.length);
-                        System.out.println("DATA" + data.length);
-                        */
-                    } catch (Exception e) {System.err.println(e);}
+                    } catch (Exception e) {
+                        System.err.println(e);
+                    }
                 }
             };
 
             mCamera.takePicture(null, null, mPicture);
+
+            File mediaStorageDir = new File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                    "MyCameraApp");
+            Bitmap bmp = BitmapFactory.decodeFile(mediaStorageDir.getPath() + File.separator + "IMG_.jpg");
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            byte[] buf = stream.toByteArray();
+            os.writeInt(buf.length); //write message length
+            os.write(buf);
 
             //shutdown
             os.close();
@@ -96,7 +109,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-
-
-
