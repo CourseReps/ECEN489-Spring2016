@@ -14,23 +14,18 @@ package edu.tamu.rfsignalmap;
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 
 //----------------------------------------------------------------------------------------------------------------------
 /** @class      MainActivity
  *  @brief      Main Activity Application Project
  */
 public class MainActivity extends AppCompatActivity {
-
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
@@ -47,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         if (savedInstanceState == null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment, new MainActivityFragment());
             transaction.commit();
         }
@@ -85,21 +81,23 @@ public class MainActivity extends AppCompatActivity {
 
         // Execute fragment based upon selection
         if (id == R.id.action_rfview) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment, new MainActivityFragment());
             transaction.commit();
             return true;
         }
         else if (id == R.id.action_settings) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment, new SettingsFragment());
             transaction.commit();
+            //fragMainAct = null;
             return true;
         }
         else if (id == R.id.action_about) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment, new AboutFragment());
             transaction.commit();
+            //fragMainAct = null;
             return true;
         }
         return super.onOptionsItemSelected(item);
