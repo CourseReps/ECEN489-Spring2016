@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void serverThread()
     {
-        //while(true) {
+        while(true) {
             try {
                 ServerSocket server = new ServerSocket(portnumber, 1);
                 server.setReuseAddress(true);
@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 };
 
                 mCamera.takePicture(null, null, mPicture);
+                Thread.sleep(1000);
                 File mediaStorageDir = new File(
                         Environment
                                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
@@ -99,8 +100,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (Exception e) {
                 System.out.println(e);
             }
-
-        //}
+        }
     }
 }
 
