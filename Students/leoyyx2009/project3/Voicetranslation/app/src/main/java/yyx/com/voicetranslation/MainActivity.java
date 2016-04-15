@@ -19,6 +19,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.io.BufferedWriter;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -51,8 +59,18 @@ public class MainActivity extends ActionBarActivity {
 
                 new EnglishToTagalog().execute();
 
-            }
+                try {
+
+                } catch (Exception e) {
+                    System.err.println(e); //no idea where this goes
+                }
+
+                }
+
         });
+
+
+
 
 
 
@@ -84,6 +102,43 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+    }
+    protected void sendHTTPdata(JSONObject json) throws Exception {
+        final String data = json.toString();
+        Thread t = new Thread() {
+            public void run() {
+                try {
+                    //EditText address = (EditText) findViewById(R.id.remoteAddress);
+                    //address.getText().toString()
+                    String address = "10.202.108.57";
+                    String serverAddress = "http://"+ address + ":8080/optout4/yy";
+                    URL url = new URL(serverAddress);
+
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setReadTimeout(1000);
+                    conn.setConnectTimeout(1000);
+                    conn.setDoInput(true);
+                    conn.setDoOutput(true);
+                    //conn.setRequestProperty("Content-Type", "application/json");
+                    conn.setRequestMethod("POST");
+                    conn.connect();
+
+                    OutputStream os = conn.getOutputStream();
+                    BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os));
+                    writer.write(data);
+                    writer.close();
+                    os.close();
+
+                    int result = conn.getResponseCode();
+                    System.out.println(result);
+                }catch(Exception e){
+                    System.err.print(e);
+                }
+                System.out.println("Thread complete");
+            }
+        };
+        t.start();
+        System.out.println("thread started");
     }
 
     private void speakOut(){
@@ -176,6 +231,7 @@ public class MainActivity extends ActionBarActivity {
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progress.setIndeterminate(true);
             super.onPreExecute();
+
         }
         @Override
         protected void onPostExecute(Void result) {
@@ -200,6 +256,22 @@ public class MainActivity extends ActionBarActivity {
         translatabletext = (TextView) findViewById(R.id.translatabletext);
         translatabletext.setText(text);
 
-    }
+        JSONObject data = new JSONObject();
+        try {
+            EditText editText = (EditText) findViewById(R.id.translateedittext);
+            String sourceWord = editText.getText().toString();
+            TextView textView = (TextView) findViewById(R.id.translatabletext);
+            String targetWord = textView.getText().toString();
+            data.put("source", sourceWord);
+            data.put("target", targetWord);
+
+            sendHTTPdata(data);
+
+
+        } catch (Exception e) {
+            System.err.println(e); //no idea where this goes
+        }
+
+        }
 
 }
