@@ -10,7 +10,9 @@ import android.widget.FrameLayout;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
@@ -81,8 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         Environment
                                 .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                         "MyCameraApp");
-                Bitmap bmp = BitmapFactory.decodeFile(mediaStorageDir.getPath() + File.separator
-                        + "IMG_.jpg");
+                File pic = new File(mediaStorageDir.getPath() + File.separator + "IMG_.jpg");
+                InputStream picstream = new FileInputStream(pic);
+                Bitmap bmp = BitmapFactory.decodeStream(picstream);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 bmp.compress(Bitmap.CompressFormat.JPEG, 100, stream);
                 byte[] buf = stream.toByteArray();
