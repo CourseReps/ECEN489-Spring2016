@@ -3,10 +3,14 @@ package edu.tamu.isolationbooth;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.format.Formatter;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,6 +35,16 @@ public class MainActivity extends AppCompatActivity {
         mCameraPreview = new CameraPreview(this, mCamera);
         FrameLayout preview = (FrameLayout) findViewById(R.id.camera_preview);
         preview.addView(mCameraPreview);
+
+        WifiManager wifiMgr = (WifiManager) getSystemService(WIFI_SERVICE);
+        WifiInfo wifiInfo = wifiMgr.getConnectionInfo();
+        int ip = wifiInfo.getIpAddress();
+        String ipAddress = Formatter.formatIpAddress(ip);
+
+        TextView ipstring = (TextView) findViewById(R.id.ip);
+
+        ipstring.setText(ipAddress);
+
         Thread t = new Thread(){
             public void run()
             {
@@ -39,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         };
         t.start();
     }
+
     private Camera getCameraInstance () {
         Camera camera = null;
         try {
@@ -95,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 //shutdown
                 os.close();
                 is.close();
+                //Thread.sleep(2000);
                 connection.close();
                 server.close();
             } catch (Exception e) {
