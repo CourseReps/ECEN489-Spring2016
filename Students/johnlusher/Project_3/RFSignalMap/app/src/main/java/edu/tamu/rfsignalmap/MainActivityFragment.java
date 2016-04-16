@@ -460,9 +460,6 @@ public class MainActivityFragment extends Fragment implements
         // Add Button
         btnRecord = (Button) view.findViewById(R.id.btnRecord);
         btnRecord.setOnClickListener(this);
-
-        //   ListView lv = (ListView) view.findViewById(R.id.lvSome);
-        //    lv.setAdapter(adapter);
     }
 
     //	----------------------------------------------------------------------------------------------------------------

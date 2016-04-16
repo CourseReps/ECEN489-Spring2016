@@ -14,24 +14,22 @@ package edu.tamu.rfsignalmap;
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import android.app.Activity;
 import android.content.Context;
-//import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentActivity;
-import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 
 //----------------------------------------------------------------------------------------------------------------------
 
-/** @class      AboutFragment
- *  @brief      About Fragment - Application Information
+/** @class      SettingsFragment
+ *  @brief      Settings Fragment - Application Information
  */
-public class SettingsFragment extends Fragment {
-    //ThingsAdapter adapter;
-//    FragmentActivity listener;
+public class SettingsFragment extends PreferenceFragment implements Preference.OnPreferenceChangeListener{
 
     // This event fires 1st, before creation of fragment or any views
     // The onAttach method is called when the Fragment instance is associated with an Activity.
@@ -39,9 +37,6 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-//        if (context instanceof Activity){
-//            this.listener = (FragmentActivity) context;
-//        }
     }
 
     // This event fires 2nd, before views are created for the fragment
@@ -50,8 +45,10 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //ArrayList<Thing> things = new ArrayList<Thing>();
-        //adapter = new ThingsAdapter(getActivity(), things);
+
+        addPreferencesFromResource(R.xml.pref_settings);
+        Preference datatxPref = findPreference(getString(R.string.pref_server_key));
+        datatxPref.setOnPreferenceChangeListener(this);   //Registering a listener for this item
     }
 
 
@@ -65,7 +62,7 @@ public class SettingsFragment extends Fragment {
      *           Create View and Fragment Resources
      */
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_settings, parent, false);
+        return  super.onCreateView(inflater, parent, savedInstanceState);
     }
 
     // This event is triggered soon after onCreateView().
@@ -73,8 +70,10 @@ public class SettingsFragment extends Fragment {
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        //   ListView lv = (ListView) view.findViewById(R.id.lvSome);
-        //    lv.setAdapter(adapter);
+        if(savedInstanceState == null){
+            Preference datatxPref = findPreference(getString(R.string.pref_server_key));
+            datatxPref.setOnPreferenceChangeListener(this);   //Registering a listener for this item
+        }
     }
 
     // This method is called after the parent Activity's onCreate() method has completed.
@@ -85,4 +84,45 @@ public class SettingsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    /**
+     * @fn onStart
+     * @brief Get server settings and display them
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
+        try {
+
+            String serverAddr = sharedPref.getString(getString(R.string.pref_server_key), getString(R.string.pref_server_default));
+            findPreference(getString(R.string.pref_server_key)).setSummary(serverAddr);
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+
+    /**
+     * @fn onPreferenceChange
+     * @brief This method is invoked whenever a change has been made to any of the settings items
+     */
+    @Override
+    public boolean onPreferenceChange(Preference preference, Object newValue) {
+        // If the host address is changed
+        try {
+            if (preference.getKey().equals(getString(R.string.pref_server_key))) {
+                String newValueStr = newValue.toString();
+                preference.setSummary(newValueStr);
+            }
+        }
+        catch (Exception e)
+        {
+
+        }
+
+        return true;
+    }
 }

@@ -14,17 +14,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent" android:layout_height="wrap_content"
               android:orientation="vertical" >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="50dp"
-        android:textStyle="bold"
-        android:text="          "/>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
+    </GridLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#585962">
+    </FrameLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50dp"
+        android:textSize="25dp"
         android:textStyle="bold"
-        android:text="About "/>
+        android:text="About"
+        android:layout_gravity="right"
+        android:padding="3dp"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="#2f527a"
+        >
+        <TextView
+            android:layout_width="239dp"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:text="@string/about_label"
+            android:id="@+id/textHost"
+            android:textAlignment="viewStart"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:textColor="#dfdede"
+            android:layout_gravity="top"
+            android:padding="5dp"
+            android:paddingLeft="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/editTextHostAddress"
+            android:layout_gravity="left|center_vertical"
+            android:textColor="#ffffff"
+            android:text="@string/about_summary"/>
+    </FrameLayout>
 </LinearLayout>

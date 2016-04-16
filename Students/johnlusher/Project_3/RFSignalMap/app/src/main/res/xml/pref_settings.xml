@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <PreferenceCategory
+        android:title=""
+        android:key="pref_category_datasettings_space_key">
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="@string/pref_category_datasettings_title"
+        android:key="@string/pref_category_datasettings_key">
+
+        <EditTextPreference
+            android:title="@string/pref_server_title"
+            android:key="@string/pref_server_key"
+            android:defaultValue="@string/pref_server_default"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
