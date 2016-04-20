@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ifconfig wlan1 down
+iwconfig wlan1 mode monitor
+ifconfig wlan1 up
+
+while true; do
+	iwconfig wlan1 channel 1
+
+	tcpdump -i wlan1 -e >> snif1.txt &
+	sleep 2.0
+	kill $!
+
+	iwconfig wlan1 channel 6
+
+	tcpdump -i wlan1 -e >> snif1.txt &
+	sleep 2.0
+	kill $!
+
+	iwconfig wlan1 channel 11
+
+	tcpdump -i wlan1 -e >> snif1.txt &
+	sleep 2.0
+	kill $!
+	
+	time java parse1
+done
