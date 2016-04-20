@@ -17,16 +17,20 @@ package edu.tamu.rfsignalmap;
 import android.app.Activity;
 import android.content.Context;
 import android.app.Fragment;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.hardware.usb.UsbDeviceConnection;
+import android.hardware.usb.UsbManager;
 import android.location.Location;
 import android.location.LocationManager;
 import android.location.LocationListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.telephony.SignalStrength;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
@@ -39,13 +43,24 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
+
+import com.hoho.android.usbserial.driver.UsbSerialDriver;
+import com.hoho.android.usbserial.driver.UsbSerialPort;
+import com.hoho.android.usbserial.driver.UsbSerialProber;
+import com.hoho.android.usbserial.util.SerialInputOutputManager;
+
+import org.json.JSONObject;
+
 
 //----------------------------------------------------------------------------------------------------------------------
 /** @class      MainActivityFragment
@@ -66,10 +81,18 @@ public class MainActivityFragment extends Fragment implements
     //------------------------------------------------------------------------------------------------------------------
 
     //------------------------------------------------------------------------------------------------------------------
+    /// Serial Port - To communicate with Xbee
+    private UsbSerialPort port;
+    private SerialInputOutputManager mSerialIoManager;
+    private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+    //------------------------------------------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------------------------------------
     // Current RF Data Object
     //------------------------------------------------------------------------------------------------------------------
     static RFData CurrenSample = new RFData();                                 /// Current RF Data
     static boolean first_time = true;
+    static private double CellRSSI = -115.0;
 
     int count = 0;
 
@@ -94,11 +117,61 @@ public class MainActivityFragment extends Fragment implements
     static private ArrayAdapter<String> dataListAdaptor;
 
 
+    boolean first_comm = true;
+    boolean online = false;
+
+    private String rx_data = "";
+    private int datarx = 0;
+    private boolean got_packet = true;
+    private double XBeeRSSI = 9999.0;
+    private boolean sending_data = false;
+    private int cmdmd_count = 0;
+
+
+    //------------------------------------------------------------------------------------------------------------------
+    // SERIAL PORT LISTENER
+    //------------------------------------------------------------------------------------------------------------------
+    private final SerialInputOutputManager.Listener mListener = new SerialInputOutputManager.Listener() {
+
+        private final static String RXID = "Receive ID";
+        private final static String TXID = "Transmit ID";
+        private final static String RSSI = "RSSI";
+
+        @Override
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fun SerialInputOutputManager.Listener:onRunError
+         * @brief On Run Error
+         */
+        public void onRunError(Exception e) {
+        }
+
+        @Override
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fun SerialInputOutputManager.Listener:onNewData
+         * @brief On New Data
+         */
+        public void onNewData(final byte[] data) {
+            try {
+                // Append data to the incomming string buffer
+                // Read data from Teensy device (based upon project by Paul Crouther) - JSON Object being streamed
+                // to serial port at 9600 bps, includes IDs and RSSI, Note: RSSI is pos, actually is negative.
+                String newrx = new String(data, "UTF-8");
+                JSONObject serialJSONObj = new JSONObject(newrx);
+                CurrenSample.XbeeID  = serialJSONObj.getInt(RXID);
+                CurrenSample.DeviceID = serialJSONObj.getInt(TXID);
+                XBeeRSSI = -1.0 * serialJSONObj.getDouble(RSSI);
+            } catch (Exception e) {
+            }
+        }
+    };
+
+
     //------------------------------------------------------------------------------------------------------------------
     // RUNNABLE TASKS
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
-
     /**
      * @class UpdateUI
      * @brief User Interface Update from Executor
@@ -108,7 +181,6 @@ public class MainActivityFragment extends Fragment implements
         String strDate;
 
         //--------------------------------------------------------------------------------------------------------------
-
         /**
          * @brief run
          * <p/>
@@ -117,6 +189,10 @@ public class MainActivityFragment extends Fragment implements
          * Run routine - Called on posted message from handler
          */
         public void run() {
+            // Select RSSI based on what is current
+            if (XBeeRSSI <= 0.0) CurrenSample.RSSI = XBeeRSSI;
+            else CurrenSample.RSSI = CellRSSI;
+
             // Update data on UI
             if (tvRSSI != null) tvRSSI.setText(String.format("%3.0f", CurrenSample.RSSI) + " dBm");
             if (tvLat != null) tvLat.setText(String.format("%.8f", CurrenSample.Latitude) + "°");
@@ -157,9 +233,8 @@ public class MainActivityFragment extends Fragment implements
 
     public MainActivityFragment() {
         dataList = new ArrayList<>();
-
-        //runEnable = false;
-        //loopIsRunning = false;
+        CurrenSample.XbeeID = 1;
+        CurrenSample.DeviceID = 2;
     }
 
 
@@ -202,9 +277,7 @@ public class MainActivityFragment extends Fragment implements
         // Sensor Manager - Setup to get the Yaw, Pitch, and Roll
         SensorManager senSensorManager = (SensorManager) getActivity().getSystemService(Activity.SENSOR_SERVICE);
         Sensor senAccelerometer = senSensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION);
-//        Sensor senAccelerometer = senSensorManager.getOrientation()
         senSensorManager.registerListener(this, senAccelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
 
         // Location Manager - Setup to get the Latitude and Longitude
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Activity.LOCATION_SERVICE);
@@ -216,16 +289,40 @@ public class MainActivityFragment extends Fragment implements
         }
 
         // Telephony Manager - Setup to get teh RSSI
-//        PhoneStateListener  phoneListener = new PhoneStateListener();
         AppPhoneListener = new AppPhoneStateListener();
         Telephony = (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
         Telephony.listen(AppPhoneListener, PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 
-
-
-
         /// Setup scheduled Executor
         final ScheduledFuture<?> updateHandle = scheduler.scheduleAtFixedRate(SysUpdater, 250, 250, TimeUnit.MILLISECONDS);
+
+
+        // Find all available drivers from attached devices.
+        UsbManager manager = (UsbManager)getActivity().getSystemService(Context.USB_SERVICE);
+        List<UsbSerialDriver> availableDrivers = UsbSerialProber.getDefaultProber().findAllDrivers(manager);
+        if (availableDrivers.isEmpty()) {
+            return;
+        }
+
+        /// Open a connection to the first available driver.
+        UsbSerialDriver driver = availableDrivers.get(0);
+        UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
+        List<UsbSerialPort> portList = driver.getPorts();
+        port = portList.get(0);
+        try{
+            // Open the port, create connection, set baud rate and listner...
+            port.open(connection);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            int BaudRate = 9600;
+            port.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+            online = true;
+
+            mSerialIoManager = new SerialInputOutputManager(port, mListener);
+            mExecutor.submit(mSerialIoManager);
+        } catch(Exception e) {
+            online = false;
+            System.out.println(e.getMessage());
+        }
 
         /// Set flag
         first_time = false;
@@ -309,8 +406,30 @@ public class MainActivityFragment extends Fragment implements
             if (scheduler.isShutdown() == false) scheduler.shutdown();
         } catch (Exception e) {
         }
-        ;
         super.onDestroyView();
+    }
+
+    @Override
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @fn onDestroy
+     * @brief onDestroy Event
+     *
+     *           Inputs: none
+     *           Return: none
+     *           Destroy Event - Close Port
+     */
+    public void onDestroy() {
+        try {
+            mSerialIoManager.stop();
+            mSerialIoManager = null;
+            online = false;
+            port.close();        /// Try and close the serial port
+        } catch (Exception e){
+            online = false;
+            System.out.println(e.getMessage());
+        }
+        super.onDestroy();
     }
 
     // This event is triggered soon after onCreateView().
@@ -341,9 +460,6 @@ public class MainActivityFragment extends Fragment implements
         // Add Button
         btnRecord = (Button) view.findViewById(R.id.btnRecord);
         btnRecord.setOnClickListener(this);
-
-        //   ListView lv = (ListView) view.findViewById(R.id.lvSome);
-        //    lv.setAdapter(adapter);
     }
 
     //	----------------------------------------------------------------------------------------------------------------
@@ -361,12 +477,9 @@ public class MainActivityFragment extends Fragment implements
             /// Get the current time (sample date / time stamp)
             Calendar calendar = Calendar.getInstance();
             CurrenSample.SampleDate = calendar.getTime();
-            CurrenSample.XbeeID = 1;
-            CurrenSample.DeviceID = 2;
 
             /// Create a new Async task to save the data
             SaveRFData SaveDataTask =  new SaveRFData();
-
             /// Copy over the data to the class, then execute (will finish in post event)
             SaveDataTask.RFMember = CurrenSample;
             SaveDataTask.execute("");
@@ -474,13 +587,13 @@ public class MainActivityFragment extends Fragment implements
             if (signalStrength.isGsm() == true) {
                 // AT&T Phone, Based on TS 27.007 8.5
                 int GSMSS = signalStrength.getGsmSignalStrength();
-                if (GSMSS >= 99) CurrenSample.RSSI = -113.0;
-                else if (GSMSS >= 31) CurrenSample.RSSI = -31.0;
-                else if (GSMSS >= 2) CurrenSample.RSSI = (((double) GSMSS) * 2.0) - 113.0;
-                else if (GSMSS == 1) CurrenSample.RSSI = -111.0;
-                else CurrenSample.RSSI = -113.0;
+                if (GSMSS >= 99) CellRSSI = -113.0;
+                else if (GSMSS >= 31) CellRSSI = -31.0;
+                else if (GSMSS >= 2) CellRSSI = (((double) GSMSS) * 2.0) - 113.0;
+                else if (GSMSS == 1) CellRSSI = -111.0;
+                else CellRSSI= -113.0;
             }
-            else CurrenSample.RSSI = signalStrength.getCdmaDbm();
+            else CellRSSI = signalStrength.getCdmaDbm();
 
            // System.out.println(GSMSS + ";"  + signalStrength.getEvdoDbm() +"; " + signalStrength.getCdmaDbm() +  signalStrength);
         }

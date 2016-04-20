@@ -52,6 +52,7 @@
         android:textStyle="bold"
         android:text="Translate" />
 
+
      <ImageButton
             android:id="@+id/SpeakBtn"
             android:layout_width="wrap_content"
