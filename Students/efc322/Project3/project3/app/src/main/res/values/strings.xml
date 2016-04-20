@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Project 3</string>
+
+    <string name="action_sample_photots">Sample Photos</string>
+    <string name="action_name_list">Name List</string>
+
+    <string name="button_photos">Take a Photo!</string>
+    <string name="button_add_types">New Name</string>
+    <string name="running_on">Running</string>
+    <string name="training_on">Training</string>
+
+    <string name="no_face_detected">No Face Detected!</string>
+    <string name="face_detected">Face Detected!</string>
+    <string name="no_type_info">NO NAME INFO. is found</string>
+    <string name="no_training_file">Camera is DISALLOWED when the model is UN-TRAINED.</string>
+    <string name="no_adding_types_when_running">ADDING NEW NAMES is DISALLOWED in RUNNING mode</string>
+    <string name="type_list_dialog_title">Names</string>
+    <string name="add_types_dialog_title">Adding a New Name</string>
+    <string name="training_dialog_option">training_dialog_option</string>
+    <string name="add_types_hint">Enter the New Name HERE</string>
+    <string name="delete_type_msg">Delete This Name?(This deletes all the RECORDS of this name as well)</string>
+    <string name="delete_rec_msg">Delete This Record?</string>
+
+</resources>
