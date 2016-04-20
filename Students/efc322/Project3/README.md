@@ -27,8 +27,6 @@ download all the photos to use them locally for face recognition.
 
 Option 2: This idea goes almost the same as the first one, except that Google Fusion Tables will be used on the server side, instead of a MySQL database.
 
-Option 3: The app will leverage Facebook or WeChat APIs to do something interesting.
-
 ##Schedule
 
 Week 1: UI, data storage
