@@ -1,18 +1,25 @@
-package com.example.fanchaozhou.project3;
+ package com.example.fanchaozhou.project3;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapRegionDecoder;
 import android.graphics.Rect;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.media.Image;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,6 +33,8 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import static com.googlecode.javacv.cpp.opencv_core.*;
 
@@ -41,11 +50,12 @@ import java.util.Date;
  * Created by Fanchao Zhou on 4/2/2016.
  */
 
-public class ImageFragment extends Fragment {
+public class ImageFragment extends Fragment implements SensorEventListener{
 
     public static final int REQUEST_TYPE_LIST_DIALOG = 3;
     public static final int REQUEST_ADDING_TYPES_DIALOG = 2;            //The request code for returning user's choice from dialog
     public static final int REQUEST_IMAGE_CAPTURE = 1;                  //The request code for taking a photo
+    private static final float LIGHT_THRESHOLD = 30.0f;
     private static final String NO_CAMERA_HINT = "Camera NOT Avalaible";   //The hint for an unavalaible camera
     private static final String ADD_TYPE_DIALOG_TAG = "Adding Types Dialog";//Tag for the dialog when switching from running to training
     private static final String TYPE_LIST_DIALOG_TAG = "Type List Dialog";
@@ -54,13 +64,18 @@ public class ImageFragment extends Fragment {
     private Uri photoURI;
     private Bitmap thumbnailImage;
     private RecordDBHelper dbHelper;
+    private SensorManager sensorManager;
+    private Sensor lightSensor = null;
+    private float illumination;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        dbHelper = new RecordDBHelper(getActivity());
         setHasOptionsMenu(true);      //Allows to create menu on this fragment
+        dbHelper = new RecordDBHelper(getActivity());
+        sensorManager = (SensorManager) getActivity().getSystemService(Context.SENSOR_SERVICE);
+        lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
     }
 
     @Override
@@ -128,7 +143,27 @@ public class ImageFragment extends Fragment {
                             Thread trainingThread = new Thread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    MainActivity.faceRecognizer.train(MainActivity.recordList);   //Train the model
+                                    SharedPreferences trainingPrefsFile = getActivity()
+                                            .getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE);
+                                    int curTypeListHash = MainActivity.typeList.hashCode();
+                                    int curRecListHash = MainActivity.recordList.hashCode();
+                                    int preTypeListHash = trainingPrefsFile
+                                            .getInt(getString(R.string.pref_type_list_hashval), Integer.MIN_VALUE);
+                                    int preRecListHash = trainingPrefsFile
+                                            .getInt(getString(R.string.pref_record_list_hashval), Integer.MIN_VALUE);
+                                    if(curTypeListHash!=preTypeListHash || curRecListHash!=preRecListHash){//Compare the hash values
+                                        SharedPreferences.Editor editor = trainingPrefsFile.edit();
+                                        editor.putBoolean(getString(R.string.pref_is_trained), false);
+                                        editor.apply();
+                                        MainActivity.faceRecognizer.train(MainActivity.recordList);   //Train the model
+
+                                        File trainingXmlFile = new File(getActivity().getFilesDir(), getString(R.string.fr_file_name));
+                                        MainActivity.faceRecognizer.save(trainingXmlFile.getPath());
+                                        editor.putBoolean(getString(R.string.pref_is_trained), true);
+                                        editor.putInt(getString(R.string.pref_record_list_hashval), curRecListHash);
+                                        editor.putInt(getString(R.string.pref_type_list_hashval), curTypeListHash);
+                                        editor.apply();
+                                    }
                                     trainingProgressDialog.dismiss();
                                 }
                             });
@@ -150,39 +185,43 @@ public class ImageFragment extends Fragment {
             photoButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if(illumination > ImageFragment.LIGHT_THRESHOLD){// If the light condition is good
+                        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//Create an intent for taking photots
+                        File imageFile = null;
 
-                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);//Create an intent for taking photots
-                    File imageFile = null;
-
-                    if(runTrainSwitch != null){
-                        if(runTrainSwitch.isChecked()){  //The app is in the running mode
-                            try{
-                                imageFile = createImageFile(getString(R.string.running_on));
-                            } catch (Exception e){
-                                System.out.println(e);
+                        if(runTrainSwitch != null){
+                            if(runTrainSwitch.isChecked()){  //The app is in the running mode
+                                try{
+                                    imageFile = createImageFile(getString(R.string.running_on));
+                                } catch (Exception e){
+                                    System.out.println(e);
+                                }
+                            } else {                          //The app is in the training mode
+                                if(MainActivity.typeList.size() == 0){
+                                    Toast toast = Toast.makeText(getActivity(), getString(R.string.no_type_info), Toast.LENGTH_SHORT);
+                                    toast.show();
+                                    return;
+                                }
+                                try{
+                                    imageFile = createImageFile(getString(R.string.training_on));
+                                } catch (Exception e){
+                                    System.out.println(e);
+                                }
                             }
-                        } else {                          //The app is in the training mode
-                            if(MainActivity.typeList.size() == 0){
-                                Toast toast = Toast.makeText(getActivity(), getString(R.string.no_type_info), Toast.LENGTH_SHORT);
+
+                            if (intent.resolveActivity(getActivity().getPackageManager()) == null) {
+                                //If no camera is available, give a hint to the user and return
+                                Toast toast = Toast.makeText(getActivity(), NO_CAMERA_HINT, Toast.LENGTH_LONG);
                                 toast.show();
-                                return;
-                            }
-                            try{
-                                imageFile = createImageFile(getString(R.string.training_on));
-                            } catch (Exception e){
-                                System.out.println(e);
+                            } else if(imageFile != null){
+                                photoURI = Uri.fromFile(imageFile);
+                                intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
+                                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);  //Start the camera app to take a photo
                             }
                         }
-
-                        if (intent.resolveActivity(getActivity().getPackageManager()) == null) {
-                            //If no camera is available, give a hint to the user and return
-                            Toast toast = Toast.makeText(getActivity(), NO_CAMERA_HINT, Toast.LENGTH_LONG);
-                            toast.show();
-                        } else if(imageFile != null){
-                            photoURI = Uri.fromFile(imageFile);
-                            intent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
-                            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);  //Start the camera app to take a photo
-                        }
+                    } else {
+                        Toast toast = Toast.makeText(getActivity(), getString(R.string.dim_light), Toast.LENGTH_SHORT);
+                        toast.show();
                     }
                 }
             });
@@ -208,6 +247,11 @@ public class ImageFragment extends Fragment {
             });
         }
 
+        Button downloadButton = (Button) rootView.findViewById(R.id.button_download);
+        if(downloadButton!=null && runTrainSwitch!=null && !runTrainSwitch.isChecked()){
+            //TODO: Download all the photos from the server
+        }
+
         return rootView;
     }
 
@@ -230,6 +274,42 @@ public class ImageFragment extends Fragment {
         image = new File(storageDir, imageFileName+".jpg");
 
         return image;
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        Sensor sensor = event.sensor;
+        if(sensor.getType() == Sensor.TYPE_LIGHT){
+            TextView lightTextView = (TextView) getActivity().findViewById(R.id.textView_light);
+            if(lightTextView != null){
+                illumination = event.values[ 0 ];
+                lightTextView.setText("Light Condition(in lx):\n "+illumination);
+                if(illumination <= LIGHT_THRESHOLD){
+                    lightTextView.append("\nLight Too DIM!");
+                } else {
+                    lightTextView.append("\nNormal");
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        //Nothing to Do;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        sensorManager.unregisterListener(this, lightSensor);
     }
 
     @Override
@@ -379,6 +459,8 @@ public class ImageFragment extends Fragment {
             for(cnt = MainActivity.recordList.size()-1; cnt>=0 && MainActivity.recordList.get(cnt).typeID>dbRecord.typeID; cnt--);
             MainActivity.recordList.add(cnt + 1, dbRecord);
             dbHelper.addOneRec(dbRecord);
+
+            //TODO: Start a Service to Send the photo and the name to the Tomcat Server.
         }
     }
 

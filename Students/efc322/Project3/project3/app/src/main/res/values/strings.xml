@@ -6,6 +6,7 @@
 
     <string name="button_photos">Take a Photo!</string>
     <string name="button_add_types">New Name</string>
+    <string name="button_download">Download</string>
     <string name="running_on">Running</string>
     <string name="training_on">Training</string>
 
@@ -14,6 +15,12 @@
     <string name="no_type_info">NO NAME INFO. is found</string>
     <string name="no_training_file">Camera is DISALLOWED when the model is UN-TRAINED.</string>
     <string name="no_adding_types_when_running">ADDING NEW NAMES is DISALLOWED in RUNNING mode</string>
+    <string name="dim_light">The light is too DIM! Please Adjust the light condition before taking a photo.</string>
+    <string name="fr_file_name">face_recognizer.xml</string>
+    <string name="pref_type_list_hashval">Type List Hash Value</string>
+    <string name="pref_record_list_hashval">Record List Hash Value</string>
+    <string name="pref_file_name">SharedPreferences File Name</string>
+    <string name="pref_is_trained">Is Trained or Not</string>
     <string name="type_list_dialog_title">Names</string>
     <string name="add_types_dialog_title">Adding a New Name</string>
     <string name="training_dialog_option">training_dialog_option</string>

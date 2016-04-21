@@ -31,8 +31,13 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        SharedPreferences trainingPrefsFile = getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE);
         faceDetector = new MyFaceDetector(this, getResources().openRawResource(R.raw.haarcascade_frontalface_alt), FD_FILE_NAME);
-        faceRecognizer = new MyFaceRecognizer(this, MyFaceRecognizer.RECOGNIZER_TYPE.LBPH);
+        faceRecognizer = new MyFaceRecognizer(MyFaceRecognizer.RECOGNIZER_TYPE.LBPH);
+        if(trainingPrefsFile.getBoolean(getString(R.string.pref_is_trained), false)){
+            File trainingXmlFile = new File(getFilesDir(), getString(R.string.fr_file_name));
+            faceRecognizer.load(trainingXmlFile.getPath());
+        }
 
         recordList = new ArrayList<>();
         typeList = new ArrayList<>();
