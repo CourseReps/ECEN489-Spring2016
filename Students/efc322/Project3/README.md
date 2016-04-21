@@ -18,9 +18,14 @@ The app needs somehow save the previous samples, so the user does not need to re
 
 A face recognition API was provided in OpenCV 2.4(It's surprising that in OpenCV 3.1, the recognition algorithm is not provided at all). OpenCV is an open source image processing package written in C/C++. So, in order to use it on android, we need to use some Java-wrapped version of OpenCV. However, the Java wrapper provided by the official provider of OpenCV does not support face recognizer(The FaceRecognizer class is in the package, while no training altorighm is supported). So, here, I leverage another Java wrapper provided by Google, called JavaCV, which is provided in a github repository named bytedeco. This Java-wrapped version of OpenCV provides the Java interface to do the training of the FaceRecognizer class.
 
-###Tomcat Server
+###Server
 
-Up to now, I haven't come up with what to do on the server side. 
+What the server is going to do is still under consideration. Right now, I've got a few options in my mind:
+
+Option 1: The Tomcat server will maintain a MySQL database that keeps all the photos every user has taken, and allows any user to 
+download all the photos to use them locally for face recognition.
+
+Option 2: This idea goes almost the same as the first one, except that Google Fusion Tables will be used on the server side, instead of a MySQL database.
 
 ##Schedule
 
