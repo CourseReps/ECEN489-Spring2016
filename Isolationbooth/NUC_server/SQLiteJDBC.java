@@ -44,7 +44,7 @@ public class SQLiteJDBC
                 // get the number of rows from the result set
                 numretwlan1.next();
                 rowCount1 = numretwlan1.getInt(1);
-                System.out.println(rowCount);
+                System.out.println(rowCount1);
                 numretwlan1.close();
 
                 numentry = "SELECT COUNT(*) FROM wlan2";
@@ -52,7 +52,7 @@ public class SQLiteJDBC
                 // get the number of rows from the result set
                 numretwlan2.next();
                 rowCount2 = numretwlan2.getInt(1);
-                System.out.println(rowCount);
+                System.out.println(rowCount2);
                 numretwlan2.close();
             }catch(Exception e){
                 System.out.println("it fucking broke");
@@ -78,34 +78,34 @@ public class SQLiteJDBC
                     int rssiwlan0 = 0;
                     int rssiwlan1 = 0;
                     int rssiwlan2 = 0;
-                    String macst = macrs.getString(1);
-
                     macrs.next();
+
+                    String macst = macrs.getString(1);
 
                     for (int id1 = 0; id < rowCount; id++){
                         rssi0.next();
-                        String macwlan0 = rssi0.getString(3);
+                        String macwlan0 = rssi0.getString(2);
 
                         if(macwlan0.equals(macst)){
-                            rssiwlan0 = rssi0.getInt(2);
+                            rssiwlan0 = rssi0.getInt(1);
                         }
                         
                     }
                     for (int id2 = 0; id < rowCount1; id++){
                         rssi1.next();
-                        String macwlan1 = rssi1.getString(3);
+                        String macwlan1 = rssi1.getString(2);
 
                         if(macwlan1.equals(macst)){
-                            rssiwlan0 = rssi1.getInt(2);
+                            rssiwlan0 = rssi1.getInt(1);
                         }
                         
                     }
                     for (int id3 = 0; id < rowCount2; id++){
                         rssi2.next();
-                        String macwlan2 = rssi2.getString(3);
+                        String macwlan2 = rssi2.getString(2);
                         
                         if(macwlan2.equals(macst)){
-                            rssiwlan0 = rssi2.getInt(2);
+                            rssiwlan0 = rssi2.getInt(1);
                         }
                         
                     }
@@ -113,6 +113,8 @@ public class SQLiteJDBC
                     double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2));
 
                     avg.put(rssimag,macst);
+
+                    System.out.println(macst);
                 }
                 macrs.close();
                 rssi0.close();
@@ -120,7 +122,7 @@ public class SQLiteJDBC
                 rssi2.close();
 
             } catch (Exception e) {
-                System.err.println("An error occurred");
+                System.err.println("it fucking broke");
                 System.exit(2);
             }
       
@@ -192,6 +194,7 @@ public class SQLiteJDBC
                 System.err.println("An error occurred");
                 System.exit(3);
             }
+
             try {
 	            stmt.close();
                 Thread.sleep(10000);
