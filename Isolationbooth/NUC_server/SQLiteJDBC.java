@@ -10,6 +10,12 @@ public class SQLiteJDBC
             String mac = ""; //mac address of max rssi
             Connection c = null;
             Statement stmt = null;
+            ResultSet numretwlan0 = null;
+            ResultSet numretwlan1 = null;
+            ResultSet numretwlan2 = null;
+            int rowCount = 0;
+            int rowCount1 = 0;
+            int rowCount2 = 0;
             //opening database
             try {
                 Class.forName("org.sqlite.JDBC");
@@ -23,51 +29,98 @@ public class SQLiteJDBC
                 System.err.println(e.getClass().getName() + ": " + e.getMessage());
                 System.exit(1);
             }
-            //getting number of entries in table for iteration
-            try {
-                String numentry = "SELECT COUNT(*) FROM wlan0";
-                ResultSet numretwlan0 = stmt.executeQuery(numentry);
+
+            try{
+            String numentry = "SELECT COUNT(*) FROM wlan0";
+                numretwlan0 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
                 numretwlan0.next();
-                int rowCount = numret.getInt(1);
+                rowCount = numretwlan0.getInt(1);
                 System.out.println(rowCount);
                 numretwlan0.close();
-                //stmt.close();
+
+                numentry = "SELECT COUNT(*) FROM wlan1";
+                numretwlan1 = stmt.executeQuery(numentry);
+                // get the number of rows from the result set
+                numretwlan1.next();
+                rowCount1 = numretwlan1.getInt(1);
+                System.out.println(rowCount);
+                numretwlan1.close();
+
+                numentry = "SELECT COUNT(*) FROM wlan2";
+                numretwlan2 = stmt.executeQuery(numentry);
+                // get the number of rows from the result set
+                numretwlan2.next();
+                rowCount2 = numretwlan2.getInt(1);
+                System.out.println(rowCount);
+                numretwlan2.close();
+            }catch(Exception e){
+                System.out.println("it fucking broke");
+            }
+                
+            //getting number of entries in table for iteration
+            try {
+
+                String query = "SELECT Mac_Address FROM wlan0";
+                    ResultSet macrs = stmt.executeQuery(query);
+
+                    query = "SELECT * FROM wlan0";
+                    ResultSet rssi0 = stmt.executeQuery(query);
+
+                    query = "SELECT * FROM wlan1";
+                    ResultSet rssi1 = stmt.executeQuery(query);
+
+                    query = "SELECT * FROM wlan2";
+                    ResultSet rssi2 = stmt.executeQuery(query);
 
                 //iterating through tables to find max rssi
                 for (int id = 0; id < rowCount; id++) {
-                    String query = "SELECT MAC_Address FROM wlan0 WHERE ID = " + id;
-                    ResultSet macrs = stmt.executeQuery(query);
-                    String macst = "\"" + macrs.getString("MAC_Address") + "\"";
-                    macrs.close();
-                    ////stmt.close();
+                    int rssiwlan0 = 0;
+                    int rssiwlan1 = 0;
+                    int rssiwlan2 = 0;
+                    String macst = macrs.getString(1);
 
-                    query = "SELECT * FROM wlan0 WHERE MAC_Address =" + macst;
-                    ResultSet rssi0 = stmt.executeQuery(query);
-                    int rssiwlan0 = rssi0.getInt("rssi");
-                    ////stmt.close();
-                    rssi0.close();
+                    macrs.next();
 
-                    query = "SELECT * FROM wlan1 WHERE MAC_Address =" + macst;
-                    ResultSet rssi1 = stmt.executeQuery(query);
-                    int rssiwlan1 = rssi1.getInt("rssi");
-                    //stmt.close();
-                    rssi1.close();
+                    for (int id1 = 0; id < rowCount; id++){
+                        rssi0.next();
+                        String macwlan0 = rssi0.getString(3);
 
-                    query = "SELECT * FROM wlan2 WHERE MAC_Address =" + macst;
-                    ResultSet rssi2 = stmt.executeQuery(query);
-                    int rssiwlan2 = rssi2.getInt("rssi");
-                    //stmt.close();
-                    rssi2.close();
+                        if(macwlan0.equals(macst)){
+                            rssiwlan0 = rssi0.getInt(2);
+                        }
+                        
+                    }
+                    for (int id2 = 0; id < rowCount1; id++){
+                        rssi1.next();
+                        String macwlan1 = rssi1.getString(3);
+
+                        if(macwlan1.equals(macst)){
+                            rssiwlan0 = rssi1.getInt(2);
+                        }
+                        
+                    }
+                    for (int id3 = 0; id < rowCount2; id++){
+                        rssi2.next();
+                        String macwlan2 = rssi2.getString(3);
+                        
+                        if(macwlan2.equals(macst)){
+                            rssiwlan0 = rssi2.getInt(2);
+                        }
+                        
+                    }
 
                     double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2));
 
                     avg.put(rssimag,macst);
                 }
+                macrs.close();
+                rssi0.close();
+                rssi1.close();
+                rssi2.close();
 
             } catch (Exception e) {
                 System.err.println("An error occurred");
-                System.err.println(e.getClass().getName() + ": " + e.getMessage());
                 System.exit(2);
             }
       
@@ -90,66 +143,49 @@ public class SQLiteJDBC
             try{
                 long unixTime = System.currentTimeMillis() / 1000L;
 
-                String numentry = "SELECT COUNT(*) FROM wlan0";
-                ResultSet numret0 = stmt.executeQuery(numentry);
-                // get the number of rows from the result set
-                numret0.next();
-                int wlan0cnt = numret0.getInt(1);
-                //stmt.close();
-                numret0.close();
-
-                numentry = "SELECT COUNT(*) FROM wlan1";
-                ResultSet numret1 = stmt.executeQuery(numentry);
-                // get the number of rows from the result set
-                numret1.next();
-                int wlan1cnt = numret1.getInt(1);
-                //stmt.close();
-                numret1.close();
-
-                numentry = "SELECT COUNT(*) FROM wlan2";
-                ResultSet numret2 = stmt.executeQuery(numentry);
-                // get the number of rows from the result set
-                numret2.next();
-                int wlan2cnt = numret2.getInt(1);
-                //stmt.close();
-                numret2.close();
-
-                for (int id = 0; id < wlan0cnt; id++) {
-                    String query = "SELECT TIME FROM wlan0 WHERE ID =" + id;
+                    String query = "SELECT TIME FROM wlan0";
                     ResultSet time0 = stmt.executeQuery(query);
+
+                    query = "SELECT TIME FROM wlan1";
+                    ResultSet time1 = stmt.executeQuery(query);
+
+                    query = "SELECT TIME FROM wlan2";
+                    ResultSet time2 = stmt.executeQuery(query);
+                
+                for (int id = 0; id < rowCount; id++) {
+                    time0.next();
                     int timestamp = time0.getInt(1);
-                    //stmt.close();
-                    time0.close();
+
+
                     if(unixTime-timestamp > 120){
                         String delete = "DELETE FROM wlan0 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
-                        //stmt.close();
                     }
+                    
                 }
-                for (int id = 0; id < wlan1cnt; id++) {
-                    String query = "SELECT TIME FROM wlan1 WHERE ID =" + id;
-                    ResultSet time1 = stmt.executeQuery(query);
+                for (int id = 0; id < rowCount1; id++) {
+                    time1.next();
                     int timestamp = time1.getInt(1);
-                    //stmt.close();
-                    time1.close();
+                    
                     if(unixTime-timestamp > 120){
                         String delete = "DELETE FROM wlan1 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
-                        //stmt.close();
                     }
+                    
                 }
-                for (int id = 0; id < wlan2cnt; id++) {
-                    String query = "SELECT TIME FROM wlan2 WHERE ID =" + id;
-                    ResultSet time2 = stmt.executeQuery(query);
+                for (int id = 0; id < rowCount2; id++) {
+                    time2.next();
                     int timestamp = time2.getInt(1);
-                    //stmt.close();
-                    time2.close();
+
                     if(unixTime-timestamp > 120){
                         String delete = "DELETE FROM wlan2 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
-                        //stmt.close();
                     }
+                    
                 }
+                time0.close();
+                time1.close();
+                time2.close();
 
             }
             catch (Exception e){
