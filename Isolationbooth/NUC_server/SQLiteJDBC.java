@@ -26,12 +26,12 @@ public class SQLiteJDBC
             //getting number of entries in table for iteration
             try {
                 String numentry = "SELECT COUNT(*) FROM wlan0";
-                ResultSet numret = stmt.executeQuery(numentry);
+                ResultSet numretwlan0 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
-                numret.next();
+                numretwlan0.next();
                 int rowCount = numret.getInt(1);
                 System.out.println(rowCount);
-                numret.close();
+                numretwlan0.close();
                 //stmt.close();
 
                 //iterating through tables to find max rssi
@@ -43,22 +43,22 @@ public class SQLiteJDBC
                     ////stmt.close();
 
                     query = "SELECT * FROM wlan0 WHERE MAC_Address =" + macst;
-                    ResultSet rssi = stmt.executeQuery(query);
-                    int rssiwlan0 = rssi.getInt("rssi");
+                    ResultSet rssi0 = stmt.executeQuery(query);
+                    int rssiwlan0 = rssi0.getInt("rssi");
                     ////stmt.close();
-                    ssi.close();
+                    rssi0.close();
 
                     query = "SELECT * FROM wlan1 WHERE MAC_Address =" + macst;
-                    ResultSet rssi = stmt.executeQuery(query);
-                    int rssiwlan1 = rssi.getInt("rssi");
+                    ResultSet rssi1 = stmt.executeQuery(query);
+                    int rssiwlan1 = rssi1.getInt("rssi");
                     //stmt.close();
-                    rssi.close();
+                    rssi1.close();
 
                     query = "SELECT * FROM wlan2 WHERE MAC_Address =" + macst;
-                    ResultSet rssi = stmt.executeQuery(query);
-                    int rssiwlan2 = rssi.getInt("rssi");
+                    ResultSet rssi2 = stmt.executeQuery(query);
+                    int rssiwlan2 = rssi2.getInt("rssi");
                     //stmt.close();
-                    rssi.close();
+                    rssi2.close();
 
                     double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2));
 
@@ -91,35 +91,35 @@ public class SQLiteJDBC
                 long unixTime = System.currentTimeMillis() / 1000L;
 
                 String numentry = "SELECT COUNT(*) FROM wlan0";
-                ResultSet numret = stmt.executeQuery(numentry);
+                ResultSet numret0 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
-                numret.next();
-                int wlan0cnt = numret.getInt(1);
+                numret0.next();
+                int wlan0cnt = numret0.getInt(1);
                 //stmt.close();
-                numret.close();
+                numret0.close();
 
                 numentry = "SELECT COUNT(*) FROM wlan1";
-                ResultSet numret = stmt.executeQuery(numentry);
+                ResultSet numret1 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
-                numret.next();
-                int wlan1cnt = numret.getInt(1);
+                numret1.next();
+                int wlan1cnt = numret1.getInt(1);
                 //stmt.close();
-                numret.close();
+                numret1.close();
 
                 numentry = "SELECT COUNT(*) FROM wlan2";
-                ResultSet numret = stmt.executeQuery(numentry);
+                ResultSet numret2 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
-                numret.next();
-                int wlan2cnt = numret.getInt(1);
+                numret2.next();
+                int wlan2cnt = numret2.getInt(1);
                 //stmt.close();
-                numret.close();
+                numret2.close();
 
                 for (int id = 0; id < wlan0cnt; id++) {
                     String query = "SELECT TIME FROM wlan0 WHERE ID =" + id;
-                    ResultSet time = stmt.executeQuery(query);
-                    int timestamp = time.getInt(1);
+                    ResultSet time0 = stmt.executeQuery(query);
+                    int timestamp = time0.getInt(1);
                     //stmt.close();
-                    time.close();
+                    time0.close();
                     if(unixTime-timestamp > 120){
                         String delete = "DELETE FROM wlan0 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
@@ -128,10 +128,10 @@ public class SQLiteJDBC
                 }
                 for (int id = 0; id < wlan1cnt; id++) {
                     String query = "SELECT TIME FROM wlan1 WHERE ID =" + id;
-                    ResultSet time = stmt.executeQuery(query);
-                    int timestamp = time.getInt(1);
+                    ResultSet time1 = stmt.executeQuery(query);
+                    int timestamp = time1.getInt(1);
                     //stmt.close();
-                    time.close();
+                    time1.close();
                     if(unixTime-timestamp > 120){
                         String delete = "DELETE FROM wlan1 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
@@ -140,10 +140,10 @@ public class SQLiteJDBC
                 }
                 for (int id = 0; id < wlan2cnt; id++) {
                     String query = "SELECT TIME FROM wlan2 WHERE ID =" + id;
-                    ResultSet time = stmt.executeQuery(query);
-                    int timestamp = time.getInt(1);
+                    ResultSet time2 = stmt.executeQuery(query);
+                    int timestamp = time2.getInt(1);
                     //stmt.close();
-                    time.close();
+                    time2.close();
                     if(unixTime-timestamp > 120){
                         String delete = "DELETE FROM wlan2 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
