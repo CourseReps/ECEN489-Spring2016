@@ -38,7 +38,23 @@ public class RssiDbWriter
     public void writeDB(int rssi, String macAddr, long unixTime, int tableNum)
     {  
         try{
-            String cmd = "INSERT OR REPLACE INTO wlan" + tableNum + " VALUES (" + rssi + ",\"" + macAddr + "\"," + unixTime + ");";
+        	int idnum = 9999;
+        	if(tableNum == 0)
+        	{
+        		idnum = id0;
+        		++id0;
+        	}
+        	else if(tableNum == 1)
+        	{
+        		idnum = id1;
+        		++id1;
+        	}
+        	else if(tableNum == 2)
+        	{
+        		idnum = id2;
+        		++id2;
+        	}
+            String cmd = "INSERT OR REPLACE INTO wlan" + tableNum + " VALUES (" + idnum + "," + rssi + ",\"" + macAddr + "\"," + unixTime + ");";
             stmt.executeUpdate(cmd);
             c.commit();
         }catch(Exception e){

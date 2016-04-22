@@ -29,7 +29,7 @@ public class SQLiteJDBC
                 ResultSet numretwlan0 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
                 numretwlan0.next();
-                int rowCount = numret.getInt(1);
+                int rowCount = numretwlan0.getInt(1);
                 System.out.println(rowCount);
                 numretwlan0.close();
                 //stmt.close();
@@ -39,30 +39,34 @@ public class SQLiteJDBC
                     String query = "SELECT MAC_Address FROM wlan0 WHERE ID = " + id;
                     ResultSet macrs = stmt.executeQuery(query);
                     String macst = "\"" + macrs.getString("MAC_Address") + "\"";
-                    macrs.close();
+                    //macrs.close();
                     ////stmt.close();
 
                     query = "SELECT * FROM wlan0 WHERE MAC_Address =" + macst;
                     ResultSet rssi0 = stmt.executeQuery(query);
                     int rssiwlan0 = rssi0.getInt("rssi");
                     ////stmt.close();
-                    rssi0.close();
+                    //rssi0.close();
 
                     query = "SELECT * FROM wlan1 WHERE MAC_Address =" + macst;
                     ResultSet rssi1 = stmt.executeQuery(query);
                     int rssiwlan1 = rssi1.getInt("rssi");
                     //stmt.close();
-                    rssi1.close();
+                    //rssi1.close();
 
                     query = "SELECT * FROM wlan2 WHERE MAC_Address =" + macst;
                     ResultSet rssi2 = stmt.executeQuery(query);
                     int rssiwlan2 = rssi2.getInt("rssi");
                     //stmt.close();
-                    rssi2.close();
+                    //rssi2.close();
 
                     double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2));
 
                     avg.put(rssimag,macst);
+                    macrs.close();
+rssi0.close();
+rssi1.close();
+rssi2.close();
                 }
 
             } catch (Exception e) {
