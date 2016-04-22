@@ -27,46 +27,43 @@ public class SQLiteJDBC
             try {
                 String numentry = "SELECT COUNT(*) FROM wlan0";
                 ResultSet numret = stmt.executeQuery(numentry);
-                ResultSet macrs = null;
-                ResultSet rssi = null;
                 // get the number of rows from the result set
                 numret.next();
                 int rowCount = numret.getInt(1);
                 System.out.println(rowCount);
+                numret.close();
                 //stmt.close();
 
                 //iterating through tables to find max rssi
                 for (int id = 0; id < rowCount; id++) {
                     String query = "SELECT MAC_Address FROM wlan0 WHERE ID = " + id;
-                    macrs = stmt.executeQuery(query);
+                    ResultSet macrs = stmt.executeQuery(query);
                     String macst = "\"" + macrs.getString("MAC_Address") + "\"";
+                    macrs.close();
                     ////stmt.close();
-                    
 
                     query = "SELECT * FROM wlan0 WHERE MAC_Address =" + macst;
-                    rssi = stmt.executeQuery(query);
+                    ResultSet rssi = stmt.executeQuery(query);
                     int rssiwlan0 = rssi.getInt("rssi");
                     ////stmt.close();
-                    //rssi.close();
+                    ssi.close();
 
                     query = "SELECT * FROM wlan1 WHERE MAC_Address =" + macst;
-                    rssi = stmt.executeQuery(query);
+                    ResultSet rssi = stmt.executeQuery(query);
                     int rssiwlan1 = rssi.getInt("rssi");
                     //stmt.close();
-                    //rssi.close();
+                    rssi.close();
 
                     query = "SELECT * FROM wlan2 WHERE MAC_Address =" + macst;
-                    rssi = stmt.executeQuery(query);
+                    ResultSet rssi = stmt.executeQuery(query);
                     int rssiwlan2 = rssi.getInt("rssi");
                     //stmt.close();
+                    rssi.close();
 
                     double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2));
 
                     avg.put(rssimag,macst);
                 }
-                //macrs.close();
-            	//rssi.close();
-                //numret.close();
 
             } catch (Exception e) {
                 System.err.println("An error occurred");
@@ -99,18 +96,18 @@ public class SQLiteJDBC
                 numret.next();
                 int wlan0cnt = numret.getInt(1);
                 //stmt.close();
-                //numret.close();
+                numret.close();
 
                 numentry = "SELECT COUNT(*) FROM wlan1";
-                numret = stmt.executeQuery(numentry);
+                ResultSet numret = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
                 numret.next();
                 int wlan1cnt = numret.getInt(1);
                 //stmt.close();
-                //numret.close();
+                numret.close();
 
                 numentry = "SELECT COUNT(*) FROM wlan2";
-                numret = stmt.executeQuery(numentry);
+                ResultSet numret = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
                 numret.next();
                 int wlan2cnt = numret.getInt(1);
