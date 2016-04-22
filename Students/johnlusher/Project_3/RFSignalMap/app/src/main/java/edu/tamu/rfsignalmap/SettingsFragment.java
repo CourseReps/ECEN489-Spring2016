@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 /**
  * @file         SettingsFragment.java
- * @brief        RF Signal Main Activity - Application Settings Fragment
+ * @brief        Project #3 - Application Settings Fragment
  **/
 //  --------------------------------------------------------------------------------------------------------------------
 //  Package Name

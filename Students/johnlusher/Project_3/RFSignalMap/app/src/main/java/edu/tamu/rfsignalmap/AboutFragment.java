@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 /**
  * @file         AboutFragment.java
- * @brief        RF Signal Main Activity - About Application Fragment
+ * @brief        Project #3 - About Application Fragment
  **/
 //  --------------------------------------------------------------------------------------------------------------------
 //  Package Name
@@ -14,10 +14,7 @@ package edu.tamu.rfsignalmap;
 //  --------------------------------------------------------------------------------------------------------------------
 //  Imports
 //  --------------------------------------------------------------------------------------------------------------------
-import android.app.Activity;
 import android.content.Context;
-//import android.support.v4.app.Fragment;
-//import android.support.v4.app.FragmentActivity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -29,49 +26,63 @@ import android.view.ViewGroup;
  *  @brief      About Fragment - Application Information
  */
 public class AboutFragment extends Fragment {
-    //ThingsAdapter adapter;
- //   FragmentActivity listener;
-
-    // This event fires 1st, before creation of fragment or any views
-    // The onAttach method is called when the Fragment instance is associated with an Activity.
-    // This does not mean the Activity is fully initialized.
     @Override
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @fn      onAttach
+     * @brief   onAttach Event
+     *
+     *          Inputs: Context
+     *          Return: none
+     *          Event upon the fragment attaching to the activity
+     */
     public void onAttach(Context context) {
         super.onAttach(context);
- //       if (context instanceof Activity){
- //           this.listener = (FragmentActivity) context;
- //       }
     }
 
-    // This event fires 2nd, before views are created for the fragment
-    // The onCreate method is called when the Fragment instance is being created, or re-created.
-    // Use onCreate for any standard setup that does not require the activity to be fully created
     @Override
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @fn      onCreate
+     * @brief   onCreate Event
+     *
+     *          Inputs: Saved Instance State
+     *          Return: none
+     *          Event on the creation or recreation of this fragment.
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //ArrayList<Thing> things = new ArrayList<Thing>();
-        //adapter = new ThingsAdapter(getActivity(), things);
     }
 
 
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    onCreateView Event
+     * @fn      onCreateView
+     * @brief   onCreateView Event
      *
-     *           Inputs: Inflater, Container, and Saved Instance State
-     *           Return: none
-     *           Create View and Fragment Resources
+     *          Inputs: Inflater, Container, and Saved Instance State
+     *          Return: View
+     *          Create View and Fragment Resources
      */
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_about, parent, false);
     }
 
-    // This event is triggered soon after onCreateView().
+/*    // This event is triggered soon after onCreateView().
     // onViewCreated() is only called if the view returned from onCreateView() is non-null.
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @fn      onAttach
+     * @brief   onAttach Event
+     *
+     *          Inputs: Context
+     *          Return: none
+     *          Event upon the fragment attaching to the activity
+     */
+/*    public void onViewCreated(View view, Bundle savedInstanceState) {
     //   ListView lv = (ListView) view.findViewById(R.id.lvSome);
     //    lv.setAdapter(adapter);
     }
@@ -83,5 +94,5 @@ public class AboutFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-
+*/
 }

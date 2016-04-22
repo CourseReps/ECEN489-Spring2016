@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 /**
  * @file         MainActivity.java
- * @brief        RF Signal Main Activity
+ * @brief        Project #3 - Main Activity
  **/
 //  --------------------------------------------------------------------------------------------------------------------
 //  Package Name
@@ -29,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    onCreate Event
+     * @fn      onCreate
+     * @brief   onCreate Event
      *
-     *           Inputs: savedInstanceState
-     *           Return: none
-     *           On Create
+     *          Inputs: savedInstanceState
+     *          Return: none
+     *          On Create
      */
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +53,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    onCreateOptionsMenu Event
+     * @fn      onCreateOptionsMenu
+     * @brief   onCreateOptionsMenu Event
      *
-     *           Inputs: Menu
-     *           Return: true (boolean)
-     *           Inflate the menu
+     *          Inputs: Menu
+     *          Return: true (boolean)
+     *          Inflate the menu
      */
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -67,11 +69,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    onOptionsItemSelected Event
+     * @fn      onOptionsItemSelected
+     * @brief   onOptionsItemSelected Event
      *
-     *           Inputs: Menu Tem
-     *           Return: true/false (Item is Selected)
-     *           Perform function based upon menu item selected
+     *          Inputs: Menu Tem
+     *          Return: true/false (Item is Selected)
+     *          Perform function based upon menu item selected
      */
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -90,14 +93,18 @@ public class MainActivity extends AppCompatActivity {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment, new SettingsFragment());
             transaction.commit();
-            //fragMainAct = null;
+            return true;
+        }
+        else if (id == R.id.action_map) {
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment, new MapsViewFragment());
+            transaction.commit();
             return true;
         }
         else if (id == R.id.action_about) {
             FragmentTransaction transaction = getFragmentManager().beginTransaction();
             transaction.replace(R.id.fragment, new AboutFragment());
             transaction.commit();
-            //fragMainAct = null;
             return true;
         }
         return super.onOptionsItemSelected(item);

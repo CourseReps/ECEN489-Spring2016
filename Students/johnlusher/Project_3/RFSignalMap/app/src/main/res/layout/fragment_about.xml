@@ -57,12 +57,13 @@
             android:padding="5dp"
             android:paddingLeft="10dp"/>
 
-        <EditText
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/editTextHostAddress"
             android:layout_gravity="left|center_vertical"
             android:textColor="#ffffff"
-            android:text="@string/about_summary"/>
+            android:text="@string/about_summary"
+            android:textSize="18dp"/>
     </FrameLayout>
 </LinearLayout>

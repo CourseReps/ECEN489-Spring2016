@@ -22,10 +22,11 @@ public class LatLong
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    LatLong - Constructor
+     * @fn      Class Constructor - Public
+     * @brief   LatLong - Constructor
      *
-     *           Inputs: Azimuth (degrees), Distance (feet), Lat (degrees), Long (degrees)
-     *           LatLong, starting location bearing and distance to get new location
+     *          Inputs: Azimuth (degrees), Distance (feet), Lat (degrees), Long (degrees)
+     *          LatLong, starting location bearing and distance to get new location
      */
     public LatLong(double azimuth, double distance, double ref_lat, double ref_long)
     {
@@ -71,11 +72,12 @@ public class LatLong
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    GetRadianFromDegrees
+     * @fn      GetRadianFromDegrees - Private
+     * @brief   GetRadianFromDegrees
      *
-     *           Inputs: Angle in Degrees
-     *           Return: Angle in Radians
-     *           Conversion Utility
+     *          Inputs: Angle in Degrees
+     *          Return: Angle in Radians
+     *          Conversion Utility
      */
     private double GetRadianFromDegrees(double dblAngle)
     {
@@ -84,11 +86,12 @@ public class LatLong
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    GetDegreesFromRadian
+     * @fn      GetDegreesFromRadian - Private
+     * @brief   GetDegreesFromRadian
      *
-     *           Inputs: Angle in Radians
-     *           Return: Angle in Degrees
-     *           Conversion Utility
+     *          Inputs: Angle in Radians
+     *          Return: Angle in Degrees
+     *          Conversion Utility
      */
     private double GetDegreesFromRadian(double dblAngle)
     {

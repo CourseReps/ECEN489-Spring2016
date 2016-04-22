@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+********************************************************************************************************************
+** ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
+**          RF Signal Map
+**
+**   File Name: 	perf_settings.xml
+**     Version:		1.0.0
+**        Date:	    April 9, 2016
+** Description:	    Settings XML file
+**      Author:     John Lusher II
+*********************************************************************************************************************
+-->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
