@@ -5,11 +5,12 @@ public class SQLiteJDBC
 {
     public static void main(String[] args) {
         while (true) {
-            Map<Double,String> avg = new HashMap<>();
-            double rssimax = 0;
-            String mac;
+            Map<Double,String> avg = new HashMap<>(); //add data to map
+            double rssimax = 0;  //overall max rssi
+            String mac; //mac address of max rssi
             Connection c = null;
             Statement stmt = null;
+            //opening database
             try {
                 Class.forName("org.sqlite.JDBC");
                 c = DriverManager.getConnection("jdbc:sqlite:data.db");
@@ -21,6 +22,7 @@ public class SQLiteJDBC
                 System.err.println(e.getClass().getName() + ": " + e.getMessage());
                 System.exit(1);
             }
+            //getting number of entries in table for iteration
             try {
                 String numentry = "SELECT COUNT(*) FROM wlan0";
                 ResultSet numret = stmt.executeQuery(numentry);
@@ -30,6 +32,7 @@ public class SQLiteJDBC
                 System.out.println(rowCount);
                 stmt.close();
                 numret.close();
+                //iterating through tables to find max rssi
                 for (int id = 0; id < rowCount; id++) {
                     String query = "SELECT MAC FROM wlan0 WHERE ID =" + id;
                     ResultSet macrs = stmt.executeQuery(query);
@@ -72,6 +75,9 @@ public class SQLiteJDBC
                 }
             }
             mac = avg.get(rssimax);
+            if(rssimax > -40){
+                /**/
+            }
             System.out.println(mac);
             avg.clear();
             try{
