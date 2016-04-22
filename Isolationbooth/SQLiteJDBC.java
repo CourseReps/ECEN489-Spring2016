@@ -74,6 +74,74 @@ public class SQLiteJDBC
             mac = avg.get(rssimax);
             System.out.println(mac);
             avg.clear();
+            try{
+                long unixTime = System.currentTimeMillis() / 1000L;
+
+                String numentry = "SELECT COUNT(*) FROM wlan0";
+                ResultSet numret = stmt.executeQuery(numentry);
+                // get the number of rows from the result set
+                numret.next();
+                int wlan0cnt = numret.getInt(1);
+                stmt.close();
+                numret.close();
+
+                numentry = "SELECT COUNT(*) FROM wlan1";
+                numret = stmt.executeQuery(numentry);
+                // get the number of rows from the result set
+                numret.next();
+                int wlan1cnt = numret.getInt(1);
+                stmt.close();
+                numret.close();
+
+                numentry = "SELECT COUNT(*) FROM wlan2";
+                numret = stmt.executeQuery(numentry);
+                // get the number of rows from the result set
+                numret.next();
+                int wlan2cnt = numret.getInt(1);
+                stmt.close();
+                numret.close();
+
+                for (int id = 0; id < wlan0cnt; id++) {
+                    String query = "SELECT TIME FROM wlan0 WHERE ID =" + id;
+                    ResultSet time = stmt.executeQuery(query);
+                    int timestamp = time.getInt(1);
+                    stmt.close();
+                    time.close();
+                    if(unixTime-timestamp > 120){
+                        String delete = "DELETE FROM wlan0 WHERE TIME =" + timestamp;
+                        stmt.executeQuery(delete);
+                        stmt.close();
+                    }
+                }
+                for (int id = 0; id < wlan1cnt; id++) {
+                    String query = "SELECT TIME FROM wlan1 WHERE ID =" + id;
+                    ResultSet time = stmt.executeQuery(query);
+                    int timestamp = time.getInt(1);
+                    stmt.close();
+                    time.close();
+                    if(unixTime-timestamp > 120){
+                        String delete = "DELETE FROM wlan1 WHERE TIME =" + timestamp;
+                        stmt.executeQuery(delete);
+                        stmt.close();
+                    }
+                }
+                for (int id = 0; id < wlan2cnt; id++) {
+                    String query = "SELECT TIME FROM wlan2 WHERE ID =" + id;
+                    ResultSet time = stmt.executeQuery(query);
+                    int timestamp = time.getInt(1);
+                    stmt.close();
+                    time.close();
+                    if(unixTime-timestamp > 120){
+                        String delete = "DELETE FROM wlan2 WHERE TIME =" + timestamp;
+                        stmt.executeQuery(delete);
+                        stmt.close();
+                    }
+                }
+
+            }
+            catch (Exception e){
+                System.err.println("An error occurred");
+            }
             try {
                 Thread.sleep(10000);
             }
