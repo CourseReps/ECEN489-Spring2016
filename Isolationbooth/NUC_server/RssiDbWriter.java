@@ -1,5 +1,5 @@
 import java.sql.*;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 /**
  * Created by tbranyon on 1/29/16.
@@ -8,6 +8,10 @@ public class RssiDbWriter
 {
     Connection c = null;
     Statement stmt = null;
+    public static int id0 = 0;
+    public static int id1 = 0;
+    public static int id2 = 0;
+    
     public RssiDbWriter()
     {   
         try{
@@ -17,11 +21,11 @@ public class RssiDbWriter
             System.out.println("Database opened");
 
             stmt = c.createStatement();
-            String cmd = "CREATE TABLE IF NOT EXISTS wlan0(rssi INT, MAC_Address TEXT UNIQUE, Timestamp INT)";
+            String cmd = "CREATE TABLE IF NOT EXISTS wlan0(ID INT PRIMARY KEY, rssi INT, MAC_Address TEXT UNIQUE, Timestamp INT)";
             stmt.executeUpdate(cmd);
-            cmd = "CREATE TABLE IF NOT EXISTS wlan1(rssi INT, MAC_Address TEXT UNIQUE, Timestamp INT)";
+            cmd = "CREATE TABLE IF NOT EXISTS wlan1(ID INT PRIMARY KEY, rssi INT, MAC_Address TEXT UNIQUE, Timestamp INT)";
             stmt.executeUpdate(cmd);
-            cmd = "CREATE TABLE IF NOT EXISTS wlan2(rssi INT, MAC_Address TEXT UNIQUE, Timestamp INT)";
+            cmd = "CREATE TABLE IF NOT EXISTS wlan2(ID INT PRIMARY KEY, rssi INT, MAC_Address TEXT UNIQUE, Timestamp INT)";
             stmt.executeUpdate(cmd);
         }catch(Exception e){
             System.err.println("An error occurred");
@@ -34,7 +38,23 @@ public class RssiDbWriter
     public void writeDB(int rssi, String macAddr, long unixTime, int tableNum)
     {  
         try{
-            String cmd = "INSERT OR REPLACE INTO wlan" + tableNum + " VALUES (" + rssi + ",\"" + macAddr + "\"," + unixTime + ");";
+        	int idnum = 9999;
+        	if(tableNum == 0)
+        	{
+        		idnum = id0;
+        		++id0;
+        	}
+        	else if(tableNum == 1)
+        	{
+        		idnum = id1;
+        		++id1;
+        	}
+        	else if(tableNum == 2)
+        	{
+        		idnum = id2;
+        		++id2;
+        	}
+            String cmd = "INSERT OR REPLACE INTO wlan" + tableNum + " VALUES (" + idnum + "," + rssi + ",\"" + macAddr + "\"," + unixTime + ");";
             stmt.executeUpdate(cmd);
             c.commit();
         }catch(Exception e){
