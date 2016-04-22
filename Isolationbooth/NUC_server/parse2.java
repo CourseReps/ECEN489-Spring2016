@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.io.*;
+import java.util.Date;
 
 public class parse2
 {
@@ -7,7 +8,8 @@ public class parse2
 	{
 		ArrayList<String> lines = new ArrayList<String>();
 		File tcp_out = new File("snif2.txt");
-		
+		RssiDbWriter dbHandle = new RssiDbWriter();
+
 		try{
 			BufferedReader br = new BufferedReader(new FileReader(tcp_out));
 			String line = null;
@@ -22,15 +24,16 @@ public class parse2
 				if(tmp.length() == 0)
 					continue;
 				int rssi_index = tmp.indexOf("-") + 1;
-				int rssi_end = tmp.indexOf("dB ");
+				int rssi = Integer.parseInt(tmp.substring(rssi_index, tmp.indexOf("dB ")));
 				int MAC_index = tmp.indexOf("SA:");
-				int MAC_end = MAC_index + 20;
-				if(rssi_index == -1 || rssi_end > tmp.length() || MAC_index == -1 || MAC_end > tmp.length())
+				if(MAC_index == -1)
 					continue;
-				int rssi = Integer.parseInt(tmp.substring(rssi_index, rssi_end));
 				String MAC_addr = tmp.substring(MAC_index+3,MAC_index+20);
+				Date d = new Date();
+				long unixTime =  d.getTime()/1000;
 				if(rssi < 35)
-					System.out.println("Line match: RSSI = -" + rssi + "dB, MAC = " + MAC_addr);
+					dbHandle.writeDB(rssi, MAC_addr, unixTime, 2);
+					//System.out.println("Line match: RSSI = -" + rssi + "dB, MAC = " + MAC_addr);
 			}
 		}catch(Exception e){System.err.println(e);}
 	}
