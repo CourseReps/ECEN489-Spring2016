@@ -4,7 +4,7 @@
 // ---------------------------------------------------------------------------------------------------------------------
 /**
  * @file         MainActivityFragment.java
- * @brief        RF Signal Main Activity - Main Fragment
+ * @brief        Project #3 - Main Fragment
  **/
 //  --------------------------------------------------------------------------------------------------------------------
 //  Package Name
@@ -61,7 +61,6 @@ import com.hoho.android.usbserial.util.SerialInputOutputManager;
 
 import org.json.JSONObject;
 
-
 //----------------------------------------------------------------------------------------------------------------------
 /** @class      MainActivityFragment
  *  @brief      Main Activity Fragment - Display Captured Data
@@ -95,7 +94,6 @@ public class MainActivityFragment extends Fragment implements
     static private double CellRSSI = -115.0;
 
     int count = 0;
-
 
     //------------------------------------------------------------------------------------------------------------------
     /// Handlers
@@ -225,7 +223,6 @@ public class MainActivityFragment extends Fragment implements
             final String strDate = simpleDateFormat.format(calendar.getTime());
 
             UIUpdateTask.strDate = strDate;
-            UIUpdateTask.stuff = UIUpdateTask.stuff + 1;
             handler.post(UIUpdateTask);
         }
     };
@@ -460,17 +457,16 @@ public class MainActivityFragment extends Fragment implements
         // Add Button
         btnRecord = (Button) view.findViewById(R.id.btnRecord);
         btnRecord.setOnClickListener(this);
-
-        //   ListView lv = (ListView) view.findViewById(R.id.lvSome);
-        //    lv.setAdapter(adapter);
     }
 
     //	----------------------------------------------------------------------------------------------------------------
-    //    Function:     onClick
-    //      Inputs:	    View
-    //     Outputs:	    none
-    //  Description:    onClick Event
-    //	----------------------------------------------------------------------------------------------------------------
+    /**
+     * @fn      onClick
+     * @brief   onClick Event
+     *          Inputs: View
+     *          Return: none
+     *          Process click events from user
+     */
     public void onClick(View view) {
         /// Process the record button
         if (view == btnRecord) {
@@ -489,10 +485,13 @@ public class MainActivityFragment extends Fragment implements
         }
     }
 
-
-    // This method is called after the parent Activity's onCreate() method has completed.
-    // Accessing the view hierarchy of the parent activity must be done in the onActivityCreated.
-    // At this point, it is safe to search for activity View objects by their ID, for example.
+    //------------------------------------------------------------------------------------------------------------------
+    /**
+     * @fn      onActivityCreated
+     * @brief   onActivityCreated Event
+     *          Inputs: savedInstanceState
+     *          Return: none
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -504,10 +503,11 @@ public class MainActivityFragment extends Fragment implements
     @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @fn onLocationChanged
-     * @brief onLocationChanged Event - Get new Lat/Long and assign to current data
-     *           Inputs: Location
-     *           Return: none
+     * @fn      onLocationChanged
+     * @brief   onLocationChanged Event
+     *          Inputs: Location
+     *          Return: none
+     *          Get new Lat/Long and assign to current data
      */
     public void onLocationChanged(Location location) {
         CurrenSample.Latitude = location.getLatitude();
@@ -551,13 +551,13 @@ public class MainActivityFragment extends Fragment implements
     //------------------------------------------------------------------------------------------------------------------
     // SENSOR
     //------------------------------------------------------------------------------------------------------------------
-    @Override
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @fn onSensorChanged
-     * @brief onSensorChanged Event
-     *           Sensor Changes - Get updated data
+     * @fn      onSensorChanged
+     * @brief   onSensorChanged Event
+     *          Sensor Changes - Get updated data
      */
+    @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor mySensor = event.sensor;
         // Get values
@@ -568,9 +568,10 @@ public class MainActivityFragment extends Fragment implements
         }
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     /**
-     * @fn onAccuracyChanged
-     * @brief not implemented
+     * @fn      onAccuracyChanged
+     * @brief   Listener not implemented
      */
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -582,11 +583,19 @@ public class MainActivityFragment extends Fragment implements
     //------------------------------------------------------------------------------------------------------------------
     private class AppPhoneStateListener extends PhoneStateListener
     {
-        // Get the Signal strength from the provider, each tiome there is an update
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fn      onSignalStrengthsChanged
+         * @brief   onSignalStrengthsChanged Event (Listener)
+         *          Get the Signal strength from the provider, each time there is an update
+         */
         @Override
         public void onSignalStrengthsChanged(SignalStrength signalStrength)
         {
             super.onSignalStrengthsChanged(signalStrength);
+
+            // If GSP (i.e. AT&T is T-Mobile) then pull the GSP data and
+            // Convert it to RSSSI, else, get teh CDMA (i.e. Verizon network, or similar) data
             if (signalStrength.isGsm() == true) {
                 // AT&T Phone, Based on TS 27.007 8.5
                 int GSMSS = signalStrength.getGsmSignalStrength();
@@ -598,7 +607,8 @@ public class MainActivityFragment extends Fragment implements
             }
             else CellRSSI = signalStrength.getCdmaDbm();
 
-           // System.out.println(GSMSS + ";"  + signalStrength.getEvdoDbm() +"; " + signalStrength.getCdmaDbm() +  signalStrength);
+            // Copy over signtal strength data, as string (will be stored in database as such)
+            CurrenSample.CellSignalStrength = signalStrength.toString();
         }
 
     };
@@ -608,9 +618,9 @@ public class MainActivityFragment extends Fragment implements
     //------------------------------------------------------------------------------------------------------------------
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @fn SaveRFData
-     * @brief SaveRFData Method
-     * Stores current data to server
+     * @fn      SaveRFData
+     * @brief   SaveRFData Method
+     *          Stores   current data to server
      */
     private class SaveRFData extends AsyncTask<String, Void, String> {
         public Exception exception;
@@ -619,10 +629,10 @@ public class MainActivityFragment extends Fragment implements
         public boolean AddErr = false;
 
         //--------------------------------------------------------------------------------------------------------------
-
         /**
-         * @brief doInBackground
-         * Gets the data from the MySQL server then calls onPostExecute
+         * @fn      doInBackground
+         * @brief   doInBackground
+         *          Gets the data from the MySQL server then calls onPostExecute
          */
         protected String doInBackground(String... parameters) {
             try {
@@ -648,15 +658,12 @@ public class MainActivityFragment extends Fragment implements
 
 
         //--------------------------------------------------------------------------------------------------------------
-
         /**
-         * @brief onPostExecute
-         * <p/>
-         * Process and display the resulting records
+         * @fn      onPostExecute
+         * @brief   onPostExecute
+         *          Process and display the resulting records
          */
         protected void onPostExecute(String result) {
-            UIUpdateTask.stuff = 0;
-
             /// Add data to log
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd:MMMM:yyyy HH:mm:ss a");
             String log = "RSSI: " + String.format("%3.0f", RFMember.RSSI) + " dBm  at  " + simpleDateFormat.format(RFMember.SampleDate);

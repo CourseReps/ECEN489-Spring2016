@@ -34,9 +34,10 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    RFFieldSQLDatabase - Constructor
+     * @fn      RFFieldSQLDatabase
+     * @brief   RFFieldSQLDatabase - Constructor
      *
-     *           RFFieldSQLDatabase, no initialization given
+     *          RFFieldSQLDatabase, no initialization given
      */
     public RFFieldSQLDatabase()
     {
@@ -44,11 +45,12 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    getConnection
+     * @fn      Connection
+     * @brief   Connect to Database
      *
-     *           Inputs: URL for server, username, password
-     *           Return: Connection
-     *           Connects to MySql database
+     *          Inputs: URL for server, username, password
+     *          Return: Connection
+     *          Connects to MySql database
      */
     private static Connection getConnection(String dbURL, String user, String password) throws SQLException, ClassNotFoundException
     {
@@ -62,11 +64,12 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    ConnectToDatabase
+     * @fn      ConnectToDatabase
+     * @brief   ConnectToDatabase
      *
-     *           Inputs: host address for server, username, password
-     *           Return: Success = TRUE / Failure = FALSE
-     *           Establishes a connection to the database
+     *          Inputs: host address for server, username, password
+     *          Return: Success = TRUE / Failure = FALSE
+     *          Establishes a connection to the database
      */
     public boolean ConnectToDatabase(String host_address)
     {
@@ -89,11 +92,12 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    DisconnectDatabase
+     * @fn      DisconnectDatabase
+     * @brief   DisconnectDatabase
      *
-     *           Inputs: none
-     *           Return: Success = TRUE / Failure = FALSE
-     *           Disconnects the connection to the database
+     *          Inputs: none
+     *          Return: Success = TRUE / Failure = FALSE
+     *          Disconnects the connection to the database
      */
     public boolean DisconnectDatabase()
     {
@@ -115,11 +119,12 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    AddNewEntry
+     * @fn      AddNewEntry
+     * @brief   AddNewEntry
      *
-     *           Inputs: RF Data Entry
-     *           Return: Success = TRUE / Failure = FALSE
-     *           Insert new data to table  (executes SQL command)
+     *          Inputs: RF Data Entry
+     *          Return: Success = TRUE / Failure = FALSE
+     *          Insert new data to table  (executes SQL command)
      */
     public boolean AddNewEntry(RFData RFMember)
     {
@@ -143,6 +148,7 @@ public class RFFieldSQLDatabase
                 sql_string += "fltYaw,";                                /// Field: fltYaw
                 sql_string += "fltPitch,";                              /// Field: fltPitch
                 sql_string += "fltRoll,";                               /// Field: fltRoll
+                sql_string += "txtCellSignalStrength,";                 /// Field: txtCellSignalStrength
                 sql_string += "dtSampleDate) ";                         /// Field: dtSampleDate
                 sql_string += "VALUES (";                               /// Values indetifier
                 sql_string += RFMember.XbeeID + ",";                    /// Value: XbeeID
@@ -153,6 +159,7 @@ public class RFFieldSQLDatabase
                 sql_string += RFMember.Yaw + ",";                       /// Value: Yaw
                 sql_string += RFMember.Pitch + ",";                     /// Value: Pitch
                 sql_string += RFMember.Roll + ",";                      /// Value: Roll
+                sql_string += "'" + RFMember.CellSignalStrength + "',"; /// Value: CellSignalStrength
                 sql_string += "'" + ft.format(RFMember.SampleDate) + "')";
                 System.out.println("SQL: " + sql_string);               /// Debug print the SQL statement
 
@@ -177,11 +184,12 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    ReadRecords
+     * @fn      ReadRecords
+     * @brief   ReadRecords
      *
-     *           Inputs: Result Set
-     *           Return: ArrayList of RF Data (by ref)
-     *           Read the Records, Fill Array List with RF Data
+     *          Inputs: Result Set
+     *          Return: ArrayList of RF Data (by ref)
+     *          Read the Records, Fill Array List with RF Data
      */
     private void ReadRecords(ResultSet rs, ArrayList records)
     {
@@ -201,6 +209,8 @@ public class RFFieldSQLDatabase
                 RFMember.Yaw = rs.getFloat("fltYaw");                   /// Get Yaw
                 RFMember.Pitch = rs.getFloat("fltPitch");               /// Get Pitch
                 RFMember.Roll = rs.getFloat("fltRoll");                 /// Get Roll
+                                                                        /// Get Cell Signtal Strength
+                RFMember.CellSignalStrength = rs.getString("txtCellSignalStrength");
                 RFMember.SampleDate = rs.getTimestamp("dtSampleDate");  /// Get Sample Date
 
                 // Print debug information to port
@@ -219,11 +229,12 @@ public class RFFieldSQLDatabase
 
     //------------------------------------------------------------------------------------------------------------------
     /**
-     * @brief    ListDataByGeoArea
+     * @fn      ListDataByGeoArea
+     * @brief   ListDataByGeoArea
      *
-     *           Inputs:  Start Latitude, Start Longitude, End Latitude, End Longitude (create rectangle)
-     *           Return: RF Data Entryies (ArrayList)
-     *           Get RF Data Entries given Geo Constraints
+     *          Inputs:  Start Latitude, Start Longitude, End Latitude, End Longitude (create rectangle)
+     *          Return: RF Data Entryies (ArrayList)
+     *          Get RF Data Entries given Geo Constraints
      */
     public ArrayList ListDataByGeoArea(float StartLatitude, float StartLongitude, float EndLatitude, float EndLongitude)
     {
@@ -245,6 +256,7 @@ public class RFFieldSQLDatabase
             sql_string += "fltYaw,";                                    /// Field: fltYaw
             sql_string += "fltPitch,";                                  /// Field: fltPitch
             sql_string += "fltRoll,";                                   /// Field: fltRoll
+            sql_string += "txtCellSignalStrength,";                     /// Field: txtCellSignalStrength
             sql_string += "dtSampleDate ";                              /// Field: dtSampleDate
             sql_string += "FROM  RF_Fields ";                           /// Table: RF_Fields
 
