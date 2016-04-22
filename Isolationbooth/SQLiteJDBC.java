@@ -9,7 +9,7 @@ public class SQLiteJDBC
             double rssimax = 0;  //overall max rssi
             String mac; //mac address of max rssi
             Connection c = null;
-            Statement stmt = null;
+            Statement stmt = "";
             //opening database
             try {
                 Class.forName("org.sqlite.JDBC");
@@ -34,25 +34,25 @@ public class SQLiteJDBC
                 numret.close();
                 //iterating through tables to find max rssi
                 for (int id = 0; id < rowCount; id++) {
-                    String query = "SELECT MAC FROM wlan0 WHERE ID =" + id;
+                    String query = "SELECT MAC_Address FROM wlan0 WHERE ID =" + id;
                     ResultSet macrs = stmt.executeQuery(query);
                     String macst = macrs.getString("MAC");
                     stmt.close();
                     macrs.close();
 
-                    query = "SELECT * FROM wlan0 WHERE MAC=" + macst;
+                    query = "SELECT * FROM wlan0 WHERE MAC_Address=" + macst;
                     ResultSet rssi = stmt.executeQuery(query);
                     int rssiwlan0 = rssi.getInt("rssi");
                     stmt.close();
                     rssi.close();
 
-                    query = "SELECT * FROM wlan1 WHERE MAC=" + macst;
+                    query = "SELECT * FROM wlan1 WHERE MAC_Address=" + macst;
                     rssi = stmt.executeQuery(query);
                     int rssiwlan1 = rssi.getInt("rssi");
                     stmt.close();
                     rssi.close();
 
-                    query = "SELECT * FROM wlan2 WHERE MAC=" + macst;
+                    query = "SELECT * FROM wlan2 WHERE MAC_Address=" + macst;
                     rssi = stmt.executeQuery(query);
                     int rssiwlan2 = rssi.getInt("rssi");
                     stmt.close();
@@ -75,8 +75,8 @@ public class SQLiteJDBC
                 }
             }
             mac = avg.get(rssimax);
-            if(rssimax > -40){
-                /**/
+            if(rssimax < 40){
+                Runtime.getRuntime().exec("java client");
             }
             System.out.println(mac);
             avg.clear();
@@ -114,7 +114,7 @@ public class SQLiteJDBC
                     stmt.close();
                     time.close();
                     if(unixTime-timestamp > 120){
-                        String delete = "DELETE FROM wlan0 WHERE TIME =" + timestamp;
+                        String delete = "DELETE FROM wlan0 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
                         stmt.close();
                     }
@@ -126,7 +126,7 @@ public class SQLiteJDBC
                     stmt.close();
                     time.close();
                     if(unixTime-timestamp > 120){
-                        String delete = "DELETE FROM wlan1 WHERE TIME =" + timestamp;
+                        String delete = "DELETE FROM wlan1 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
                         stmt.close();
                     }
@@ -138,7 +138,7 @@ public class SQLiteJDBC
                     stmt.close();
                     time.close();
                     if(unixTime-timestamp > 120){
-                        String delete = "DELETE FROM wlan2 WHERE TIME =" + timestamp;
+                        String delete = "DELETE FROM wlan2 WHERE Timestamp =" + timestamp;
                         stmt.executeQuery(delete);
                         stmt.close();
                     }
