@@ -8,11 +8,10 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 
 public class UDPServerThread extends Thread{
 
-    protected DatagramSocket socket = null;
+    protected static DatagramSocket socket = null;
 
     public UDPServerThread() throws IOException{
         this("UDPServerThread");
@@ -21,13 +20,14 @@ public class UDPServerThread extends Thread{
     public UDPServerThread(String name) throws IOException{
         super(name);
         socket = new DatagramSocket(8080);
-        socket.setSoTimeout(30000);
+        socket.setSoTimeout(90000);
     }
 
     public void run(){
 
         try {
             System.out.println("server running at " + InetAddress.getLocalHost().getHostAddress());
+            System.out.println("press ENTER to stop");
         }catch(UnknownHostException e){
             System.out.println("cannot connect to network");
         }
@@ -61,20 +61,22 @@ public class UDPServerThread extends Thread{
 
                 sleep(50);
             }catch(IOException|InterruptedException e){
-                System.out.println("\ndisconnected");
+                socket.close();
                 UDPServer.running = false;
             }
         }
         socket.close();
-        System.out.println("server stopped");
+        System.out.println("\nserver stopped");
+        if(UDPServer.flag){
+            System.out.println("press ENTER to finish");
+        }
     }
 
 
-    public static List<Integer> decodeByteMessage(byte[] b)
-    {
+    public static List<Integer> decodeByteMessage(byte[] b) {
         List<Integer> list = new ArrayList<Integer>();
 
-        int i1 =   b[3] & 0xFF |
+        int i1 = b[3] & 0xFF |
                 (b[2] & 0xFF) << 8 |
                 (b[1] & 0xFF) << 16 |
                 (b[0] & 0xFF) << 24;
@@ -88,20 +90,6 @@ public class UDPServerThread extends Thread{
         list.add(i2);
 
         return list;
-    }
-
-    public static byte[] createByteMessage(int a, int b)
-    {
-        return new byte[] {
-                (byte) ((a >> 24) & 0xFF),
-                (byte) ((a >> 16) & 0xFF),
-                (byte) ((a >> 8) & 0xFF),
-                (byte) (a & 0xFF),
-                (byte) ((b >> 24) & 0xFF),
-                (byte) ((b >> 16) & 0xFF),
-                (byte) ((b >> 8) & 0xFF),
-                (byte) (b & 0xFF)
-        };
     }
 
 }
