@@ -56,22 +56,13 @@ public class SQLiteJDBC
                 System.out.println(rowCount2);
                 numretwlan2.close();
             }catch(Exception e){
-                System.out.println("it fucking broke");
+                System.err.println(e);
             }
                 
             //getting number of entries in table for iteration
             try{
                 String query = "SELECT Mac_Address FROM wlan0";
                 ResultSet macrs = stmt.executeQuery(query);
-
-                query = "SELECT * FROM wlan0";
-                ResultSet rssi0 = stmt.executeQuery(query);
-
-                query = "SELECT * FROM wlan1";
-                ResultSet rssi1 = stmt.executeQuery(query);
-
-                query = "SELECT * FROM wlan2";
-                ResultSet rssi2 = stmt.executeQuery(query);
 
                 //iterating through tables to find max rssi
                 for (int id = 0; id < rowCount; id++) 
@@ -83,44 +74,49 @@ public class SQLiteJDBC
 
                     String macst = macrs.getString(1);
 
-                    for (int id1 = 0; id < rowCount; id++)
+                    Statement s1 = c.createStatement();
+                    query = "SELECT * FROM wlan0"; 
+                    ResultSet rssi0 = s1.executeQuery(query);
+                    for (int id1 = 0; id1 < rowCount; id1++)
                     {
                         rssi0.next();
                         String macwlan0 = rssi0.getString(2);
-
                         if(macwlan0.equals(macst))
                             rssiwlan0 = rssi0.getInt(1);
                     }
-                    for (int id2 = 0; id < rowCount1; id++)
+                    rssi0.close();
+
+                    query = "SELECT * FROM wlan1";
+                    ResultSet rssi1 = s1.executeQuery(query);
+                    for (int id2 = 0; id2 < rowCount1; id2++)
                     {
                         rssi1.next();
                         String macwlan1 = rssi1.getString(2);
-
                         if(macwlan1.equals(macst))
-                            rssiwlan0 = rssi1.getInt(1);
+                            rssiwlan1 = rssi1.getInt(1);
                     }
-                    for (int id3 = 0; id < rowCount2; id++)
+                    rssi1.close();
+
+                    query = "SELECT * FROM wlan2";
+                    ResultSet rssi2 = s1.executeQuery(query);
+                    for (int id3 = 0; id3 < rowCount2; id3++)
                     {
                         rssi2.next();
                         String macwlan2 = rssi2.getString(2);
-                        
                         if(macwlan2.equals(macst))
-                            rssiwlan0 = rssi2.getInt(1);
+                            rssiwlan2 = rssi2.getInt(1);
                     }
+                    rssi2.close();
+                    s1.close();
 
                     double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2));
-
                     avg.put(rssimag,macst);
 
                     System.out.println(macst);
                 }
                 macrs.close();
-                rssi0.close();
-                rssi1.close();
-                rssi2.close();
-
             }catch (Exception e) {
-                System.err.println("it fucking broke");
+                System.err.println(e);
                 System.exit(2);
             }
       
@@ -136,7 +132,10 @@ public class SQLiteJDBC
             	try{
             	System.out.println("Executing picture request");
                 Runtime.getRuntime().exec("java client");
-                }catch(Exception e){System.err.println(e); System.exit(3);}
+                }catch(Exception e){
+                    System.err.println(e);
+                    System.exit(3);
+                }
             }
             
             System.out.println(mac);
@@ -144,14 +143,8 @@ public class SQLiteJDBC
             try{
                 long unixTime = System.currentTimeMillis() / 1000L;
 
-                String query = "SELECT TIME FROM wlan0";
+                String query = "SELECT Timestamp FROM wlan0";
                 ResultSet time0 = stmt.executeQuery(query);
-
-                query = "SELECT TIME FROM wlan1";
-                ResultSet time1 = stmt.executeQuery(query);
-
-                query = "SELECT TIME FROM wlan2";
-                ResultSet time2 = stmt.executeQuery(query);
                 
                 for (int id = 0; id < rowCount; id++) 
                 {
@@ -165,6 +158,10 @@ public class SQLiteJDBC
                     }
                     
                 }
+                time0.close();
+
+                query = "SELECT Timestamp FROM wlan1";
+                ResultSet time1 = stmt.executeQuery(query);
                 for (int id = 0; id < rowCount1; id++) 
                 {
                     time1.next();
@@ -176,6 +173,10 @@ public class SQLiteJDBC
                         stmt.executeQuery(delete);
                     }
                 }
+                time1.close();
+
+                query = "SELECT Timestamp FROM wlan2";
+                ResultSet time2 = stmt.executeQuery(query);
                 for (int id = 0; id < rowCount2; id++) 
                 {
                     time2.next();
@@ -187,21 +188,18 @@ public class SQLiteJDBC
                         stmt.executeQuery(delete);
                     }
                 }
-                time0.close();
-                time1.close();
                 time2.close();
-
             }catch (Exception e){
-                System.err.println("An error occurred");
-                System.exit(3);
+                System.err.println(e);
+                System.exit(4);
             }
 
             try{
 	            stmt.close();
                 Thread.sleep(10000);
             }catch(Exception e) {
-                System.err.println("An error occurred");
-                System.exit(4);
+                System.err.println(e);
+                System.exit(5);
             }
         }
     }
