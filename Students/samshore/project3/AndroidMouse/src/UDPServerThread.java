@@ -68,6 +68,7 @@ public class UDPServerThread extends Thread{
                     currentTeam = userCount%2;
                     Users user = new Users(currentIp, currentTeam);
                     userList.add(user);
+                    System.out.println("user " + user.ip + " joined team " + user.team + "!");
                     userCount++;
                 }
 
@@ -87,7 +88,7 @@ public class UDPServerThread extends Thread{
                     UDPServer.yDegrees = -1 * received.get(0);
                     UDPServer.xDegrees = -1 * received.get(1);
 
-                    System.out.println("(1) x: " + UDPServer.xDegrees + " y: " + UDPServer.yDegrees);
+                    //System.out.println("(1) x: " + UDPServer.xDegrees + " y: " + UDPServer.yDegrees);
 
 
                      /* rotation threshold */
@@ -108,7 +109,7 @@ public class UDPServerThread extends Thread{
                         UDPServer.yDegrees = UDPServer.yDegrees - 5;
                     }
 
-                    sleep(50);
+                    sleep(50/UDPServer.userCount);
                 }
             }catch(IOException|InterruptedException e){
                 socket1.close();

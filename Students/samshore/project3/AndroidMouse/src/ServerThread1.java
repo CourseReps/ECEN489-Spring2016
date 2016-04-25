@@ -59,7 +59,7 @@ public class ServerThread1 extends Thread{
                 else if(UDPServer.yDegrees<-5){UDPServer.yDegrees = UDPServer.yDegrees + 5;}
                 else{UDPServer.yDegrees = UDPServer.yDegrees - 5;}
 
-                sleep(50);
+                sleep(100/UDPServer.userCount);
             }catch(IOException|InterruptedException e){
                 socket.close();
                 UDPServer.running = false;
