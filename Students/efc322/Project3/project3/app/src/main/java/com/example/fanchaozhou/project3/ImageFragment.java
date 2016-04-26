@@ -13,15 +13,14 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.media.Image;
 import android.media.ThumbnailUtils;
 import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,19 +28,25 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
+import org.json.JSONObject;
 
 import static com.googlecode.javacv.cpp.opencv_core.*;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -55,11 +60,12 @@ public class ImageFragment extends Fragment implements SensorEventListener{
     public static final int REQUEST_TYPE_LIST_DIALOG = 3;
     public static final int REQUEST_ADDING_TYPES_DIALOG = 2;            //The request code for returning user's choice from dialog
     public static final int REQUEST_IMAGE_CAPTURE = 1;                  //The request code for taking a photo
-    private static final float LIGHT_THRESHOLD = 30.0f;
+    private static final float LIGHT_THRESHOLD = 10.0f;
     private static final String NO_CAMERA_HINT = "Camera NOT Avalaible";   //The hint for an unavalaible camera
     private static final String ADD_TYPE_DIALOG_TAG = "Adding Types Dialog";//Tag for the dialog when switching from running to training
     private static final String TYPE_LIST_DIALOG_TAG = "Type List Dialog";
     private static final int MIN_PHOTOS = 8;
+    private static final int MAX_TX = 20;
     private static final int FACE_LEN = 650;
     private Uri photoURI;
     private Bitmap thumbnailImage;
@@ -247,21 +253,12 @@ public class ImageFragment extends Fragment implements SensorEventListener{
             });
         }
 
-        Button downloadButton = (Button) rootView.findViewById(R.id.button_download);
-        if(downloadButton!=null && runTrainSwitch!=null && !runTrainSwitch.isChecked()){
-            //TODO: Download all the photos from the server
-        }
-
         return rootView;
     }
 
     private File createImageFile(String mode) throws IOException {
         // Create an image file name
-        WifiManager manager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
-        WifiInfo info = manager.getConnectionInfo();
-        String macAddress = info.getMacAddress();
-        String photoTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = macAddress+mode + "_JPG " + photoTime + "_";
+        String imageFileName = getImageFileName(mode);
 
         File storageDir;
         if(mode.equals(getString(R.string.training_on))){
@@ -276,6 +273,29 @@ public class ImageFragment extends Fragment implements SensorEventListener{
         return image;
     }
 
+    private String getImageFileName(String mode){
+        String newMacAddress = getWifiMac();
+
+        String photoTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = newMacAddress + mode + photoTime + "_";
+
+        return imageFileName;
+    }
+
+    private String getWifiMac(){
+        WifiManager manager = (WifiManager)getActivity().getSystemService(Context.WIFI_SERVICE);
+        WifiInfo info = manager.getConnectionInfo();
+        String macAddress = info.getMacAddress();
+        String newMacAddress = "";
+        for(int cnt = 0; cnt < macAddress.length(); cnt++){
+            if(macAddress.charAt(cnt) != ':'){
+                newMacAddress += macAddress.charAt(cnt);
+            }
+        }
+
+        return newMacAddress;
+    }
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         Sensor sensor = event.sensor;
@@ -283,7 +303,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
             TextView lightTextView = (TextView) getActivity().findViewById(R.id.textView_light);
             if(lightTextView != null){
                 illumination = event.values[ 0 ];
-                lightTextView.setText("Light Condition(in lx):\n "+illumination);
+                lightTextView.setText("Light Condition(in lx): "+illumination);
                 if(illumination <= LIGHT_THRESHOLD){
                     lightTextView.append("\nLight Too DIM!");
                 } else {
@@ -344,21 +364,20 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                             try {
                                 //Extract the face from the image
                                 BitmapRegionDecoder regionDecoder = BitmapRegionDecoder.newInstance(imageFilePath, false);
-                                Bitmap facePhoto = regionDecoder.decodeRegion(
-                                        new Rect(face.x(), face.y(), face.x() + face.width(), face.y() + face.height()), null);
+                                Bitmap originFacePhoto = Bitmap.createBitmap(regionDecoder.decodeRegion(
+                                        new Rect(face.x(), face.y(), face.x() + face.width(), face.y() + face.height()), null));
                                 //Normalize the size of the face photo
-                                facePhoto = Bitmap.createScaledBitmap(facePhoto, FACE_LEN, FACE_LEN, false);
+                                final Bitmap facePhoto = Bitmap.createScaledBitmap(originFacePhoto, FACE_LEN, FACE_LEN, false);
                                 //Overwrite the face photo into the original file
                                 FileOutputStream fileOS = new FileOutputStream(imageFile);
-                                facePhoto.compress(Bitmap.CompressFormat.PNG, 100, fileOS);
+                                facePhoto.compress(Bitmap.CompressFormat.JPEG, 100, fileOS);
                                 fileOS.close();
 
-                                final Bitmap photo = BitmapFactory.decodeStream(new FileInputStream(new File(imageFilePath)));
                                 //final Bitmap photo = facePhoto;
                                 imageView.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        imageView.setImageBitmap(photo);
+                                        imageView.setImageBitmap(facePhoto);
                                     }
                                 });
                             } catch (Exception e) {
@@ -392,12 +411,13 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                     @Override
                     public void run() {
                         int cnt;
+                        long label = -1;
+                        final String name;
                         CvRect face = MainActivity.faceDetector.detectFace(imageFile);      //Get the location of the Face in the image
 
                         if(face.height()==0 && face.width()==0){
                             resultTextView.setText(getString(R.string.no_face_detected));
                         } else {
-                            long label = -1;
                             try{
                                 //First extract the face from the image
                                 BitmapRegionDecoder regionDecoder = BitmapRegionDecoder.newInstance(imageFilePath, false);
@@ -405,26 +425,97 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                         new Rect(face.x(), face.y(), face.x() + face.width(), face.y() + face.height()), null);
                                 facePhoto = Bitmap.createScaledBitmap(facePhoto, FACE_LEN, FACE_LEN, false);
                                 FileOutputStream fileOS = new FileOutputStream(imageFile);
-                                facePhoto.compress(Bitmap.CompressFormat.PNG, 100, fileOS);
+                                facePhoto.compress(Bitmap.CompressFormat.JPEG, 100, fileOS);
                                 fileOS.close();
 
                                 //Run the classification algorithm
                                 label = MainActivity.faceRecognizer.predict(imageFile);
+                                for(cnt = 0; cnt < MainActivity.typeList.size(); cnt++){
+                                    if(label == MainActivity.typeList.get(cnt).typeID){
+                                        break;
+                                    }
+                                }
+                                if(cnt < MainActivity.typeList.size()){  //The face is recognized as an existing type
+                                    name = MainActivity.typeList.get(cnt).typeName;
+                                } else {                                 //The face is not recognized as any existing type
+                                    name = "FACE NOT RECOGNIZED";
+                                }
+                                resultTextView.setText(name);
+
+                                Thread sendPhotoThread = new Thread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        int cnt = 0;
+                                        boolean isSuccessful = false;
+                                        while(cnt<MAX_TX && !isSuccessful){
+                                            try{
+                                                ///////// Read the image into a byte array ///////////
+                                                FileInputStream fileInputStream = new FileInputStream(imageFile);
+                                                ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                                                byte[] buffer = new byte[ 1024 ];
+                                                while (fileInputStream.read(buffer) != -1) {
+                                                    bos.write(buffer);
+                                                }
+                                                byte[] faceByteArray = bos.toByteArray();
+                                                fileInputStream.close();
+                                                bos.close();
+                                                ///////////////////////////////////////////////////////
+
+                                                ////////// Encode the image and its name into a JSON string /////////
+                                                String faceString = Base64.encodeToString(faceByteArray, Base64.URL_SAFE | Base64.NO_WRAP);
+                                                String fileName = getWifiMac();
+                                                JSONObject jsonObject = new JSONObject();
+                                                jsonObject.put(getString(R.string.key_type), getString(R.string.key_type_upload));
+                                                jsonObject.put(getString(R.string.key_file_name), fileName);
+                                                jsonObject.put(getString(R.string.key_name), name);
+                                                jsonObject.put(getString(R.string.key_image), faceString);
+                                                /////////////////////////////////////////////////////////////////////
+
+                                                ////////// Set up an HTTP connection to the server and send the String /////
+                                                String serverIP = ((EditText)getActivity().findViewById(R.id.editText_server_ip)).getText().toString();
+                                                String serverPort = ((EditText)getActivity().findViewById(R.id.editText_server_port)).getText().toString();
+                                                String webAppName = getString(R.string.webapp_name);
+                                                String paraName = getString(R.string.photo_data);
+                                                URL url = new URL("http://"+serverIP+":"+serverPort+webAppName);
+
+                                                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+                                                connection.setRequestMethod("POST");
+                                                connection.setConnectTimeout(9243);
+                                                connection.setDoOutput(true);
+
+                                                OutputStreamWriter output = new OutputStreamWriter(connection.getOutputStream());
+                                                output.write(paraName + "=" + jsonObject.toString());
+                                                output.flush();
+
+                                                InputStream input = connection.getInputStream();
+                                                byte[] inputBytes = new byte[ 1 ];
+                                                StringBuffer buf = new StringBuffer();
+                                                while (input.read(inputBytes) != -1) {
+                                                    buf.append(new String(inputBytes));
+                                                }
+
+                                                output.close();
+                                                input.close();
+                                                connection.disconnect();
+
+                                                isSuccessful = true;
+                                                ////////////////////////////////////////////////////////////////////////////
+
+                                            } catch (Exception e) {
+                                                System.out.println(e);
+                                                cnt++;
+                                            }
+                                        }
+
+                                        imageFile.delete();
+                                    }
+                                });
+
+                                sendPhotoThread.start();
+
                             } catch(Exception e){
                                 System.out.println(e);
                             }
-                            for(cnt = 0; cnt < MainActivity.typeList.size(); cnt++){
-                                if(label == MainActivity.typeList.get(cnt).typeID){
-                                    break;
-                                }
-                            }
-                            if(cnt < MainActivity.typeList.size()){  //The face is recognized as an existing type
-                                resultTextView.setText(MainActivity.typeList.get(cnt).typeName);;
-                            } else {                                 //The face is not recognized as any existing type
-                                resultTextView.setText("FACE NOT RECOGNIZED");;
-                            }
-
-                            imageFile.delete();
                         }
                     }
                 });
@@ -449,7 +540,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
             }
         } else if(requestCode == REQUEST_TYPE_LIST_DIALOG){
             //If the requestCode is for the list of types dialog
-            DBRecord dbRecord = new DBRecord();
+            final DBRecord dbRecord = new DBRecord();
             dbRecord.typeName = MainActivity.typeList.get(resultCode).typeName;
             dbRecord.typeID = MainActivity.typeList.get(resultCode).typeID;
             dbRecord.fullsizePhotoUri = photoURI.toString();
@@ -459,8 +550,6 @@ public class ImageFragment extends Fragment implements SensorEventListener{
             for(cnt = MainActivity.recordList.size()-1; cnt>=0 && MainActivity.recordList.get(cnt).typeID>dbRecord.typeID; cnt--);
             MainActivity.recordList.add(cnt + 1, dbRecord);
             dbHelper.addOneRec(dbRecord);
-
-            //TODO: Start a Service to Send the photo and the name to the Tomcat Server.
         }
     }
 

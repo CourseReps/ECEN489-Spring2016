@@ -17,9 +17,9 @@
         android:layout_height="wrap_content"
         android:text="@string/button_photos"
         android:id="@+id/button_photos"
-        android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/button_add_types"
         android:layout_alignEnd="@+id/button_add_types"
+        android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/button_add_types"
         android:layout_alignStart="@+id/button_add_types" />
 
@@ -38,26 +38,47 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/nameTextView"
-        android:layout_above="@+id/button_add_types" />
+        android:layout_above="@+id/textView_ServerIP" />
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/switch_traing_or_run"
         android:layout_alignTop="@+id/button_add_types"
+        android:layout_toRightOf="@+id/button_photos"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/button_photos"
-        android:layout_toEndOf="@+id/button_photos"
-        android:layout_above="@+id/button_photos" />
+        android:layout_alignParentBottom="true" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_download"
-        android:id="@+id/button_download"
-        android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/button_photos"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textView_light"
+        android:layout_below="@+id/editText_server_ip"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignBottom="@+id/button_photos"
+        android:layout_toLeftOf="@+id/button_add_types"
+        android:layout_toStartOf="@+id/button_add_types" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_server_ip"
+        android:layout_above="@+id/button_add_types"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/button_add_types"
+        android:layout_alignRight="@+id/button_add_types"
+        android:layout_alignEnd="@+id/button_add_types" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_server_port"
+        android:layout_above="@+id/button_add_types"
+        android:layout_toRightOf="@+id/button_add_types"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
@@ -65,13 +86,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textView_light"
+        android:text="@string/textview_server_ip"
+        android:id="@+id/textView_ServerIP"
+        android:layout_alignTop="@+id/textView_ServerPort"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toLeftOf="@+id/button_add_types"
-        android:layout_toStartOf="@+id/button_add_types"
-        android:layout_alignBottom="@+id/button_photos"
-        android:layout_below="@+id/objImageView" />
+        android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/textview_server_port"
+        android:id="@+id/textView_ServerPort"
+        android:layout_above="@+id/editText_server_port"
+        android:layout_toRightOf="@+id/button_add_types"
+        android:layout_toEndOf="@+id/button_add_types" />
 
 </RelativeLayout>
