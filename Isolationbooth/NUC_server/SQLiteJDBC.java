@@ -192,15 +192,17 @@ public class SQLiteJDBC
             for (Map.Entry<Double, String> entry : avg.entrySet()){
                 double rssiVal = entry.getKey();
 
-                if(rssiVal > rssimax)
+                if(rssiVal > rssimax && rssiVal!=0)
                     rssimax=rssiVal;
             }
             mac = avg.get(rssimax);
 
-            if(rssimax < 40) //threshold for device to be considered within the area
+            if(rssimax < 40 && rssimax != 0) //threshold for device to be considered within the area
             {
             	try{
             	System.out.println("Executing picture request");  //runs get picture from android camera program
+                System.out.println(mac);
+                System.out.println(rssimax);
                 Runtime.getRuntime().exec("java client");
                 }catch(Exception e){
                     System.err.println(e);
@@ -208,8 +210,6 @@ public class SQLiteJDBC
                 }
             }
             System.out.println("pic finished");
-            System.out.println(mac);
-            System.out.println(rssimax);
             avg.clear(); //clears map for next loop
 
             try{
