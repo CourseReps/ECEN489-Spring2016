@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_androidmouse" default="compile.module.androidmouse">
+  <dirname property="module.androidmouse.basedir" file="${ant.file.module_androidmouse}"/>
+  
+  <property name="module.jdk.home.androidmouse" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.androidmouse" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.androidmouse" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.androidmouse" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="androidmouse.output.dir" value="${module.androidmouse.basedir}/out/production/AndroidMouse"/>
+  <property name="androidmouse.testoutput.dir" value="${module.androidmouse.basedir}/out/test/AndroidMouse"/>
+  
+  <path id="androidmouse.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="androidmouse.module.production.classpath">
+    <path refid="${module.jdk.classpath.androidmouse}"/>
+  </path>
+  
+  <path id="androidmouse.runtime.production.module.classpath">
+    <pathelement location="${androidmouse.output.dir}"/>
+  </path>
+  
+  <path id="androidmouse.module.classpath">
+    <path refid="${module.jdk.classpath.androidmouse}"/>
+    <pathelement location="${androidmouse.output.dir}"/>
+  </path>
+  
+  <path id="androidmouse.runtime.module.classpath">
+    <pathelement location="${androidmouse.testoutput.dir}"/>
+    <pathelement location="${androidmouse.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.androidmouse">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.androidmouse">
+    <patternset refid="excluded.from.module.androidmouse"/>
+  </patternset>
+  
+  <path id="androidmouse.module.sourcepath">
+    <dirset dir="${module.androidmouse.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.androidmouse" depends="compile.module.androidmouse.production,compile.module.androidmouse.tests" description="Compile module AndroidMouse"/>
+  
+  <target name="compile.module.androidmouse.production" depends="register.custom.compilers" description="Compile module AndroidMouse; production classes">
+    <mkdir dir="${androidmouse.output.dir}"/>
+    <javac2 destdir="${androidmouse.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.androidmouse}/javac">
+      <compilerarg line="${compiler.args.androidmouse}"/>
+      <bootclasspath refid="androidmouse.module.bootclasspath"/>
+      <classpath refid="androidmouse.module.production.classpath"/>
+      <src refid="androidmouse.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.androidmouse"/>
+    </javac2>
+    
+    <copy todir="${androidmouse.output.dir}">
+      <fileset dir="${module.androidmouse.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.androidmouse.tests" depends="register.custom.compilers,compile.module.androidmouse.production" description="compile module AndroidMouse; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.androidmouse" description="cleanup module">
+    <delete dir="${androidmouse.output.dir}"/>
+    <delete dir="${androidmouse.testoutput.dir}"/>
+  </target>
+</project>

@@ -8,11 +8,13 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeoutException;
 
 public class UDPServerThread extends Thread{
 
-    protected DatagramSocket socket = null;
+    protected static DatagramSocket socket1 = null;
+    protected static DatagramSocket socket2 = null;
+    private List<Users> userList = new ArrayList<Users>();
+
 
     public UDPServerThread() throws IOException{
         this("UDPServerThread");
@@ -20,14 +22,20 @@ public class UDPServerThread extends Thread{
 
     public UDPServerThread(String name) throws IOException{
         super(name);
-        socket = new DatagramSocket(8080);
-        socket.setSoTimeout(30000);
+        socket1 = new DatagramSocket(8080);
+        socket1.setSoTimeout(90000);
+        socket2 = new DatagramSocket();
     }
 
     public void run(){
+        String currentIp;
+        int currentTeam = 0;
+        Boolean userExists = false;
+        int userCount = 0;
 
         try {
             System.out.println("server running at " + InetAddress.getLocalHost().getHostAddress());
+            System.out.println("press ENTER to stop");
         }catch(UnknownHostException e){
             System.out.println("cannot connect to network");
         }
@@ -40,41 +48,88 @@ public class UDPServerThread extends Thread{
                 // receive data
                 UDPServer.messageReceived = false;
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
-                socket.receive(packet);
+                socket1.receive(packet);
                 UDPServer.messageReceived = true;
+
+                /* determine where the packet came from */
+                currentIp = packet.getAddress().toString();
+
+                /* check if the device has been assigned a team */
+                userExists = false;
+                for(Users user:userList){
+                    if(currentIp.equals(user.ip)){
+                        userExists = true;
+                        currentTeam = user.team;
+                    }
+                }
+
+                /* if ip isn't on the list, assign team and add to users list */
+                if(!userExists){
+                    currentTeam = userCount%2;
+                    Users user = new Users(currentIp, currentTeam);
+                    userList.add(user);
+                    System.out.println("user " + user.ip + " joined team " + user.team + "!");
+                    userCount++;
+                }
 
                 received = decodeByteMessage(packet.getData());
 
-                UDPServer.yDegrees = -1*received.get(0);
-                UDPServer.xDegrees = -1*received.get(1);
+                if(currentTeam == 1){   // team 1 (machine 2)
+                    /* send data to other machine */
+                    byte[] data = packet.getData();
+                    InetAddress address = InetAddress.getByName(UDPServer.secondaryIP);
+                    address = InetAddress.getByName(address.getHostAddress());
+                    DatagramPacket newPacket = new DatagramPacket(data, data.length, address, 8081);
+                    socket2.send(newPacket);
 
-                System.out.println("x: " + UDPServer.xDegrees + " y: " + UDPServer.yDegrees);
+                }
+                else{   // team 0 (machine 1)
+
+                    UDPServer.yDegrees = -1 * received.get(0);
+                    UDPServer.xDegrees = -1 * received.get(1);
+
+                    //System.out.println("(1) x: " + UDPServer.xDegrees + " y: " + UDPServer.yDegrees);
 
 
-                /* rotation threshold */
-                if(Math.abs(UDPServer.xDegrees)<5){UDPServer.xDegrees = 0;} // cursor won't move horizontally if it is within five degrees of 0
-                else if(UDPServer.xDegrees<-5){UDPServer.xDegrees = UDPServer.xDegrees + 5;}
-                else{UDPServer.xDegrees = UDPServer.xDegrees - 5;}
-                if(Math.abs(UDPServer.yDegrees)<5){UDPServer.yDegrees = 0;} // cursor won't move horizontally if it is within five degrees of 0
-                else if(UDPServer.yDegrees<-5){UDPServer.yDegrees = UDPServer.yDegrees + 5;}
-                else{UDPServer.yDegrees = UDPServer.yDegrees - 5;}
+                     /* rotation threshold */
+                    if (Math.abs(UDPServer.xDegrees) < 5) {
+                        UDPServer.xDegrees = 0;
+                    } // cursor won't move horizontally if it is within five degrees of 0
+                    else if (UDPServer.xDegrees < -5) {
+                        UDPServer.xDegrees = UDPServer.xDegrees + 5;
+                    } else {
+                        UDPServer.xDegrees = UDPServer.xDegrees - 5;
+                    }
+                    if (Math.abs(UDPServer.yDegrees) < 5) {
+                        UDPServer.yDegrees = 0;
+                    } // cursor won't move horizontally if it is within five degrees of 0
+                    else if (UDPServer.yDegrees < -5) {
+                        UDPServer.yDegrees = UDPServer.yDegrees + 5;
+                    } else {
+                        UDPServer.yDegrees = UDPServer.yDegrees - 5;
+                    }
 
-                sleep(50);
+                    sleep(50/UDPServer.userCount);
+                }
             }catch(IOException|InterruptedException e){
-                System.out.println("\ndisconnected");
+                socket1.close();
+                socket2.close();
                 UDPServer.running = false;
             }
         }
-        socket.close();
-        System.out.println("server stopped");
+        socket1.close();
+        socket2.close();
+        System.out.println("\nserver stopped");
+        if(UDPServer.flag){
+            System.out.println("press ENTER to finish");
+        }
     }
 
 
-    public static List<Integer> decodeByteMessage(byte[] b)
-    {
+    public static List<Integer> decodeByteMessage(byte[] b) {
         List<Integer> list = new ArrayList<Integer>();
 
-        int i1 =   b[3] & 0xFF |
+        int i1 = b[3] & 0xFF |
                 (b[2] & 0xFF) << 8 |
                 (b[1] & 0xFF) << 16 |
                 (b[0] & 0xFF) << 24;
@@ -88,20 +143,6 @@ public class UDPServerThread extends Thread{
         list.add(i2);
 
         return list;
-    }
-
-    public static byte[] createByteMessage(int a, int b)
-    {
-        return new byte[] {
-                (byte) ((a >> 24) & 0xFF),
-                (byte) ((a >> 16) & 0xFF),
-                (byte) ((a >> 8) & 0xFF),
-                (byte) (a & 0xFF),
-                (byte) ((b >> 24) & 0xFF),
-                (byte) ((b >> 16) & 0xFF),
-                (byte) ((b >> 8) & 0xFF),
-                (byte) (b & 0xFF)
-        };
     }
 
 }

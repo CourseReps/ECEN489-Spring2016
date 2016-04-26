@@ -1,6 +1,9 @@
-import java.awt.*;
 
-public class CursorThread implements Runnable {
+
+import java.awt.*;
+import java.io.InterruptedIOException;
+
+public class CursorThread extends Thread{
     private Thread cursorThread;
 
     public Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -31,7 +34,7 @@ public class CursorThread implements Runnable {
             }
 
         } catch (AWTException|InterruptedException e) {
-            e.printStackTrace();
+            System.out.println("CursorThread stopped");
             UDPServer.running = false;
         }
     }

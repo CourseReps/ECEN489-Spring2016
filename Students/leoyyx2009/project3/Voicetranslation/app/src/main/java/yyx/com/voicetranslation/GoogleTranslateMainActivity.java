@@ -1,5 +1,7 @@
 package yyx.com.voicetranslation;
 
+import android.widget.TextView;
+
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -17,6 +19,7 @@ import javax.net.ssl.HttpsURLConnection;
  * Yanxiang Yang
  */
 public class GoogleTranslateMainActivity {
+
 
     private String key;
 
@@ -73,9 +76,10 @@ public class GoogleTranslateMainActivity {
         } catch (IOException | JsonSyntaxException ex) {
             System.err.println(ex.getMessage());
         }
-
         return null;
     }
+
+
     public static void main(String[] args) {
 
         GoogleTranslateMainActivity translator = new GoogleTranslateMainActivity("AIzaSyC6GM5uq-KTaKohv_PazvgQ-GWPiT-6afk");
