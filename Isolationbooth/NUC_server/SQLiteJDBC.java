@@ -5,12 +5,25 @@ public class SQLiteJDBC
 {
     public static void main(String[] args) 
     {
+        Connection c = null;
+        try {
+                Class.forName("org.sqlite.JDBC");
+                c = DriverManager.getConnection("jdbc:sqlite:data.db");
+                c.setAutoCommit(false);
+                System.out.println("Database opened");
+                
+            } catch (Exception e) {
+                System.err.println("An error occurred");
+                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+                System.exit(1);
+            }
         while (true) 
         {
+
             Map<Double,String> avg = new HashMap<>(); //add data to map
             double rssimax = 0;  //overall max rssi
             String mac = ""; //mac address of max rssi
-            Connection c = null;
+            
             Statement stmt = null;
             ResultSet numretwlan0 = null;
             ResultSet numretwlan1 = null;
@@ -19,19 +32,11 @@ public class SQLiteJDBC
             int rowCount1 = 0;
             int rowCount2 = 0;
             //opening database
-            try {
-                Class.forName("org.sqlite.JDBC");
-                c = DriverManager.getConnection("jdbc:sqlite:data.db");
-                c.setAutoCommit(false);
-                System.out.println("Database opened");
-                stmt = c.createStatement();
-            } catch (Exception e) {
-                System.err.println("An error occurred");
-                System.err.println(e.getClass().getName() + ": " + e.getMessage());
-                System.exit(1);
-            }
+            
 
             try{
+                stmt = c.createStatement();
+
                 String numentry = "SELECT COUNT(*) FROM wlan0";
                 numretwlan0 = stmt.executeQuery(numentry);
                 // get the number of rows from the result set
@@ -61,8 +66,78 @@ public class SQLiteJDBC
                 
             //getting number of entries in table for iteration
             try{
+                long unixTime = System.currentTimeMillis() / 1000L;
+                //iterating through tables to find max rssi
+                    int rssiwlan0 = 0;
+                    int rssiwlan1 = 0;
+                    int rssiwlan2 = 0;
+
+                    Statement s1 = c.createStatement();
+                    String delete = null;
+                    PreparedStatement time = null;
+
+                    String query = "SELECT * FROM wlan0"; 
+                    ResultSet rssi0 = s1.executeQuery(query);
+                    for (int id1 = 0; id1 < rowCount; id1++)
+                    {
+                        rssi0.next();
+                        int timestamp = rssi0.getInt(3);
+                        delete = "DELETE FROM wlan0 WHERE 'Timestamp' = ?";
+                        time = c.prepareStatement(delete);
+                        System.out.println(timestamp);
+                        if(unixTime-timestamp > 120){
+                            time.setInt(1,timestamp);
+                            time.executeUpdate();
+                            c.commit();
+                            System.out.println(delete);
+                        }
+                    }
+                    rssi0.close();
+                    time.close();
+
+                    /*query = "SELECT * FROM wlan1";
+                    ResultSet rssi1 = s1.executeQuery(query);
+                    for (int id2 = 0; id2 < rowCount1; id2++)
+                    {
+                        rssi1.next();
+                        int timestamp = rssi1.getInt(3);
+                    
+                        if(unixTime-timestamp > 120){
+                            String delete = "DELETE FROM wlan1 " + "WHERE 'Timestamp' = ?";
+                            time.executeUpdate(delete);
+                            c.commit();
+                            System.out.println(delete);
+                        }
+                    }
+                    rssi1.close();
+
+                    query = "SELECT * FROM wlan2";
+                    ResultSet rssi2 = s1.executeQuery(query);
+                    for (int id3 = 0; id3 < rowCount2; id3++)
+                    {
+                        rssi2.next();
+                        int timestamp = rssi2.getInt(3);
+
+                        if(unixTime-timestamp > 120){
+                            String delete = "DELETE FROM wlan2 " +  "WHERE 'Timestamp' = ?";
+                            time.executeUpdate(delete);
+                            c.commit();
+                            System.out.println(delete);
+                        }
+                    }
+                    */
+                    //rssi2.close();
+                    s1.close();
+                    //time.close();
+            }catch(Exception e){
+                    System.err.println(e);
+                    System.exit(2);
+                }
+
+           /* try{
                 String query = "SELECT Mac_Address FROM wlan0";
                 ResultSet macrs = stmt.executeQuery(query);
+                long unixTime = System.currentTimeMillis() / 1000L;
 
                 //iterating through tables to find max rssi
                 for (int id = 0; id < rowCount; id++) 
@@ -75,14 +150,25 @@ public class SQLiteJDBC
                     String macst = macrs.getString(1);
 
                     Statement s1 = c.createStatement();
+                    Statement time = c.createStatement();
                     query = "SELECT * FROM wlan0"; 
                     ResultSet rssi0 = s1.executeQuery(query);
                     for (int id1 = 0; id1 < rowCount; id1++)
                     {
                         rssi0.next();
-                        String macwlan0 = rssi0.getString(2);
-                        if(macwlan0.equals(macst))
-                            rssiwlan0 = rssi0.getInt(1);
+                        int timestamp = rssi0.getInt(3);
+
+                        //if(unixTime-timestamp > 120){
+                            //String delete = "DELETE FROM wlan0 WHERE Timestamp = " + timestamp;
+                            //time.executeUpdate(delete);
+                            //System.out.println("delete");
+                        //}
+                        //else{
+                            String macwlan0 = rssi0.getString(2);
+                            System.out.println(macwlan0);
+                            if(macwlan0.equals(macst))
+                                rssiwlan0 = rssi0.getInt(1);
+                        //}
                     }
                     rssi0.close();
 
@@ -91,9 +177,19 @@ public class SQLiteJDBC
                     for (int id2 = 0; id2 < rowCount1; id2++)
                     {
                         rssi1.next();
+                        int timestamp = rssi1.getInt(3);
+                    
+                        if(unixTime-timestamp > 120){
+                            String delete = "DELETE FROM wlan1 WHERE Timestamp =" + timestamp;
+                            time.executeUpdate(delete);
+                            System.out.println("delete");
+                        }
+                        else{
                         String macwlan1 = rssi1.getString(2);
-                        if(macwlan1.equals(macst))
-                            rssiwlan1 = rssi1.getInt(1);
+                        System.out.println(macwlan1);
+                            if(macwlan1.equals(macst))
+                                rssiwlan1 = rssi1.getInt(1);
+                        //}
                     }
                     rssi1.close();
 
@@ -102,9 +198,19 @@ public class SQLiteJDBC
                     for (int id3 = 0; id3 < rowCount2; id3++)
                     {
                         rssi2.next();
+                        int timestamp = rssi2.getInt(3);
+
+                        if(unixTime-timestamp > 120){
+                            String delete = "DELETE FROM wlan2 WHERE Timestamp =" + timestamp;
+                            time.executeUpdate(delete);
+                            System.out.println("delete");
+                        }
+                        else{
                         String macwlan2 = rssi2.getString(2);
-                        if(macwlan2.equals(macst))
-                            rssiwlan2 = rssi2.getInt(1);
+                        System.out.println(macwlan2);
+                            if(macwlan2.equals(macst))
+                                rssiwlan2 = rssi2.getInt(1);
+                        }
                     }
                     rssi2.close();
                     s1.close();
@@ -118,7 +224,7 @@ public class SQLiteJDBC
             }catch (Exception e) {
                 System.err.println(e);
                 System.exit(2);
-            }
+            }*/
       
             for (Map.Entry<Double, String> entry : avg.entrySet()) 
             {
@@ -127,6 +233,7 @@ public class SQLiteJDBC
                     rssimax=rssiVal;
             }
             mac = avg.get(rssimax);
+
             if(rssimax < 40)
             {
             	try{
@@ -137,66 +244,14 @@ public class SQLiteJDBC
                     System.exit(3);
                 }
             }
-            
-            System.out.println(mac);
+            System.out.println("pic finished");
+            /*System.out.println(mac);
             avg.clear();
-            try{
-                long unixTime = System.currentTimeMillis() / 1000L;
-
-                String query = "SELECT Timestamp FROM wlan0";
-                ResultSet time0 = stmt.executeQuery(query);
-                
-                for (int id = 0; id < rowCount; id++) 
-                {
-                    time0.next();
-                    int timestamp = time0.getInt(1);
-
-                    if(unixTime-timestamp > 120)
-                    {
-                        String delete = "DELETE FROM wlan0 WHERE Timestamp =" + timestamp;
-                        stmt.executeQuery(delete);
-                    }
-                    
-                }
-                time0.close();
-
-                query = "SELECT Timestamp FROM wlan1";
-                ResultSet time1 = stmt.executeQuery(query);
-                for (int id = 0; id < rowCount1; id++) 
-                {
-                    time1.next();
-                    int timestamp = time1.getInt(1);
-                    
-                    if(unixTime-timestamp > 120)
-                    {
-                        String delete = "DELETE FROM wlan1 WHERE Timestamp =" + timestamp;
-                        stmt.executeQuery(delete);
-                    }
-                }
-                time1.close();
-
-                query = "SELECT Timestamp FROM wlan2";
-                ResultSet time2 = stmt.executeQuery(query);
-                for (int id = 0; id < rowCount2; id++) 
-                {
-                    time2.next();
-                    int timestamp = time2.getInt(1);
-
-                    if(unixTime-timestamp > 120)
-                    {
-                        String delete = "DELETE FROM wlan2 WHERE Timestamp =" + timestamp;
-                        stmt.executeQuery(delete);
-                    }
-                }
-                time2.close();
-            }catch (Exception e){
-                System.err.println(e);
-                System.exit(4);
-            }
-
+*/
             try{
 	            stmt.close();
-                Thread.sleep(10000);
+                //c.close();
+                //Thread.sleep(10000);
             }catch(Exception e) {
                 System.err.println(e);
                 System.exit(5);
