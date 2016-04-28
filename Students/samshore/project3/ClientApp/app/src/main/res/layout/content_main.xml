@@ -53,16 +53,15 @@
         android:ems="8"
         android:id="@+id/IPText"
         android:layout_above="@+id/button"
-        android:layout_alignRight="@+id/textView"
-        android:layout_alignEnd="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+ />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/filterLength"
-        android:hint="filter length"
+        android:hint="filter length 1-100"
         android:ems="8"
         android:inputType="number"
         android:layout_alignTop="@+id/IPText"

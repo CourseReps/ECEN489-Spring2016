@@ -1,5 +1,5 @@
 import java.sql.*;
-import java.util.concurrent.TimeUnit;
+//import java.util.concurrent.TimeUnit;
 
 /**
  * Created by tbranyon on 1/29/16.
@@ -8,6 +8,10 @@ public class RssiDbWriter
 {
     Connection c = null;
     Statement stmt = null;
+    public static int id0 = 0;
+    public static int id1 = 0;
+    public static int id2 = 0;
+    
     public RssiDbWriter()
     {   
         try{

@@ -1,12 +1,11 @@
 package com.example.fanchaozhou.project3;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 
 /**
@@ -31,12 +30,16 @@ public class MainActivity extends AppCompatActivity {
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences trainingPrefsFile = getSharedPreferences(getString(R.string.pref_file_name), Context.MODE_PRIVATE);
         faceDetector = new MyFaceDetector(this, getResources().openRawResource(R.raw.haarcascade_frontalface_alt), FD_FILE_NAME);
         faceRecognizer = new MyFaceRecognizer(MyFaceRecognizer.RECOGNIZER_TYPE.LBPH);
-        if(trainingPrefsFile.getBoolean(getString(R.string.pref_is_trained), false)){
-            File trainingXmlFile = new File(getFilesDir(), getString(R.string.fr_file_name));
+
+        File trainingXmlFile = new File(getFilesDir(), getString(R.string.fr_file_name));
+        try{
+            FileInputStream fileInputStream = new FileInputStream(trainingXmlFile);
             faceRecognizer.load(trainingXmlFile.getPath());
+            fileInputStream.close();
+        } catch (Exception e){
+            System.out.println(e);
         }
 
         recordList = new ArrayList<>();

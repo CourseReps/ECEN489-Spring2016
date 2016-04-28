@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public static boolean running;
     public static String targetAddress;
     public static boolean paused;
-    public int length;
+    public static int length;
 
     List<Float> pitchData = new ArrayList<Float>(Collections.nCopies(100,0f)); // initialize some data for initial filtering
     List<Float> rollData = new ArrayList<Float>(Collections.nCopies(100,0f));
@@ -52,10 +52,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         EditText editText = (EditText)findViewById(R.id.IPText);
+        EditText filterLength = (EditText)findViewById(R.id.filterLength);
         final TextView text = (TextView) findViewById(R.id.textView);
 
         try {
             editText.setCursorVisible(false);
+            filterLength.setCursorVisible(false);
         }catch(NullPointerException e){
             e.printStackTrace();
         }
@@ -71,19 +73,21 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             @Override
             public void run(){
                 try{
-                    while(!paused) {
-                        Thread.sleep(100);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                if (running) {
-                                    text.setText("sending data");
-                                } else {
-                                    text.setText("disconnected");
+                    while(true) {
+                        while (!paused) {
+                            Thread.sleep(100);
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if (running) {
+                                        text.setText("sending data");
+                                    } else {
+                                        text.setText("disconnected");
+                                    }
                                 }
-                            }
 
-                        });
+                            });
+                        }
                     }
                 }catch(NullPointerException|InterruptedException e){
                     e.printStackTrace();
@@ -194,8 +198,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                         /* clear data lists when they get large */
                         if(pitchData.size()>1200){
-                            pitchData.subList(Integer.parseInt(filterText.getText().toString()), pitchData.size()).clear(); // clear data, but keep enough to continue filtering
-                            rollData.subList(Integer.parseInt(filterText.getText().toString()), rollData.size()).clear();
+                            pitchData.subList(length, pitchData.size()).clear(); // clear data, but keep enough to continue filtering
+                            Log.e("tag", ":)");
+                            rollData.subList(length, rollData.size()).clear();
                         }
 
                         sleep(50);  // wait
@@ -242,28 +247,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         running = false;
     }
 
-    public static List<Integer> decodeByteMessage(byte[] b)
-    {
+    public static List<Integer> decodeByteMessage(byte[] b) {
         List<Integer> list = new ArrayList<Integer>();
 
-        int i1 =   b[3] & 0xFF |
-                (b[2] & 0xFF) << 8 |
-                (b[1] & 0xFF) << 16 |
-                (b[0] & 0xFF) << 24;
+        int i0 = b[0] & 0xFF;
+        int i1 = b[1] & 0xFF;
 
-        int i2 = b[7] & 0xFF |
-                (b[6] & 0xFF) << 8 |
-                (b[5] & 0xFF) << 16 |
-                (b[4] & 0xFF) << 24;
-
+        list.add(i0);
         list.add(i1);
-        list.add(i2);
 
         return list;
     }
 
-    public static byte[] createByteMessage(int a, int b)
-    {
+    public static byte[] createByteMessage(int a, int b) {
         return new byte[] {
                 (byte) ((a >> 24) & 0xFF),
                 (byte) ((a >> 16) & 0xFF),
