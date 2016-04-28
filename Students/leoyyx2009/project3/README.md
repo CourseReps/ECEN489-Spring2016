@@ -17,3 +17,22 @@ Basically, I did two things:
 I utilize Google Translate API to implement this functionality. There are a bunch of documents and tutorials about how to use this API. Basically, following these steps:
 * Select or create a Cloud Platform Console(Like our task 4 google fusion table)
 * Enable billing for your Project
+* Enable the API and any related services
+* Get API key
+* Using a URL of the following form: https://www.googleapis.com/language/translate/v2?parameters
+* Reference website: https://cloud.google.com/translate/docs/
+
+To simplify this app, I only set 5 language options for users to choose from. Actually, the number of languages it can translate can be up to 90.
+
+###Tomcat server
+--
+Basically, I apply what we have learned from assigment 4.
+There are two tutorials once I learned: 
+https://tomcat.apache.org/tomcat-7.0-doc/building.html; http://veereshr.com/Android/AndroidToServlet 
+
+###Communication
+--
+To finish this part, I utilize the socket to achieve the communication. The sockets of android work exactly as they do in Java.
+
+To do so, we need first to establish a server: ServerSocket server = new ServerSocket(portNumber, queueLength); When you open this app, it will start a thread to build this server and wait for connections. Then, if you click SEND button, this will call another activity which performance as a client. You can send a message to another person who is using the app at the same time(you need to know the server IP address). The message will show on the EDITTEXT for translation, which means the one who get the message can translate the message to the language he or she like. Also, the message can be entered by dictating or typing.
+
