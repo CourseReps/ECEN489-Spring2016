@@ -1,6 +1,13 @@
-package yyx.com.voicetranslation;
+/**
+ * @file MainActivity.java
+ *
+ * @brief This is the main activity for the APP
+ *
+ **/
+package yyx.com.voicetranslation; // package name
 
-
+//import
+//----------------------------------------------------------------------------------------
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
@@ -13,9 +20,6 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,33 +30,28 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import java.io.BufferedWriter;
-import java.io.EOFException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
-import java.net.InetAddress;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Locale;
-
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.*;
+//----------------------------------------------------------------------------------------
 
 /**
  *
- * Yanxiang Yang
+ * Author: Yanxiang Yang
  */
 
 public class MainActivity extends ActionBarActivity {
 
-    public final static String EXTRA_MESSAGE = "yyx.com.voicetranslation.message";
+    //public final static String EXTRA_MESSAGE = "yyx.com.voicetranslation.message";
     GoogleTranslateMainActivity translator;
     EditText translateedittext;
     TextView translatabletext;
-    TextView targetLanguages;
     ImageButton speakbutton;
     ImageButton listenbutton;
     TextToSpeech textToSpeech;
@@ -64,8 +63,7 @@ public class MainActivity extends ActionBarActivity {
     Handler updateConversationHandler;
 
     Thread serverThread = null;
-
-
+    
     public static final int SERVERPORT = 6000;
 
     @Override
