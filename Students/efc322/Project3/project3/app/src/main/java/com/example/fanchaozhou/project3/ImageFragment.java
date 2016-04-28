@@ -1,4 +1,4 @@
- package com.example.fanchaozhou.project3;
+package com.example.fanchaozhou.project3;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -38,18 +38,10 @@ import org.json.JSONObject;
 
 import static com.googlecode.javacv.cpp.opencv_core.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.io.*;
+import java.net.*;
+import java.util.*;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * Created by Fanchao Zhou on 4/2/2016.
@@ -64,8 +56,8 @@ public class ImageFragment extends Fragment implements SensorEventListener{
     private static final String NO_CAMERA_HINT = "Camera NOT Avalaible";   //The hint for an unavalaible camera
     private static final String ADD_TYPE_DIALOG_TAG = "Adding Types Dialog";//Tag for the dialog when switching from running to training
     private static final String TYPE_LIST_DIALOG_TAG = "Type List Dialog";
-    private static final int MIN_PHOTOS = 8;
-    private static final int MAX_TX = 20;
+    private static final int MIN_PHOTOS = 7;
+    private static final int MAX_TX = 10;
     private static final int FACE_LEN = 650;
     private Uri photoURI;
     private Bitmap thumbnailImage;
@@ -415,11 +407,17 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                         final String name;
                         CvRect face = MainActivity.faceDetector.detectFace(imageFile);      //Get the location of the Face in the image
 
-                        if(face.height()==0 && face.width()==0){
+                        if(face.height()==0 && face.width()==0){    // No face is detected in the photo
                             resultTextView.setText(getString(R.string.no_face_detected));
-                        } else {
+                        } else {                                    //A face is detected in the photo
                             try{
-                                //First extract the face from the image
+                                //Copy the original photo into a new file
+                                final File transPhotoFile = createImageFile("Uploading");
+                                FileOutputStream transPhotoOS = new FileOutputStream(transPhotoFile);
+                                Bitmap transPhoto = BitmapFactory.decodeStream(new FileInputStream(imageFile));
+                                transPhoto.compress(Bitmap.CompressFormat.JPEG, 100, transPhotoOS);
+
+                                //Extract the face from the image
                                 BitmapRegionDecoder regionDecoder = BitmapRegionDecoder.newInstance(imageFilePath, false);
                                 Bitmap facePhoto = regionDecoder.decodeRegion(
                                         new Rect(face.x(), face.y(), face.x() + face.width(), face.y() + face.height()), null);
@@ -430,6 +428,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
 
                                 //Run the classification algorithm
                                 label = MainActivity.faceRecognizer.predict(imageFile);
+                                imageFile.delete();
                                 for(cnt = 0; cnt < MainActivity.typeList.size(); cnt++){
                                     if(label == MainActivity.typeList.get(cnt).typeID){
                                         break;
@@ -442,6 +441,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                 }
                                 resultTextView.setText(name);
 
+                                //Upload the photo and the recognition result to the server
                                 Thread sendPhotoThread = new Thread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -450,7 +450,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                         while(cnt<MAX_TX && !isSuccessful){
                                             try{
                                                 ///////// Read the image into a byte array ///////////
-                                                FileInputStream fileInputStream = new FileInputStream(imageFile);
+                                                FileInputStream fileInputStream = new FileInputStream(transPhotoFile);
                                                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
                                                 byte[] buffer = new byte[ 1024 ];
                                                 while (fileInputStream.read(buffer) != -1) {
@@ -507,7 +507,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                             }
                                         }
 
-                                        imageFile.delete();
+                                        transPhotoFile.delete();
                                     }
                                 });
 
