@@ -176,15 +176,15 @@ public class MainActivity extends ActionBarActivity {
         });
 
         Button sendbutton = (Button) findViewById(R.id.sendbutton);
-
         sendbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                sendMessage(v);
-
+                new Thread(new Runnable(){
+                    public void run(){
+                        sendMessage();
+                    }
+                }).start();
             }
-
         });
 
 
@@ -200,7 +200,13 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                promptSpeechInput();
+                new Thread(new Runnable(){
+                    public void run(){
+                        promptSpeechInput();
+                    }
+
+                }).start();
+
             }
         });
 
@@ -231,7 +237,7 @@ public class MainActivity extends ActionBarActivity {
                 try {
                     //EditText address = (EditText) findViewById(R.id.remoteAddress);
                     //address.getText().toString()
-                    String address = "172.17.105.62";
+                    String address = "10.202.108.54";
                     String serverAddress = "http://"+ address + ":8080/optout4/yy";
                     URL url = new URL(serverAddress);
 
@@ -288,11 +294,14 @@ public class MainActivity extends ActionBarActivity {
 
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault());
+     //   intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
+      //          RecognizerIntent.LANGUAGE_MODEL_WEB_SEARCH);
+      //  intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_PREFERENCE, Locale.CHINA);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh_CN");
+      //  intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en_US");
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
-                getString(R.string.speech_prompt));
+                "say something ...");
+
         try {
             startActivityForResult(intent,1000);
         } catch (ActivityNotFoundException a) {
@@ -396,12 +405,12 @@ public class MainActivity extends ActionBarActivity {
             sendHTTPdata(data);
 
         } catch (Exception e) {
-            System.err.println(e); //no idea where this goes
+            System.err.println(e);
         }
 
         }
 
-    public void sendMessage(View view){
+    public void sendMessage(){
         Intent intent = new Intent(this, Client.class);
         startActivity(intent);
 
@@ -414,7 +423,7 @@ public class MainActivity extends ActionBarActivity {
         public void run() {
             Socket socket = null;
             try {
-                serverSocket = new ServerSocket(SERVERPORT);
+                serverSocket = new ServerSocket(SERVERPORT,100);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -480,8 +489,8 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public void run() {
-            TextView text = (TextView)findViewById(R.id.translatabletext);
-            text.setText(text.getText().toString()+"Client Says: "+ msg + "\n");
+            EditText text = (EditText)findViewById(R.id.translateedittext);
+            text.setText(msg + "\n");
         }
     }
 
