@@ -1,7 +1,16 @@
+/**
+ * @file GoogleTranslateMainActivity.java
+ *
+ * Yanxiang Yang
+ *
+ * @brief This is not a real activity, just a java class to call google translate API
+ *
+ **/
 package yyx.com.voicetranslation;
 
+//import
+//----------------------------------------------------------------------------------------
 import android.widget.TextView;
-
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -13,13 +22,15 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
 import javax.net.ssl.HttpsURLConnection;
+//----------------------------------------------------------------------------------------
 
 /**
+ * @class GoogleTranslateMainActivity
  *
- * Yanxiang Yang
+ * @brief This class is to use Google Translate API, and get the data(Json format).
+ *
  */
 public class GoogleTranslateMainActivity {
-
 
     private String key;
 
@@ -27,9 +38,7 @@ public class GoogleTranslateMainActivity {
         key = apiKey;
     }
 
-    public GoogleTranslateMainActivity() {
-
-    }
+    public GoogleTranslateMainActivity() {}
 
     String translte(String text, String from, String to) {
         StringBuilder result = new StringBuilder();
@@ -81,9 +90,8 @@ public class GoogleTranslateMainActivity {
 
 
     public static void main(String[] args) {
-
         GoogleTranslateMainActivity translator = new GoogleTranslateMainActivity("AIzaSyC6GM5uq-KTaKohv_PazvgQ-GWPiT-6afk");
-        String text = translator.translte("bahay", "en", "zh");
+        String text = translator.translte("Yanxiang Yang", "en", "zh");
         System.out.println(text);
     }
 }
