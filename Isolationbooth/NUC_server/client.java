@@ -10,16 +10,16 @@ public class client
 {
     public static void main(String[] args)
     {
-        String file = "default";
+        String file = "default.jpeg";
         try{
-            file = args[0];
+            file = args[0] + ".jpeg";
             System.out.println(file);
         }catch(Exception e){
             System.err.println("Argument" + args[0] + " must be an String.");
             System.exit(1);
         }
         try{
-            String addr_str = "10.202.103.231"; //JOptionPane.showInputDialog("Enter IP");
+            String addr_str = "10.202.103.249"; //JOptionPane.showInputDialog("Enter IP");
             InetAddress addr = InetAddress.getByName(addr_str);
             Socket connection = new Socket(addr, 2000);
             ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());

@@ -207,15 +207,15 @@ public class SQLiteJDBC
             	System.out.println("Executing picture request");  //runs get picture from android camera program
                 System.out.println(mac);
                 System.out.println(rssimax);
-
-                Runtime.getRuntime().exec("java client " + mac);
+				String cmd = "java client " + mac;
+                Runtime.getRuntime().exec(cmd);
                 String delete = "DELETE FROM wlan1 WHERE Mac_Address = ?";
                 PreparedStatement time = c.prepareStatement(delete);
                 time.setString(1,mac);
                 time.execute();
                 time.close();
                 Thread.sleep(5000);
-
+				System.out.println("pic received");
                 }catch(Exception e){
                     System.err.println(e);
                     System.exit(3);
@@ -225,7 +225,7 @@ public class SQLiteJDBC
 
             try{
 	            stmt.close();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             }catch(Exception e) {
                 System.err.println(e);
                 System.exit(5);
