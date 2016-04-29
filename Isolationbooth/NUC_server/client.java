@@ -11,7 +11,7 @@ public class client
     public static void main(String[] args)
     {
         try{
-            String addr_str = JOptionPane.showInputDialog("Enter IP");
+            String addr_str = "10.202.103.231"; //JOptionPane.showInputDialog("Enter IP");
             InetAddress addr = InetAddress.getByName(addr_str);
             Socket connection = new Socket(addr, 2000);
             ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());
