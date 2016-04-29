@@ -1,5 +1,15 @@
+/**
+ * @file Client.java
+ *
+ * Yanxiang Yang
+ *
+ * @brief This is an activity to run as a client so as to communicate with server
+ *
+ **/
 package yyx.com.voicetranslation;
 
+//import
+//----------------------------------------------------------------------------------------
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -20,13 +30,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+//----------------------------------------------------------------------------------------
 
+/**
+ * @class Client
+ *
+ * @brief use socket outputstream to send data to server
+ *
+ */
 public class Client extends Activity {
 
     private Socket socket;
 
     private static final int SERVERPORT = 6000;
-    private String SERVER_IP = "10.202.106.166";//"10.202.106.166";
+    private String SERVER_IP = "172.17.106.250";//"172.17.106.250";
 
     private ImageButton speakbutton;
 
@@ -38,56 +55,55 @@ public class Client extends Activity {
         /*
         Button enter=(Button)findViewById(R.id.myButton1);
         enter.setOnClickListener(new View.OnClickListener() {
-            EditText et1 = (EditText) findViewById(R.id.EditText01);
+            EditText et1 = (EditText) findViewById(R.id.EditText02);
 
             @Override
             public void onClick(View v) {
                 SERVER_IP = et1.getText().toString();
-
             }
-
 
         });
         */
-
-
         speakbutton = (ImageButton) findViewById(R.id.SpeakBtn1);
         speakbutton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                new Thread(new Runnable(){
-                   public void run(){
-                promptSpeechInput();
+                new Thread(new Runnable() {
+                    public void run() {
+                        promptSpeechInput();
                     }
                 }).start();
             }
         });
 
         new Thread(new ClientThread()).start();
+
     }
 
     public void onClick(View view) {
-        try {
-            EditText et = (EditText) findViewById(R.id.EditText01);
-            String str = et.getText().toString();
+            try {
+                EditText et = (EditText) findViewById(R.id.EditText01);
+                String str = et.getText().toString();
 
-
-
-
-            PrintWriter out = new PrintWriter(new BufferedWriter(
-                    new OutputStreamWriter(socket.getOutputStream())),
-                    true);
-            out.println(str);
-        } catch (UnknownHostException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                PrintWriter out = new PrintWriter(new BufferedWriter(
+                        new OutputStreamWriter(socket.getOutputStream())),
+                        true);
+                out.println(str);
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
     }
+
+    /**
+     * @fn promptSpeechInput
+     * @brief open the recognizer
+     */
     private void promptSpeechInput() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh_CN");
@@ -103,8 +119,9 @@ public class Client extends Activity {
     }
 
     /**
-     * Receiving speech input
-     * */
+     * @fn onActivityResult
+     * @brief Receiving speech input
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -125,7 +142,12 @@ public class Client extends Activity {
         }
     }
 
-
+    /**
+     * @class ClientTread
+     *
+     * @brief initialize the client, and establish the connection
+     *
+     */
     class ClientThread implements Runnable {
 
         @Override
