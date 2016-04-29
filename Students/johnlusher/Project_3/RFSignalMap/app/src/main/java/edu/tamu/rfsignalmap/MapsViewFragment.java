@@ -282,6 +282,7 @@ public class MapsViewFragment extends Fragment implements OnMapReadyCallback, On
                 {
                     /// Create a heat map tile provider, passing it the latlngs of the rf data.
                     mProvider = new HeatmapTileProvider.Builder()
+                            .radius(50)
                             .weightedData(list)
                             .build();
 
