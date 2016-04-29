@@ -179,17 +179,11 @@ public class SQLiteJDBC
                     }
                     rssi2.close();
                     s1.close();
-<<<<<<< HEAD
+                    
 					if(rssiwlan0 != 0 && rssiwlan1 != 0 && rssiwlan2 !=0){
                     	double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2)); //magnitude of rssi
                     	avg.put(rssimag,macst); //adds rssi and associated MAC address to map
                     }
-=======
-                        if(rssiwlan0 != 0 && rssiwlan1 != 0 && rssiwlan2 != 0){ 
-                            double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2)); //magnitude of rssi
-                            avg.put(rssimag,macst); //adds rssi and associated MAC address to map
-                        }
->>>>>>> 9a64d55de76a1652fbb5bee187abfa38efa5250b
 
                 }
                 macrs.close();
@@ -213,17 +207,15 @@ public class SQLiteJDBC
             	System.out.println("Executing picture request");  //runs get picture from android camera program
                 System.out.println(mac);
                 System.out.println(rssimax);
-<<<<<<< HEAD
-                Runtime.getRuntime().exec("java client");
+
+                Runtime.getRuntime().exec("java client " + mac);
                 String delete = "DELETE FROM wlan1 WHERE Mac_Address = ?";
                 PreparedStatement time = c.prepareStatement(delete);
                 time.setString(1,mac);
                 time.execute();
                 time.close();
                 Thread.sleep(5000);
-=======
-                Runtime.getRuntime().exec("java client " + mac);
->>>>>>> 9a64d55de76a1652fbb5bee187abfa38efa5250b
+
                 }catch(Exception e){
                     System.err.println(e);
                     System.exit(3);
