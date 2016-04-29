@@ -178,9 +178,10 @@ public class SQLiteJDBC
                     }
                     rssi2.close();
                     s1.close();
-
-                    double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2)); //magnitude of rssi
-                    avg.put(rssimag,macst); //adds rssi and associated MAC address to map
+                        if(rssiwlan0 != 0 && rssiwlan1 != 0 && rssiwlan2 != 0){ 
+                            double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2)); //magnitude of rssi
+                            avg.put(rssimag,macst); //adds rssi and associated MAC address to map
+                        }
 
                 }
                 macrs.close();
@@ -203,7 +204,7 @@ public class SQLiteJDBC
             	System.out.println("Executing picture request");  //runs get picture from android camera program
                 System.out.println(mac);
                 System.out.println(rssimax);
-                Runtime.getRuntime().exec("java client");
+                Runtime.getRuntime().exec("java client " + mac);
                 }catch(Exception e){
                     System.err.println(e);
                     System.exit(3);
