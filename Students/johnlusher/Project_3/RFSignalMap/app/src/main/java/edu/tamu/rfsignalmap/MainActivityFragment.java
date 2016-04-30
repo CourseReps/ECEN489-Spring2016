@@ -70,6 +70,9 @@ public class MainActivityFragment extends Fragment implements
     //------------------------------------------------------------------------------------------------------------------
     /// User Interface Objects
     TextView tvRSSI;                                                    /// Text View for RSSI
+    TextView tvRSSI2;                                                   /// Text View for RSSI
+    TextView tvRSSI3;                                                   /// Text View for RSSI
+    TextView tvRSSICell;                                                /// Text View for RSSI Cell
     TextView tvLat;                                                     /// Text View for Lat
     TextView tvLong;                                                    /// Text View for Long
     TextView tvYaw;                                                     /// Text View for Yaw
@@ -84,6 +87,14 @@ public class MainActivityFragment extends Fragment implements
     private UsbSerialPort port;
     private SerialInputOutputManager mSerialIoManager;
     private final ExecutorService mExecutor = Executors.newSingleThreadExecutor();
+
+    private UsbSerialPort port_2;
+    private SerialInputOutputManager mSerialIoManager_2;
+    private final ExecutorService mExecutor_2 = Executors.newSingleThreadExecutor();
+
+    private UsbSerialPort port_3;
+    private SerialInputOutputManager mSerialIoManager_3;
+    private final ExecutorService mExecutor_3 = Executors.newSingleThreadExecutor();
     //------------------------------------------------------------------------------------------------------------------
 
     //------------------------------------------------------------------------------------------------------------------
@@ -92,8 +103,6 @@ public class MainActivityFragment extends Fragment implements
     static RFData CurrenSample = new RFData();                                 /// Current RF Data
     static boolean first_time = true;
     static private double CellRSSI = -115.0;
-
-    int count = 0;
 
     //------------------------------------------------------------------------------------------------------------------
     /// Handlers
@@ -114,20 +123,13 @@ public class MainActivityFragment extends Fragment implements
     private final ArrayList<String> dataList;
     static private ArrayAdapter<String> dataListAdaptor;
 
-
-    boolean first_comm = true;
     boolean online = false;
-
-    private String rx_data = "";
-    private int datarx = 0;
-    private boolean got_packet = true;
+    boolean online_2 = false;
+    boolean online_3 = false;
     private double XBeeRSSI = 9999.0;
-    private boolean sending_data = false;
-    private int cmdmd_count = 0;
-
 
     //------------------------------------------------------------------------------------------------------------------
-    // SERIAL PORT LISTENER
+    // SERIAL PORT LISTENER - #1
     //------------------------------------------------------------------------------------------------------------------
     private final SerialInputOutputManager.Listener mListener = new SerialInputOutputManager.Listener() {
 
@@ -156,10 +158,99 @@ public class MainActivityFragment extends Fragment implements
                 // Read data from Teensy device (based upon project by Paul Crouther) - JSON Object being streamed
                 // to serial port at 9600 bps, includes IDs and RSSI, Note: RSSI is pos, actually is negative.
                 String newrx = new String(data, "UTF-8");
-                JSONObject serialJSONObj = new JSONObject(newrx);
-                CurrenSample.XbeeID  = serialJSONObj.getInt(RXID);
-                CurrenSample.DeviceID = serialJSONObj.getInt(TXID);
-                XBeeRSSI = -1.0 * serialJSONObj.getDouble(RSSI);
+                if (newrx.contains("analog") == true) XBeeRSSI = -120.0;
+                else {
+                    JSONObject serialJSONObj = new JSONObject(newrx);
+                    CurrenSample.XbeeID = serialJSONObj.getInt(RXID);
+                    CurrenSample.DeviceID = serialJSONObj.getInt(TXID);
+                    XBeeRSSI = -1.0 * serialJSONObj.getDouble(RSSI);
+                }
+
+            } catch (Exception e) {
+            }
+        }
+    };
+
+
+    //------------------------------------------------------------------------------------------------------------------
+    // SERIAL PORT LISTENER - #2
+    //------------------------------------------------------------------------------------------------------------------
+    private final SerialInputOutputManager.Listener mListener_2 = new SerialInputOutputManager.Listener() {
+
+        private final static String RXID = "Receive ID";
+        private final static String TXID = "Transmit ID";
+        private final static String RSSI = "RSSI";
+
+        @Override
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fun SerialInputOutputManager.Listener:onRunError
+         * @brief On Run Error
+         */
+        public void onRunError(Exception e) {
+        }
+
+        @Override
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fun SerialInputOutputManager.Listener:onNewData
+         * @brief On New Data
+         */
+        public void onNewData(final byte[] data) {
+            try {
+                // Append data to the incomming string buffer
+                // Read data from Teensy device (based upon project by Paul Crouther) - JSON Object being streamed
+                // to serial port at 9600 bps, includes IDs and RSSI, Note: RSSI is pos, actually is negative.
+                String newrx = new String(data, "UTF-8");
+                if (newrx.contains("analog") == true) CurrenSample.RSSI2 = -120.0;
+                else {
+                    JSONObject serialJSONObj = new JSONObject(newrx);
+                    CurrenSample.XbeeID2 = serialJSONObj.getInt(RXID);
+                    CurrenSample.DeviceID2 = serialJSONObj.getInt(TXID);
+                    CurrenSample.RSSI2 = -1.0 * serialJSONObj.getDouble(RSSI);
+                }
+            } catch (Exception e) {
+            }
+        }
+    };
+
+    //------------------------------------------------------------------------------------------------------------------
+    // SERIAL PORT LISTENER - #3
+    //------------------------------------------------------------------------------------------------------------------
+    private final SerialInputOutputManager.Listener mListener_3 = new SerialInputOutputManager.Listener() {
+
+        private final static String RXID = "Receive ID";
+        private final static String TXID = "Transmit ID";
+        private final static String RSSI = "RSSI";
+
+        @Override
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fun SerialInputOutputManager.Listener:onRunError
+         * @brief On Run Error
+         */
+        public void onRunError(Exception e) {
+        }
+
+        @Override
+        //------------------------------------------------------------------------------------------------------------------
+        /**
+         * @fun SerialInputOutputManager.Listener:onNewData
+         * @brief On New Data
+         */
+        public void onNewData(final byte[] data) {
+            try {
+                // Append data to the incomming string buffer
+                // Read data from Teensy device (based upon project by Paul Crouther) - JSON Object being streamed
+                // to serial port at 9600 bps, includes IDs and RSSI, Note: RSSI is pos, actually is negative.
+                String newrx = new String(data, "UTF-8");
+                if (newrx.contains("analog") == true) CurrenSample.RSSI3 = -120.0;
+                {
+                    JSONObject serialJSONObj = new JSONObject(newrx);
+                    CurrenSample.XbeeID3 = serialJSONObj.getInt(RXID);
+                    CurrenSample.DeviceID3 = serialJSONObj.getInt(TXID);
+                    CurrenSample.RSSI3 = -1.0 * serialJSONObj.getDouble(RSSI);
+                }
             } catch (Exception e) {
             }
         }
@@ -192,7 +283,22 @@ public class MainActivityFragment extends Fragment implements
             else CurrenSample.RSSI = CellRSSI;
 
             // Update data on UI
-            if (tvRSSI != null) tvRSSI.setText(String.format("%3.0f", CurrenSample.RSSI) + " dBm");
+            if (tvRSSI != null)
+            {   // Print data if available, if not then print na
+                if (XBeeRSSI <= 0.0) tvRSSI.setText(String.format("%3.0f", XBeeRSSI) + "dBm");
+                else tvRSSI.setText("- na -");
+            }
+            if (tvRSSI2 != null)
+            {   // Print data if available, if not then print na
+                if (CurrenSample.RSSI2 <= 0.0) tvRSSI2.setText(String.format("%3.0f", CurrenSample.RSSI2) + "dBm");
+                else tvRSSI2.setText("- na -");
+            }
+            if (tvRSSI3 != null)
+            {   // Print data if available, if not then print na
+                if (CurrenSample.RSSI3 <= 0.0) tvRSSI3.setText(String.format("%3.0f", CurrenSample.RSSI3) + "dBm");
+                else tvRSSI3.setText("- na -");
+            }
+            if (tvRSSICell != null) tvRSSICell.setText(String.format("%3.0f", CellRSSI) + "dBm");
             if (tvLat != null) tvLat.setText(String.format("%.8f", CurrenSample.Latitude) + "°");
             if (tvLong != null) tvLong.setText(String.format("%.8f", CurrenSample.Longitude) + "°");
             if (tvYaw != null) tvYaw.setText(String.format("%3.1f", CurrenSample.Yaw) + "°");
@@ -232,6 +338,10 @@ public class MainActivityFragment extends Fragment implements
         dataList = new ArrayList<>();
         CurrenSample.XbeeID = 1;
         CurrenSample.DeviceID = 2;
+        CurrenSample.XbeeID2 = 1;
+        CurrenSample.DeviceID2 = 2;
+        CurrenSample.XbeeID3 = 1;
+        CurrenSample.DeviceID3 = 2;
     }
 
 
@@ -301,23 +411,64 @@ public class MainActivityFragment extends Fragment implements
             return;
         }
 
-        /// Open a connection to the first available driver.
-        UsbSerialDriver driver = availableDrivers.get(0);
-        UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
-        List<UsbSerialPort> portList = driver.getPorts();
-        port = portList.get(0);
+        /// Open a connection to the first available driver. This is for RSSI #1
+        // Try to open Port - 0
         try{
-            // Open the port, create connection, set baud rate and listner...
+            UsbSerialDriver driver = availableDrivers.get(0);
+            UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
+            List<UsbSerialPort> portList = driver.getPorts();
+            port = portList.get(0);
+
+            // Open the port, create connection, set baud rate and listener...
             port.open(connection);
             SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
             int BaudRate = 9600;
             port.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
             online = true;
-
             mSerialIoManager = new SerialInputOutputManager(port, mListener);
             mExecutor.submit(mSerialIoManager);
         } catch(Exception e) {
             online = false;
+            System.out.println(e.getMessage());
+        }
+
+        /// Open a connection to the first available driver. This is for RSSI #2
+        // Try to open Port - 1
+        try{
+            UsbSerialDriver driver2 = availableDrivers.get(1);
+            UsbDeviceConnection connection2 = manager.openDevice(driver2.getDevice());
+            List<UsbSerialPort> portList2 = driver2.getPorts();
+            port_2 = portList2.get(0);
+            // Open the port, create connection, set baud rate and listener...
+            port_2.open(connection2);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            int BaudRate = 9600;
+            port_2.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+            online_2 = true;
+            mSerialIoManager_2 = new SerialInputOutputManager(port_2, mListener_2);
+            mExecutor_2.submit(mSerialIoManager_2);
+        } catch(Exception e) {
+            online_2 = false;
+            System.out.println(e.getMessage());
+        }
+
+        /// Open a connection to the first available driver. This is for RSSI #3
+        // Try to open Port - 1
+        try{
+            UsbSerialDriver driver3 = availableDrivers.get(2);
+            UsbDeviceConnection connection3 = manager.openDevice(driver3.getDevice());
+            List<UsbSerialPort> portList3 = driver3.getPorts();
+            port_3 = portList3.get(0);
+            // Open the port, create connection, set baud rate and listener...
+            port_3.open(connection3);
+            SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+            int BaudRate = 9600;
+            port_3.setParameters(BaudRate, 8, UsbSerialPort.STOPBITS_1, UsbSerialPort.PARITY_NONE);
+            online_3 = true;
+            mSerialIoManager_3 = new SerialInputOutputManager(port_3, mListener_3);
+            mExecutor_3.submit(mSerialIoManager_3);
+        } catch(Exception e) {
+            online_3 = false;
             System.out.println(e.getMessage());
         }
 
@@ -438,6 +589,15 @@ public class MainActivityFragment extends Fragment implements
         // RSSI
         tvRSSI = (TextView) view.findViewById(R.id.textRSSI);
         tvRSSI.setText("");
+        // RSSI2
+        tvRSSI2 = (TextView) view.findViewById(R.id.textRSSI2);
+        tvRSSI2.setText("");
+        // RSSI3
+        tvRSSI3 = (TextView) view.findViewById(R.id.textRSSI3);
+        tvRSSI3.setText("");
+        // RSSI3
+        tvRSSICell = (TextView) view.findViewById(R.id.textRSSICell);
+        tvRSSICell.setText("");
         // Lat
         tvLat = (TextView) view.findViewById(R.id.textLat);
         tvLat.setText("-");

@@ -27,9 +27,15 @@ import java.util.Date;
 public class RFData
 {
     public int SampleNumber;
+    public double RSSI;
     public int XbeeID;
     public int DeviceID;
-    public double RSSI;
+    public double RSSI2;
+    public int XbeeID2;
+    public int DeviceID2;
+    public double RSSI3;
+    public int XbeeID3;
+    public int DeviceID3;
     public String CellSignalStrength;
     public double Latitude;
     public double Longitude;
@@ -50,6 +56,9 @@ public class RFData
         SampleNumber = -1;                                              /// Default is -1 (undefined)
         XbeeID = -1;                                                    /// Default is -1 (undefined)
         DeviceID = -1;                                                  /// Default is -1 (undefined)
+        RSSI = 9999.99;                                                 /// Default is -9999.99 (not valid)
+        RSSI2 = 9999.99;                                                /// Default is -9999.99 (not valid)
+        RSSI3 = 9999.99;                                                /// Default is -9999.99 (not valid)
     }
 }
 
