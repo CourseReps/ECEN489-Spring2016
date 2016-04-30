@@ -1,7 +1,7 @@
 #Project 3 - RF Signal Strength Mapping Tool - John Lusher II
 
 ##Synopsis 
-This project will take the captured signal strength from a Digi International XBee device, the current geographical location (Lat/Long), 
+This project will take the captured signal strength from up to three Digi International XBee devices, the current geographical location (Lat/Long), 
 the orientation of the antenna and current time/date and store the store the data into a MySQL database located on a remote server.  This application will be deployed on an Android device, such as the Nexus 6P.  The application shall be able to store the sampled data to a SQL database on a remote server (MySQL).  Also, this application will display the current RSSI, location, and orientation data.  The application will be stable and easy to use.  
  
 ### Improvements from previous projects (Project 1 and Project 2)
@@ -9,7 +9,7 @@ the orientation of the antenna and current time/date and store the store the dat
 First, the application was recreated from a new project whereas all legacy modules and code were rebuilt as needed and issues corrected.  A new GUI was created that more closely
 matched what I felt was the intended use case.  This project focused on the application being stable and able to be used in a research application immediately.  The issues with the application
 causing itself to crash which rotated, paused, shutdown, or consuming device resoures was examined an a streamlined approach was taken to ensure that the application did not behave in this way.  
-All code was commented and was written to be easy to make modification and additions to it quickly.  
+All code was commented and was written to be easy to make modification and additions to it quickly.  Also, the ability to read multiple devices was added.
 
 There are two main sections of the application, the main view fragment and the GoogleMap Display with the RF data overlayed.  
 
