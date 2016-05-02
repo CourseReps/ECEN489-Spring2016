@@ -31,9 +31,15 @@ Basically, I apply what we have learned from assigment 4.
 There are two tutorials once I learned: 
 https://tomcat.apache.org/tomcat-7.0-doc/building.html; http://veereshr.com/Android/AndroidToServlet 
 
-###Communication
+###Communication(early version)
 --
 To finish this part, I utilize the socket to achieve the communication. The sockets of android work exactly as they do in Java.
 
 To do so, we need first to establish a server: ServerSocket server = new ServerSocket(portNumber, queueLength); When you open this app, it will start a thread to build this server and wait for connections. Then, if you click SEND button, this will call another activity which performance as a client. You can send a message to another person who is using the app at the same time(you need to know the server IP address). The message will show on the EDITTEXT for translation, which means the one who get the message can translate the message to the languages he or she like. Also, the message can be entered by dictating or typing.
+
+###Communication(latest version)
+--
+
+This new version is able to allow several persons to chat togethor, like a chat room. What's more, you can communiation with the person who speaks an another language. This APP will be able to translate the latest chat history and speak out the result of translation.
+
 
