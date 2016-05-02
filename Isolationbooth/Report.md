@@ -9,4 +9,6 @@ The isolation booth is an instrument that can be used to bind MAC addresses of p
 *    Server
 
 ###Problems Encountered
+*    Keaton was being mean
+*    It's all Keaton's fault
 
