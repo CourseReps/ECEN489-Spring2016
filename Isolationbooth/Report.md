@@ -1,6 +1,7 @@
 ##Isolationbooth
 
 ###Description
+The isolation booth is an instrument that can be used to bind MAC addresses of phones to pictures of their users. 3 directional antennas are used to monitor a small area of space and are connected to separate wireless interfaces on a Linux computer. An Android phone is used as a sort of "webcam" in the booth. When the central computer determines that a certain device is in the small space monitored by the antennas, it sends a command to the Android phone, instructing it to take and send a picture, and then pairs up the picture with the detected MAC address.
 
 ###Partitions
 *    App  
