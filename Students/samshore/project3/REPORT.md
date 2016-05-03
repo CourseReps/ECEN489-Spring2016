@@ -14,10 +14,10 @@ https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Students/samshore/p
 The Android application is fairly simplistic and consists of only one activity. The GUI includes to text fields: one for the IP address of the target machine, and one for the desired filter length (a longer filter will result in a less sensitive, more "viscous", response from the cursor). Below these text fields are two buttons. The connect button begins the process of recording data and sending data to the server, whereas the disconnect button stops this process. At the top of the app, there is a small textview that indicates whether or not the device is sending data.
 
 All of the work is done once the user presses the connect button. This runs a routine that pulls values from the text fields, creates a weighted rectangular windowing filte (this is discussed more below), and launches a thread that does the following:
-	*Adds pitch and roll values to a list of previous values
-	*Filters the newly received data 
-	*Stores filtered pitch and roll values in a byte array
-	*Creates and sends a datagram packet with this byte array, the user input IP address, and a specified port number
+* Adds pitch and roll values to a list of previous values
+* Filters the newly received data 
+* Stores filtered pitch and roll values in a byte array
+* Creates and sends a datagram packet with this byte array, the user input IP address, and a specified port number
 This thread runs every 50 ms.
 
 The filter created by the app is simply a linear windowing filter with a length specified by the user. The filter did not have to be very sofisticated, because it was only meant to reduce some of the faster and more spastic device movements. As I tested the app, however, I found I preferred a filter length 1-5 i.e. little to no filtering. In my opinion, the delay caused by a longer filter was more annoying than sharp cursor movements (which were not nearly as bad as I thought they might be anyway). Plots of filter of varying lengths and their frequency responses are shown below:
