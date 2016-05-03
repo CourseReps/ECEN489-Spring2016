@@ -7,7 +7,7 @@ This app will track the position of the Moon via a 3D rendering and would be abl
 
 
 ## Features and API's used
-- Augmented Reality with Camera API.
+- Augmented Reality with Camera API and OpenGL ES2.
 - WebView application. 
 - GPS location of the device.
 - Orientation sensor API.
@@ -19,6 +19,6 @@ This app will track the position of the Moon via a 3D rendering and would be abl
 - The Javascript application for calculating the defined Moon data was successfully utilized to return values.
 
 ## Further Implementation for the app
-- 2D image wrapping of sphere indicating the phases from the calculator.
+- 2D image wrapping of sphere indicating the phases from the calculator - 8 phases can be rendered with a swith/case statment on top of the the Sphere.
 - Save the data to a .txt file for the user to access in a later time.  
 - A more defined robust method to convert ecliptic cooridinates to phone orientation data parameters. (yaw, pitch, roll)
