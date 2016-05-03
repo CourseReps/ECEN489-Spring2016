@@ -16,6 +16,11 @@ Frequency Shift Key (FSK) signaling technology and signal conditioning provides 
 
 
 ##Programs
+* FSKConfig - Configuration files for configuration of baud rates, high/low frequency. The 1’s are encoded at high freq and 0’s at low frequency.
+* FSKEncoder - Encoder from text to wav
+* FSK Decoder - decoder from wav to text
+* WavtoPCM - convert from wav to raw stream data
+* MainActivity - integration of UI and all the sub components
 
 
 ##Screens
