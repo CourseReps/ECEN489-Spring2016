@@ -46,3 +46,14 @@ The Web application is run by Express using Node.js. The brains of the web appli
 There is some primative cookie and session mangement on the web application to keep users authenticated when they navigate. 
 There is also a tool to upload images from your computer to the website as well (instead of directly from the phone).
 
+###Accomplishments and Failures
+* successfully integrated ZXing Application to generate QR codes
+* created a proof of concept encryption system
+* created a web application that uses proper session and cookie management, and proper authentication with a MySQL database (weak auth and management code will be used a a teaching tool for the cyber security club, will be made stronger in the furture).
+
+* failed to succesfully receive QR image sent from phone
+* failed to retreive image that was uploaded via the website (i.e. I was able to receive the picture, but failed to display it back)
+
+
+
+
