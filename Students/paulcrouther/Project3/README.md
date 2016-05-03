@@ -168,7 +168,7 @@ This is image in queue is then used to see if the previous image stored is diffe
 
 ```python
 for i in range(0,180):
-        data, addr = sock.recvfrom(62000) # buffer size is 1024 bytes
+        data, addr = sock.recvfrom(65536) # buffer size is 64kB
         if data:
         
             jpgFile = Image.open(io.BytesIO(data))
