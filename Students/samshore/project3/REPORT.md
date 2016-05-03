@@ -34,7 +34,7 @@ Most of the work in this project is done by the server-side program. This progra
 * CursorThread
 * Users
 
-These classes are explained below
+These classes are explained below:
 
 **UDPServer** - https://github.com/CourseReps/ECEN489-Spring2016/blob/master/Students/samshore/project3/AndroidMouse/src/UDPServer.java
 	
