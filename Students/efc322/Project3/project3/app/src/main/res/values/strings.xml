@@ -6,9 +6,18 @@
 
     <string name="button_photos">Take a Photo!</string>
     <string name="button_add_types">New Name</string>
-    <string name="button_download">Download</string>
     <string name="running_on">Running</string>
     <string name="training_on">Training</string>
+    <string name="textview_server_port">Server Port</string>
+    <string name="textview_server_ip">Server IP</string>
+    <string name="key_file_name">keyFileName</string>
+    <string name="key_image">keyImage</string>
+    <string name="key_name">keyName</string>
+    <string name="key_type">keyType</string>
+    <string name="key_type_upload">keyTypeUpload</string>
+    <string name="key_type_download">keyTypeDownload</string>
+    <string name="webapp_name">/p3/fanchao</string>
+    <string name="photo_data">photo data</string>
 
     <string name="no_face_detected">No Face Detected!</string>
     <string name="face_detected">Face Detected!</string>

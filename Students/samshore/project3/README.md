@@ -4,5 +4,7 @@ For project 3, I am creating an Android app that will allow a user to control a 
 
 
 
-###4/8 PROGRESS REPORT
-As of today I have set up the basic architecture of the app. It can collect rotation data, although this was kind of trivial. I have been trying to get the app to connect to a server on my computer. However, I have not been able to attempt the connection without the app crashing.
+###DOWNLOADS
+https://www.dropbox.com/sh/yj029xbw49hrwj2/AABQ7Qc8ISj4ZunN9NTAEVe9a?dl=0
+
+This folder contains the android app apk, the server jar file, and the pong client with its dependencies.

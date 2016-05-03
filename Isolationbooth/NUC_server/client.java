@@ -10,8 +10,16 @@ public class client
 {
     public static void main(String[] args)
     {
+        String file = "default.jpeg";
         try{
-            String addr_str = JOptionPane.showInputDialog("Enter IP");
+            file = args[0] + ".jpeg";
+            System.out.println(file);
+        }catch(Exception e){
+            System.err.println("Argument" + args[0] + " must be an String.");
+            System.exit(1);
+        }
+        try{
+            String addr_str = "10.202.103.249"; //JOptionPane.showInputDialog("Enter IP");
             InetAddress addr = InetAddress.getByName(addr_str);
             Socket connection = new Socket(addr, 2000);
             ObjectOutputStream os = new ObjectOutputStream(connection.getOutputStream());
@@ -26,7 +34,7 @@ public class client
                 System.out.println("pic.length = " + pic.length);
                 is.readFully(pic, 0, pic.length); // read the picture
             }
-            FileOutputStream fos = new FileOutputStream("image.jpeg");
+            FileOutputStream fos = new FileOutputStream(file);
             fos.write(pic);
             fos.close();
             is.close();
