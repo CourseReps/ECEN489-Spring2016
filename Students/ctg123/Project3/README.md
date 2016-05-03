@@ -11,8 +11,7 @@ This app will track the position of the Moon via a 3D rendering and would be abl
 - WebView application
 - GPS location of the device
 
-Below is the Classes used for Augmented Reality 
-
+ 
 ## Project Checklist
 - Framework for Augmented reality activity and Simple two button interface was created.
 - 3D rendered sphere model was successfully created on placed on the Surfaceview of the phone screen.
