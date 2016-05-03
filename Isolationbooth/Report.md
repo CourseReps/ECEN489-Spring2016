@@ -23,7 +23,7 @@ The isolation booth is an instrument that can be used to bind MAC addresses of p
 	####Phone Server Interaction
 
 ###Problems Encountered
--Determining if a device is within the area proved to be difficult. We occasionally get routers that have a high enough RSSI to be considered in our area. This can be easily fixed by blacklisting known routers in the area.
+-Determining if a device is within the area proved to be difficult. We occasionally get routers that have a high enough RSSI to be considered in our area. This can be easily fixed by blacklisting known routers in the area.  
 -Attempting to access the database for read and write purposes at the same time. The way to deal with this would be to use a real database.
 
 
