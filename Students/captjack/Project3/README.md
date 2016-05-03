@@ -1,6 +1,18 @@
-# Group Messaging Version
+#Secret Barcode Messanger
 
-When the QR Code is Made:
+###Project Overview
+The goal of this project is to provide a means of secret communication between users by means of encoded QR codes.
+When using the phone the user must first log in, then they can create their message with its intented recipients. 
+The QR code is then generated on the phone, and then sent online to the web application.
+
+When using the web application users must first log in, and then they are directed to their chat history page where
+the QR images are rendered. 
+
+Users can then scan the QR images of messages intedted for them to see. If they have logged onto the website, and additionally logged into the phone, they can then read the message after scanning on their phone from the web application.
+
+####Android specifics
+#####QR Generation
+Here is a JSON creating from the user input
 ```
 {
    "Sender": "Kyle",
@@ -8,68 +20,29 @@ When the QR Code is Made:
       "Bob",
       "Joe"
    ],
-   "Message": "Hi Guys",
+   "Message": "Hello",
    "Time": "12:00:00 4-7-1016"
 }
 ```
-Upon scanning check users name to see if they indeed one of the intended receivers.
+Right now a simple shift cipher is used to encode ONLY the message before the QR is generated
+
+```
+Message": "khoor"
+```
+
+Then THE QR image is generated for this the entire JSON String and sent to the web application
+
+#####QR Scanning
+Upon scanning the phone check users name to see if they indeed one of the intended receivers.
 
    -if not display "Nothing to see here" 
    
    -if yes then display message
 
-If i want to funcationaly of displayingt the message on the server only when all the receivers have received the message, then the server will have to store who has read the message in order to prevent the users from having to send out additional messages.
 
-UPON Scanning message. User will append to the JSON
-```
-{
-   "Sender": "Kyle",
-   "Receivers": [
-      "Bob",
-      "Joe"
-   ],
-   "Message": "Hi Guys",
-   "Time": "12:00:00 4-7-1016",
-   "Scanned": {
-      "Name": "Joe",
-      "Time": "12:00:00 4-7-1026"
-   }
-}
-```
-The Server Will read in the array of intented receivers and search from the names in the Scanned object. If all of the intened receivers have not added their name to the list, (they have not scanned and read the message), then the server will not display the message yet. 
+####Web Application
+The Web application is run by Express using Node.js. The brains of the web application are all written in javascript and the pages are rendered with html and embedded javascript.
 
-Now when Bob Receives the message
-```
-{
-   "Sender": "Kyle",
-   "Receivers": [
-      "Joe",
-      "Bob"
-   ],
-   "Message": "Hi Guys",
-   "Time": "12:00:00 4-7-1016",
-   "Scanned": {
-      "Name": [
-         "Joe",
-         "Bob"
-      ],
-      "Time": [
-         "12:01:00 4-7-2016",
-         "12:02:00 4-7-2016"
-      ]d
-   }
-} 
-```
-Server will then display the message with the times and group members.
-Ideally the server will have the ability to store multiple conversations like this.
+There is some primative cookie and session mangement on the web application to keep users authenticated when they navigate. 
+There is also a tool to upload images from your computer to the website as well (instead of directly from the phone).
 
-What is left to define is the stucture of the Server that will store all of this information. 
-* All i need is an array of JSON objects. 
-* This is the simpliest and easiest way to store the information.
-* The array trivial to traverse and the json object is also trivail to parse
-* Therefore displaying the information on the screen is trivial 
-
-Now How does the server start up another conversation? Very similar to how it starts the first one.
-* Read in the JSON object
-* Parse through it until it reads all the names (Sender: and all Receivers: If These names do not Match EXACTLY with a JSON object already in storage then this is a new conversation
-*  Some notes: Sender1 does not have to = Sender2. The Overall list of names must match instead.
