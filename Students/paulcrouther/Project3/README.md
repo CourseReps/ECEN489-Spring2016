@@ -2,6 +2,20 @@
 
 ##This is the project for motion detection from the camera. 
 
+##Features and APIs:
+
+Features
+-Motion detection (Dhash and PIL) based on JPEG (from Camera API, Bitmap) from gray scale information.
+
+APIs
+
+Android:
+-Camera API
+
+Python:
+-PIL
+-Socket
+
 Using Camera API we create a thread to allow for image sending through UDP with the pictureCallback:
 ```javascript
 Runnable picRunnable = new Runnable() {
