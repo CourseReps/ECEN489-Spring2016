@@ -1,0 +1,60 @@
+\hypertarget{class_u_d_p_server_thread}{}\section{U\+D\+P\+Server\+Thread Class Reference}
+\label{class_u_d_p_server_thread}\index{U\+D\+P\+Server\+Thread@{U\+D\+P\+Server\+Thread}}
+
+
+U\+P\+Server\+Thread class.  
+
+
+Inheritance diagram for U\+D\+P\+Server\+Thread\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_u_d_p_server_thread}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries U\+D\+P\+Server\+Thread} (String name)  throws I\+O\+Exception\hypertarget{class_u_d_p_server_thread_a1ec2d026557fc3be980f97de1564ae0a}{}\label{class_u_d_p_server_thread_a1ec2d026557fc3be980f97de1564ae0a}
+
+\item 
+void {\bfseries run} ()\hypertarget{class_u_d_p_server_thread_a6745593688fac3eb6098232d78f4cd01}{}\label{class_u_d_p_server_thread_a6745593688fac3eb6098232d78f4cd01}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ Integer $>$ \hyperlink{class_u_d_p_server_thread_af5c340f848a87a00e26aa3099a815265}{decode\+Byte\+Message} (byte\mbox{[}$\,$\mbox{]} b)
+\begin{DoxyCompactList}\small\item\em decode\+Byte\+Message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Datagram\+Socket {\bfseries socket1} = null\hypertarget{class_u_d_p_server_thread_a77619fbca35791a3a9640e4c1996a1aa}{}\label{class_u_d_p_server_thread_a77619fbca35791a3a9640e4c1996a1aa}
+
+\item 
+static Datagram\+Socket {\bfseries socket2} = null\hypertarget{class_u_d_p_server_thread_aae235972e90c4e6b27801ad577526cae}{}\label{class_u_d_p_server_thread_aae235972e90c4e6b27801ad577526cae}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\+P\+Server\+Thread class. 
+
+This class opens sockets and receives packets from Android devices. The IP address of the packet is checked. If it is a new IP, a new user object is created, assigned a team, and added to the users list. If the user is assigned to the other team, the data packet will be sent to the secondary server. Otherwise, the packet is decoded and the data is used to move the mouse cursor. 
+
+\subsection{Member Function Documentation}
+\index{U\+D\+P\+Server\+Thread@{U\+D\+P\+Server\+Thread}!decode\+Byte\+Message@{decode\+Byte\+Message}}
+\index{decode\+Byte\+Message@{decode\+Byte\+Message}!U\+D\+P\+Server\+Thread@{U\+D\+P\+Server\+Thread}}
+\subsubsection[{\texorpdfstring{decode\+Byte\+Message(byte[] b)}{decodeByteMessage(byte[] b)}}]{\setlength{\rightskip}{0pt plus 5cm}static List$<$Integer$>$ U\+D\+P\+Server\+Thread.\+decode\+Byte\+Message (
+\begin{DoxyParamCaption}
+\item[{byte\mbox{[}$\,$\mbox{]}}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{class_u_d_p_server_thread_af5c340f848a87a00e26aa3099a815265}{}\label{class_u_d_p_server_thread_af5c340f848a87a00e26aa3099a815265}
+
+
+decode\+Byte\+Message. 
+
+Takes a byte message and returns a list of two integer values (pitch and roll) 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Android\+Mouse/src/U\+D\+P\+Server\+Thread.\+java\end{DoxyCompactItemize}
