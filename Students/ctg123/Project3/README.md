@@ -7,9 +7,10 @@ This app will track the position of the Moon via a 3D rendering and would be abl
 
 
 ## Features and API's used
-- Augmented Reality
-- WebView application
+- Augmented Reality with Camera API.
+- WebView application 
 - GPS location of the device
+- Orientation sensor API.
 
  
 ## Project Checklist
