@@ -19,5 +19,5 @@ This app will track the position of the Moon via a 3D rendering and would be abl
 
 ## Further Implementation for the app
 - 2D image wrapping of sphere indicating the phases from the calculator.
-- Save the data to a .txt file for the user to access in a later time.
+- Save the data to a .txt file for the user to access in a later time.  
 - A more defined robust method to convert ecliptic cooridinates to phone orientation data parameters. (yaw, pitch, roll)
