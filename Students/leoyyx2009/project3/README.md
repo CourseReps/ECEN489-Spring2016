@@ -41,5 +41,5 @@ To do so, we need first to establish a server: ServerSocket server = new ServerS
 --
 
 This new version is able to allow several persons to chat togethor, like a chat room. What's more, you can communiate with the person who speaks an another language. This APP will be able to translate the latest chat history and speak out the result of translation.
-
+To ahieve these functionalities, I used Google Cloud Messaging API.
 
