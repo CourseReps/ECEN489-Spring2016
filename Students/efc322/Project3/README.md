@@ -28,15 +28,15 @@ OpenCV documentation on Face Recognizer: http://docs.opencv.org/2.4/modules/cont
 
 I set up a Tomcat Server to collect all the photos taken in the running mode. The server receives the photos and their corresponding classification results, stores the photos on the hard drive, and the file path and the result in MySQL Database. The server can feed back these photos and results by a GET method.
 
-Problems encountered in debugging the server:
+#### Problems encountered in debugging the server:
 
-1. The server cannot decode the Base64-encoded photo corretly.
+##### The server cannot decode the Base64-encoded photo corretly.
 
 Solution: 
 
 On the android device, when encoding a photo by Base64, the flags need to be set as NO_WRAP and URL_SAFE.
 
-2. The server cannot receive some photos at all.
+##### The server cannot receive some photos at all.
  
 Solution: 
 
