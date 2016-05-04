@@ -2,7 +2,7 @@
 
 ##Overview
 
-This is an app for face identification in a static photo from a finite set of faces. The user can use this app to take a picture of a human face, and the app picks from the pre-defined set the person whose face most fits this picture, and displays his name on the screen. The app runs in two modes: training mode and running mode. In the training mode, the user needs to take photos of people's faces that he wants the app to recognize. The classification algorithm will be trained based on these samples, so in the running mode, when a new photo is taken, and the app is able to tell whose face it is, hopefully.
+This is an app for face identification in a static photo from a finite set of faces. The user can use this app to take a picture of a human face, and the app picks from the pre-defined set the person whose face most fits this picture, and displays his name on the screen. The app runs in two modes: training mode and running mode. In the training mode, the user needs to take photos of people's faces that he wants the app to recognize. The classification algorithm will be trained based on these samples, so in the running mode, when a new photo is taken, and the app is able to tell whose face it is, hopefully. 
 
 ##Technical Details
 
@@ -34,7 +34,7 @@ I set up a Tomcat Server to collect all the photos taken in the running mode. Th
 
 Solution: 
 
-On the android device, when encoding a photo by Base64, the flags need to be set as NO_WRAP and URL_SAFE.
+When sending the image from the android device to the server, I use Base64 encoding to encode an image into a string. On the android device, when encoding a photo by Base64, the flags need to be set as NO_WRAP and URL_SAFE.
 
 ##### The server cannot receive some photos at all.
  
