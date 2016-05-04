@@ -13,7 +13,7 @@ Basically, I did two things:
 * Starting RecognizerIntent: (ACTION_RECOGNNIZE_SPEECH) simply takes user's speech inout and returns it to same activtiy. (EXTRA_LANGUAGE)Set the input language; (EXTRA_PROMPT)Text prompt to show to the user when asking them to speak.
 * Receiving the speech response: Once the speech input is done we have to catch the response in onActivityResult and take appropriate action needed.
 
-###Translate
+###Translation
 --
 I utilize Google Translate API to implement this functionality. There are a bunch of documents and tutorials about how to use this API. Basically, following these steps:
 * Select or create a Cloud Platform Console(Like our task 4 google fusion table)
