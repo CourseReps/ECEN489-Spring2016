@@ -1,5 +1,4 @@
-/**
- * Created by Sam on 4/22/2016.
+/** Users class. Used to keep track of IP and team number of individual users.
  */
 public class Users {
     public String ip;

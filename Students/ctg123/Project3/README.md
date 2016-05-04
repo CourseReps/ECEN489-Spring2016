@@ -1,23 +1,24 @@
-## Lunar finder App
+### Lunar finder App
 
-This app will track the position of the Moon and also indicate where the user is relative to the moon.  When attempting to identify the position, the app will post real-time data that will logged to a server every 20 seconds.
-The user will then be able to see where to point to the moon with their device by following a small circular graphic that will represent the most up-to-date positon of the moon.
-The app will work in any orientation, both vertical and horizontal.
+## Project Overview
 
-## What data will be recorded?
 
-The data that this app will be collecting will be provided by a 3rd party website called MoonCalc.org. We can get the moon postions for moon rising, selected time, and Moonset and other kep Lunar data.
-This will then be recorded in real-time and posted in JSON Format to an HTML Server.
+This app will track the position of the Moon via a 3D rendering and would be able to update information to the User such as (Ecliptic Latitude and Longitude, Phase, and distance in km). A Javascript based program was written in conjuction with obtaining the aforementionded values. From there it will be able to allow the user to open the camera screen to get an accurate representation of the location of the moon basesd's on the calculator's results. This app would be useful for any astronomy enthusiast or anybody wanting to get a sense of where the Moon can be agorithmatically.
 
-## JSON Format Preview:
-```
-Moon rising:
-Moon peak:
-Moon set:
-Moon distance:
-Moon elevation:
 
-```
-## UI Framework:
+## Features and API's used
+- Augmented Reality with Camera API and OpenGL ES2.
+- WebView application. 
+- GPS location of the device.
+- Orientation sensor API.
 
-The app will have a simple button to collect data and show the MoonCalc google map via Webview. When the user aligns with the moon from their relative position, a circle graphic will appear showing the phase (full, new, waxing cresent, etc.)
+ 
+## Project Checklist
+- Framework for Augmented reality activity and Simple two button interface was created.
+- 3D rendered sphere model was successfully created on placed on the Surfaceview of the phone screen.
+- The Javascript application for calculating the defined Moon data was successfully utilized to return values.
+
+## Further Implementation for the app
+- 2D image wrapping of sphere indicating the phases from the calculator - 8 phases can be rendered with a swith/case statment on top of the the Sphere.
+- Save the data to a .txt file for the user to access in a later time.  
+- A more defined robust method to convert ecliptic cooridinates to phone orientation data parameters. (yaw, pitch, roll)

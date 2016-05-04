@@ -1,0 +1,50 @@
+\hypertarget{class_cursor_thread}{}\section{Cursor\+Thread Class Reference}
+\label{class_cursor_thread}\index{Cursor\+Thread@{Cursor\+Thread}}
+
+
+\hyperlink{class_cursor_thread}{Cursor\+Thread} class.  
+
+
+Inheritance diagram for Cursor\+Thread\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_cursor_thread}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries run} ()\hypertarget{class_cursor_thread_a9301a34692a1b3c3387e82f4c463fcb2}{}\label{class_cursor_thread_a9301a34692a1b3c3387e82f4c463fcb2}
+
+\item 
+void {\bfseries start} ()\hypertarget{class_cursor_thread_a4c40d058f6b9b5f95c6c68db44fb5a26}{}\label{class_cursor_thread_a4c40d058f6b9b5f95c6c68db44fb5a26}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Dimension {\bfseries screen\+Size} = Toolkit.\+get\+Default\+Toolkit().get\+Screen\+Size()\hypertarget{class_cursor_thread_aa502eaff9091012ae0e8eb5ec85fa551}{}\label{class_cursor_thread_aa502eaff9091012ae0e8eb5ec85fa551}
+
+\item 
+double {\bfseries width} = screen\+Size.\+get\+Width()\hypertarget{class_cursor_thread_a44f7c6590e5893a54824cf3d3a4e2bcb}{}\label{class_cursor_thread_a44f7c6590e5893a54824cf3d3a4e2bcb}
+
+\item 
+double {\bfseries height} = screen\+Size.\+get\+Height()\hypertarget{class_cursor_thread_af3bfed280e640ba1a55b49a0d3f48755}{}\label{class_cursor_thread_af3bfed280e640ba1a55b49a0d3f48755}
+
+\item 
+int {\bfseries current\+PosX} = (int)Math.\+round(width/2)\hypertarget{class_cursor_thread_a4f68655ab65b581c5194f75f2510c866}{}\label{class_cursor_thread_a4f68655ab65b581c5194f75f2510c866}
+
+\item 
+int {\bfseries current\+PosY} = (int)Math.\+round(height/2)\hypertarget{class_cursor_thread_a3e1987c0d9d200e1022e1ca4885e3cfb}{}\label{class_cursor_thread_a3e1987c0d9d200e1022e1ca4885e3cfb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_cursor_thread}{Cursor\+Thread} class. 
+
+Takes the rotation information and performs simple calculations to create a cursor offset. This offset is added to the cursor\textquotesingle{}s current postion. The cursor is moved to this new coordinate using Java\textquotesingle{}s abstract window toolkit. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Android\+Mouse/src/Cursor\+Thread.\+java\end{DoxyCompactItemize}

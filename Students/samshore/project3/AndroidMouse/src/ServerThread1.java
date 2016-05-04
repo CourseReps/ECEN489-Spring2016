@@ -1,14 +1,11 @@
-
-
-/**
- * Created by Sam on 4/8/2016.
- */
-
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/** ServerThread1. Runs on machine 2 and receives packets from UDPServerThread running on machine 1. 
+ *  It then decodes these messages and stores them for the cursor thread to use.
+ */
 public class ServerThread1 extends Thread{
 
     protected static DatagramSocket socket = null;
@@ -19,8 +16,8 @@ public class ServerThread1 extends Thread{
 
     public ServerThread1(String name) throws IOException{
         super(name);
-        socket = new DatagramSocket(8081);
-        socket.setSoTimeout(90000);
+        socket = new DatagramSocket(8081); // create socket
+        socket.setSoTimeout(90000); // set timeout to 1.5 min
     }
 
     public void run(){
@@ -41,14 +38,14 @@ public class ServerThread1 extends Thread{
                 UDPServer.messageReceived = false;
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
                 socket.receive(packet);
-                UDPServer.messageReceived = true;
+                UDPServer.messageReceived = true; // set received flag to true to trigger cursor movement
 
                 received = decodeByteMessage(packet.getData());
 
                 UDPServer.yDegrees = -1*received.get(0);
                 UDPServer.xDegrees = -1*received.get(1);
 
-                System.out.println("(2) x: " + UDPServer.xDegrees + " y: " + UDPServer.yDegrees);
+                //System.out.println("(2) x: " + UDPServer.xDegrees + " y: " + UDPServer.yDegrees);
 
 
                 /* rotation threshold */

@@ -16,9 +16,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
-/**
- * Created by Fanchao Zhou on 4/20/2016.
- */
 public class PhotoHubServer extends HttpServlet{
 
     private static final String paraName = "photo data";
@@ -33,14 +30,15 @@ public class PhotoHubServer extends HttpServlet{
     private static final String tbName = "recordtable";
     private static final String tbNameColumn = "name";
     private static final String tbPhotoDirColumn = "photo_file_name";
-    Connection conn = null;
-    Statement stmt = null;
 
     @Override
     public void init() {
+        Connection conn = null;
+        Statement stmt = null;
 
         try{
             DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+
             Properties props = new Properties();
             props.put("user", "Fanchao");
             props.put("password", "ZFC_mysql2016");
@@ -49,6 +47,16 @@ public class PhotoHubServer extends HttpServlet{
                     .getConnection("jdbc:mysql://localhost:3306/"+dbName, props);//Use the Driver Manager to set up the driver of a database
             stmt = conn.createStatement();
             conn.setAutoCommit(false);
+
+            String sqlNameTable = "create table if not exists "+tbName+" ("+
+                    tbNameColumn + " TEXT NOT NULL, "+
+                    tbPhotoDirColumn + " TEXT NOT NULL"+
+                    ");";
+            stmt.executeUpdate(sqlNameTable);
+            conn.commit();
+
+            conn.close();
+            stmt.close();
         } catch(Exception e){
             System.out.println(e);
         }
@@ -56,7 +64,19 @@ public class PhotoHubServer extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp){
+        Connection conn = null;
+        Statement stmt = null;
+
         try{
+            Properties props = new Properties();
+            props.put("user", "Fanchao");
+            props.put("password", "ZFC_mysql2016");
+            props.put("useSSL", "true");
+            conn = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/"+dbName, props);//Use the Driver Manager to set up the driver of a database
+            stmt = conn.createStatement();
+            conn.setAutoCommit(false);
+
             //// Get the writer to send the HTML fil ////
             String ip4Addr = InetAddress.getLocalHost().getHostAddress();
             final String fileURL = "http://" + ip4Addr + ":9243/" + webAppName + '/';
@@ -91,6 +111,8 @@ public class PhotoHubServer extends HttpServlet{
 
             writer.close();
 
+            conn.close();
+            stmt.close();
         } catch(Exception e) {
             if(conn != null){
                 try{
@@ -105,7 +127,19 @@ public class PhotoHubServer extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp){
+        Connection conn = null;
+        Statement stmt;
+
         try {
+            Properties props = new Properties();
+            props.put("user", "Fanchao");
+            props.put("password", "ZFC_mysql2016");
+            props.put("useSSL", "true");
+            conn = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/"+dbName, props);//Use the Driver Manager to set up the driver of a database
+            stmt = conn.createStatement();
+            conn.setAutoCommit(false);
+
             String jsonData = req.getParameter(paraName);
             Gson gson = new GsonBuilder().create();
             JsonObject jsonObject = gson.fromJson(jsonData, JsonObject.class);
@@ -143,18 +177,6 @@ public class PhotoHubServer extends HttpServlet{
                     System.out.println(errRollBack);
                 }
             }
-            System.out.println(e);
-        }
-    }
-
-    @Override
-    public void destroy() {
-        super.destroy();
-
-        try{
-            stmt.close();
-            conn.close();
-        } catch (Exception e) {
             System.out.println(e);
         }
     }

@@ -1,10 +1,10 @@
-/**
- * Created by Sam on 4/8/2016.
- */
-
 import java.io.*;
 import java.util.Scanner;
 
+/** UDPServer class. Main class, gets user inputs to determine machine number and secondary server IP
+ * if necessary, then starts the correct UDPServer thread as well as the cursor thread. It then waits for 
+ * a user input and then terminates.
+ */
 public class UDPServer {
     public static boolean running;
     public static int xDegrees;
@@ -43,14 +43,14 @@ public class UDPServer {
         CursorThread cursorThread = new CursorThread();
         cursorThread.start();
 
-        scan3.nextLine();
+        scan3.nextLine(); // close after user input
 
         if(n==1){
             UDPServerThread.socket1.close();
             UDPServerThread.socket2.close();
         }
         else{ServerThread1.socket.close();}
-        flag = false;
+        flag = false; // flag used to stop other threads
 
     }
 }
