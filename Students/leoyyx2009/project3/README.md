@@ -33,8 +33,7 @@ For the latest version, I start to use Microsoft Translate API, because this one
 * Register your application and create your Client ID and Client Secret: The Client ID and Client Secret values are used to authenticate your service when you call the Translator API from your application. Take note of the Client ID and Client Secret fields and keep these values confidential. You will need these when you develop your app.
 
 `    public String translate(String text) throws Exception{`
-
-        `// Set the Client ID / Client Secret once per JVM. It is set statically and applies to all services`
+        `// Set the Client ID / Client Secret once per JVM. It is set statically and applies to all services `
 
         `Translate.setClientId("leoyyx2009"); //Change this`
         `Translate.setClientSecret("a6OqAafzSYis4ZKMWd+EWgE4g5NvwhGnJ9faDcEhCyM="); //change`
