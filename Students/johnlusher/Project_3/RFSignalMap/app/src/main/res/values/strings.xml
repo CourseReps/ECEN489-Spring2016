@@ -16,7 +16,10 @@
     <string name="action_settings">Settings</string>
     <string name="action_map">View Map</string>
     <string name="action_about">About Application</string>
-    <string name="main_rssi_label"><u>RSSI:</u></string>
+    <string name="main_rssi_label"><u>RSSI #1:</u></string>
+    <string name="main_rssi_label2"><u>RSSI #2:</u></string>
+    <string name="main_rssi_label3"><u>RSSI #3:</u></string>
+    <string name="main_rssi_labelcell"><u>RSSI Cell:</u></string>
     <string name="main_lat_label"><u>Latitude:</u></string>
     <string name="main_long_label"><u>Longitude:</u></string>
     <string name="main_yaw_label"><u>Yaw:</u></string>

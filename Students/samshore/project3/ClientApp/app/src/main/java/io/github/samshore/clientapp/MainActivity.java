@@ -33,6 +33,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/** MainActivity. This is the only source file for this app. This activity records rotation information and sends
+ *    it to the target computer via a UDP socket.
+ */
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     public static float yaw;
@@ -43,10 +46,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public static boolean paused;
     public static int length;
 
+    /** Data Lists. Used to store the current and previous rotation values for filtering
+     */
     List<Float> pitchData = new ArrayList<Float>(Collections.nCopies(100,0f)); // initialize some data for initial filtering
     List<Float> rollData = new ArrayList<Float>(Collections.nCopies(100,0f));
+    /** Filter List. Used for storing the filter
+     */
     List<Float> f = new ArrayList<Float>();
 
+    /** onCreate. Sets up the textView, editTexts, and sensor manager. Also starts a thread to update the 
+     *    status textview.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         EditText filterLength = (EditText)findViewById(R.id.filterLength);
         final TextView text = (TextView) findViewById(R.id.textView);
 
-        try {
+        try { // turning off blinking cursor
             editText.setCursorVisible(false);
             filterLength.setCursorVisible(false);
         }catch(NullPointerException e){
@@ -104,18 +114,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return true;
     }
 
+    /** onPause. Sets a paused flag to true when the app is paused so that threads do 
+     *    not keep running in the background.
+     */
     @Override
     public void onPause(){
         super.onPause();
         paused = true;
     }
 
+    /** onResume. Sets the paused flag to false so that the threads resume when the app
+     *    is resumed.
+     */
     @Override
     public void onResume(){
         super.onResume();
         paused = false;
     }
 
+    /** onDestroy. Completely stops the app on close.
+     */
     @Override
     public void onDestroy(){
         super.onDestroy();
@@ -137,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return super.onOptionsItemSelected(item);
     }
 
+    /** onSensorChanged. Reads orientation values from the orientation sensor
+     */
     @Override
     public void onSensorChanged(SensorEvent event){
         Sensor mySensor = event.sensor;
@@ -151,7 +171,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {}
 
-
+    /** connect. Runs when connect button is pressed. It first sets a running flag to true so that the thread
+     * runs until the disconnect button is pressed. It then pulls the target IP and filter length parameters from the
+     * editText fields. Next, it creates the filter. Finally, it starts a thread to record rotation data and send it to 
+     * the target computer.
+     */
     public void connect(View view){
         running = true;
         final EditText ipText = (EditText) findViewById(R.id.IPText);
@@ -173,6 +197,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         f = makeFilter(length);
 
+        /** connect thread. Creates a datagram socket in order to send data. It stores pitch and roll values in the data lists.
+         * It then filters the data and stores the results in a byte array. A datagram packet is created with this data and is targeted
+         * at the server's InetAdress. Finally, the packet is sent. This repeates every 50 ms.
+         */
         Thread thread = new Thread() {
 
             @Override
@@ -196,7 +224,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                         DatagramPacket packet = new DatagramPacket(buf, buf.length, address, 8080); // create the packet
                         socket.send(packet);    // send the packet
 
-                        /* clear data lists when they get large */
+                        /* clear data lists when lists get large */
                         if(pitchData.size()>1200){
                             pitchData.subList(length, pitchData.size()).clear(); // clear data, but keep enough to continue filtering
                             Log.e("tag", ":)");
@@ -216,6 +244,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
+    /** filter method. This method dots the filter with the data list parameter and returns a float.
+     */
     public static float filter(List<Float> f, List<Float> data){
         float sum = 0;
         for(int i=0; i<f.size(); i++){
@@ -224,6 +254,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return sum; // filtered data point
     }
 
+    /** makeFilter method. This method creates a linear filter for smoothing cursor movements. The weights
+     * for each data point are created as follows for a filter length N: (d = N + (N-1) + (N-2) + ... 1) 
+     *{N/d, (N-1)/d, (N-2)/d, ... , 1/d}. It returns a list of floats.
+     */
     public static List<Float> makeFilter(int N){
         if(N<1){
             N=1;
@@ -243,22 +277,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return f;
     }
 
+    /** disconnect. When the disconnect button is pressed, the running flag is set to false and the app stops
+     * collecting data and sending data to the server.
+     */
     public void disconnect(View view){
         running = false;
     }
 
-    public static List<Integer> decodeByteMessage(byte[] b) {
-        List<Integer> list = new ArrayList<Integer>();
-
-        int i0 = b[0] & 0xFF;
-        int i1 = b[1] & 0xFF;
-
-        list.add(i0);
-        list.add(i1);
-
-        return list;
-    }
-
+    /** createByteMessage. Accepts two ints (pitch and roll) and formats them into a byte array.
+     */
     public static byte[] createByteMessage(int a, int b) {
         return new byte[] {
                 (byte) ((a >> 24) & 0xFF),

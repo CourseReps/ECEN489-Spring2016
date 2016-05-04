@@ -142,7 +142,13 @@ public class RFFieldSQLDatabase
                 sql_string  = "INSERT INTO RF_Fields (";                /// Insert SQL statement, Table: RF_Fields
                 sql_string += "intXbeeID,";                             /// Field: intXbeeID
                 sql_string += "intDeviceID,";                           /// Field: intDeviceID
+                sql_string += "intXbeeID2,";                            /// Field: intXbeeID2
+                sql_string += "intDeviceID2,";                          /// Field: intDeviceID2
+                sql_string += "intXbeeID3,";                            /// Field: intXbeeID3
+                sql_string += "intDeviceID3,";                          /// Field: intDeviceID3
                 sql_string += "fltRSSI,";                               /// Field: fltRSSI
+                sql_string += "fltRSSI2,";                              /// Field: fltRSSI2
+                sql_string += "fltRSSI3,";                              /// Field: fltRSSI3
                 sql_string += "fltLatitude,";                           /// Field: fltLatitude
                 sql_string += "fltLongitude,";                          /// Field: fltLongitude
                 sql_string += "fltYaw,";                                /// Field: fltYaw
@@ -153,7 +159,13 @@ public class RFFieldSQLDatabase
                 sql_string += "VALUES (";                               /// Values indetifier
                 sql_string += RFMember.XbeeID + ",";                    /// Value: XbeeID
                 sql_string += RFMember.DeviceID + ",";                  /// Value: DeviceID
+                sql_string += RFMember.XbeeID2 + ",";                   /// Value: XbeeID2
+                sql_string += RFMember.DeviceID2 + ",";                 /// Value: DeviceID2
+                sql_string += RFMember.XbeeID3 + ",";                   /// Value: XbeeID3
+                sql_string += RFMember.DeviceID3 + ",";                 /// Value: DeviceID3
                 sql_string += RFMember.RSSI + ",";                      /// Value: RSSI
+                sql_string += RFMember.RSSI2 + ",";                     /// Value: RSSI2
+                sql_string += RFMember.RSSI3 + ",";                     /// Value: RSSI3
                 sql_string += RFMember.Latitude + ",";                  /// Value: Latitude
                 sql_string += RFMember.Longitude + ",";                 /// Value: Longitude
                 sql_string += RFMember.Yaw + ",";                       /// Value: Yaw

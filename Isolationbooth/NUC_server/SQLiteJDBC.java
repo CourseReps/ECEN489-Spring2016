@@ -63,6 +63,7 @@ public class SQLiteJDBC
 
             }catch(Exception e){
                 System.err.println(e);
+                continue;
             }
                 
             //getting number of entries in table for iteration
@@ -80,7 +81,7 @@ public class SQLiteJDBC
                     while(rssi0.next()){
                         int timestamp = rssi0.getInt(3);
 
-                        if(unixTime-timestamp > 120){
+                        if(unixTime-timestamp > 180){
                             String delete = "DELETE FROM wlan0 WHERE Timestamp = ?";
                             PreparedStatement time = c.prepareStatement(delete);
                             time.setInt(1,timestamp);
@@ -98,7 +99,7 @@ public class SQLiteJDBC
                     {
                         int timestamp = rssi1.getInt(3);
 
-                        if(unixTime-timestamp > 120){
+                        if(unixTime-timestamp > 180){
                             String delete = "DELETE FROM wlan1 WHERE Timestamp = ?";
                             PreparedStatement time = c.prepareStatement(delete);
                             time.setInt(1,timestamp);
@@ -114,7 +115,7 @@ public class SQLiteJDBC
                     while(rssi2.next()){
                         int timestamp = rssi2.getInt(3);
 
-                        if(unixTime-timestamp > 120){
+                        if(unixTime-timestamp > 180){
                             String delete = "DELETE FROM wlan2 WHERE Timestamp = ?";
                             PreparedStatement time = c.prepareStatement(delete);
                             time.setInt(1,timestamp);
@@ -178,9 +179,11 @@ public class SQLiteJDBC
                     }
                     rssi2.close();
                     s1.close();
-
-                    double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2)); //magnitude of rssi
-                    avg.put(rssimag,macst); //adds rssi and associated MAC address to map
+                    
+					if(rssiwlan0 != 0 && rssiwlan1 != 0 && rssiwlan2 !=0){
+                    	double rssimag = sqrt((rssiwlan0 * rssiwlan0) + (rssiwlan1 * rssiwlan1) + (rssiwlan2 * rssiwlan2)); //magnitude of rssi
+                    	avg.put(rssimag,macst); //adds rssi and associated MAC address to map
+                    }
 
                 }
                 macrs.close();
@@ -196,25 +199,33 @@ public class SQLiteJDBC
                     rssimax=rssiVal;
             }
             mac = avg.get(rssimax);
-
-            if(rssimax < 40 && rssimax != 0) //threshold for device to be considered within the area
+			System.out.println(mac);
+			System.out.println(rssimax);
+            if(rssimax < 60 && rssimax != 0) //threshold for device to be considered within the area
             {
             	try{
             	System.out.println("Executing picture request");  //runs get picture from android camera program
                 System.out.println(mac);
                 System.out.println(rssimax);
-                Runtime.getRuntime().exec("java client");
+				String cmd = "java client " + mac;
+                Runtime.getRuntime().exec(cmd);
+                String delete = "DELETE FROM wlan1 WHERE Mac_Address = ?";
+                PreparedStatement time = c.prepareStatement(delete);
+                time.setString(1,mac);
+                time.execute();
+                time.close();
+                Thread.sleep(5000);
+				System.out.println("pic received");
                 }catch(Exception e){
                     System.err.println(e);
                     System.exit(3);
                 }
             }
-            System.out.println("pic finished");
             avg.clear(); //clears map for next loop
 
             try{
 	            stmt.close();
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             }catch(Exception e) {
                 System.err.println(e);
                 System.exit(5);

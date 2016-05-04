@@ -1,0 +1,44 @@
+\hypertarget{class_server_thread1}{}\section{Server\+Thread1 Class Reference}
+\label{class_server_thread1}\index{Server\+Thread1@{Server\+Thread1}}
+
+
+\hyperlink{class_server_thread1}{Server\+Thread1}.  
+
+
+Inheritance diagram for Server\+Thread1\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_server_thread1}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Server\+Thread1} (String name)  throws I\+O\+Exception\hypertarget{class_server_thread1_ae29df115466a434608801b3c751def7d}{}\label{class_server_thread1_ae29df115466a434608801b3c751def7d}
+
+\item 
+void {\bfseries run} ()\hypertarget{class_server_thread1_ad91d48187f6e88a980d36b2182ec1c55}{}\label{class_server_thread1_ad91d48187f6e88a980d36b2182ec1c55}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ Integer $>$ {\bfseries decode\+Byte\+Message} (byte\mbox{[}$\,$\mbox{]} b)\hypertarget{class_server_thread1_a81e7367f1e95b9e1ecdbbc8b5da526b7}{}\label{class_server_thread1_a81e7367f1e95b9e1ecdbbc8b5da526b7}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static Datagram\+Socket {\bfseries socket} = null\hypertarget{class_server_thread1_a99569f086bee535af8d46d6c6f4b46db}{}\label{class_server_thread1_a99569f086bee535af8d46d6c6f4b46db}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_server_thread1}{Server\+Thread1}. 
+
+Runs on machine 2 and receives packets from \hyperlink{class_u_d_p_server_thread}{U\+D\+P\+Server\+Thread} running on machine 1. It then decodes these messages and stores them for the cursor thread to use. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Android\+Mouse/src/Server\+Thread1.\+java\end{DoxyCompactItemize}

@@ -1,14 +1,13 @@
-
-
-/**
- * Created by Sam on 4/8/2016.
- */
-
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/** UPServerThread class. This class opens sockets and receives packets from Android devices.
+ *  The IP address of the packet is checked. If it is a new IP, a new user object is created, assigned
+ *  a team, and added to the users list. If the user is assigned to the other team, the data packet will be sent
+ *  to the secondary server. Otherwise, the packet is decoded and the data is used to move the mouse cursor.
+ */
 public class UDPServerThread extends Thread{
 
     protected static DatagramSocket socket1 = null;
@@ -22,9 +21,9 @@ public class UDPServerThread extends Thread{
 
     public UDPServerThread(String name) throws IOException{
         super(name);
-        socket1 = new DatagramSocket(8080);
-        socket1.setSoTimeout(90000);
-        socket2 = new DatagramSocket();
+        socket1 = new DatagramSocket(8080); // socket to receive packets
+        socket1.setSoTimeout(90000); // set timeout to 1.5 min
+        socket2 = new DatagramSocket(); // socket to send packets
     }
 
     public void run(){
@@ -39,16 +38,16 @@ public class UDPServerThread extends Thread{
         }catch(UnknownHostException e){
             System.out.println("cannot connect to network");
         }
-        List<Integer> received = new ArrayList<Integer>();
+        List<Integer> received = new ArrayList<Integer>(); // create a list to store the received data
         while(UDPServer.running){
 
             try {
                 byte[] buf = new byte[256];
 
-                // receive data
-                UDPServer.messageReceived = false;
+                /* receive data */
+                UDPServer.messageReceived = false; // flag signifies a received message, when set to true triggers a mouse movement
                 DatagramPacket packet = new DatagramPacket(buf, buf.length);
-                socket1.receive(packet);
+                socket1.receive(packet); // receive packet
                 UDPServer.messageReceived = true;
 
                 /* determine where the packet came from */
@@ -56,23 +55,23 @@ public class UDPServerThread extends Thread{
 
                 /* check if the device has been assigned a team */
                 userExists = false;
-                for(Users user:userList){
-                    if(currentIp.equals(user.ip)){
+                for(Users user:userList){ // iterate over all users in user list
+                    if(currentIp.equals(user.ip)){ // check packet ip against user ips
                         userExists = true;
-                        currentTeam = user.team;
+                        currentTeam = user.team; // get users team
                     }
                 }
 
                 /* if ip isn't on the list, assign team and add to users list */
                 if(!userExists){
-                    currentTeam = userCount%2;
-                    Users user = new Users(currentIp, currentTeam);
-                    userList.add(user);
-                    System.out.println("user " + user.ip + " joined team " + user.team + "!");
+                    currentTeam = userCount%2; // assign team based on how many users are connected
+                    Users user = new Users(currentIp, currentTeam); // create new user object
+                    userList.add(user); // add user to user list
+                    System.out.println("user " + user.ip + " joined team " + (user.team+1) + "!");
                     userCount++;
                 }
 
-                received = decodeByteMessage(packet.getData());
+                received = decodeByteMessage(packet.getData()); // decode received message
 
                 if(currentTeam == 1){   // team 1 (machine 2)
                     /* send data to other machine */
@@ -85,6 +84,7 @@ public class UDPServerThread extends Thread{
                 }
                 else{   // team 0 (machine 1)
 
+                    /* adjust sign to make movements match rotation */
                     UDPServer.yDegrees = -1 * received.get(0);
                     UDPServer.xDegrees = -1 * received.get(1);
 
@@ -125,7 +125,9 @@ public class UDPServerThread extends Thread{
         }
     }
 
-
+    /** decodeByteMessage. Takes a byte message and returns a list of two integer values
+     * (pitch and roll)
+     */
     public static List<Integer> decodeByteMessage(byte[] b) {
         List<Integer> list = new ArrayList<Integer>();
 
