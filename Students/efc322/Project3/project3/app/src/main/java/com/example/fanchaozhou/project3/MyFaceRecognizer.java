@@ -55,7 +55,7 @@ public class MyFaceRecognizer{
             labels[ cnt ] = (int)recList.get(cnt).typeID;
         }
 
-        faceRecognizer.train(photoMatVector, labels);
+        faceRecognizer.update(photoMatVector, labels);
     }
 
     public int predict(File faceImgFile){
@@ -65,6 +65,8 @@ public class MyFaceRecognizer{
 
         cvEqualizeHist(face, grayFace);
         label = faceRecognizer.predict(grayFace);
+        System.out.println(label);
+        System.out.println(faceImgFile.getPath());
         return label;
     }
 

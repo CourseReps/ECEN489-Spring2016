@@ -52,7 +52,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
     public static final int REQUEST_TYPE_LIST_DIALOG = 3;
     public static final int REQUEST_ADDING_TYPES_DIALOG = 2;            //The request code for returning user's choice from dialog
     public static final int REQUEST_IMAGE_CAPTURE = 1;                  //The request code for taking a photo
-    private static final float LIGHT_THRESHOLD = 10.0f;
+    private static final float LIGHT_THRESHOLD = 1.0f;
     private static final String NO_CAMERA_HINT = "Camera NOT Avalaible";   //The hint for an unavalaible camera
     private static final String ADD_TYPE_DIALOG_TAG = "Adding Types Dialog";//Tag for the dialog when switching from running to training
     private static final String TYPE_LIST_DIALOG_TAG = "Type List Dialog";
@@ -338,6 +338,17 @@ public class ImageFragment extends Fragment implements SensorEventListener{
             final File imageFile = new File(imageFilePath);
             final ImageFragment curFragment = this;
 
+            Bitmap tempPhoto = BitmapFactory.decodeFile(imageFilePath);
+            final Bitmap photo = Bitmap.createScaledBitmap(tempPhoto, 960, 1280, false);
+            try{
+                //Resize the photo first
+                FileOutputStream fileOS = new FileOutputStream(imageFile);
+                photo.compress(Bitmap.CompressFormat.JPEG, 100, fileOS);
+                fileOS.close();
+            } catch(Exception e) {
+                System.out.println(e);
+            }
+
             if(!switchTrainRun.isChecked()){   //The app is currently in the training mode.
                 //Open a dialog for the user to choose the class of the object in the photo just taken
                 final TextView resultText = (TextView)getActivity().findViewById(R.id.nameTextView);
@@ -386,8 +397,8 @@ public class ImageFragment extends Fragment implements SensorEventListener{
             } else {                           //The app is currently in the running mode.
                 final TextView resultTextView = (TextView) getActivity().findViewById(R.id.nameTextView);
                 try{
-                    final Bitmap photo = BitmapFactory.decodeStream(new FileInputStream(imageFile));
                     final ImageView imageView = (ImageView)getActivity().findViewById(R.id.objImageView);
+                    System.out.println(photo.getHeight()+ " " +photo.getWidth());
                     imageView.post(new Runnable() {
                         //Start a new thread to set the Image on the main page and start the computation
                         @Override
@@ -409,6 +420,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
 
                         if(face.height()==0 && face.width()==0){    // No face is detected in the photo
                             resultTextView.setText(getString(R.string.no_face_detected));
+                            System.out.println(imageFile.delete());
                         } else {                                    //A face is detected in the photo
                             try{
                                 //Copy the original photo into a new file
@@ -449,6 +461,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                         boolean isSuccessful = false;
                                         while(cnt<MAX_TX && !isSuccessful){
                                             try{
+                                                System.out.println(0);
                                                 ///////// Read the image into a byte array ///////////
                                                 FileInputStream fileInputStream = new FileInputStream(transPhotoFile);
                                                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -461,6 +474,22 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                                 bos.close();
                                                 ///////////////////////////////////////////////////////
 
+                                                System.out.println(2);
+                                                ////////// Set up an HTTP connection to the server and send the String /////
+                                                String serverIP = ((EditText)getActivity().findViewById(R.id.editText_server_ip)).getText().toString();
+                                                String serverPort = ((EditText)getActivity().findViewById(R.id.editText_server_port)).getText().toString();
+                                                String webAppName = getString(R.string.webapp_name);
+                                                String paraName = getString(R.string.photo_data);
+                                                URL url = new URL("http://"+serverIP+":"+serverPort+webAppName);
+
+                                                System.out.println(3);
+                                                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+                                                connection.setRequestMethod("POST");
+                                                connection.setConnectTimeout(9243);
+                                                connection.setDoOutput(true);
+
+                                                System.out.println(4);
+                                                OutputStreamWriter output = new OutputStreamWriter(connection.getOutputStream());
                                                 ////////// Encode the image and its name into a JSON string /////////
                                                 String faceString = Base64.encodeToString(faceByteArray, Base64.URL_SAFE | Base64.NO_WRAP);
                                                 String fileName = getWifiMac();
@@ -469,24 +498,16 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                                 jsonObject.put(getString(R.string.key_file_name), fileName);
                                                 jsonObject.put(getString(R.string.key_name), name);
                                                 jsonObject.put(getString(R.string.key_image), faceString);
-                                                /////////////////////////////////////////////////////////////////////
-
-                                                ////////// Set up an HTTP connection to the server and send the String /////
-                                                String serverIP = ((EditText)getActivity().findViewById(R.id.editText_server_ip)).getText().toString();
-                                                String serverPort = ((EditText)getActivity().findViewById(R.id.editText_server_port)).getText().toString();
-                                                String webAppName = getString(R.string.webapp_name);
-                                                String paraName = getString(R.string.photo_data);
-                                                URL url = new URL("http://"+serverIP+":"+serverPort+webAppName);
-
-                                                HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-                                                connection.setRequestMethod("POST");
-                                                connection.setConnectTimeout(9243);
-                                                connection.setDoOutput(true);
-
-                                                OutputStreamWriter output = new OutputStreamWriter(connection.getOutputStream());
+                                                System.out
+                                                        .println
+                                                                (jsonObject.getString(getString(R.string.key_type)) + " " +
+                                                                        fileName + " " +
+                                                                        name + " " +
+                                                                        faceString.length());
                                                 output.write(paraName + "=" + jsonObject.toString());
                                                 output.flush();
 
+                                                System.out.println(5);
                                                 InputStream input = connection.getInputStream();
                                                 byte[] inputBytes = new byte[ 1 ];
                                                 StringBuffer buf = new StringBuffer();
@@ -494,6 +515,7 @@ public class ImageFragment extends Fragment implements SensorEventListener{
                                                     buf.append(new String(inputBytes));
                                                 }
 
+                                                System.out.println(6);
                                                 output.close();
                                                 input.close();
                                                 connection.disconnect();
