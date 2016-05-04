@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "C:\\Users\\Chaance\\AR_Basic1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "C:\\Users\\Chaance\\AR_Basic1\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Chaance\\AR_Basic1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\cameraview.xml",
+        "source": "C:\\Users\\Chaance\\AR_Basic1\\app\\src\\main\\res\\layout\\cameraview.xml"
+    },
+    {
+        "merged": "C:\\Users\\Chaance\\AR_Basic1\\app\\build\\intermediates\\res\\merged\\debug\\layout\\webview.xml",
+        "source": "C:\\Users\\Chaance\\AR_Basic1\\app\\src\\main\\res\\layout\\webview.xml"
+    }
+]

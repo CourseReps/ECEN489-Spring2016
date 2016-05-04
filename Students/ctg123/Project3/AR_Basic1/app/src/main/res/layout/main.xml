@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:orientation="vertical"
+    tools:context=".CameraProjectActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="162dp"
+    android:text="Welcome to the Lunarfinder application"
+    />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="135dp"
+        android:layout_height="wrap_content"
+        android:text="Go to calculator"
+        android:id="@+id/button2"
+        android:onClick="open_web"
+        android:layout_gravity="center" />
+
+    <Button
+    android:layout_width="138dp"
+    android:layout_height="wrap_content"
+    android:text="Open Camera"
+    android:id="@+id/button"
+        android:onClick="open_camera"
+        android:layout_gravity="center" />
+</LinearLayout>
