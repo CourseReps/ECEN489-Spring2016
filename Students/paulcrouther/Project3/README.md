@@ -9,10 +9,10 @@ Features
 
 APIs
 
-Android:
+* Android:
 -Camera API
 
-Python:
+* Python:
 -PIL
 -Socket
 
