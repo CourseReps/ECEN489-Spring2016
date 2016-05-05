@@ -35,8 +35,6 @@ public class MainActivity extends ActionBarActivity {
     private ImageView capturedImageHolder;
 
     private String udpOutputData = "hello";
-    //Boolean sendUdp = false;
-    //private String s = "hello from app";
 
 
     @Override
@@ -56,55 +54,10 @@ public class MainActivity extends ActionBarActivity {
         mImageSurfaceView = new ImageSurfaceView(MainActivity.this, camera);
         cameraPreviewLayout.addView(mImageSurfaceView);
 
-
-
-
-    //UdpSendThread.start();
         Button captureButton = (Button)findViewById(R.id.button);
         captureButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
-                try {
-                    // get server name
-                    //final InetAddress serverAddr = InetAddress.getByName("192.168.43.197");
-                    final InetAddress serverAddr = InetAddress.getByName("172.31.99.109"); //pc
-                    //final InetAddress serverAddr = InetAddress.getByName("172.31.99.46");//tablet at starbucks
-
-                    Log.d("UDP", "C: Connecting...");
-                    // create new UDP socket
-                    final DatagramSocket socket = new DatagramSocket();
-                //sendUdp = true;
-                // prepare data to be sent
-                byte[] buf = udpOutputData.getBytes();
-
-                // create a UDP packet with data and its destination ip & port
-                DatagramPacket packet = new DatagramPacket(buf, buf.length, serverAddr, 8000);
-                Log.d("UDP", "C: Sending: '" + new String(buf) + "'");
-
-                // send the UDP packet
-                socket.send(packet);
-                    //camera.takePicture(null, null, pictureCallback);
-
-                socket.close();
-
-                Log.d("UDP", "C: Sent.");
-                Log.d("UDP", "C: Done.");
-
-                }
-
-                catch (Exception e) {
-                    Log.e("UDP", "C: Error", e);
-
-                }
-                try {
-                    Thread.sleep(100);
-                }
-
-                catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }*/
                 Runnable picRunnable = new Runnable() {
                     @Override
                     public void run() {
@@ -114,16 +67,6 @@ public class MainActivity extends ActionBarActivity {
                 };
                 ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
                 executor.scheduleAtFixedRate(picRunnable,0,1, TimeUnit.SECONDS);
-                //}
-
-
-
-
-                //sendUdp(s);
-                //sendUdp = false;
-                //System.out.println("On Click" + sendUdp.toString());
-                //camera.takePicture(null, null, pictureCallback);
-
             }
         });
 
@@ -140,7 +83,6 @@ public class MainActivity extends ActionBarActivity {
         }
         return mCamera;
     }
-    //Thread picThread = new Thread() {
         PictureCallback pictureCallback = new PictureCallback() {
             @Override
             public void onPictureTaken(byte[] data, Camera camera) {
@@ -150,11 +92,7 @@ public class MainActivity extends ActionBarActivity {
                     return;
                 }
                 try{
-                    //final InetAddress serverAddr = InetAddress.getByName("192.168.42.20");
-                    //final InetAddress serverAddr = InetAddress.getByName("192.168.43.197");
-                    final InetAddress serverAddr = InetAddress.getByName("10.202.107.58");
-                    //final InetAddress serverAddr = InetAddress.getByName("172.31.99.109"); //pc
-                    //final InetAddress serverAddr = InetAddress.getByName("172.31.99.46");//tablet at starbucks
+                    final InetAddress serverAddr = InetAddress.getByName(ipaddress); //set address here
 
                     Log.d("UDP", "C: Connecting...");
                     DatagramSocket socket = new DatagramSocket();
@@ -189,70 +127,11 @@ public class MainActivity extends ActionBarActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                     }
-
-                //camera.takePicture(null, null, pictureCallback);
-                    //System.out.println("Picture callback" + sendUdp.toString());
                     capturedImageHolder.setImageBitmap(scaleDownBitmapImage(bitmap, 300, 200));
-                    //sendUdp(s);
-                    //sendUdp = false;
-                    //sendUdp(s);
-                    //}
 
             }
         };
-    //};
-
-    /*private void oldOpenCamera() {
-        //Camera mCamera = null;
-        try {
-            //mCamera = Camera.open(1);
-            camera.open(1);
-        }
-        catch (RuntimeException e) {
-            Log.e("UDP", "failed to open front camera");
-        }
-    }
-
-    private void newOpenCamera() {
-        if (mThread == null) {
-            mThread = new CameraHandlerThread();
-        }
-
-        synchronized (mThread) {
-            mThread.openCamera();
-        }
-    }
-    private CameraHandlerThread mThread = null;
-    private static class CameraHandlerThread extends HandlerThread {
-        android.os.Handler mHandler = null;
-
-        CameraHandlerThread() {
-            super("CameraHandlerThread");
-            start();
-            mHandler = new android.os.Handler(getLooper());
-        }
-
-        synchronized void notifyCameraOpened() {
-            notify();
-        }
-
-        void openCamera() {
-            mHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    //oldOpenCamera();
-                    notifyCameraOpened();
-
-                }
-            });
-            try {
-                wait();
-            }
-            catch (InterruptedException e) {
-                Log.w("UDP", "wait was interrupted");
-            }
-        }
-    }*/
+    
 
     private Bitmap scaleDownBitmapImage(Bitmap bitmap, int newWidth, int newHeight){
         Bitmap resizedBitmap = Bitmap.createScaledBitmap(bitmap, newWidth, newHeight, true);
@@ -280,141 +159,5 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    /*android.os.Handler mainHandler = new android.os.Handler(Looper.getMainLooper());
-
-    Runnable myRunnable = new Runnable() {
-        @Override
-        public void run() {
-            mainHandler.post(myRunnable);
-        } // This is your code
-    };*/
-
-
-    /*
-    @Override
-    public void onResume() {
-        super.onResume();  // Always call the superclass method first
-        // Get the Camera instance as the activity achieves full user focus
-        //if (checkDeviceCamera() == null) {
-            //initializeCamera(); // Local method to handle camera init
-        //}
-        sendUdp = false;
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();  // Always call the superclass method first
-        // Release the Camera because we don't need it when paused
-        // and other activities might need to use it.
-        //if (checkDeviceCamera() != null) {
-          //  checkDeviceCamera().release();
-            //camera = null;
-        //}
-        //Thread.interrupt();
-        sendUdp = true;
-    }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        //MyThread.interrupt();
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    /*public void initializeCamera() {
-        camera.startPreview();
-    }*/
-    //-----UDP send thread
-    //public class UdpSendThread extends AsyncTask<String, Void, String> {
-    //class UdpSendThread implements Runnable {
-    /*Thread UdpSendThread = new Thread(){
-    //Thread udpSendThread = new Thread(new Runnable() {
-
-        @Override
-        public void run() {
-        //protected String doInBackground(String... idpAddr){
-
-
-            while (sendUdp == true) {
-
-                try {
-                    Thread.sleep(100);
-                }
-
-                catch (InterruptedException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-
-                if (sendUdp) {
-
-                    try {
-
-                        //camera.takePicture(null, null, pictureCallback);
-                        // get server name
-                        InetAddress serverAddr = InetAddress.getByName("192.168.43.197");
-                        //InetAddress serverAddr = InetAddress.getByName("172.31.99.109");
-                        Log.d("UDP", "C: Connecting...");
-
-                        // create new UDP socket
-                        DatagramSocket socket = new DatagramSocket();
-
-                        // prepare data to be sent
-                        byte[] buf = udpOutputData.getBytes();
-
-                        // create a UDP packet with data and its destination ip & port
-                        DatagramPacket packet = new DatagramPacket(buf, buf.length, serverAddr, 8000);
-                        Log.d("UDP", "C: Sending: '" + new String(buf) + "'");
-
-                        // send the UDP packet
-                        socket.send(packet);
-                        //camera.takePicture(null, null, pictureCallback);
-
-                        socket.close();
-
-                        Log.d("UDP", "C: Sent.");
-                        Log.d("UDP", "C: Done.");
-
-                        //Runnable task = getTask();
-                        //new Handler(Looper.getMainLooper()).post(task);
-
-
-                    }
-
-                    catch (Exception e) {
-                        Log.e("UDP", "C: Error", e);
-
-                    }
-
-                    try {
-                        Thread.sleep(100);
-                    }
-
-                    catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-
-
-                    sendUdp = false;
-
-                }
-
-            }
-        }
-
-    };
-    //UdpSendThread.start();
-
-
-    public void sendUdp(String udpMsg) {
-
-        udpOutputData = udpMsg;
-        sendUdp = true;
-        //Thread.interrupted();
-        //sendUdp = false;
-
-    }*/
 
 }
