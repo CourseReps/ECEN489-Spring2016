@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <% include templates/Navigation.ejs%>
+        <h1><%= title %></h1>
+
+        <p>Enter Your Name and Psssword</p>
+    </head>
+
+    <body>
+        <form method = "POST"action="/register" id="reg-form">
+            <input type="text" name="name" value ="name"/>
+            <input type="text" name="password" value="pass"/>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

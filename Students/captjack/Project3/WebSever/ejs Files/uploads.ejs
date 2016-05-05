@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+
+    <% include templates/Navigation.ejs%>
+    <h1><%= title %></h1>
+    <h3>This is where you can upload a barcode. </h3>
+    <form action="/uploads" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Submit</button>
+    </form>
+
+</body>
+</html>
