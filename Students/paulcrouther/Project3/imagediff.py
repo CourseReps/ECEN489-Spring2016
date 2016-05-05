@@ -4,18 +4,7 @@ import binascii
 import io
 
 import socket
-# tablet
-#UDP_IP_DEST = '10.202.97.214'
-# phone 4g from tablet
-####UDP_IP_DEST = '192.168.43.220'
-#UDP_IP_DEST = '192.168.42.22'
-#UDP_IP_DEST = '192.168.42.23'
-# Mobile Data
-#UDP_IP_DEST = '192.0.0.4'
-#UDP_IP_DEST = '172.31.99.132'
-#UDP_IP_DEST = '172.31.99.46'
-#UDP_IP_DEST = '10.202.96.229'
-UDP_IP_DEST = '10.202.96.166'
+UDP_IP_DEST = UDPDESTIP #Set UDP destination IP
 
 
 UDP_IP = '0.0.0.0'
@@ -59,15 +48,11 @@ print "Open"
 print str(socket.gethostbyname(socket.gethostname()))
 while True:
     for i in range(0,180):
-        data, addr = sock.recvfrom(62000) # buffer size is 1024 bytes
+        data, addr = sock.recvfrom(65536) # buffer size is 65536 bytes
         if data:
         
             jpgFile = Image.open(io.BytesIO(data))
-            #import StringIO
             print "received: " + str(jpgFile.bits) + " " +  str(jpgFile.size) + " " +  str(jpgFile.format) + " " + dhash(jpgFile) + "\n"
-            #print "count: " + str(i)
-            #jpgFile.show()
-            #print "received message:\n", str(data.strip())
             sock.sendto("I got the message", (UDP_IP_DEST, UDP_PORT))
             imageList.append(dhash(jpgFile))
             print "count: " + str(i) + " current image hash: " + str(imageList[i])
