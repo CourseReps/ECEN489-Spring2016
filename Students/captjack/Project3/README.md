@@ -1,4 +1,14 @@
-#Secret Barcode Messanger
+#Secret Barcode Messenger
+
+Please read to get a full understanding of the scope and limitations of this project
+
+###HOW TO RECREATE / WHERE TO FIND MY CHANGES
+#### ZXING Android Application
+This is a very large application, but all of my changes can be found with one file. The **Main Activity** under the **sample module** has all of my functions commented. Check out these guys to get the base application without my changes. https://github.com/zxing/zxing 
+#### Web Server
+This is will be slighty more complicated because github wouldn't let me upload the entire project because file names were too long...
+At the base, this is an **Express App** created using **Node.js** look online for getting this set up. I programmed using IntelliJ. This guy has very helpful tutorials for beginners. https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBMdkKFn3HasZnnAqVjzHn_ What I have done is taken the essential files (aka not the auto-generated files that no-one ever touches) and put them here. That would be all of the .ejs and .js files as well as the www file that you run to start the server. 
+
 
 ###Project Overview
 The goal of this project is to provide a means of secret communication between users by means of encoded QR codes.
@@ -53,6 +63,7 @@ There is also a tool to upload images from your computer to the website as well 
 
 * failed to succesfully receive QR image sent from phone
 * failed to retreive image that was uploaded via the website (i.e. I was able to receive the picture, but failed to display it back)
+* The android application does not use the MySQL databse for authentication
 
 
 
