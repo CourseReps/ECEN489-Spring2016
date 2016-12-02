@@ -1,0 +1,657 @@
+
+11:33:19.460816 664188us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.461003 664364us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.461413 664632us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.461415 664822us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6472 Pad 20 KeyID 1
+11:33:19.461655 665057us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6473 Pad 20 KeyID 1
+11:33:19.461814 665256us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:dc:53:60:94:1e:02 (oui Unknown) Data IV:6474 Pad 20 KeyID 1
+11:33:19.468963 672453us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.472967 676438us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.473422 676924us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.474118 677623us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.474463 677939us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.474765 678253us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.475086 678593us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.475391 678891us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.478092 680507us tsft 1.0 Mb/s 2412 MHz 11b -94dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.485714 689163us tsft 2412 MHz 11g -59dB signal 65.0 Mb/s MCS 7 20 MHz lon GI [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:64:a7:69:96:1b:8f (oui Unknown) DA:24:de:c6:11:fb:01 (oui Unknown) 
+11:33:19.485715 689206us tsft 24.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] RA:64:a7:69:96:1b:8f (oui Unknown) Acknowledgment
+11:33:19.492862 696352us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.494902 698384us tsft 2412 MHz 11g -71dB signal 52.0 Mb/s MCS 5 20 MHz lon GI [bit 29] CF +QoS DA:a8:a7:95:28:80:4b (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a4:4c:11:4d:21:40 (oui Unknown) Data IV:f12f Pad 20 KeyID 0
+11:33:19.495523 698624us tsft 24.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) TA:24:de:c6:11:fb:01 (oui Unknown) Request-To-Send
+11:33:19.495524 698671us tsft 24.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) Clear-To-Send
+11:33:19.495525 698736us tsft 2412 MHz 11g -72dB signal 26.0 Mb/s MCS 3 20 MHz lon GI [bit 29] CF +QoS DA:a8:a7:95:28:80:4b (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a4:4c:11:4d:21:40 (oui Unknown) Data IV:f12f Pad 20 KeyID 0
+11:33:19.495525 698821us tsft 24.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) Acknowledgment
+11:33:19.495526 698966us tsft 2412 MHz 11g -70dB signal 52.0 Mb/s MCS 5 20 MHz lon GI [bit 29] CF +QoS DA:a8:a7:95:28:80:4b (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a4:4c:11:4d:21:40 (oui Unknown) Data IV:f130 Pad 20 KeyID 0
+11:33:19.495526 699030us tsft 24.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) Acknowledgment
+11:33:19.496845 700155us tsft 24.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) TA:a8:a7:95:28:80:4b (oui Unknown) Request-To-Send
+11:33:19.496845 700201us tsft 24.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) Clear-To-Send
+11:33:19.496846 700314us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) BA
+11:33:19.503924 707419us tsft 18.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:60:f1:89:69:d3:ba (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.505118 708608us tsft 18.0 Mb/s 2412 MHz 11g -79dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) Acknowledgment
+11:33:19.513922 717323us tsft 6.0 Mb/s 2412 MHz 11g -81dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:19.513923 717402us tsft 6.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:19.519585 723047us tsft 9.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] BSSID:24:de:c6:11:e7:01 (oui Unknown) SA:c4:46:19:77:62:38 (oui Unknown) DA:24:de:c6:11:e7:01 (oui Unknown) 
+11:33:19.520051 723421us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.520288 723597us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.520591 723821us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.520592 724011us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db90 Pad 20 KeyID 1
+11:33:19.520793 724202us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db91 Pad 20 KeyID 1
+11:33:19.524293 727779us tsft 18.0 Mb/s 2412 MHz 11g -86dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.526552 730053us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.526894 730392us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.527545 731038us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.532967 736297us tsft 2412 MHz 11g -82dB signal 6.5 Mb/s MCS 0 20 MHz lon GI [bit 29] CF +QoS BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:84:10:0d:0b:c1:b4 (oui Unknown) DA:Broadcast Data IV:5d97 Pad 20 KeyID 0
+11:33:19.532969 736440us tsft 6.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:84:10:0d:0b:c1:b4 (oui Unknown) Acknowledgment
+11:33:19.548472 751841us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.548731 752017us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.548871 752241us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.550247 753727us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.558992 762500us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.561618 765106us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.562540 766052us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.563085 766524us tsft 24.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) TA:24:de:c6:11:ec:e1 (oui Unknown) Request-To-Send
+11:33:19.563086 766569us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Clear-To-Send
+11:33:19.563366 766876us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.564124 767487us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.564319 767662us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.564680 767886us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.564681 768076us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6475 Pad 20 KeyID 1
+11:33:19.564968 768357us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6476 Pad 20 KeyID 1
+11:33:19.569782 773260us tsft 18.0 Mb/s 2412 MHz 11g -85dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.580441 782897us tsft 1.0 Mb/s 2412 MHz 11b -93dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.594619 798142us tsft 24.0 Mb/s 2412 MHz 11g -86dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.605220 808735us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.606286 809775us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.606861 810401us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.615395 818848us tsft 2412 MHz 11g -70dB signal 58.5 Mb/s MCS 6 20 MHz lon GI [bit 29] CF +QoS DA:a8:a7:95:28:80:4b (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a4:4c:11:4d:21:40 (oui Unknown) Data IV:f131 Pad 20 KeyID 0
+11:33:19.615396 818910us tsft 24.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) Acknowledgment
+11:33:19.618347 821852us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.622431 825820us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.622654 825995us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.622970 826219us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.622971 826409us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db92 Pad 20 KeyID 1
+11:33:19.623139 826582us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db93 Pad 20 KeyID 1
+11:33:19.623364 826791us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:b4:b6:76:34:28:2b (oui Unknown) Data IV:db94 Pad 20 KeyID 1
+11:33:19.626061 829551us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.628719 832233us tsft 18.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) TA:60:f1:89:69:d3:ba (oui Unknown) Request-To-Send
+11:33:19.632411 835915us tsft 9.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] BSSID:24:de:c6:11:e7:01 (oui Unknown) SA:c4:46:19:77:62:38 (oui Unknown) DA:24:de:c6:11:e7:01 (oui Unknown) 
+11:33:19.634392 836890us tsft 1.0 Mb/s 2412 MHz 11b -89dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:8c:77:16:b3:29:01 (oui Unknown) SA:34:13:e8:2a:f4:68 (oui Unknown) Probe Response (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] CH: 1, PRIVACY
+11:33:19.635663 838138us tsft 1.0 Mb/s 2412 MHz 11b -89dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:8c:77:16:b3:29:01 (oui Unknown) SA:34:13:e8:2a:f4:68 (oui Unknown) Probe Response (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] CH: 1, PRIVACY
+11:33:19.649846 853358us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.650843 854241us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.651079 854416us tsft 9.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.651240 854640us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.663888 867403us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.665593 868989us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.665828 869165us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.666387 869388us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.666388 869578us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6477 Pad 20 KeyID 1
+11:33:19.666389 869733us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6478 Pad 20 KeyID 1
+11:33:19.666389 869854us tsft 24.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) TA:a8:a7:95:28:80:4b (oui Unknown) Request-To-Send
+11:33:19.666390 869892us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) Clear-To-Send
+11:33:19.666602 870136us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) BA
+11:33:19.682880 885306us tsft 1.0 Mb/s 2412 MHz 11b -88dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.690705 894135us tsft 2412 MHz 11g -58dB signal 65.0 Mb/s MCS 7 20 MHz lon GI [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:64:a7:69:96:1b:8f (oui Unknown) DA:24:de:c6:11:fb:01 (oui Unknown) 
+11:33:19.690705 894179us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:64:a7:69:96:1b:8f (oui Unknown) Acknowledgment
+11:33:19.702348 905844us tsft 18.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.705893 909301us tsft 6.0 Mb/s 2412 MHz 11g -81dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:19.705894 909380us tsft 6.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:19.709641 912816us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.709642 912951us tsft 9.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.709643 913122us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.710111 913408us tsft 1.0 Mb/s 2412 MHz 11b -80dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.710636 913934us tsft 1.0 Mb/s 2412 MHz 11b -79dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.711739 914907us tsft 1.0 Mb/s 2412 MHz 11b -87dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:60:d8:19:7f:1a:f1 (oui Unknown) Probe Request () [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit]
+11:33:19.712595 915934us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:60:d8:19:7f:1a:f1 (oui Unknown) SA:24:de:c6:11:ec:e0 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.712597 916089us tsft 12.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] RA:24:de:c6:11:ec:e0 (oui Unknown) Acknowledgment
+11:33:19.713367 916783us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:60:d8:19:7f:1a:f1 (oui Unknown) SA:24:de:c6:11:f1:42 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.718863 922372us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.719512 923051us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.724843 928219us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.725091 928395us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.725257 928619us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.725719 928808us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:4c:34:88:6f:4f:c3 (oui Unknown) Data IV:db95 Pad 20 KeyID 1
+11:33:19.725719 928983us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db96 Pad 20 KeyID 1
+11:33:19.725720 929138us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db97 Pad 20 KeyID 1
+11:33:19.731535 935053us tsft 9.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] BSSID:24:de:c6:11:e7:01 (oui Unknown) SA:c4:46:19:77:62:38 (oui Unknown) DA:24:de:c6:11:e7:01 (oui Unknown) 
+11:33:19.736707 940201us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.739487 942998us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.739999 943495us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.740367 943855us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.740652 944160us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.741013 944520us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.741332 944818us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.741550 945083us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.745718 949193us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.745966 949485us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.753639 957040us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.755843 958307us tsft 1.0 Mb/s 2412 MHz 11b -88dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:6c:ad:f8:51:8b:d0 (oui Unknown) SA:34:13:e8:2a:f4:68 (oui Unknown) Probe Response (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] CH: 1, PRIVACY
+11:33:19.756100 959535us tsft 1.0 Mb/s 2412 MHz 11b -84dB signal [bit 29] RA:34:13:e8:2a:f4:68 (oui Unknown) Acknowledgment
+11:33:19.756357 959880us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:24:de:c6:11:eb:a0 (oui Unknown) Acknowledgment
+11:33:19.756611 960133us tsft 6.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:24:de:c6:11:eb:a1 (oui Unknown) Acknowledgment
+11:33:19.756842 960352us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:24:de:c6:11:eb:a2 (oui Unknown) Acknowledgment
+11:33:19.757357 960881us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:24:de:c6:11:fd:a2 (oui Unknown) Acknowledgment
+11:33:19.758716 961635us tsft 1.0 Mb/s 2412 MHz 11b -82dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:6c:ad:f8:51:8b:d0 (oui Unknown) Probe Request () [1.0 2.0 5.5 6.0 9.0 11.0 12.0 18.0 Mbit]
+11:33:19.759652 962556us tsft 1.0 Mb/s 2412 MHz 11b -82dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:6c:ad:f8:51:8b:d0 (oui Unknown) Probe Request () [1.0 2.0 5.5 6.0 9.0 11.0 12.0 18.0 Mbit]
+11:33:19.759862 963230us tsft 12.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:6c:ad:f8:51:8b:d0 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.759862 963378us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:24:de:c6:11:fd:a0 (oui Unknown) Acknowledgment
+11:33:19.760103 963465us tsft 9.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:6c:ad:f8:51:8b:d0 (oui Unknown) SA:24:de:c6:11:fb:01 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.760342 963755us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:6c:ad:f8:51:8b:d0 (oui Unknown) SA:24:de:c6:11:fb:02 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.760592 964005us tsft 12.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:6c:ad:f8:51:8b:d0 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.761218 964360us tsft 1.0 Mb/s 2412 MHz 11b -77dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:60:d8:19:7f:1a:f1 (oui Unknown) Probe Request () [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit]
+11:33:19.761967 965357us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:60:d8:19:7f:1a:f1 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:19.763975 967407us tsft 1.0 Mb/s 2412 MHz 11b -75dB signal [bit 29] RA:34:13:e8:2a:f4:68 (oui Unknown) Acknowledgment
+11:33:19.764217 967734us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:24:de:c6:11:eb:a0 (oui Unknown) Acknowledgment
+11:33:19.764465 967988us tsft 6.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:24:de:c6:11:eb:a1 (oui Unknown) Acknowledgment
+11:33:19.764673 968207us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:24:de:c6:11:eb:a2 (oui Unknown) Acknowledgment
+11:33:19.765592 968485us tsft 1.0 Mb/s 2412 MHz 11b -84dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:6c:ad:f8:51:8b:d0 (oui Unknown) Probe Request () [1.0 2.0 5.5 6.0 9.0 11.0 12.0 18.0 Mbit]
+11:33:19.767250 970682us tsft 1.0 Mb/s 2412 MHz 11b -84dB signal [bit 29] RA:34:13:e8:2a:f4:68 (oui Unknown) Acknowledgment
+11:33:19.767507 971027us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:24:de:c6:11:eb:a0 (oui Unknown) Acknowledgment
+11:33:19.767750 971280us tsft 6.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:24:de:c6:11:eb:a1 (oui Unknown) Acknowledgment
+11:33:19.767979 971391us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.768219 971567us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.768557 971790us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.768558 971980us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:4c:34:88:6f:4f:c3 (oui Unknown) Data IV:647a Pad 20 KeyID 1
+11:33:19.768764 972191us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:647b Pad 20 KeyID 1
+11:33:19.769128 972506us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:24:de:c6:11:fd:a2 (oui Unknown) Acknowledgment
+11:33:19.769129 972569us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:647c Pad 20 KeyID 1
+11:33:19.781467 984997us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) BA
+11:33:19.785238 987700us tsft 1.0 Mb/s 2412 MHz 11b -86dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.798592 1002035us tsft 6.0 Mb/s 2412 MHz 11g -81dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:19.798593 1002114us tsft 6.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:19.816968 1020479us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.818008 1021539us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) BA
+11:33:19.827266 1030619us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.827450 1030795us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.827767 1031019us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.827768 1031209us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db98 Pad 20 KeyID 1
+11:33:19.828051 1031481us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db99 Pad 20 KeyID 1
+11:33:19.830469 1033298us tsft 18.0 Mb/s 2412 MHz 11g -88dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.830471 1033536us tsft 18.0 Mb/s 2412 MHz 11g -89dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.830472 1033689us tsft 9.0 Mb/s 2412 MHz 11g -86dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.830473 1033826us tsft 9.0 Mb/s 2412 MHz 11g -87dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.830474 1033950us tsft 9.0 Mb/s 2412 MHz 11g -86dB signal [bit 29] BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:b4:8b:19:f2:6a:e8 (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.833358 1036898us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.835364 1038892us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Clear-To-Send
+11:33:19.835718 1039200us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.836027 1039509us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.836028 1039547us tsft 18.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:60:f1:89:69:d3:ba (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.850409 1053923us tsft 9.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] BSSID:24:de:c6:11:e7:01 (oui Unknown) SA:c4:46:19:77:62:38 (oui Unknown) DA:24:de:c6:11:e7:01 (oui Unknown) 
+11:33:19.850718 1054168us tsft 9.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] BSSID:24:de:c6:11:e7:01 (oui Unknown) SA:c4:46:19:77:62:38 (oui Unknown) DA:24:de:c6:11:e7:01 (oui Unknown) 
+11:33:19.855641 1059040us tsft 12.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.855844 1059215us tsft 9.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.856257 1059439us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.856258 1059629us tsft 9.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a8:a7:95:28:80:4b (oui Unknown) Data IV:9f04 Pad 20 KeyID 1
+11:33:19.856609 1059840us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:1c:65:9d:07:9b:91 (oui Unknown) Data IV:9f05 Pad 20 KeyID 1
+11:33:19.856611 1060124us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.861593 1065086us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:00:26:c7:61:68:da (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:19.870388 1073792us tsft 12.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.870631 1073967us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.870968 1074191us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.870969 1074381us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:647d Pad 20 KeyID 1
+11:33:19.871236 1074662us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:647e Pad 20 KeyID 1
+11:33:19.875841 1079365us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.879092 1082619us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.883342 1086840us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.884283 1087797us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.887676 1090110us tsft 1.0 Mb/s 2412 MHz 11b -84dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.895650 1099111us tsft 2412 MHz 11g -58dB signal 65.0 Mb/s MCS 7 20 MHz lon GI [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:64:a7:69:96:1b:8f (oui Unknown) DA:24:de:c6:11:fb:01 (oui Unknown) 
+11:33:19.895652 1099154us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:64:a7:69:96:1b:8f (oui Unknown) Acknowledgment
+11:33:19.896636 1100148us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.929617 1133019us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.929851 1133194us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.930222 1133418us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.930224 1133608us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db9a Pad 20 KeyID 1
+11:33:19.930346 1133781us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db9b Pad 20 KeyID 1
+11:33:19.936725 1140212us tsft 6.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:19.938012 1141367us tsft 18.0 Mb/s 2412 MHz 11g -79dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) Acknowledgment
+11:33:19.938013 1141532us tsft 18.0 Mb/s 2412 MHz 11g -78dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) Acknowledgment
+11:33:19.958049 1161439us tsft 12.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.958282 1161615us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.958742 1161839us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.958745 1162029us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:9f06 Pad 20 KeyID 1
+11:33:19.958747 1162189us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:9f07 Pad 20 KeyID 1
+11:33:19.960346 1163632us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:19.960348 1163834us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.960653 1164189us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.961612 1165138us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Clear-To-Send
+11:33:19.962359 1165894us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) BA
+11:33:19.969768 1173284us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.972806 1176191us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.973015 1176367us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.973361 1176781us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:647f Pad 20 KeyID 1
+11:33:19.973719 1177208us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.973996 1177504us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:19.974580 1177997us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6480 Pad 20 KeyID 1
+11:33:19.974738 1178187us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:6481 Pad 20 KeyID 1
+11:33:19.990110 1192501us tsft 1.0 Mb/s 2412 MHz 11b -87dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:19.999856 1203274us tsft 6.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:19.999858 1203353us tsft 6.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:20.005400 1208906us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.011760 1215268us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.015438 1218933us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.029990 1232879us tsft 1.0 Mb/s 2412 MHz 11b -86dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:6c:ad:f8:51:8b:d0 (oui Unknown) Probe Request () [1.0 2.0 5.5 6.0 9.0 11.0 12.0 18.0 Mbit]
+11:33:20.032039 1235417us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.032246 1235593us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.032600 1235816us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.032602 1236006us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:db9c Pad 20 KeyID 1
+11:33:20.032814 1236221us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:db9d Pad 20 KeyID 1
+11:33:20.033211 1236408us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:a4:c4:94:12:29:ec (oui Unknown) Data IV:db9e Pad 20 KeyID 1
+11:33:20.033431 1236853us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:db9f Pad 20 KeyID 1
+11:33:20.033706 1237125us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:dba0 Pad 20 KeyID 1
+11:33:20.036367 1239860us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.039212 1242710us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.039634 1243136us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.040088 1243585us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.040537 1244035us tsft 24.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.040987 1244489us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.041512 1245000us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.059638 1263136us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.060468 1263839us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.060730 1264014us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.061042 1264238us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.061043 1264428us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:60:57:18:88:22:8c (oui Unknown) Data IV:9f08 Pad 20 KeyID 1
+11:33:20.061283 1264684us tsft 9.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:00:c2:c6:10:ad:10 (oui Unknown) Data IV:9f09 Pad 20 KeyID 1
+11:33:20.061979 1265479us tsft 24.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.063529 1267023us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.063888 1267374us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.072789 1276288us tsft 18.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) Acknowledgment
+11:33:20.075219 1278593us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.075516 1278769us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.075640 1278993us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.075992 1279182us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:a4:c4:94:12:29:ec (oui Unknown) Data IV:6482 Pad 20 KeyID 1
+11:33:20.076240 1279654us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6483 Pad 20 KeyID 1
+11:33:20.076536 1279935us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6484 Pad 20 KeyID 1
+11:33:20.085013 1288423us tsft 6.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:20.085014 1288502us tsft 6.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:20.092488 1294910us tsft 1.0 Mb/s 2412 MHz 11b -92dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.100637 1304081us tsft 2412 MHz 11g -57dB signal 65.0 Mb/s MCS 7 20 MHz lon GI [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:64:a7:69:96:1b:8f (oui Unknown) DA:24:de:c6:11:fb:01 (oui Unknown) 
+11:33:20.100639 1304125us tsft 24.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] RA:64:a7:69:96:1b:8f (oui Unknown) Acknowledgment
+11:33:20.129043 1332558us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.129662 1333174us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.130509 1334009us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) BA
+11:33:20.134408 1337817us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.134679 1337993us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.135018 1338217us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.135019 1338407us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:dba1 Pad 20 KeyID 1
+11:33:20.135182 1338606us tsft 9.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:dba2 Pad 20 KeyID 1
+11:33:20.141186 1344665us tsft 18.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:e7:a1 (oui Unknown) SA:60:f1:89:69:d3:ba (oui Unknown) DA:24:de:c6:11:e7:a1 (oui Unknown) 
+11:33:20.147597 1351063us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.151085 1354618us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.151352 1354874us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.154204 1357732us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.162831 1366238us tsft 12.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.163067 1366414us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.163405 1366638us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.163406 1366828us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:28:b2:bd:c7:c3:1a (oui Unknown) Data IV:9f0a Pad 20 KeyID 1
+11:33:20.163680 1367139us tsft 2412 MHz 11g -70dB signal 58.5 Mb/s MCS 6 20 MHz lon GI [bit 29] CF +QoS DA:a8:a7:95:28:80:4b (oui Unknown) BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a4:4c:11:4d:21:40 (oui Unknown) Data IV:f132 Pad 20 KeyID 0
+11:33:20.163681 1367201us tsft 24.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) Acknowledgment
+11:33:20.169277 1372809us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.171201 1374737us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.171701 1375219us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.172251 1375768us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.172551 1376088us tsft 24.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.177636 1380994us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.177840 1381170us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.178201 1381394us tsft 12.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.178202 1381584us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6485 Pad 20 KeyID 1
+11:33:20.178325 1381757us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6486 Pad 20 KeyID 1
+11:33:20.178950 1382486us tsft 18.0 Mb/s 2412 MHz 11g -85dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) TA:b4:8b:19:f2:6a:e8 (oui Unknown) Request-To-Send
+11:33:20.179200 1382726us tsft 18.0 Mb/s 2412 MHz 11g -85dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) TA:b4:8b:19:f2:6a:e8 (oui Unknown) Request-To-Send
+11:33:20.179450 1382987us tsft 18.0 Mb/s 2412 MHz 11g -85dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) TA:b4:8b:19:f2:6a:e8 (oui Unknown) Request-To-Send
+11:33:20.179725 1383229us tsft 6.0 Mb/s 2412 MHz 11g -85dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) TA:b4:8b:19:f2:6a:e8 (oui Unknown) Request-To-Send
+11:33:20.200250 1403737us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) TA:24:de:c6:11:ec:e1 (oui Unknown) Request-To-Send
+11:33:20.200251 1403782us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Clear-To-Send
+11:33:20.200549 1404089us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.201373 1404315us tsft 1.0 Mb/s 2412 MHz 11b -72dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:34:68:95:9f:03:13 (oui Unknown) Probe Request () [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit]
+11:33:20.201927 1405348us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.202204 1405577us tsft 12.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:ec:e0 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.202204 1405732us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:ec:e0 (oui Unknown) Acknowledgment
+11:33:20.202675 1405783us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:ec:e1 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.202676 1405984us tsft 6.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.202676 1406043us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:ec:e2 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.202677 1406202us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:ec:e2 (oui Unknown) Acknowledgment
+11:33:20.202899 1406262us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:01 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.203278 1406647us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.203503 1406919us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:42 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.203779 1407134us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:02 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.203780 1407293us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:fb:02 (oui Unknown) Acknowledgment
+11:33:20.205349 1408877us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.207499 1411018us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) BA
+11:33:20.207824 1411352us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.212100 1415618us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) BA
+11:33:20.213604 1417089us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) BA
+11:33:20.215734 1419077us tsft 24.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) TA:a8:a7:95:28:80:4b (oui Unknown) Request-To-Send
+11:33:20.215734 1419123us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) Clear-To-Send
+11:33:20.215735 1419236us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) BA
+11:33:20.216407 1419907us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.222680 1426073us tsft 12.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:42 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.222907 1426288us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.225882 1428368us tsft 1.0 Mb/s 2412 MHz 11b -86dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:8c:77:16:b3:29:01 (oui Unknown) SA:34:13:e8:2a:f4:68 (oui Unknown) Probe Response (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] CH: 1, PRIVACY
+11:33:20.230204 1433692us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.236830 1440216us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.237079 1440392us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.237370 1440616us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.237371 1440806us tsft 9.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:dba3 Pad 20 KeyID 1
+11:33:20.237576 1440997us tsft 9.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:dba4 Pad 20 KeyID 1
+11:33:20.237949 1441469us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.241558 1445064us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.265257 1468638us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.265528 1468813us tsft 9.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.265656 1469037us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.268906 1472323us tsft 6.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:20.268908 1472403us tsft 6.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:20.274680 1478176us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.275654 1479144us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.280029 1483394us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.280584 1483794us tsft 12.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.280854 1484264us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6488 Pad 20 KeyID 1
+11:33:20.281377 1484881us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) BA
+11:33:20.282055 1485382us tsft 24.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] RA:24:de:c6:11:fb:01 (oui Unknown) TA:a8:a7:95:28:80:4b (oui Unknown) Request-To-Send
+11:33:20.282056 1485428us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) Clear-To-Send
+11:33:20.282056 1485541us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:a8:a7:95:28:80:4b (oui Unknown) BA
+11:33:20.284978 1488492us tsft 24.0 Mb/s 2412 MHz 11g -76dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.289203 1492706us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.289652 1493137us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.297278 1499712us tsft 1.0 Mb/s 2412 MHz 11b -95dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.305605 1509054us tsft 2412 MHz 11g -58dB signal 65.0 Mb/s MCS 7 20 MHz lon GI [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:64:a7:69:96:1b:8f (oui Unknown) DA:24:de:c6:11:fb:01 (oui Unknown) 
+11:33:20.305606 1509097us tsft 24.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] RA:64:a7:69:96:1b:8f (oui Unknown) Acknowledgment
+11:33:20.313829 1517248us tsft 6.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) SA:c4:43:8f:d6:a5:93 (oui Unknown) DA:24:de:c6:11:ec:e1 (oui Unknown) 
+11:33:20.313830 1517328us tsft 6.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) Acknowledgment
+11:33:20.339232 1542615us tsft 12.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] BSSID:24:de:c6:11:ec:e0 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e0 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.339431 1542791us tsft 9.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e1 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e1 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.339653 1543014us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ec:e2 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.350930 1554304us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.351205 1554543us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:fb:01 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.351579 1554920us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.352105 1555453us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.354680 1558075us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:f1:40 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.354905 1558286us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.355179 1558515us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.355430 1558788us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:fb:01 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.355680 1559060us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:f1:42 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.355904 1559283us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:00:27:10:2c:d6:78 (oui Unknown) SA:24:de:c6:11:fb:02 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.356651 1560154us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.357298 1560807us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.367653 1571037us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:00 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.367899 1571213us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:01 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.368100 1571437us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:Broadcast SA:24:de:c6:11:fb:02 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.368226 1571627us tsft 9.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:fb:01 (oui Unknown) SA:a8:a7:95:28:80:4b (oui Unknown) Data IV:9f0b Pad 20 KeyID 1
+11:33:20.370126 1573633us tsft 18.0 Mb/s 2412 MHz 11g -84dB signal [bit 29] RA:24:de:c6:11:e7:a1 (oui Unknown) Acknowledgment
+11:33:20.377128 1580618us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.379252 1582696us tsft 24.0 Mb/s 2412 MHz 11g -82dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) TA:24:de:c6:11:ec:e1 (oui Unknown) Request-To-Send
+11:33:20.379253 1582740us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Clear-To-Send
+11:33:20.379551 1583048us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.381226 1584740us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.382430 1585795us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:40 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.382627 1585971us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:41 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.383145 1586195us tsft 12.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:Broadcast SA:24:de:c6:11:f1:42 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.383146 1586385us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:6489 Pad 20 KeyID 1
+11:33:20.383147 1586549us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:3c:15:c2:ea:c2:c0 (oui Unknown) Data IV:648a Pad 20 KeyID 1
+11:33:20.387555 1590902us tsft 9.0 Mb/s 2412 MHz 11g -73dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:cc:61:e5:56:98:4c (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.396552 1600062us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.399677 1602105us tsft 1.0 Mb/s 2412 MHz 11b -87dB signal [bit 29] BSSID:34:13:e8:2a:f4:68 (oui Unknown) DA:Broadcast SA:34:13:e8:2a:f4:68 (oui Unknown) Beacon (AggieE) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 1, PRIVACY
+11:33:20.400902 1604346us tsft 18.0 Mb/s 2412 MHz 11g -80dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) SA:00:ae:fa:43:9f:5b (oui Unknown) DA:24:de:c6:11:f1:41 (oui Unknown) 
+11:33:20.400903 1604398us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] RA:00:ae:fa:43:9f:5b (oui Unknown) Acknowledgment
+11:33:20.403128 1606463us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:cc:61:e5:56:98:4c (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.405077 1608566us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.406150 1609639us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.406350 1609859us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.407426 1610337us tsft 1.0 Mb/s 2412 MHz 11b -72dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:34:68:95:9f:03:13 (oui Unknown) Probe Request () [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit]
+11:33:20.408180 1611577us tsft 12.0 Mb/s 2412 MHz 11g -69dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.408403 1611788us tsft 12.0 Mb/s 2412 MHz 11g -72dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:40 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.408653 1612009us tsft 9.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.408903 1612281us tsft 12.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] BSSID:24:de:c6:11:ec:e2 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:ec:e2 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.409103 1612496us tsft 12.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:42 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:42 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.409353 1612711us tsft 9.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:01 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.409628 1613001us tsft 12.0 Mb/s 2412 MHz 11g -70dB signal [bit 29] BSSID:24:de:c6:11:fb:02 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:02 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.418775 1622283us tsft 24.0 Mb/s 2412 MHz 11g -83dB signal [bit 29] RA:c4:43:8f:d6:a5:93 (oui Unknown) BA
+11:33:20.420950 1624449us tsft 24.0 Mb/s 2412 MHz 11g -77dB signal [bit 29] RA:24:de:c6:11:ec:e1 (oui Unknown) Acknowledgment
+11:33:20.428103 1631016us tsft 1.0 Mb/s 2412 MHz 11b -68dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:34:68:95:9f:03:13 (oui Unknown) Probe Request () [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit]
+11:33:20.428853 1632241us tsft 12.0 Mb/s 2412 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:f1:40 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:40 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.429128 1632471us tsft 9.0 Mb/s 2412 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:f1:41 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:f1:41 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.429353 1632752us tsft 12.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:00 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:00 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+11:33:20.429653 1632990us tsft 9.0 Mb/s 2412 MHz 11g -71dB signal [bit 29] BSSID:24:de:c6:11:fb:01 (oui Unknown) DA:34:68:95:9f:03:13 (oui Unknown) SA:24:de:c6:11:fb:01 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 1, PRIVACY
+
+11:33:21.593807 2796270us tsft 12.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Acknowledgment
+11:33:21.633917 2836312us tsft 6.0 Mb/s 2437 MHz 11g -71dB signal [bit 29] CF +QoS BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:80:00:0b:dc:71:7a (oui Unknown) DA:24:de:c6:11:ef:61 (oui Unknown) 
+11:33:21.633920 2836394us tsft 6.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] RA:80:00:0b:dc:71:7a (oui Unknown) Acknowledgment
+11:33:21.635245 2837160us tsft 6.0 Mb/s 2437 MHz 11g -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.638972 2841168us tsft 12.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.638973 2841346us tsft 12.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.639184 2841520us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.642684 2845064us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.642914 2845238us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.643084 2845462us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.643407 2845653us tsft 9.0 Mb/s 2437 MHz 11g -77dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:60:36:dd:97:3d:ad (oui Unknown) Data IV:48b Pad 20 KeyID 1
+11:33:21.643723 2846017us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:68:5d:43:b9:c6:0c (oui Unknown) Data IV:48c Pad 20 KeyID 1
+11:33:21.643985 2846361us tsft 9.0 Mb/s 2437 MHz 11g -74dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:ac:bc:32:95:f4:ff (oui Unknown) Data IV:48d Pad 20 KeyID 1
+11:33:21.663640 2865981us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:80 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.663860 2866223us tsft 12.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:81 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.664135 2866454us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:82 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.669237 2871577us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:80 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.669484 2871828us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:81 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.669734 2872050us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:82 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.674954 2876214us tsft 1.0 Mb/s 2437 MHz 11b -91dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.678568 2880085us tsft 1.0 Mb/s 2437 MHz 11b -71dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.684239 2886581us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:80 (oui Unknown) Probe Response (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.684457 2886823us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:81 (oui Unknown) Probe Response (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.684760 2887072us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:10:68:3f:6f:56:5a (oui Unknown) SA:6c:f3:7f:52:d9:82 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.714482 2915712us tsft 1.0 Mb/s 2437 MHz 11b -90dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:84:38:38:33:60:05 (oui Unknown) Probe Request (tamulink-wpa) [1.0 2.0 5.5 11.0 Mbit]
+11:33:21.734844 2936098us tsft 1.0 Mb/s 2437 MHz 11b -93dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:84:38:38:33:60:05 (oui Unknown) Probe Request (tamulink-wpa) [1.0 2.0 5.5 11.0 Mbit]
+11:33:21.737648 2939563us tsft 6.0 Mb/s 2437 MHz 11g -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.741398 2943568us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.741399 2943745us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.741787 2944088us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.741952 2944320us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4113 Pad 20 KeyID 1
+11:33:21.742727 2945110us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4114 Pad 20 KeyID 1
+11:33:21.742977 2945346us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4115 Pad 20 KeyID 1
+11:33:21.743555 2946059us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Acknowledgment
+11:33:21.744307 2946756us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Acknowledgment
+11:33:21.745078 2947464us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.745308 2947641us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.745480 2947864us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.745807 2948284us tsft 24.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) TA:6c:f3:7f:52:d9:82 (oui Unknown) Request-To-Send
+11:33:21.748057 2950416us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.748057 2950532us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.777058 2978334us tsft 1.0 Mb/s 2437 MHz 11b -90dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.780948 2982486us tsft 1.0 Mb/s 2437 MHz 11b -70dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.787597 2990086us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.787825 2990328us tsft 12.0 Mb/s 2437 MHz 11g -86dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.788202 2990571us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.792723 2995102us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.792723 2995229us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.806555 3005788us tsft 1.0 Mb/s 2437 MHz 11b -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:68:5d:43:b9:c6:0c (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.815682 3014891us tsft 1.0 Mb/s 2437 MHz 11b -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:68:5d:43:b9:c6:0c (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.819953 3019183us tsft 1.0 Mb/s 2437 MHz 11b -80dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:68:5d:43:b9:c6:0c (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.823953 3023192us tsft 1.0 Mb/s 2437 MHz 11b -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:68:5d:43:b9:c6:0c (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.831981 3031220us tsft 1.0 Mb/s 2437 MHz 11b -80dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:68:5d:43:b9:c6:0c (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.834180 3036633us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Acknowledgment
+11:33:21.840020 3041964us tsft 6.0 Mb/s 2437 MHz 11g -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.841556 3043924us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.843615 3045968us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.843805 3046146us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.844144 3046323us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.844145 3046554us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:64:80:99:6e:4d:94 (oui Unknown) Data IV:4116 Pad 20 KeyID 1
+11:33:21.844680 3047032us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.844681 3047148us tsft 24.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.847478 3049865us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.847723 3050042us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.848056 3050266us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.848057 3050455us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:64:80:99:6e:4d:94 (oui Unknown) Data IV:48e Pad 20 KeyID 1
+11:33:21.848350 3050732us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:48f Pad 20 KeyID 1
+11:33:21.854306 3056673us tsft 12.0 Mb/s 2437 MHz 11g -86dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.854306 3056789us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.856305 3058659us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.856305 3058801us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.868430 3070741us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.868431 3070887us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.869995 3072490us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.870370 3072865us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.878053 3080547us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.879440 3080736us tsft 1.0 Mb/s 2437 MHz 11b -90dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.883349 3084888us tsft 1.0 Mb/s 2437 MHz 11b -71dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.913200 3115576us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:21.913201 3115692us tsft 24.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:21.942444 3144364us tsft 6.0 Mb/s 2437 MHz 11g -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.946177 3148370us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.946178 3148548us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.946428 3148723us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.946610 3148955us tsft 9.0 Mb/s 2437 MHz 11g -86dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:4117 Pad 20 KeyID 1
+11:33:21.946803 3149166us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:4118 Pad 20 KeyID 1
+11:33:21.947053 3149448us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:4119 Pad 20 KeyID 1
+11:33:21.947348 3149749us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:411a Pad 20 KeyID 1
+11:33:21.949928 3152267us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.950136 3152442us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.950477 3152666us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:21.950478 3152856us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:80:00:0b:6f:d3:71 (oui Unknown) Data IV:490 Pad 20 KeyID 1
+11:33:21.951246 3153634us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:ac:2b:6e:ed:16:47 (oui Unknown) Data IV:491 Pad 20 KeyID 1
+11:33:21.951577 3153897us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:68:5d:43:b9:c6:0c (oui Unknown) Data IV:492 Pad 20 KeyID 1
+11:33:21.951910 3154257us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:493 Pad 20 KeyID 1
+11:33:21.952110 3154460us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:494 Pad 20 KeyID 1
+11:33:21.952287 3154662us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:495 Pad 20 KeyID 1
+11:33:21.952447 3154837us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:5c:e0:c5:d7:51:b3 (oui Unknown) Data IV:496 Pad 20 KeyID 1
+11:33:21.952928 3155118us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:70:56:81:ab:f1:41 (oui Unknown) Data IV:497 Pad 20 KeyID 1
+11:33:21.960570 3162481us tsft 1.0 Mb/s 2437 MHz 11b -68dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:68:5d:43:b9:c6:0c (oui Unknown) Probe Request () [1.0 2.0 5.5 11.0 6.0 9.0 12.0 18.0 Mbit]
+11:33:21.964052 3163294us tsft 1.0 Mb/s 2437 MHz 11b -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:68:5d:43:b9:c6:0c (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:21.964361 3166754us tsft 1.0 Mb/s 2437 MHz 11b -68dB signal [bit 29] RA:46:1c:a8:69:15:53 (oui Unknown) Acknowledgment
+11:33:21.966369 3168272us tsft 1.0 Mb/s 2437 MHz 11b -69dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:68:5d:43:b9:c6:0c (oui Unknown) Probe Request () [1.0 2.0 5.5 11.0 6.0 9.0 12.0 18.0 Mbit]
+11:33:21.981848 3183136us tsft 1.0 Mb/s 2437 MHz 11b -90dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.985761 3187289us tsft 1.0 Mb/s 2437 MHz 11b -70dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:21.994496 3196853us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:cc:61:e5:05:80:34 (oui Unknown) SA:24:de:c6:11:ef:61 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.033177 3235499us tsft 9.0 Mb/s 2437 MHz 11g -74dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:cc:61:e5:05:80:34 (oui Unknown) SA:24:de:c6:11:ef:61 (oui Unknown) Probe Response (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.044842 3246766us tsft 6.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.046111 3248503us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.048574 3250771us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.048575 3250948us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.048975 3251124us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.048976 3251356us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:411b Pad 20 KeyID 1
+11:33:22.049260 3251665us tsft 9.0 Mb/s 2437 MHz 11g -86dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:411c Pad 20 KeyID 1
+11:33:22.049802 3252177us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:411e Pad 20 KeyID 1
+11:33:22.050008 3252398us tsft 9.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:411f Pad 20 KeyID 1
+11:33:22.050177 3252604us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:4120 Pad 20 KeyID 1
+11:33:22.052302 3254667us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.052537 3254843us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.052679 3255067us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.052925 3255258us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:cc:3d:82:7b:09:67 (oui Unknown) Data IV:498 Pad 20 KeyID 1
+11:33:22.053107 3255487us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:499 Pad 20 KeyID 1
+11:33:22.053300 3255662us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:ac:2b:6e:ed:16:47 (oui Unknown) Data IV:49a Pad 20 KeyID 1
+11:33:22.053552 3255889us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:49b Pad 20 KeyID 1
+11:33:22.054297 3256649us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:49c Pad 20 KeyID 1
+11:33:22.054425 3256824us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:dc:85:de:eb:51:57 (oui Unknown) Data IV:49d Pad 20 KeyID 1
+11:33:22.054882 3257124us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:49e Pad 20 KeyID 1
+11:33:22.054883 3257267us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:49f Pad 20 KeyID 1
+11:33:22.055051 3257474us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:4a0 Pad 20 KeyID 1
+11:33:22.055318 3257742us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:01:00:0c:cc:cc:cd (oui Unknown) BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:00:1f:6c:a4:bf:44 (oui Unknown) Data IV:4a1 Pad 20 KeyID 1
+11:33:22.060323 3261788us tsft 1.0 Mb/s 2437 MHz 11b -90dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:5e:ef:ab:c3:3c:90 (oui Unknown) Probe Request () [1.0 2.0 5.5 11.0 Mbit]
+11:33:22.063801 3263050us tsft 1.0 Mb/s 2437 MHz 11b -80dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.064109 3266512us tsft 1.0 Mb/s 2437 MHz 11b -92dB signal [bit 29] RA:46:1c:a8:69:15:53 (oui Unknown) Acknowledgment
+11:33:22.075801 3277253us tsft 1.0 Mb/s 2437 MHz 11b -91dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:5e:ef:ab:c3:3c:90 (oui Unknown) Probe Request () [1.0 2.0 5.5 11.0 Mbit]
+11:33:22.079303 3278524us tsft 1.0 Mb/s 2437 MHz 11b -79dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.079585 3281985us tsft 1.0 Mb/s 2437 MHz 11b -91dB signal [bit 29] RA:46:1c:a8:69:15:53 (oui Unknown) Acknowledgment
+11:33:22.084262 3285535us tsft 1.0 Mb/s 2437 MHz 11b -87dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.088178 3289688us tsft 1.0 Mb/s 2437 MHz 11b -71dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.101099 3300329us tsft 1.0 Mb/s 2437 MHz 11b -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.105177 3304356us tsft 1.0 Mb/s 2437 MHz 11b -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.109853 3309105us tsft 1.0 Mb/s 2437 MHz 11b -79dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.113874 3313114us tsft 1.0 Mb/s 2437 MHz 11b -79dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.118314 3317519us tsft 1.0 Mb/s 2437 MHz 11b -80dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.122490 3321729us tsft 1.0 Mb/s 2437 MHz 11b -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.126563 3325784us tsft 1.0 Mb/s 2437 MHz 11b -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:5e:ef:ab:c3:3c:90 (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.147253 3349168us tsft 6.0 Mb/s 2437 MHz 11g -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.150997 3353171us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.150998 3353349us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.151369 3353525us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.151370 3353757us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4121 Pad 20 KeyID 1
+11:33:22.151684 3354030us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4122 Pad 20 KeyID 1
+11:33:22.152637 3355015us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4126 Pad 20 KeyID 1
+11:33:22.153042 3355420us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4128 Pad 20 KeyID 1
+11:33:22.153267 3355640us tsft 9.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4129 Pad 20 KeyID 1
+11:33:22.153518 3355905us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:412a Pad 20 KeyID 1
+11:33:22.154695 3357069us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.154904 3357245us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.155116 3357469us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.155270 3357659us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:ac:2b:6e:ed:16:47 (oui Unknown) Data IV:4a2 Pad 20 KeyID 1
+11:33:22.155684 3357950us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:a4:5e:60:c3:fa:5b (oui Unknown) Data IV:4a3 Pad 20 KeyID 1
+11:33:22.156194 3358474us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:a4:5e:60:c3:fa:5b (oui Unknown) Data IV:4a4 Pad 20 KeyID 1
+11:33:22.156442 3358806us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:80:00:0b:3b:7c:07 (oui Unknown) Data IV:4a5 Pad 20 KeyID 1
+11:33:22.183087 3385576us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Acknowledgment
+11:33:22.186668 3387937us tsft 1.0 Mb/s 2437 MHz 11b -90dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.190571 3392090us tsft 1.0 Mb/s 2437 MHz 11b -72dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.205895 3408357us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Acknowledgment
+11:33:22.217802 3417016us tsft 1.0 Mb/s 2437 MHz 11b -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:f8:cf:c5:43:06:cc (oui Unknown) SA:46:1c:a8:69:15:53 (oui Unknown) Probe Response (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] CH: 6, PRIVACY
+11:33:22.231170 3433469us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.232720 3435058us tsft 12.0 Mb/s 2437 MHz 11g -86dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.232721 3435202us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:22.249663 3451570us tsft 6.0 Mb/s 2437 MHz 11g -82dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.253389 3455571us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.253391 3455750us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.253788 3455925us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.253789 3456157us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:412b Pad 20 KeyID 1
+11:33:22.257112 3459471us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.257331 3459646us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.257675 3459870us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.257676 3460059us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:5c:e0:c5:d7:51:b3 (oui Unknown) Data IV:4a6 Pad 20 KeyID 1
+11:33:22.257893 3460288us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:fc:f8:ae:8b:8b:70 (oui Unknown) Data IV:4a7 Pad 20 KeyID 1
+11:33:22.289045 3490337us tsft 1.0 Mb/s 2437 MHz 11b -86dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.292940 3494491us tsft 1.0 Mb/s 2437 MHz 11b -71dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.294307 3496647us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.303846 3506185us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.318320 3520664us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.345820 3548153us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.345820 3548283us tsft 24.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:22.352073 3553970us tsft 6.0 Mb/s 2437 MHz 11g -80dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.355084 3557428us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.355086 3557544us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:22.355803 3557973us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.355804 3558151us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.356018 3558326us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.356217 3558558us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:412c Pad 20 KeyID 1
+11:33:22.356547 3558885us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:412d Pad 20 KeyID 1
+11:33:22.356819 3559155us tsft 9.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:412e Pad 20 KeyID 1
+11:33:22.358493 3560830us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.358494 3560956us tsft 24.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:22.359487 3561872us tsft 12.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.359730 3562047us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.360100 3562271us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.360101 3562461us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:28:b2:bd:be:23:af (oui Unknown) Data IV:4a8 Pad 20 KeyID 1
+11:33:22.360348 3562698us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:4a9 Pad 20 KeyID 1
+11:33:22.360513 3562889us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:4aa Pad 20 KeyID 1
+11:33:22.360794 3563134us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:4c:0b:be:2c:d9:46 (oui Unknown) Data IV:4ab Pad 20 KeyID 1
+11:33:22.363567 3565913us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.365067 3567405us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.366842 3569175us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.374469 3576794us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.375844 3578159us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.380143 3582484us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.380144 3582611us tsft 24.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) BA
+11:33:22.389416 3591738us tsft 12.0 Mb/s 2437 MHz 11g -85dB signal [bit 29] RA:34:12:98:ea:c8:4b (oui Unknown) Clear-To-Send
+11:33:22.391462 3592736us tsft 1.0 Mb/s 2437 MHz 11b -89dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.395365 3596891us tsft 1.0 Mb/s 2437 MHz 11b -70dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.454473 3656373us tsft 6.0 Mb/s 2437 MHz 11g -79dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.458015 3660373us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.458571 3660958us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:dc:53:60:94:1e:02 (oui Unknown) Data IV:412f Pad 20 KeyID 1
+11:33:22.461919 3664272us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.462189 3664449us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.462495 3664673us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.462496 3664863us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:28:b2:bd:be:23:af (oui Unknown) Data IV:4ac Pad 20 KeyID 1
+11:33:22.493864 3695138us tsft 1.0 Mb/s 2437 MHz 11b -86dB signal [bit 29] BSSID:fa:8f:ca:6d:c1:97 (oui Unknown) DA:Broadcast SA:fa:8f:ca:6d:c1:97 (oui Unknown) Beacon (HRG) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.497763 3699292us tsft 1.0 Mb/s 2437 MHz 11b -71dB signal [bit 29] BSSID:bc:85:56:ed:f1:f1 (oui Unknown) DA:Broadcast SA:bc:85:56:ed:f1:f1 (oui Unknown) Beacon (HP-Print-f1-LaserJet 100) [1.0* 2.0* 5.5* 11.0* 6.0 9.0 12.0 18.0 Mbit] ESS CH: 6
+11:33:22.498290 3700675us tsft 6.0 Mb/s 2437 MHz 11g -89dB signal [bit 29] BSSID:Broadcast DA:Broadcast SA:94:65:9c:1b:1d:13 (oui Unknown) Probe Request (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit]
+11:33:22.556871 3758774us tsft 6.0 Mb/s 2437 MHz 11g -81dB signal [bit 29] BSSID:46:1c:a8:69:15:53 (oui Unknown) DA:Broadcast SA:46:1c:a8:69:15:53 (oui Unknown) Beacon (DIRECT-53-HP M477 LaserJet) [6.0* 9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.560597 3762774us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:80 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:80 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.560598 3762953us tsft 12.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:81 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:81 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.560966 3763129us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] BSSID:6c:f3:7f:52:d9:82 (oui Unknown) DA:Broadcast SA:6c:f3:7f:52:d9:82 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.560967 3763358us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:00:23:12:1c:4d:fa (oui Unknown) Data IV:4130 Pad 20 KeyID 1
+11:33:22.561216 3763600us tsft 9.0 Mb/s 2437 MHz 11g -83dB signal [bit 29] DA:01:00:5e:00:00:01 (oui Unknown) BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:00:23:12:1c:4d:fa (oui Unknown) Data IV:4131 Pad 20 KeyID 1
+11:33:22.561439 3763817us tsft 9.0 Mb/s 2437 MHz 11g -84dB signal [bit 29] DA:Broadcast BSSID:6c:f3:7f:52:d9:82 (oui Unknown) SA:b4:ae:2b:c0:e3:75 (oui Unknown) Data IV:4132 Pad 20 KeyID 1
+11:33:22.564318 3766674us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:60 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:60 (oui Unknown) Beacon (eduroam) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.564515 3766850us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:61 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:61 (oui Unknown) Beacon (tamulink-wpa) [9.0* 12.0* 18.0* 24.0 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.564855 3767074us tsft 12.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] BSSID:24:de:c6:11:ef:62 (oui Unknown) DA:Broadcast SA:24:de:c6:11:ef:62 (oui Unknown) Beacon (tamulink-guest) [9.0 12.0* 18.0 24.0* 36.0 48.0 54.0 Mbit] ESS CH: 6, PRIVACY
+11:33:22.564856 3767262us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:00:23:12:1c:4d:fa (oui Unknown) Data IV:4ad Pad 20 KeyID 1
+11:33:22.565060 3767458us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:01:00:5e:00:00:01 (oui Unknown) BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:00:23:12:1c:4d:fa (oui Unknown) Data IV:4ae Pad 20 KeyID 1
+11:33:22.565307 3767657us tsft 9.0 Mb/s 2437 MHz 11g -75dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:7c:7a:91:66:dd:ca (oui Unknown) Data IV:4af Pad 20 KeyID 1
+11:33:22.565510 3767866us tsft 9.0 Mb/s 2437 MHz 11g -76dB signal [bit 29] DA:Broadcast BSSID:24:de:c6:11:ef:61 (oui Unknown) SA:7c:7a:91:66:dd:ca (oui Unknown) Data IV:4b0 Pad 20 KeyID 1
+
+
