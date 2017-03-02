@@ -357,6 +357,14 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:visibility="invisible"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Collect Data (2 sec)"
+            android:id="@+id/checkBoxAuto"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/btnRecord"/>
     </RelativeLayout>
 
     <FrameLayout

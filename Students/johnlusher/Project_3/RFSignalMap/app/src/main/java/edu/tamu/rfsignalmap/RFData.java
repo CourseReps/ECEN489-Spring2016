@@ -56,9 +56,9 @@ public class RFData
         SampleNumber = -1;                                              /// Default is -1 (undefined)
         XbeeID = -1;                                                    /// Default is -1 (undefined)
         DeviceID = -1;                                                  /// Default is -1 (undefined)
-        RSSI = 9999.99;                                                 /// Default is -9999.99 (not valid)
-        RSSI2 = 9999.99;                                                /// Default is -9999.99 (not valid)
-        RSSI3 = 9999.99;                                                /// Default is -9999.99 (not valid)
+        RSSI = -9999.99;                                                 /// Default is -9999.99 (not valid)
+        RSSI2 = -9999.99;                                                /// Default is -9999.99 (not valid)
+        RSSI3 = -9999.99;                                                /// Default is -9999.99 (not valid)
     }
 }
 

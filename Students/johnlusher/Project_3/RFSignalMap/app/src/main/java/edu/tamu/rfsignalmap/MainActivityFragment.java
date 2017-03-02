@@ -40,6 +40,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -80,6 +81,9 @@ public class MainActivityFragment extends Fragment implements
     TextView tvRoll;                                                    /// Text View for Roll
     Button btnRecord;                                                   /// Record button
     ListView lvData;                                                    /// List videw of recent data recorded
+    CheckBox cbAuto;                                                    /// Check box for auto record mode
+
+    int update_count = 0;
     //------------------------------------------------------------------------------------------------------------------
 
     //------------------------------------------------------------------------------------------------------------------
@@ -126,7 +130,7 @@ public class MainActivityFragment extends Fragment implements
     boolean online = false;
     boolean online_2 = false;
     boolean online_3 = false;
-    private double XBeeRSSI = 9999.0;
+    private double XBeeRSSI = -9999.0;
 
     //------------------------------------------------------------------------------------------------------------------
     // SERIAL PORT LISTENER - #1
@@ -164,6 +168,7 @@ public class MainActivityFragment extends Fragment implements
                     CurrenSample.XbeeID = serialJSONObj.getInt(RXID);
                     CurrenSample.DeviceID = serialJSONObj.getInt(TXID);
                     XBeeRSSI = -1.0 * serialJSONObj.getDouble(RSSI);
+                    CurrenSample.RSSI =  -1.0 * serialJSONObj.getDouble(RSSI);
                 }
 
             } catch (Exception e) {
@@ -268,6 +273,7 @@ public class MainActivityFragment extends Fragment implements
     class UpdateUI implements Runnable {
         private int stuff = 0;
         String strDate;
+        private boolean busy = false;
 
         //--------------------------------------------------------------------------------------------------------------
         /**
@@ -279,23 +285,23 @@ public class MainActivityFragment extends Fragment implements
          */
         public void run() {
             // Select RSSI based on what is current
-            if (XBeeRSSI <= 0.0) CurrenSample.RSSI = XBeeRSSI;
-            else CurrenSample.RSSI = CellRSSI;
+            //if (XBeeRSSI <= 0.0) CurrenSample.RSSI = XBeeRSSI;
+            //else CurrenSample.RSSI = CellRSSI;
 
             // Update data on UI
             if (tvRSSI != null)
             {   // Print data if available, if not then print na
-                if (XBeeRSSI <= 0.0) tvRSSI.setText(String.format("%3.0f", XBeeRSSI) + "dBm");
+                if ((XBeeRSSI <= 0.0) & (XBeeRSSI > -999.0))  tvRSSI.setText(String.format("%3.0f", XBeeRSSI) + "dBm");
                 else tvRSSI.setText("- na -");
             }
             if (tvRSSI2 != null)
             {   // Print data if available, if not then print na
-                if (CurrenSample.RSSI2 <= 0.0) tvRSSI2.setText(String.format("%3.0f", CurrenSample.RSSI2) + "dBm");
+                if ((CurrenSample.RSSI2 <= 0.0)& (CurrenSample.RSSI2 > -999.0))  tvRSSI2.setText(String.format("%3.0f", CurrenSample.RSSI2) + "dBm");
                 else tvRSSI2.setText("- na -");
             }
             if (tvRSSI3 != null)
             {   // Print data if available, if not then print na
-                if (CurrenSample.RSSI3 <= 0.0) tvRSSI3.setText(String.format("%3.0f", CurrenSample.RSSI3) + "dBm");
+                if ((CurrenSample.RSSI3 <= 0.0) & (CurrenSample.RSSI3 > -999.0)) tvRSSI3.setText(String.format("%3.0f", CurrenSample.RSSI3) + "dBm");
                 else tvRSSI3.setText("- na -");
             }
             if (tvRSSICell != null) tvRSSICell.setText(String.format("%3.0f", CellRSSI) + "dBm");
@@ -304,6 +310,45 @@ public class MainActivityFragment extends Fragment implements
             if (tvYaw != null) tvYaw.setText(String.format("%3.1f", CurrenSample.Yaw) + "°");
             if (tvPitch != null) tvPitch.setText(String.format("%3.1f", CurrenSample.Pitch) + "°");
             if (tvRoll != null) tvRoll.setText(String.format("%3.1f", CurrenSample.Roll) + "°");
+
+            update_count++;
+            // Send data to server, if in automatic mode and set
+            if ((busy == false) & (update_count > 8))
+            {
+                update_count = 0;
+                if (cbAuto != null)
+                {
+                    if (cbAuto.isChecked() == true)
+                    {
+                        busy = true;
+                        /// Disable the button, until finished (from Async task)
+                        btnRecord.setEnabled(false);
+
+                        /// Get the current time (sample date / time stamp)
+                        Calendar calendar = Calendar.getInstance();
+                        CurrenSample.SampleDate = calendar.getTime();
+
+                        if ((CurrenSample.RSSI < 0.0) & (CurrenSample.RSSI2 < 0.0))
+                        {
+
+                            /// Create a new Async task to save the data
+                            SaveRFData SaveDataTask = new SaveRFData();
+                            /// Copy over the data to the class, then execute (will finish in post event)
+                            SaveDataTask.RFMember = CurrenSample;
+                            SaveDataTask.execute("");
+                            while (SaveDataTask.AddingData == true) {
+                                try {
+                                    wait(10);
+                                } catch (InterruptedException e) {
+                                    break;
+                                }
+                            }
+                        }
+                        busy = false;
+                    }
+                }
+            }
+
         }
     }
 
@@ -617,6 +662,9 @@ public class MainActivityFragment extends Fragment implements
         // Add Button
         btnRecord = (Button) view.findViewById(R.id.btnRecord);
         btnRecord.setOnClickListener(this);
+
+        // Auto Record Check Box
+        cbAuto = (CheckBox) view.findViewById(R.id.checkBoxAuto);
     }
 
     //	----------------------------------------------------------------------------------------------------------------
@@ -786,6 +834,7 @@ public class MainActivityFragment extends Fragment implements
         public Exception exception;
         public RFData RFMember;
         public boolean AddComplete = false;
+        public boolean AddingData = false;
         public boolean AddErr = false;
 
         //--------------------------------------------------------------------------------------------------------------
@@ -796,6 +845,7 @@ public class MainActivityFragment extends Fragment implements
          */
         protected String doInBackground(String... parameters) {
             try {
+                AddingData = true;
                 AddComplete = false;
                 if (RFMember != null) {                    /// Pull from database the data that matches this range
                     RFFieldSQLDatabase RFFieldDatabase = new RFFieldSQLDatabase();
@@ -812,6 +862,7 @@ public class MainActivityFragment extends Fragment implements
                 /// Exception processing, display error and then return null
                 System.out.println("Err: " + e.getMessage());
                 this.exception = e;
+                AddingData = false;
                 return e.getMessage();
             }
         }
@@ -838,6 +889,7 @@ public class MainActivityFragment extends Fragment implements
             if (result == "Success") AddErr = false;
             else AddErr = true;
             AddComplete = true;
+            AddingData = false;
         }
     }
 }
