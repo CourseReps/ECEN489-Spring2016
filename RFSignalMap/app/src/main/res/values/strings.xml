@@ -1,0 +1,41 @@
+<!--
+********************************************************************************************************************
+** ECEN689: Special Topics in Cloud-Enabled Mobile Sensing
+**          RF Signal Map
+**
+**   File Name: 	strings.xml
+**     Version:		1.0.0
+**        Date:	    April 9, 2016
+** Description:	    String XML file
+**      Author:     John Lusher II
+*********************************************************************************************************************
+-->
+<resources>
+    <string name="app_name">RF Signal Map</string>
+    <string name="action_rfview">RF Signal Strength View</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_map">View Map</string>
+    <string name="action_about">About Application</string>
+    <string name="main_rssi_label"><u>RSSI LP:</u></string>
+    <string name="main_rssi_label2"><u>RSSI DP:</u></string>
+    <string name="main_rssi_label3"><u>RSSI SW:</u></string>
+    <string name="main_rssi_labelcell"><u>RSSI Cell:</u></string>
+    <string name="main_lat_label"><u>Latitude:</u></string>
+    <string name="main_long_label"><u>Longitude:</u></string>
+    <string name="main_yaw_label"><u>Yaw:</u></string>
+    <string name="main_pitch_label"><u>Pitch:</u></string>
+    <string name="main_roll_label"><u>Roll:</u></string>
+    <string name="main_log_label"><u>Recent Data Log:</u></string>
+
+    <string name="about_label"><u>Application Summary:</u></string>
+    <string name="about_summary">This project will take the captured signal strength from a Digi International XBee device, the current geographical location (Lat/Long),
+the orientation of the antenna and current time/date and store the store the data into a MySQL database located on a remote server.  This application will be deployed on an Android device, such as the Nexus 6P.  The application shall be able to store the sampled data to a SQL database on a remote server (MySQL).  Also, this application will display the current RSSI, location, and orientation data.  The application will be stable and easy to use
+    </string>
+
+    <string name="pref_category_datasettings_title"> </string>
+    <string name="pref_category_datasettings_key">pref_appset_key</string>
+    <string name="pref_server_key">pref_server_key</string>
+    <string name="pref_server_title"><u>SQL Server Host Address:</u></string>
+    <string name="pref_server_default">lusherengineeringservices.com</string>
+
+</resources>
